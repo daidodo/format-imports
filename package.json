@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/daidodo/ts-import-sorter.git"
+    "url": "git+https://github.com/daidodo/format-imports.git"
   },
   "keywords": [
     "sort",
@@ -19,9 +19,9 @@
   "author": "Zhao DAI (daidodo@gmail.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/daidodo/ts-import-sorter/issues"
+    "url": "https://github.com/daidodo/format-imports/issues"
   },
-  "homepage": "https://github.com/daidodo/ts-import-sorter#readme",
+  "homepage": "https://github.com/daidodo/format-imports#readme",
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.1"
   }
