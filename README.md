@@ -1,2 +1,3 @@
-# ts-import-sorter
-JavaScript and TypeScript Import/Export Sorter
+# format-imports
+
+JavaScript and TypeScript Import/Export Formatter.

@@ -1,0 +1,28 @@
+{
+  "name": "format-imports",
+  "version": "0.0.1",
+  "description": "JavaScript and TypeScript Import/Export Formatter.",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daidodo/ts-import-sorter.git"
+  },
+  "keywords": [
+    "sort",
+    "import",
+    "export",
+    "format"
+  ],
+  "author": "Zhao DAI (daidodo@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/daidodo/ts-import-sorter/issues"
+  },
+  "homepage": "https://github.com/daidodo/ts-import-sorter#readme",
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.1"
+  }
+}
