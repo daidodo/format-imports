@@ -50,6 +50,7 @@ const KEYS_TO_MERGE = [
   'keepUnused' as const,
 ];
 
+// TODO: Tests.
 export function mergeConfig(...configs: Configuration[]) {
   return configs.reduce((a, b) => {
     const obj: Configuration = KEYS_TO_MERGE.map(k => {

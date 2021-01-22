@@ -2,8 +2,8 @@ import ts, { ScriptTarget } from 'typescript';
 
 import { logger } from '../../common';
 import {
-  AllConfig,
   Configuration,
+  resolveConfigForFile,
 } from '../../config';
 import {
   ComposeConfig,
@@ -29,6 +29,8 @@ import {
   sortImports,
 } from '../sort';
 import { RangeAndEmptyLines } from '../types';
+
+type AllConfig = ReturnType<typeof resolveConfigForFile>;
 
 export function formatSource(
   fileName: string,

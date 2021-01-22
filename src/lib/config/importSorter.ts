@@ -13,9 +13,9 @@ import { Configuration } from './types';
 
 export function loadImportSorterConfig(config: Configuration, sourceFileName: string) {
   const log = logger('config.loadImportSorterConfig');
-  const { configurationFileName: cfgFileName } = config;
   log.debug('Load Prettier/EditorConfig config.');
   const pretConfig = loadPretConfig(sourceFileName);
+  const cfgFileName = config.configurationFileName || 'import-sorter.json';
   log.debug('Load import-sorter config from', cfgFileName);
   const fConfig = fileConfig(cfgFileName, sourceFileName);
   log.debug('Load package.json config.');
@@ -33,8 +33,7 @@ function packageConfig(fileName: string) {
 }
 
 // Exported for testing purpose
-export function fileConfig(filename: string | undefined, path?: string) {
-  if (!filename) return {};
+export function fileConfig(filename: string, path?: string) {
   const [configFile] = findFileFromPathAndParents(filename, path);
   if (!configFile) return {};
   const config = JSON.parse(fs.readFileSync(configFile, 'utf8'));
