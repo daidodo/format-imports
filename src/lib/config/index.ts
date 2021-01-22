@@ -28,7 +28,6 @@ export function resolveConfigForFile(fileName: string, config: Configuration = {
 
 // TODO: Tests.
 export function isFileExcludedByConfig(fileName: string, config: Configuration) {
-  if (!config) return false;
   const { exclude, excludeGlob, force } = config;
   if (force) return false;
   // glob
