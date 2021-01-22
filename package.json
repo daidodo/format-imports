@@ -4,7 +4,9 @@
   "description": "JavaScript and TypeScript Import/Export Formatter.",
   "main": "build/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rm -rf out",
+    "compile-bin": "tsc -p src/bin",
+    "compile-lib": "tsc -p src/lib"
   },
   "repository": {
     "type": "git",
@@ -12,9 +14,9 @@
   },
   "keywords": [
     "sort",
-    "import",
-    "export",
-    "format"
+    "format",
+    "imports",
+    "exports"
   ],
   "author": "Zhao DAI (daidodo@gmail.com)",
   "license": "MIT",
@@ -22,7 +24,67 @@
     "url": "https://github.com/daidodo/format-imports/issues"
   },
   "homepage": "https://github.com/daidodo/format-imports#readme",
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "printWidth": 100,
+    "arrowParens": "avoid",
+    "embeddedLanguageFormatting": "off"
+  },
+  "eslintConfig": {
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "tsconfigRootDir": "./",
+      "project": [
+        "./tsconfig.json"
+      ]
+    },
+    "plugins": [
+      "@typescript-eslint",
+      "eslint-plugin-tsdoc"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:@typescript-eslint/recommended-requiring-type-checking",
+      "prettier/@typescript-eslint"
+    ],
+    "rules": {
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/explicit-module-boundary-types": "off",
+      "@typescript-eslint/restrict-template-expressions": "off",
+      "@typescript-eslint/no-unsafe-assignment": "off",
+      "@typescript-eslint/no-use-before-define": [
+        "error",
+        {
+          "functions": false,
+          "classes": false
+        }
+      ],
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        {
+          "varsIgnorePattern": "^_",
+          "argsIgnorePattern": "^_",
+          "ignoreRestSiblings": true
+        }
+      ],
+      "tsdoc/syntax": "warn"
+    }
+  },
   "devDependencies": {
-    "@tsconfig/recommended": "^1.0.1"
+    "@tsconfig/recommended": "^1.0.1",
+    "@types/node": "^14.14.22",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-tsdoc": "^0.2.10"
+  },
+  "dependencies": {
+    "eslint": "^7.18.0",
+    "prettier": "^2.2.1",
+    "typescript": "^4.1.3"
   }
 }
