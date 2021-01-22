@@ -5,12 +5,12 @@
 const fs = require('fs');
 const lib = require('../lib');
 
-function usage(exe: string) {
+function usage(exe) {
   process.stderr.write(`Usage: ${exe} filename\n`);
   process.exit(1);
 }
 
-function main(argv: string[]) {
+function main(argv) {
   const exe = argv[0];
   if (argv.length !== 2) usage(exe);
   const fileName = argv[1];

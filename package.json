@@ -5,8 +5,7 @@
   "main": "build/index.js",
   "scripts": {
     "clean": "rm -rf out",
-    "compile-bin": "tsc -p src/bin",
-    "compile-lib": "tsc -p src/lib",
+    "compile": "tsc",
     "test": "mocha out/**/*.test.js"
   },
   "repository": {
