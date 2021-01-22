@@ -14,8 +14,8 @@ function main(argv: string[]) {
   const exe = argv[0];
   if (argv.length !== 2) usage(exe);
   const fileName = argv[1];
-  const source = fs.readFileSync(fileName);
-  const result = lib.formatSource(fileName, source);
+  const source = fs.readFileSync(fileName).toString();
+  const result = lib.formatSource(fileName, source, { config: {} });
   process.stdout.write(result + '\n');
 }
 
