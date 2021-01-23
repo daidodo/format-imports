@@ -1,0 +1,4 @@
+{
+  "sortImportsBy": "paths",
+  "sortRules": { "names": ["aA"], "paths": ["Aa"] }
+}

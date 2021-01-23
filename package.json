@@ -6,7 +6,8 @@
   "scripts": {
     "clean": "rm -rf out",
     "compile": "tsc",
-    "test": "mocha out/**/*.test.js"
+    "unit-test": "npm run compile && mocha out/lib/**/*.test.js",
+    "e2e-test": "npm run compile && mocha out/test/*.test.js"
   },
   "repository": {
     "type": "git",

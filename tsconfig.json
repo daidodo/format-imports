@@ -8,5 +8,7 @@
     "noUnusedLocals": true,
     "rootDir": "src",
     "outDir": "out"
-  }
+  },
+  "include": ["src"],
+  "exclude": ["src/test/examples/"]
 }

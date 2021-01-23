@@ -1,0 +1,11 @@
+{
+  "groupRules": [
+    { "flags": null, "regex": "^c" },
+    { "flags": null, "regex": null },
+    { "flags": "scripts", "regex": "^b" },
+    { "regex": "^b" },
+    { "flags": "scripts", "regex": "^a" },
+    {},
+    "^a"
+  ]
+}
