@@ -7,7 +7,7 @@
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
     "rootDir": "src",
-    "outDir": "out"
+    "outDir": "dist"
   },
   "include": ["src"],
   "exclude": ["src/test/examples/"]
