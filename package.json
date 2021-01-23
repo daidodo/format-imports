@@ -1,8 +1,8 @@
 {
   "name": "format-imports",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "JavaScript and TypeScript Import/Export Formatter.",
-  "main": "build/index.js",
+  "main": "out/lib/index.js",
   "scripts": {
     "clean": "rm -rf out",
     "compile": "tsc",
@@ -14,12 +14,16 @@
     "url": "git+https://github.com/daidodo/format-imports.git"
   },
   "keywords": [
-    "sort",
-    "format",
+    "sort imports",
+    "format imports",
+    "format exports",
     "imports",
-    "exports"
+    "exports",
+    "import formatter",
+    "import sorter",
+    "export formatter"
   ],
-  "author": "Zhao DAI (daidodo@gmail.com)",
+  "author": "Zhao DAI <daidodo@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/daidodo/format-imports/issues"
@@ -81,6 +85,7 @@
     "ui": "tdd"
   },
   "devDependencies": {
+    "@dozerg/end-of-line": "^1.0.5",
     "@tsconfig/recommended": "^1.0.1",
     "@types/eslint": "^7.2.6",
     "@types/minimatch": "^3.0.3",
@@ -89,7 +94,7 @@
     "@types/prettier": "^2.1.6",
     "@types/rewire": "^2.5.28",
     "eslint-config-prettier": "^7.2.0",
-    "eslint-plugin-tsdoc": "^0.2.10",
+    "eslint-plugin-tsdoc": "^0.2.11",
     "mocha": "^8.2.1",
     "rewire": "^5.0.0",
     "utility-types": "^3.10.0"

@@ -3,10 +3,9 @@ import fs from 'fs';
 import path, { sep } from 'path';
 import { CompilerOptions } from 'typescript';
 
-import {
-  assertNonNull,
-  endOfLine,
-} from '../lib/common';
+import { endOfLine } from '@dozerg/end-of-line';
+
+import { assertNonNull } from '../lib/common';
 import {
   Configuration,
   mergeConfig,
