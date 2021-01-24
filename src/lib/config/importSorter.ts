@@ -32,8 +32,7 @@ function packageConfig(fileName: string) {
   return config as Configuration;
 }
 
-// Exported for testing purpose
-export function fileConfig(filename: string, path?: string) {
+function fileConfig(filename: string, path?: string) {
   const [configFile] = findFileFromPathAndParents(filename, path);
   if (!configFile) return {};
   const config = JSON.parse(fs.readFileSync(configFile, 'utf8'));
