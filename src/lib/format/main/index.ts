@@ -1,4 +1,5 @@
 import ts, { ScriptTarget } from 'typescript';
+import { Optional } from 'utility-types';
 
 import { logger } from '../../common';
 import {
@@ -30,7 +31,10 @@ import {
 } from '../sort';
 import { RangeAndEmptyLines } from '../types';
 
-type AllConfig = ReturnType<typeof resolveConfigForFile>;
+type AllConfig = Optional<
+  ReturnType<typeof resolveConfigForFile>,
+  'eslintConfig' | 'tsCompilerOptions'
+>;
 
 export function formatSource(
   fileName: string,

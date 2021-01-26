@@ -34,9 +34,14 @@ function packageConfig(fileName: string) {
 
 function fileConfig(filename: string, path?: string) {
   const [configFile] = findFileFromPathAndParents(filename, path);
-  if (!configFile) return {};
-  const config = JSON.parse(fs.readFileSync(configFile, 'utf8'));
-  assert(isObject(config), `Bad config in "${configFile}"`);
+  return loadConfigFromJsonFile(configFile);
+}
+
+// TODO: Tests
+export function loadConfigFromJsonFile(filename: string) {
+  if (!filename) return {};
+  const config = JSON.parse(fs.readFileSync(filename, 'utf8'));
+  assert(isObject(config), `Bad config in "${filename}"`);
   return config as Configuration;
 }
 

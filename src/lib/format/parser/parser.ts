@@ -70,7 +70,7 @@ function process(node: Node, p: ParseParams, config: Configuration, options?: Co
     handleImport(p, disabled, range, () =>
       ImportNode.fromEqDecl(node as ImportEqualsDeclaration, a),
     );
-  else handleOthers(p, !formatExports || disabled, range, node, a, options);
+  else handleOthers(p, formatExports === false || disabled, range, node, a, options);
   return true;
 }
 

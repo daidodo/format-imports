@@ -17,6 +17,7 @@ export {
 
 export { mergeConfig } from './helper';
 export { ESLintConfig } from './eslint';
+export { loadConfigFromJsonFile } from './importSorter';
 
 // TODO: Tests.
 export function resolveConfigForFile(fileName: string, config: Configuration = {}) {
