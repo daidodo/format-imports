@@ -49,7 +49,7 @@ const ESLINT_CONF = '.eslintrc.json';
 const UPDATE_RESULT = false;
 
 suite('Library E2E Test Suite', () => {
-  const dir = path.resolve('src/test/lib');
+  const dir = path.resolve(__dirname);
   const examples = getTestSuite(dir, 'examples');
   if (!examples) return;
   // Run all tests
