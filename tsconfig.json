@@ -11,5 +11,5 @@
     "outDir": "dist"
   },
   "include": ["src"],
-  "exclude": ["src/test/examples/"]
+  "exclude": ["src/test/lib/examples", "src/test/cli/examples"]
 }

@@ -6,20 +6,20 @@ import { CompilerOptions } from 'typescript';
 
 import { endOfLine } from '@dozerg/end-of-line';
 
-import { assertNonNull } from '../lib/common';
+import { assertNonNull } from '../../lib/common';
 import {
   Configuration,
   mergeConfig,
-} from '../lib/config';
+} from '../../lib/config';
 import {
   ESLintConfig,
   loadESLintConfig,
-} from '../lib/config/eslint';
-import { loadTsConfig } from '../lib/config/tsconfig';
-import { formatSource } from '../lib/format';
+} from '../../lib/config/eslint';
+import { loadTsConfig } from '../../lib/config/tsconfig';
+import { formatSource } from '../../lib/format';
 
 const fileConfig: (filename: string, path?: string) => Configuration = rewire(
-  '../lib/config/importSorter',
+  '../../lib/config/importSorter',
 ).__get__('fileConfig');
 
 interface TestSuite {
@@ -48,8 +48,8 @@ const ESLINT_CONF = '.eslintrc.json';
  */
 const UPDATE_RESULT = false;
 
-suite('Integration Test Suite', () => {
-  const dir = path.resolve('src/test');
+suite('Library E2E Test Suite', () => {
+  const dir = path.resolve('src/test/lib');
   const examples = getTestSuite(dir, 'examples');
   if (!examples) return;
   // Run all tests

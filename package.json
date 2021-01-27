@@ -3,12 +3,16 @@
   "version": "1.0.0",
   "description": "JavaScript and TypeScript Import/Export Formatter.",
   "main": "dist/lib/index.js",
-  "bin": "dist/bin/main.js",
+  "bin": {
+    "format-imports": "dist/bin/format-cli.js",
+    "check-imports": "dist/bin/check-cli.js"
+  },
   "scripts": {
     "clean": "rm -rf dist",
     "compile": "tsc",
     "unit-test": "npm run compile && mocha dist/lib/**/*.test.js",
-    "e2e-test": "npm run compile && mocha dist/test/*.test.js"
+    "lib-test": "npm run compile && mocha dist/test/lib/*.test.js",
+    "cli-test": "npm run compile && mocha dist/test/cli/*.test.js"
   },
   "repository": {
     "type": "git",
