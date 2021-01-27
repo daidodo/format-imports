@@ -22,16 +22,16 @@ function loadBaseConfig({ config, force }: Options) {
   return { ...cfg, force };
 }
 
-function dryRunOutput(
-  brief: boolean | undefined,
-  file: string | undefined,
-  source: string,
-  result: string | undefined,
-) {
-  if (!file || !brief) process.stdout.write(result ?? source);
-  else if (result === undefined) process.stdout.write(`'${file}' stays the same.`);
-  else process.stdout.write(`'${file}' will be modified.`);
-}
+// function dryRunOutput(
+//   brief: boolean | undefined,
+//   file: string | undefined,
+//   source: string,
+//   result: string | undefined,
+// ) {
+//   if (!file || !brief) process.stdout.write(result ?? source);
+//   else if (result === undefined) process.stdout.write(`'${file}' stays the same.`);
+//   else process.stdout.write(`'${file}' will be modified.`);
+// }
 
 function outputResult(
   source: string,
