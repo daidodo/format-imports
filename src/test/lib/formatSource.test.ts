@@ -6,14 +6,8 @@ import { CompilerOptions } from 'typescript';
 import { endOfLine } from '@dozerg/end-of-line';
 
 import { assertNonNull } from '../../lib/common';
-import {
-  Configuration,
-  mergeConfig,
-} from '../../lib/config';
-import {
-  ESLintConfig,
-  loadESLintConfig,
-} from '../../lib/config/eslint';
+import { Configuration, mergeConfig } from '../../lib/config';
+import { ESLintConfig, loadESLintConfig } from '../../lib/config/eslint';
 import { fileConfig } from '../../lib/config/importSorter';
 import { loadTsConfig } from '../../lib/config/tsconfig';
 import { formatSource } from '../../lib/format';
@@ -44,7 +38,7 @@ const ESLINT_CONF = '.eslintrc.json';
  */
 const UPDATE_RESULT = false;
 
-describe('Library E2E Test Suite', () => {
+describe('lib/formatSource', () => {
   const dir = path.resolve(__dirname);
   const examples = getTestSuite(dir, 'examples');
   if (!examples) return;

@@ -10,6 +10,9 @@ function runWith(options: string) {
   }).toMatchSnapshot();
 }
 
-describe('CLI Test Suite', () => {
+describe('cli/format-imports', () => {
   test('--help', () => runWith('--help'));
+  test('-h', () => runWith('-h'));
+  test('--version', () => runWith('--version'));
+  test('-v', () => runWith('-v'));
 });
