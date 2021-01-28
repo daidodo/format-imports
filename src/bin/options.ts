@@ -9,7 +9,6 @@ const { parseArgv, generateHelp } = optionator({
     EXE + ' [options] DIR',
     '    Format supported files under given directory.',
   ].join('\n'),
-  append: ['Examples:', '1. Format a file, and print '].join('\n'),
   options: [
     {
       option: 'help',

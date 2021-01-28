@@ -10,9 +10,9 @@
   "scripts": {
     "clean": "rm -rf dist",
     "compile": "tsc",
-    "unit-test": "npm run compile && mocha dist/lib/**/*.test.js",
-    "lib-test": "npm run compile && mocha dist/test/lib/*.test.js",
-    "cli-test": "npm run compile && mocha dist/test/cli/*.test.js"
+    "unit-test": "mocha src/lib/**/*.test.ts",
+    "lib-test": "mocha src/test/lib/*.test.ts",
+    "cli-test": "npm run compile && mocha src/test/cli/*.test.ts"
   },
   "repository": {
     "type": "git",
@@ -87,11 +87,16 @@
     }
   },
   "mocha": {
-    "ui": "tdd"
+    "require": [
+      "chai-snapshot-matcher",
+      "ts-node/register"
+    ]
   },
   "devDependencies": {
     "@dozerg/end-of-line": "^1.0.5",
     "@tsconfig/recommended": "^1.0.1",
+    "@types/chai": "^4.2.14",
+    "@types/chai-snapshot-matcher": "^1.0.0",
     "@types/eslint": "^7.2.6",
     "@types/minimatch": "^3.0.3",
     "@types/mocha": "^8.2.0",
@@ -99,10 +104,13 @@
     "@types/prettier": "^2.1.6",
     "@types/rewire": "^2.5.28",
     "@types/tmp": "^0.2.0",
+    "chai": "^4.2.0",
+    "chai-snapshot-matcher": "^1.0.7",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-tsdoc": "^0.2.11",
     "mocha": "^8.2.1",
     "rewire": "^5.0.0",
+    "ts-node": "^9.1.1",
     "utility-types": "^3.10.0"
   },
   "dependencies": {

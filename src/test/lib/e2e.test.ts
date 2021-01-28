@@ -48,7 +48,7 @@ const ESLINT_CONF = '.eslintrc.json';
  */
 const UPDATE_RESULT = false;
 
-suite('Library E2E Test Suite', () => {
+describe('Library E2E Test Suite', () => {
   const dir = path.resolve(__dirname);
   const examples = getTestSuite(dir, 'examples');
   if (!examples) return;
@@ -95,7 +95,7 @@ function runTestSuite(ts: TestSuite, specific?: string, preConfig?: Configuratio
   const defResult = cases.find(c => !c.name && !c.origin)?.result;
   const config =
     curConfig && preConfig ? mergeConfig(preConfig, curConfig) : curConfig ?? preConfig;
-  suite(name, () => {
+  describe(name, () => {
     if (!specific) {
       cases.forEach(c => runTestCase(c, defResult, config, tsCompOpt));
       suites.forEach(s => runTestSuite(s, undefined, config));
@@ -119,7 +119,7 @@ function runTestCase(
   tsCompOpt?: CompilerOptions,
 ) {
   if (!name && !origin) return;
-  test(name ?? 'default', async () => {
+  it(name ?? 'default', async () => {
     assertNonNull(origin, `Missing origin in test case '${name ?? 'default'}'`);
     const res = result || defResult;
     const source = fs.readFileSync(origin).toString();
