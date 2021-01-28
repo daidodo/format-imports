@@ -2,12 +2,16 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 
 import assert from 'assert';
-import rewire from 'rewire';
 
-suite('path', () => {
-  const ns = rewire('./path');
-  suite('normalizePath', () => {
-    const normalizePath = ns.__get__('normalizePath');
+import {
+  normalize,
+  normalizePath,
+  removeLastIndex,
+  removeLastSlash,
+} from './path';
+
+describe('path', () => {
+  describe('normalizePath', () => {
     test('removeLastIndex', () => {
       const opt = { removeLastIndexInPath: true };
       assert.deepStrictEqual(normalizePath('', opt), '');
@@ -75,8 +79,7 @@ suite('path', () => {
       assert.deepStrictEqual(normalizePath('../a/index', opt), '../a');
     });
   });
-  suite('normalize', () => {
-    const normalize = ns.__get__('normalize');
+  describe('normalize', () => {
     test('forward-slash', () => {
       assert.deepStrictEqual(normalize(''), '');
       assert.deepStrictEqual(normalize('a'), 'a');
@@ -198,8 +201,7 @@ suite('path', () => {
       assert.deepStrictEqual(normalize('a\\\\b\\\\'), 'a/b/');
     });
   });
-  suite('removeLastSlash', () => {
-    const removeLastSlash = ns.__get__('removeLastSlash');
+  describe('removeLastSlash', () => {
     test('all', () => {
       assert.deepStrictEqual(removeLastSlash(''), '');
       assert.deepStrictEqual(removeLastSlash('/'), '/');
@@ -219,8 +221,7 @@ suite('path', () => {
       assert.deepStrictEqual(removeLastSlash('a/b/'), 'a/b');
     });
   });
-  suite('removeLastIndex', () => {
-    const removeLastIndex = ns.__get__('removeLastIndex');
+  describe('removeLastIndex', () => {
     test('index', () => {
       const I = 'index';
       assert.deepStrictEqual(removeLastIndex(''), '');

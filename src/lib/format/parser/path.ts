@@ -17,7 +17,8 @@ export function normalizePath(path: string, options?: Options) {
   );
 }
 
-function normalize(str: string) {
+// Exported for testing purpose.
+export function normalize(str: string) {
   if (!str) return '';
   const r = path.normalize(str.replace(/\\/g, '/')).replace(/\\/g, '/');
   return !str.startsWith('.')
@@ -33,7 +34,8 @@ function normalize(str: string) {
 
 const PATTERNS = ['index', 'index.js', 'index.jsx', 'index.ts', 'index.tsx'];
 
-function removeLastSlash(str: string) {
+// Exported for testing purpose.
+export function removeLastSlash(str: string) {
   if (!str || str === '/' || !str.endsWith('/')) return str;
   /**
    * ```txt
@@ -51,7 +53,8 @@ function removeLastSlash(str: string) {
   return str.substr(0, str.length - 1);
 }
 
-function removeLastIndex(str: string) {
+// Exported for testing purpose.
+export function removeLastIndex(str: string) {
   if (!str) return str;
   const parts = str.split('/');
   if (parts.length < 2) return str;

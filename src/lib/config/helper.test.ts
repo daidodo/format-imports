@@ -6,8 +6,8 @@ import {
   parentFolder,
 } from './helper';
 
-suite('config/helper', () => {
-  suite('findFileFromPathAndParents', () => {
+describe('config/helper', () => {
+  describe('findFileFromPathAndParents', () => {
     test('all', () => {
       assert.deepStrictEqual(findFileFromPathAndParents(undefined), []);
       assert.deepStrictEqual(findFileFromPathAndParents(null), []);
@@ -19,10 +19,10 @@ suite('config/helper', () => {
       assert.deepStrictEqual(findFileFromPathAndParents('non.existing.file', __dirname), []);
       assert.deepStrictEqual(findFileFromPathAndParents('non.existing.file', __filename), []);
       assert.ok(
-        findFileFromPathAndParents('index.js', __dirname).includes(__dirname + sep + 'index.js'),
+        findFileFromPathAndParents('index.ts', __dirname).includes(__dirname + sep + 'index.ts'),
       );
       assert.ok(
-        findFileFromPathAndParents('index.js', __filename).includes(__dirname + sep + 'index.js'),
+        findFileFromPathAndParents('index.ts', __filename).includes(__dirname + sep + 'index.ts'),
       );
       assert.deepStrictEqual(findFileFromPathAndParents('package.json', __dirname).length, 1);
       assert.deepStrictEqual(findFileFromPathAndParents('package.json', __filename).length, 1);
@@ -33,7 +33,7 @@ suite('config/helper', () => {
     });
   });
 
-  suite('parentFolder', () => {
+  describe('parentFolder', () => {
     test('forward-slash', () => {
       assert.deepStrictEqual(parentFolder(undefined), '');
       assert.deepStrictEqual(parentFolder(null), '');

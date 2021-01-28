@@ -1,7 +1,6 @@
 import assert from 'assert';
 import fs from 'fs';
 import path, { sep } from 'path';
-import rewire from 'rewire';
 import { CompilerOptions } from 'typescript';
 
 import { endOfLine } from '@dozerg/end-of-line';
@@ -15,12 +14,9 @@ import {
   ESLintConfig,
   loadESLintConfig,
 } from '../../lib/config/eslint';
+import { fileConfig } from '../../lib/config/importSorter';
 import { loadTsConfig } from '../../lib/config/tsconfig';
 import { formatSource } from '../../lib/format';
-
-const fileConfig: (filename: string, path?: string) => Configuration = rewire(
-  '../../lib/config/importSorter',
-).__get__('fileConfig');
 
 interface TestSuite {
   name: string;

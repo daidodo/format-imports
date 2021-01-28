@@ -1,52 +1,22 @@
-exports["CLI E2E Test Suite help --help"] = {
-	"stdout": [
-		""
-	],
-	"stderr": [
-		"format-imports [options] [FILE ...]",
-		"    Format given file(s). If no files provided, format code from STDIN.",
-		"format-imports [options] DIR",
-		"    Format supported files under given directory.",
-		"",
-		"  -h, --help                 Show help.",
-		"  -v, --version              Show version number.",
-		"  -c, --config path::String  Load config from a file. This config will then be merged with file specific config.",
-		"  -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.",
-		"  -e, --extension String     File extension assumed when reading from STDIN. - either: ts, tsx, js, or jsx - default: ts",
-		"  -r, --recursive            Format directories recursively.",
-		"  -o, --output path::String  Specify the output file or directory.",
-		"  -d, --dry-run              Test running without modifying any files.",
-		"",
-		"Examples:",
-		"1. Format a file, and print ",
-		""
-	],
-	"status": 1
-};
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports["CLI Test Suite --help"] = {
-	"stdout": [
-		""
-	],
-	"stderr": [
-		"format-imports [options] [FILE ...]",
-		"    Format given file(s). If no files provided, format code from STDIN.",
-		"format-imports [options] DIR",
-		"    Format supported files under given directory.",
-		"",
-		"  -h, --help                 Show help.",
-		"  -v, --version              Show version number.",
-		"  -c, --config path::String  Load config from a file. This config will then be merged with file specific config.",
-		"  -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.",
-		"  -e, --extension String     File extension assumed when reading from STDIN. - either: ts, tsx, js, or jsx - default: ts",
-		"  -r, --recursive            Format directories recursively.",
-		"  -o, --output path::String  Specify the output file or directory.",
-		"  -d, --dry-run              Test running without modifying any files.",
-		"",
-		"Examples:",
-		"1. Format a file, and print ",
-		""
-	],
-	"status": 1
-};
+exports[`CLI Test Suite --help 1`] = `
+Object {
+  "status": 1,
+  "stderr": "format-imports [options] [FILE ...]
+    Format given file(s). If no files provided, format code from STDIN.
+format-imports [options] DIR
+    Format supported files under given directory.
 
+  -h, --help                 Show help.
+  -v, --version              Show version number.
+  -c, --config path::String  Load config from a file. This config will then be merged with file specific config.
+  -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
+  -e, --extension String     File extension assumed when reading from STDIN. - either: ts, tsx, js, or jsx - default: ts
+  -r, --recursive            Format directories recursively.
+  -o, --output path::String  Specify the output file or directory.
+  -d, --dry-run              Test running without modifying any files.
+",
+  "stdout": "",
+}
+`;
