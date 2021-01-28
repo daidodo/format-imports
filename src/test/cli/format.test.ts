@@ -1,8 +1,8 @@
 import { spawnSync } from 'child_process';
 
-function runWith(options: string) {
-  const script = 'dist/bin/format-cli.js';
-  const { stdout, stderr, status } = spawnSync('node', [script, options]);
+function run(options: string) {
+  const script = 'src/bin/format-cli.ts';
+  const { stdout, stderr, status } = spawnSync('ts-node', [script, options]);
   expect({
     stdout: stdout.toString(),
     stderr: stderr.toString(),
@@ -11,8 +11,9 @@ function runWith(options: string) {
 }
 
 describe('cli/format-imports', () => {
-  test('--help', () => runWith('--help'));
-  test('-h', () => runWith('-h'));
-  test('--version', () => runWith('--version'));
-  test('-v', () => runWith('-v'));
+  test('--help', () => run('--help'));
+  test('-h', () => run('-h'));
+
+  test('--version', () => run('--version'));
+  test('-v', () => run('-v'));
 });

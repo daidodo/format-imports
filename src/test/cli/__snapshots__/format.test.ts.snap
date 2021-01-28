@@ -10,7 +10,7 @@ format-imports [options] DIR
 
   -h, --help                 Show help.
   -v, --version              Show version number.
-  -c, --config path::String  Load config from a file. This config will then be merged with file specific config.
+  -c, --config path::String  Read base config from a file, e.g. import-sorter.json. Each source file can have specific config which will be merged into the base config.
   -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
   -e, --extension String     File extension assumed when reading from STDIN. - either: ts, tsx, js, or jsx - default: ts
   -r, --recursive            Format directories recursively.
@@ -40,7 +40,7 @@ format-imports [options] DIR
 
   -h, --help                 Show help.
   -v, --version              Show version number.
-  -c, --config path::String  Load config from a file. This config will then be merged with file specific config.
+  -c, --config path::String  Read base config from a file, e.g. import-sorter.json. Each source file can have specific config which will be merged into the base config.
   -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
   -e, --extension String     File extension assumed when reading from STDIN. - either: ts, tsx, js, or jsx - default: ts
   -r, --recursive            Format directories recursively.

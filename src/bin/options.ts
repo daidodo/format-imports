@@ -1,4 +1,9 @@
-import optionator from 'optionator';
+const optionator: (options: any) => Results = require('optionator');
+
+type Results = {
+  parseArgv: (input: string[]) => any;
+  generateHelp: (helpOptions?: any) => string;
+};
 
 const EXE = 'format-imports';
 
@@ -27,7 +32,7 @@ const { parseArgv, generateHelp } = optionator({
       alias: 'c',
       type: 'path::String',
       description:
-        'Load config from a file. This config will then be merged with file specific config.',
+        'Read base config from a file, e.g. import-sorter.json. Each source file can have specific config which will be merged into the base config.',
       example: EXE + ' -c ./import-sorter.json source.ts',
     },
     {
