@@ -15,12 +15,6 @@ const IN_DIR = '__in';
 const OUT_DIR = '__out';
 
 describe('cli/format-imports', () => {
-  test('--help', () => run('--help'));
-  test('-h', () => run('-h'));
-
-  test('--version', () => run('--version'));
-  test('-v', () => run('-v'));
-
   const examples = path.resolve(__dirname, 'examples');
   // Run all tests
   runTestSuite(examples);

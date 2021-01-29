@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`cli/format-imports --help 1`] = `
+exports[`cli/format-imports help [--help] 1`] = `
 Object {
   "status": 1,
   "stderr": "format-imports [options] [FILE ...]
@@ -21,16 +21,7 @@ format-imports [options] DIR
 }
 `;
 
-exports[`cli/format-imports --version 1`] = `
-Object {
-  "status": 1,
-  "stderr": "v1.0.0
-",
-  "stdout": "",
-}
-`;
-
-exports[`cli/format-imports -h 1`] = `
+exports[`cli/format-imports help [-h] 1`] = `
 Object {
   "status": 1,
   "stderr": "format-imports [options] [FILE ...]
@@ -46,15 +37,6 @@ format-imports [options] DIR
   -r, --recursive            Format directories recursively.
   -o, --output path::String  Specify the output file or directory.
   -d, --dry-run              Test running without changing any files.
-",
-  "stdout": "",
-}
-`;
-
-exports[`cli/format-imports -v 1`] = `
-Object {
-  "status": 1,
-  "stderr": "v1.0.0
 ",
   "stdout": "",
 }
@@ -85,6 +67,24 @@ exports[`cli/format-imports stdin extension default output [-o 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
+  "stdout": "",
+}
+`;
+
+exports[`cli/format-imports version [--version] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "v1.0.0
+",
+  "stdout": "",
+}
+`;
+
+exports[`cli/format-imports version [-v] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "v1.0.0
+",
   "stdout": "",
 }
 `;
