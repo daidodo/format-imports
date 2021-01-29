@@ -16,10 +16,8 @@ const OUT_DIR = '__out';
 
 describe('cli/format-imports', () => {
   const examples = path.resolve(__dirname, 'examples');
-  // Run all tests
+  // Run all test cases under examples.
   runTestSuite(examples);
-  // Or, run a specific test suite
-  //  runTestSuite(examples, 'eslint/sort');
 });
 
 function runTestSuite(resolved: string, relative?: string | string[]): void {
