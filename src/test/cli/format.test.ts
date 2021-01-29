@@ -85,9 +85,9 @@ function run(options: string, env?: { stdin?: string; baseDir: string }) {
   const stdio = env?.stdin ? [fs.openSync(env.stdin, 'r')] : undefined;
   const opt: SpawnSyncOptions = { cwd, stdio };
   // setup args
-  const script = path.resolve('dist/bin/format-cli.js');
-  const args = options ? [script, ...options.split(' ')] : [script];
-  const { stdout, stderr, status } = spawnSync('ts-node', args, opt);
+  const script = path.resolve('src/bin/format-cli.ts');
+  const args = ['-T', script, ...options.split(' ')].filter(a => !!a);
+  const { stdout, stderr, status } = spawnSync('ts-node-script', args, opt);
   // check execution results
   expect({
     stdout: stdout.toString(),

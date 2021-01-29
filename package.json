@@ -12,8 +12,8 @@
     "compile": "tsc",
     "unit-test": "jest src/lib",
     "lib-test": "jest src/test/lib",
-    "cli-test": "npm run compile && jest src/test/cli",
-    "cli-test:update": "npm run compile && jest -u src/test/cli"
+    "cli-test": "jest src/test/cli",
+    "cli-test:update": "jest -u src/test/cli"
   },
   "repository": {
     "type": "git",
