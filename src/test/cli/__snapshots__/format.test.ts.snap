@@ -12,10 +12,10 @@ format-imports [options] DIR
   -v, --version              Show version number.
   -c, --config path::String  Read base config from a file, e.g. import-sorter.json. Each source file can have specific config which will be merged into the base config.
   -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
-  -e, --extension String     File extension assumed when reading from STDIN. - either: ts, tsx, js, or jsx - default: ts
+  -e, --extension String     File extension assumed when reading from STDIN and output file extension is unknown. - either: ts, tsx, js, or jsx - default: ts
   -r, --recursive            Format directories recursively.
   -o, --output path::String  Specify the output file or directory.
-  -d, --dry-run              Test running without modifying any files.
+  -d, --dry-run              Test running without changing any files.
 ",
   "stdout": "",
 }
@@ -42,10 +42,10 @@ format-imports [options] DIR
   -v, --version              Show version number.
   -c, --config path::String  Read base config from a file, e.g. import-sorter.json. Each source file can have specific config which will be merged into the base config.
   -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
-  -e, --extension String     File extension assumed when reading from STDIN. - either: ts, tsx, js, or jsx - default: ts
+  -e, --extension String     File extension assumed when reading from STDIN and output file extension is unknown. - either: ts, tsx, js, or jsx - default: ts
   -r, --recursive            Format directories recursively.
   -o, --output path::String  Specify the output file or directory.
-  -d, --dry-run              Test running without modifying any files.
+  -d, --dry-run              Test running without changing any files.
 ",
   "stdout": "",
 }
@@ -56,6 +56,35 @@ Object {
   "status": 1,
   "stderr": "v1.0.0
 ",
+  "stdout": "",
+}
+`;
+
+exports[`cli/format-imports stdin/extension/default [no-args] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "import B from 'a';
+import A from 'b';
+import { C } from 'c';
+
+export { A, B, C };
+",
+}
+`;
+
+exports[`cli/format-imports stdin/extension/default output [--output 1.ts] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "",
+}
+`;
+
+exports[`cli/format-imports stdin/extension/default output [-o 1.ts] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
   "stdout": "",
 }
 `;

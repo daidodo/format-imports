@@ -48,7 +48,8 @@ const { parseArgv, generateHelp } = optionator({
       type: 'String',
       enum: ['ts', 'tsx', 'js', 'jsx'],
       default: 'ts',
-      description: 'File extension assumed when reading from STDIN.',
+      description:
+        'File extension assumed when reading from STDIN and output file extension is unknown.',
     },
     {
       option: 'recursive',
@@ -66,7 +67,7 @@ const { parseArgv, generateHelp } = optionator({
       option: 'dry-run',
       alias: 'd',
       type: 'Boolean',
-      description: 'Test running without modifying any files.',
+      description: 'Test running without changing any files.',
     },
   ],
 });

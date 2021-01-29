@@ -12,8 +12,8 @@
     "compile": "tsc",
     "unit-test": "jest src/lib",
     "lib-test": "jest src/test/lib",
-    "cli-test": "jest src/test/cli",
-    "cli-test:update": "jest -u src/test/cli"
+    "cli-test": "npm run compile && jest src/test/cli",
+    "cli-test:update": "npm run compile && jest -u src/test/cli"
   },
   "repository": {
     "type": "git",
@@ -85,21 +85,33 @@
         }
       ],
       "tsdoc/syntax": "warn"
-    }
+    },
+    "ignorePatterns": [
+      "src/test/**/examples/**/*.ts?(x)",
+      "src/test/**/examples/**/*.js?(x)"
+    ]
   },
   "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node"
   },
+  "importSorter": {
+    "excludeGlob": [
+      "**/test/**/examples/**/*.ts?(x)",
+      "**/test/**/examples/**/*.js?(x)"
+    ]
+  },
   "devDependencies": {
     "@dozerg/end-of-line": "^1.0.5",
     "@tsconfig/recommended": "^1.0.1",
     "@types/eslint": "^7.2.6",
+    "@types/fs-extra": "^9.0.6",
     "@types/jest": "^26.0.20",
     "@types/minimatch": "^3.0.3",
     "@types/node": "^14.14.22",
     "@types/prettier": "^2.1.6",
     "@types/tmp": "^0.2.0",
+    "dir-compare": "^3.0.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-tsdoc": "^0.2.11",
     "jest": "^26.6.3",
@@ -109,6 +121,7 @@
   },
   "dependencies": {
     "eslint": "^7.18.0",
+    "fs-extra": "^9.1.0",
     "log4js": "^6.3.0",
     "minimatch": "^3.0.4",
     "optionator": "^0.9.1",

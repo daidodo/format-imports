@@ -1,0 +1,4 @@
+/src/test/**/examples/**/*.js
+/src/test/**/examples/**/*.ts
+/src/test/**/examples/**/*.jsx
+/src/test/**/examples/**/*.tsx
