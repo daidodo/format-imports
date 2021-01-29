@@ -1,0 +1,2 @@
+--extension tsx
+-e tsx

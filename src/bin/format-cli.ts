@@ -68,15 +68,14 @@ function ensureOutputDir(output: string | undefined, dryRun: boolean | undefined
 }
 
 function processStdin(options: Options) {
-  const { extension, output, dryRun } = options;
+  const { output, dryRun } = options;
   const config = loadBaseConfig(options);
   const chunks: string[] = [];
   process.stdin.on('data', data => chunks.push(data.toString()));
   process.stdin.on('end', () => {
     const source = chunks.join();
     if (!source) return;
-    // TODO: output file extension.
-    const ext = extension ?? 'ts';
+    const ext = getExt(options);
     const { fd, name } = tmp.fileSync({ postfix: `.${ext}` });
     fs.writeSync(fd, source);
     const result = formatSource(name, source, { config });
@@ -84,8 +83,15 @@ function processStdin(options: Options) {
   });
 }
 
-function isSupported(filePath: string) {
-  return /[^\\\/]+\.(tsx?|jsx?)$/.test(filePath);
+// TODO: Move to lib?
+function isSupported(filePath: string | undefined) {
+  return !!filePath && /[^.\\\/]+\.(tsx?|jsx?)$/.test(filePath);
+}
+
+function getExt({ extension, output }: Options) {
+  if (extension) return extension;
+  if (output && isSupported(output)) return path.extname(output);
+  return 'ts';
 }
 
 async function processDirectory(dirPath: string, options: Options) {

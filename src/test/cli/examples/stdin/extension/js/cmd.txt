@@ -1,0 +1,2 @@
+--extension js
+-e js

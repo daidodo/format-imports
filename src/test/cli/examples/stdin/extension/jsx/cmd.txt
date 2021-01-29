@@ -1,0 +1,2 @@
+--extension jsx
+-e jsx
