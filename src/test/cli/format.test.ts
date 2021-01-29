@@ -80,13 +80,13 @@ function runCmd(options: string, resolved: string) {
 }
 
 function run(options: string, env?: { stdin?: string; baseDir: string }) {
+  // setup args
+  const script = path.resolve('src/bin/format-cli.ts');
+  const args = ['-T', script, ...options.split(' ')].filter(a => !!a);
   // setup CWD and STDIN for child process if needed.
   const cwd = env?.baseDir;
   const stdio = env?.stdin ? [fs.openSync(env.stdin, 'r')] : undefined;
   const opt: SpawnSyncOptions = { cwd, stdio };
-  // setup args
-  const script = path.resolve('src/bin/format-cli.ts');
-  const args = ['-T', script, ...options.split(' ')].filter(a => !!a);
   const { stdout, stderr, status } = spawnSync('ts-node-script', args, opt);
   // check execution results
   expect({
