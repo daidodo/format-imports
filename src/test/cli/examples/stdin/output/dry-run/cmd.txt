@@ -1,0 +1,2 @@
+--dry-run -o 1.ts 
+-d -o 1.ts 
