@@ -60,7 +60,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports stdin/extension/default [no-args] 1`] = `
+exports[`cli/format-imports stdin extension default [no-args] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -73,7 +73,7 @@ export { A, B, C };
 }
 `;
 
-exports[`cli/format-imports stdin/extension/default output [--output 1.ts] 1`] = `
+exports[`cli/format-imports stdin extension default output [--output 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -81,7 +81,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports stdin/extension/default output [-o 1.ts] 1`] = `
+exports[`cli/format-imports stdin extension default output [-o 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
