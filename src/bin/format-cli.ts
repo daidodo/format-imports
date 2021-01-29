@@ -10,6 +10,7 @@ import {
   loadConfigFromJsonFile,
   resolveConfigForFile,
 } from '../lib';
+import { getFiles } from '../lib/common';
 import {
   Options,
   processArgv,
@@ -74,32 +75,13 @@ function processStdin(options: Options) {
   process.stdin.on('end', () => {
     const source = chunks.join();
     if (!source) return;
+    // TODO: output file extension.
     const ext = extension ?? 'ts';
     const { fd, name } = tmp.fileSync({ postfix: `.${ext}` });
     fs.writeSync(fd, source);
     const result = formatSource(name, source, { config });
     if (!outputResult(source, result, output, dryRun)) process.exit(1);
   });
-}
-
-interface FileEntry {
-  relativePath: string;
-  resolvedPath: string;
-}
-
-/**
- * @link https://stackoverflow.com/a/45130990/1736817
- */
-async function* getFiles(p: string | FileEntry, noRecursive?: boolean): AsyncGenerator<FileEntry> {
-  const { relativePath: rel, resolvedPath: res } =
-    typeof p === 'string' ? { relativePath: '', resolvedPath: p } : p;
-  const dirents = fs.readdirSync(res, { withFileTypes: true });
-  for (const dirent of dirents) {
-    const relativePath = (rel ? rel + sep : '') + dirent.name;
-    const resolvedPath = path.resolve(res, dirent.name);
-    if (dirent.isFile()) yield { relativePath, resolvedPath };
-    else if (!noRecursive && dirent.isDirectory()) yield* getFiles({ relativePath, resolvedPath });
-  }
 }
 
 function isSupported(filePath: string) {

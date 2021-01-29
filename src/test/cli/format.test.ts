@@ -94,12 +94,12 @@ function getStdin(dir: string) {
 }
 
 function getDirs(dir: string) {
-  const inDir = getDir(dir, IN_DIR);
-  const outDir = getDir(dir, OUT_DIR);
+  const inDir = checkDir(dir, IN_DIR);
+  const outDir = checkDir(dir, OUT_DIR);
   return { inDir, outDir };
 }
 
-function getDir(dir: string, name: string) {
+function checkDir(dir: string, name: string) {
   const r = path.resolve(dir, name);
   return fs.existsSync(r) && fs.statSync(r).isDirectory() ? r : undefined;
 }

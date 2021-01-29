@@ -6,7 +6,6 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
-    "noImplicitAny": true,
     "rootDir": "src",
     "outDir": "dist"
   },
