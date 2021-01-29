@@ -4,7 +4,7 @@ exports[`cli/format-imports help [--help] 1`] = `
 Object {
   "status": 1,
   "stderr": "format-imports [options] [FILE ...]
-    Format given file(s). If no files provided, format code from STDIN.
+    Format given file(s). If no files provided, read from STDIN.
 format-imports [options] DIR
     Format supported files under given directory.
 
@@ -25,7 +25,7 @@ exports[`cli/format-imports help [-h] 1`] = `
 Object {
   "status": 1,
   "stderr": "format-imports [options] [FILE ...]
-    Format given file(s). If no files provided, format code from STDIN.
+    Format given file(s). If no files provided, read from STDIN.
 format-imports [options] DIR
     Format supported files under given directory.
 
@@ -39,6 +39,48 @@ format-imports [options] DIR
   -d, --dry-run              Test running without changing any files.
 ",
   "stdout": "",
+}
+`;
+
+exports[`cli/format-imports stdin config [--config import-sorter.json] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "import B
+  from 'a';
+import A
+  from 'b';
+import {
+  C,
+} from 'c';
+
+export {
+  A,
+  B,
+  C,
+};
+",
+}
+`;
+
+exports[`cli/format-imports stdin config [-c import-sorter.json] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "import B
+  from 'a';
+import A
+  from 'b';
+import {
+  C,
+} from 'c';
+
+export {
+  A,
+  B,
+  C,
+};
+",
 }
 `;
 

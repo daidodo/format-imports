@@ -15,8 +15,8 @@ const IN_DIR = '__in';
 const OUT_DIR = '__out';
 
 describe('cli/format-imports', () => {
+  // change 'example' to run specific test cases.
   const examples = path.resolve(__dirname, 'examples');
-  // Run all test cases under examples.
   runTestSuite(examples);
 });
 

@@ -10,7 +10,7 @@ const EXE = 'format-imports';
 const { parseArgv, generateHelp } = optionator({
   prepend: [
     EXE + ' [options] [FILE ...]',
-    '    Format given file(s). If no files provided, format code from STDIN.',
+    '    Format given file(s). If no files provided, read from STDIN.',
     EXE + ' [options] DIR',
     '    Format supported files under given directory.',
   ].join('\n'),
