@@ -44,7 +44,7 @@ function outputResult(
 ) {
   if (outputFile) {
     if (fs.existsSync(outputFile) && !fs.statSync(outputFile).isFile()) {
-      process.stderr.write(`'${outputFile}' is not a file.\n`);
+      process.stderr.write(`Option output: '${outputFile}' is not a file.\n`);
       return false;
     }
     dryRun

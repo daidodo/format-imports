@@ -263,6 +263,40 @@ Object {
 }
 `;
 
+exports[`cli/format-imports stdin output directory [--output 1] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "Option output: '1' is not a file.
+",
+  "stdout": "",
+}
+`;
+
+exports[`cli/format-imports stdin output directory [-o 1] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "Option output: '1' is not a file.
+",
+  "stdout": "",
+}
+`;
+
+exports[`cli/format-imports stdin output file [--output 1.ts] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "",
+}
+`;
+
+exports[`cli/format-imports stdin output file [-o 1.ts] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "",
+}
+`;
+
 exports[`cli/format-imports version [--version] 1`] = `
 Object {
   "status": 1,
