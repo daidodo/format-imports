@@ -67,7 +67,7 @@ function ensureOutputDir(output: string | undefined, dryRun: boolean | undefined
   if (!fs.existsSync(output)) {
     if (!dryRun) fs.mkdirSync(output, { recursive: true });
   } else if (!fs.statSync(output).isDirectory()) {
-    process.stderr.write(`Option output: '${output}' is not directory.\n`);
+    process.stderr.write(`Option output: '${output}' is not a directory.\n`);
     process.exit(1);
   }
 }
