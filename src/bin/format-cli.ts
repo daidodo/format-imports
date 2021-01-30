@@ -108,8 +108,6 @@ async function processDirectory(dirPath: string, options: Options) {
   const mode = dryRun ? OutputMode.DRY_RUN : OutputMode.NORMAL;
   for await (const { relativePath, resolvedPath: inputFile } of getFiles(dirPath, !recursive)) {
     if (!isSupported(relativePath)) continue;
-    process.stdout.write(`[${relativePath}, ${inputFile}]\n`);
-
     const filePath = dirPath + sep + relativePath;
     const allConfig = resolveConfigForFile(inputFile, config);
     if (isFileExcludedByConfig(inputFile, allConfig.config)) {
