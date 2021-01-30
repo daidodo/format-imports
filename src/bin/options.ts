@@ -53,9 +53,9 @@ const { parseArgv, generateHelp } = optionator({
     },
     {
       option: 'recursive',
-      alias: 'r',
       type: 'Boolean',
-      description: 'Format directories recursively.',
+      default: 'true',
+      description: 'Format directory recursively or not.',
     },
     {
       option: 'output',
