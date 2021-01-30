@@ -445,7 +445,7 @@ format-imports [options] DIR
   -c, --config path::String  Read base config from a file, e.g. import-sorter.json. Each source file can have specific config which will be merged into the base config.
   -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
   -e, --extension String     File extension assumed when reading from STDIN and output file extension is unknown. - either: ts, tsx, js, or jsx - default: ts
-  -r, --recursive            Format directories recursively.
+  --no-recursive             Format directory recursively or not.
   -o, --output path::String  Specify the output file or directory.
   -d, --dry-run              Test running without changing any files.
 ",
@@ -466,7 +466,7 @@ format-imports [options] DIR
   -c, --config path::String  Read base config from a file, e.g. import-sorter.json. Each source file can have specific config which will be merged into the base config.
   -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
   -e, --extension String     File extension assumed when reading from STDIN and output file extension is unknown. - either: ts, tsx, js, or jsx - default: ts
-  -r, --recursive            Format directories recursively.
+  --no-recursive             Format directory recursively or not.
   -o, --output path::String  Specify the output file or directory.
   -d, --dry-run              Test running without changing any files.
 ",
@@ -570,7 +570,7 @@ format-imports [options] DIR
   -c, --config path::String  Read base config from a file, e.g. import-sorter.json. Each source file can have specific config which will be merged into the base config.
   -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
   -e, --extension String     File extension assumed when reading from STDIN and output file extension is unknown. - either: ts, tsx, js, or jsx - default: ts
-  -r, --recursive            Format directories recursively.
+  --no-recursive             Format directory recursively or not.
   -o, --output path::String  Specify the output file or directory.
   -d, --dry-run              Test running without changing any files.
 ",
@@ -593,7 +593,7 @@ format-imports [options] DIR
   -c, --config path::String  Read base config from a file, e.g. import-sorter.json. Each source file can have specific config which will be merged into the base config.
   -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
   -e, --extension String     File extension assumed when reading from STDIN and output file extension is unknown. - either: ts, tsx, js, or jsx - default: ts
-  -r, --recursive            Format directories recursively.
+  --no-recursive             Format directory recursively or not.
   -o, --output path::String  Specify the output file or directory.
   -d, --dry-run              Test running without changing any files.
 ",
