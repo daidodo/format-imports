@@ -309,6 +309,24 @@ Object {
 }
 `;
 
+exports[`cli/format-imports files config nonexist [--config c/import-sorter.json 1.ts a/2.ts] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "ENOENT: no such file or directory, open 'c/import-sorter.json'
+",
+  "stdout": "",
+}
+`;
+
+exports[`cli/format-imports files config nonexist [-c c/import-sorter.json 1.ts a/2.ts] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "ENOENT: no such file or directory, open 'c/import-sorter.json'
+",
+  "stdout": "",
+}
+`;
+
 exports[`cli/format-imports files dry-run [--dry-run 1.ts a/2.ts] 1`] = `
 Object {
   "status": 0,
