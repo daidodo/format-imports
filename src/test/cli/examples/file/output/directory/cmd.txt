@@ -1,0 +1,2 @@
+--output a 1.ts
+-o a 1.ts

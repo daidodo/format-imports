@@ -125,6 +125,22 @@ Object {
 }
 `;
 
+exports[`cli/format-imports file output directory [--output a 1.ts] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "",
+}
+`;
+
+exports[`cli/format-imports file output directory [-o a 1.ts] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "",
+}
+`;
+
 exports[`cli/format-imports file output dry-run [--dry-run -o a/2.ts 1.ts] 1`] = `
 Object {
   "status": 0,
