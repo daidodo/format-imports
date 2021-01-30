@@ -24,6 +24,40 @@ Object {
 }
 `;
 
+exports[`cli/format-imports file config exclude [--config a/import-sorter.json 1.ts] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "'1.ts' is excluded by config.
+",
+}
+`;
+
+exports[`cli/format-imports file config exclude [-c a/import-sorter.json 1.ts] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "'1.ts' is excluded by config.
+",
+}
+`;
+
+exports[`cli/format-imports file config exclude force [--force -c a/import-sorter.json 1.ts] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "",
+}
+`;
+
+exports[`cli/format-imports file config exclude force [-f -c a/import-sorter.json 1.ts] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "",
+}
+`;
+
 exports[`cli/format-imports file nonexist [1.ts] 1`] = `
 Object {
   "status": 1,

@@ -1,0 +1,4 @@
+{
+  "maxLineLength": 5,
+  "excludeGlob": ["**/1.ts"]
+}
