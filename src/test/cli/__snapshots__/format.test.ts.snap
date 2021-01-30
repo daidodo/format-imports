@@ -34,6 +34,14 @@ Object {
 }
 `;
 
+exports[`cli/format-imports files nonfile [1.ts a/2.ts] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "Option: 'a/2.ts' is not a file.",
+  "stdout": "",
+}
+`;
+
 exports[`cli/format-imports files output [-o abc 1.ts 2.ts] 1`] = `
 Object {
   "status": 1,
