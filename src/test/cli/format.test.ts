@@ -37,7 +37,7 @@ function runTestSuite(resolved: string, relative?: string | string[]): void {
 function runTestCase(resolved: string) {
   const cmds = getCmd(resolved);
   assertNonNull(cmds, 'Missing cmd.txt.');
-  for (const cmd of cmds) test(cmd ? `[${cmd}]` : '[no-args]', () => runCmd(cmd, resolved));
+  for (const cmd of cmds) test(`[${cmd}]`, () => runCmd(cmd, resolved));
 }
 
 function runCmd(options: string, resolved: string) {

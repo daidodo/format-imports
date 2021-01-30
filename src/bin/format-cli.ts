@@ -95,7 +95,7 @@ function getExt({ extension, output }: Options) {
 }
 
 async function processDirectory(dirPath: string, options: Options) {
-  if (fs.statSync(dirPath).isFile()) return processFiles([dirPath], options);
+  if (!fs.statSync(dirPath).isDirectory()) return processFiles([dirPath], options);
   const { output, recursive, dryRun } = options;
   const config = loadBaseConfig(options);
   ensureOutputDir(output, dryRun);
@@ -123,12 +123,11 @@ function processFiles(filePaths: string[], options: Options) {
     process.stderr.write(`Option output: should be empty if multiple files are provided.`);
     process.exit(1);
   }
-  filePaths.forEach(f => {
-    if (!fs.statSync(f).isFile()) {
-      process.stderr.write(`Option: '${f}' is not a file.`);
-      process.exit(1);
-    }
-  });
+  for (const f of filePaths) {
+    if (fs.statSync(f).isFile()) continue;
+    process.stderr.write(`Option: '${f}' is not a file.`);
+    process.exit(1);
+  }
   const config = loadBaseConfig(options);
   filePaths.forEach(filePath => {
     const inputFile = path.resolve(filePath);
@@ -147,7 +146,7 @@ function processFiles(filePaths: string[], options: Options) {
   });
 }
 
-function main(argv: string[]) {
+async function main(argv: string[]) {
   const options = processArgv(argv);
   if (options.help) usage();
   if (options.version) version();
@@ -157,7 +156,7 @@ function main(argv: string[]) {
         processStdin(options);
         break;
       case 1:
-        processDirectory(options._[0], options);
+        await processDirectory(options._[0], options);
         break;
       default:
         processFiles(options._, options);

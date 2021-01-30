@@ -1,5 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`cli/format-imports file [1.ts] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "",
+}
+`;
+
+exports[`cli/format-imports file nonexist [1.ts] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "ENOENT: no such file or directory, stat '1.ts'
+",
+  "stdout": "",
+}
+`;
+
+exports[`cli/format-imports files [1.ts a/2.ts] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "",
+}
+`;
+
+exports[`cli/format-imports files nonexist [1.ts a/2.ts] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "ENOENT: no such file or directory, stat 'a/2.ts'
+",
+  "stdout": "",
+}
+`;
+
 exports[`cli/format-imports files output [-o abc 1.ts 2.ts] 1`] = `
 Object {
   "status": 1,
@@ -47,6 +81,19 @@ format-imports [options] DIR
   -d, --dry-run              Test running without changing any files.
 ",
   "stdout": "",
+}
+`;
+
+exports[`cli/format-imports stdin [] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "import B from 'a';
+import A from 'b';
+import { C } from 'c';
+
+export { A, B, C };
+",
 }
 `;
 
