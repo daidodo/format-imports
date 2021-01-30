@@ -225,6 +225,26 @@ Object {
 }
 `;
 
+exports[`cli/format-imports files dry-run [--dry-run 1.ts a/2.ts] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "'1.ts' will be modified.
+'a/2.ts' remains the same.
+",
+}
+`;
+
+exports[`cli/format-imports files dry-run [-d 1.ts a/2.ts] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "'1.ts' will be modified.
+'a/2.ts' remains the same.
+",
+}
+`;
+
 exports[`cli/format-imports files nonexist [1.ts a/2.ts] 1`] = `
 Object {
   "status": 1,

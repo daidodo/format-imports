@@ -20,5 +20,5 @@ export function apply(sourceText: string, sourceFile: SourceFile, edits: Edit[])
     cur = Math.max(cur, sourceFile.getPositionOfLineAndCharacter(end.line, end.character));
   });
   text += sourceText.slice(cur);
-  return text;
+  return text === sourceText ? undefined : text;
 }

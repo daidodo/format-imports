@@ -1,0 +1,2 @@
+--dry-run 1.ts a/2.ts
+-d 1.ts a/2.ts

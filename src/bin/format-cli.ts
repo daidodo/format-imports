@@ -23,23 +23,28 @@ function loadBaseConfig({ config, force }: Options) {
   return { ...cfg, force };
 }
 
-// function dryRunOutput(
-//   brief: boolean | undefined,
-//   file: string | undefined,
-//   source: string,
-//   result: string | undefined,
-// ) {
-//   if (!file || !brief) process.stdout.write(result ?? source);
-//   else if (result === undefined) process.stdout.write(`'${file}' stays the same.`);
-//   else process.stdout.write(`'${file}' will be modified.`);
-// }
+enum OutputMode {
+  NORMAL,
+  DRY_RUN_SINGLE,
+  DRY_RUN,
+}
+function dryRunOutput(
+  source: string,
+  result: string | undefined,
+  mode: OutputMode,
+  inputFile?: string,
+) {
+  if (mode === OutputMode.DRY_RUN) {
+    if (result !== undefined) process.stdout.write(`'${inputFile}' will be modified.\n`);
+    else process.stdout.write(`'${inputFile}' remains the same.\n`);
+  } else if (mode === OutputMode.DRY_RUN_SINGLE) process.stdout.write(result ?? source);
+}
 
 function outputResult(
   source: string,
   result: string | undefined,
   outputFile: string | undefined,
-  dryRun: boolean | undefined,
-  brief?: boolean,
+  mode: OutputMode,
   inputFile?: string,
 ) {
   if (outputFile) {
@@ -47,12 +52,12 @@ function outputResult(
       process.stderr.write(`Option output: '${outputFile}' is not a file.\n`);
       return false;
     }
-    dryRun
-      ? process.stdout.write(result ?? source)
-      : fs.outputFileSync(outputFile, result ?? source);
+    if (mode === OutputMode.NORMAL) fs.outputFileSync(outputFile, result ?? source);
+    else dryRunOutput(source, result, mode, inputFile);
   } else if (inputFile) {
-    if (dryRun) process.stdout.write(result ?? source);
-    else if (result !== undefined) fs.writeFileSync(inputFile, result);
+    if (mode === OutputMode.NORMAL) {
+      if (result !== undefined) fs.writeFileSync(inputFile, result);
+    } else dryRunOutput(source, result, mode, inputFile);
   } else process.stdout.write(result ?? source);
   return true;
 }
@@ -62,7 +67,7 @@ function ensureOutputDir(output: string | undefined, dryRun: boolean | undefined
   if (!fs.existsSync(output)) {
     if (!dryRun) fs.mkdirSync(output, { recursive: true });
   } else if (!fs.statSync(output).isDirectory()) {
-    process.stderr.write(`Option output: '${output}' is not directory.`);
+    process.stderr.write(`Option output: '${output}' is not directory.\n`);
     process.exit(1);
   }
 }
@@ -79,7 +84,8 @@ function processStdin(options: Options) {
     const { fd, name } = tmp.fileSync({ postfix: `.${ext}` });
     fs.writeSync(fd, source);
     const result = formatSource(name, source, { config });
-    if (!outputResult(source, result, output, dryRun)) process.exit(1);
+    const mode = dryRun ? OutputMode.DRY_RUN_SINGLE : OutputMode.NORMAL;
+    if (!outputResult(source, result, output, mode)) process.exit(1);
   });
 }
 
@@ -99,6 +105,7 @@ async function processDirectory(dirPath: string, options: Options) {
   const { output, recursive, dryRun } = options;
   const config = loadBaseConfig(options);
   ensureOutputDir(output, dryRun);
+  const mode = dryRun ? OutputMode.DRY_RUN : OutputMode.NORMAL;
   for await (const { relativePath, resolvedPath: inputFile } of getFiles(dirPath, !recursive)) {
     if (!isSupported(relativePath)) continue;
     process.stdout.write(`[${relativePath}, ${inputFile}]\n`);
@@ -112,7 +119,7 @@ async function processDirectory(dirPath: string, options: Options) {
     const source = fs.readFileSync(inputFile).toString();
     const result = formatSource(inputFile, source, allConfig);
     const outputFile = output ? output + sep + relativePath : output;
-    if (!outputResult(source, result, outputFile, dryRun, true, filePath)) process.exit(1);
+    if (!outputResult(source, result, outputFile, mode, filePath)) process.exit(1);
   }
 }
 
@@ -129,6 +136,11 @@ function processFiles(filePaths: string[], options: Options) {
     process.exit(1);
   }
   const config = loadBaseConfig(options);
+  const mode = dryRun
+    ? single
+      ? OutputMode.DRY_RUN_SINGLE
+      : OutputMode.DRY_RUN
+    : OutputMode.NORMAL;
   filePaths.forEach(filePath => {
     const inputFile = path.resolve(filePath);
     const allConfig = resolveConfigForFile(inputFile, config);
@@ -141,7 +153,7 @@ function processFiles(filePaths: string[], options: Options) {
         output && fs.existsSync(output) && fs.statSync(output).isDirectory()
           ? path.resolve(output, path.basename(inputFile))
           : output;
-      if (!outputResult(source, result, outputFile, dryRun, !single, filePath)) process.exit(1);
+      if (!outputResult(source, result, outputFile, mode, filePath)) process.exit(1);
     }
   });
 }
