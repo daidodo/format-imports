@@ -9,7 +9,25 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory config [--config c/import-sorter.json a] 1`] = `
+exports[`cli/format-imports directory config exclude [--config c/import-sorter.json a] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "1 file modified.
+",
+}
+`;
+
+exports[`cli/format-imports directory config exclude [-c c/import-sorter.json a] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "1 file modified.
+",
+}
+`;
+
+exports[`cli/format-imports directory config fileconfig [--config c/import-sorter.json a] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -18,7 +36,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory config [-c c/import-sorter.json a] 1`] = `
+exports[`cli/format-imports directory config fileconfig [-c c/import-sorter.json a] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
