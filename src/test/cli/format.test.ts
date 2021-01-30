@@ -56,7 +56,7 @@ function runCmd(options: string, resolved: string) {
   if (outDir) fs.copySync(outDir, baseDirExpected);
   // check base directory content.
   const r = compareSync(baseDirExpected, baseDir, { compareContent: true });
-  expect(r.same).toBeTruthy();
+  expect(r).toMatchObject({ same: true });
 }
 
 function run(options: string, env?: { stdin?: string; baseDir: string }) {

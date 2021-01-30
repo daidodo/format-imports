@@ -8,6 +8,22 @@ Object {
 }
 `;
 
+exports[`cli/format-imports file config [--config a/import-sorter.json 1.ts] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "",
+}
+`;
+
+exports[`cli/format-imports file config [-c a/import-sorter.json 1.ts] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "",
+}
+`;
+
 exports[`cli/format-imports file nonexist [1.ts] 1`] = `
 Object {
   "status": 1,
@@ -18,6 +34,22 @@ Object {
 `;
 
 exports[`cli/format-imports files [1.ts a/2.ts] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "",
+}
+`;
+
+exports[`cli/format-imports files config [--config c/import-sorter.json 1.ts a/2.ts] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "",
+}
+`;
+
+exports[`cli/format-imports files config [-c c/import-sorter.json 1.ts a/2.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",

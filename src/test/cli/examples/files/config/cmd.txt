@@ -1,0 +1,2 @@
+--config c/import-sorter.json 1.ts a/2.ts
+-c c/import-sorter.json 1.ts a/2.ts
