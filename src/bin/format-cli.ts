@@ -83,8 +83,9 @@ function processStdin(options: Options) {
   process.stdin.on('end', () => {
     const source = chunks.join();
     if (!source) return;
+    tmp.setGracefulCleanup();
     const ext = getExt(options);
-    const { fd, name } = tmp.fileSync({ postfix: `.${ext}` });
+    const { fd, name } = tmp.fileSync({ prefix: 'format-imports', postfix: `.${ext}` });
     fs.writeSync(fd, source);
     const result = formatSource(name, source, { config });
     const mode = dryRun ? OutputMode.DRY_RUN_SINGLE : OutputMode.NORMAL;

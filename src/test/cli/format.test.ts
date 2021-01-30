@@ -13,6 +13,7 @@ const CMD = 'cmd.txt';
 const STDIN = 'stdin.txt';
 const IN_DIR = '__in';
 const OUT_DIR = '__out';
+const TMP_PREFIX = 'format-imports';
 
 describe('cli/format-imports', () => {
   // change 'example' to run specific test cases.
@@ -43,19 +44,21 @@ function runTestCase(resolved: string) {
 function runCmd(options: string, resolved: string) {
   const stdin = getStdin(resolved);
   // create a tmp directory as the base directory to sandbox the child process.
-  const tmpDir1 = tmp.dirSync();
+  const tmpDir1 = tmp.dirSync({ prefix: TMP_PREFIX, unsafeCleanup: true });
   const baseDir = tmpDir1.name;
   // copy files needed to the child base directory.
   const { inDir, outDir } = getDirs(resolved);
   if (inDir) fs.copySync(inDir, baseDir);
   run(options, { stdin, baseDir });
   // setup the expected base directory
-  const tmpDir2 = tmp.dirSync();
+  const tmpDir2 = tmp.dirSync({ prefix: TMP_PREFIX, unsafeCleanup: true });
   const baseDirExpected = tmpDir2.name;
   if (inDir) fs.copySync(inDir, baseDirExpected);
   if (outDir) fs.copySync(outDir, baseDirExpected);
   // check base directory content.
   const r = compareSync(baseDirExpected, baseDir, { compareContent: true });
+  tmpDir1.removeCallback();
+  tmpDir2.removeCallback();
   expect(r).toMatchObject({ same: true });
 }
 
