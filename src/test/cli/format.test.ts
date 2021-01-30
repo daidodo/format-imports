@@ -60,16 +60,17 @@ function runCmd(options: string, resolved: string) {
 }
 
 function run(options: string, env?: { stdin?: string; baseDir: string }) {
+  const useTsNode = process.env.USE_TS_NODE === '1' || process.env.USE_TS_NODE === 'true';
   // setup args
-  // const script = path.resolve('src/bin/format-cli.ts');
-  const script = path.resolve('dist/bin/format-cli.js');
+  const script = path.resolve(useTsNode ? 'src/bin/format-cli.ts' : 'dist/bin/format-cli.js');
   const args = [script, ...options.split(' ')].filter(a => !!a);
   // setup CWD and STDIN for child process if needed.
   const cwd = env?.baseDir;
   const stdio = env?.stdin ? [fs.openSync(env.stdin, 'r')] : undefined;
   const opt: SpawnSyncOptions = { cwd, stdio };
-  // const { stdout, stderr, status } = spawnSync('ts-node-script', ['-T', ...args], opt);
-  const { stdout, stderr, status } = spawnSync('node', args, opt);
+  const { stdout, stderr, status } = useTsNode
+    ? spawnSync('ts-node-script', ['-T', ...args], opt)
+    : spawnSync('node', args, opt);
   // check execution results
   expect({
     stdout: stdout.toString(),
