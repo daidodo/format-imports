@@ -55,7 +55,7 @@ function runCmd(options: string, resolved: string) {
   const baseDirExpected = tmpDir2.name;
   if (inDir) fs.copySync(inDir, baseDirExpected);
   if (outDir) fs.copySync(outDir, baseDirExpected);
-  // check base directory content.
+  // check base directory content and clean up.
   const r = compareSync(baseDirExpected, baseDir, { compareContent: true });
   tmpDir1.removeCallback();
   tmpDir2.removeCallback();

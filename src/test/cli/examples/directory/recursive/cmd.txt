@@ -1,0 +1,2 @@
+--recursive a
+-r a

@@ -9,6 +9,24 @@ Object {
 }
 `;
 
+exports[`cli/format-imports directory recursive [--recursive a] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "2 files modified.
+",
+}
+`;
+
+exports[`cli/format-imports directory recursive [-r a] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "2 files modified.
+",
+}
+`;
+
 exports[`cli/format-imports file [1.ts] 1`] = `
 Object {
   "status": 0,
