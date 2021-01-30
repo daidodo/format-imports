@@ -46,20 +46,23 @@ function outputResult(
   outputFile: string | undefined,
   mode: OutputMode,
   inputFile?: string,
-) {
+): { error?: boolean; modified?: number; created?: number } {
   if (outputFile) {
-    if (fs.existsSync(outputFile) && !fs.statSync(outputFile).isFile()) {
+    const exist = fs.existsSync(outputFile);
+    if (exist && !fs.statSync(outputFile).isFile()) {
       process.stderr.write(`Option output: '${outputFile}' is not a file.\n`);
-      return false;
+      return { error: true };
     }
     if (mode === OutputMode.NORMAL) fs.outputFileSync(outputFile, result ?? source);
     else dryRunOutput(source, result, mode, inputFile);
+    return exist ? { modified: 1 } : { created: 1 };
   } else if (inputFile) {
     if (mode === OutputMode.NORMAL) {
       if (result !== undefined) fs.writeFileSync(inputFile, result);
     } else dryRunOutput(source, result, mode, inputFile);
+    return result !== undefined ? { modified: 1 } : {};
   } else process.stdout.write(result ?? source);
-  return true;
+  return {};
 }
 
 function ensureOutputDir(output: string | undefined, dryRun: boolean | undefined) {
@@ -85,7 +88,7 @@ function processStdin(options: Options) {
     fs.writeSync(fd, source);
     const result = formatSource(name, source, { config });
     const mode = dryRun ? OutputMode.DRY_RUN_SINGLE : OutputMode.NORMAL;
-    if (!outputResult(source, result, output, mode)) process.exit(1);
+    if (outputResult(source, result, output, mode).error) process.exit(1);
   });
 }
 
@@ -106,6 +109,8 @@ async function processDirectory(dirPath: string, options: Options) {
   const config = loadBaseConfig(options);
   ensureOutputDir(output, dryRun);
   const mode = dryRun ? OutputMode.DRY_RUN : OutputMode.NORMAL;
+  let modified = 0;
+  let created = 0;
   for await (const { relativePath, resolvedPath: inputFile } of getFiles(dirPath, !recursive)) {
     if (!isSupported(relativePath)) continue;
     const filePath = dirPath + sep + relativePath;
@@ -117,8 +122,18 @@ async function processDirectory(dirPath: string, options: Options) {
     const source = fs.readFileSync(inputFile).toString();
     const result = formatSource(inputFile, source, allConfig);
     const outputFile = output ? output + sep + relativePath : output;
-    if (!outputResult(source, result, outputFile, mode, filePath)) process.exit(1);
+    const { error, modified: m, created: c } = outputResult(
+      source,
+      result,
+      outputFile,
+      mode,
+      filePath,
+    );
+    if (error) process.exit(1);
+    modified += m ?? 0;
+    created += c ?? 0;
   }
+  summary(mode, modified, created);
 }
 
 function processFiles(filePaths: string[], options: Options) {
@@ -139,7 +154,9 @@ function processFiles(filePaths: string[], options: Options) {
       ? OutputMode.DRY_RUN_SINGLE
       : OutputMode.DRY_RUN
     : OutputMode.NORMAL;
-  filePaths.forEach(filePath => {
+  let modified = 0;
+  let created = 0;
+  for (const filePath of filePaths) {
     const inputFile = path.resolve(filePath);
     const allConfig = resolveConfigForFile(inputFile, config);
     if (isFileExcludedByConfig(inputFile, allConfig.config)) {
@@ -151,9 +168,29 @@ function processFiles(filePaths: string[], options: Options) {
         output && fs.existsSync(output) && fs.statSync(output).isDirectory()
           ? path.resolve(output, path.basename(inputFile))
           : output;
-      if (!outputResult(source, result, outputFile, mode, filePath)) process.exit(1);
+      const { error, modified: m, created: c } = outputResult(
+        source,
+        result,
+        outputFile,
+        mode,
+        filePath,
+      );
+      if (error) process.exit(1);
+      modified += m ?? 0;
+      created += c ?? 0;
     }
-  });
+  }
+  summary(mode, modified, created);
+}
+
+function summary(mode: OutputMode, modified: number, created: number) {
+  if (mode !== OutputMode.NORMAL) return;
+  if (modified || !created) process.stdout.write(sumResult(modified, 'modified'));
+  if (created) process.stdout.write(sumResult(created, 'created'));
+}
+
+function sumResult(num: number, action: string) {
+  return `${num === 0 ? 'No' : num} ${num === 1 ? 'file' : 'files'} ${action}.\n`;
 }
 
 async function main(argv: string[]) {

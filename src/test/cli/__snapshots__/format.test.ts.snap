@@ -4,7 +4,8 @@ exports[`cli/format-imports directory [a] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "",
+  "stdout": "1 file modified.
+",
 }
 `;
 
@@ -12,7 +13,8 @@ exports[`cli/format-imports file [1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "",
+  "stdout": "1 file modified.
+",
 }
 `;
 
@@ -20,7 +22,8 @@ exports[`cli/format-imports file config [--config a/import-sorter.json 1.ts] 1`]
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "",
+  "stdout": "1 file modified.
+",
 }
 `;
 
@@ -28,7 +31,8 @@ exports[`cli/format-imports file config [-c a/import-sorter.json 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "",
+  "stdout": "1 file modified.
+",
 }
 `;
 
@@ -37,6 +41,7 @@ Object {
   "status": 0,
   "stderr": "",
   "stdout": "'1.ts' is excluded by config.
+No files modified.
 ",
 }
 `;
@@ -46,6 +51,7 @@ Object {
   "status": 0,
   "stderr": "",
   "stdout": "'1.ts' is excluded by config.
+No files modified.
 ",
 }
 `;
@@ -54,7 +60,8 @@ exports[`cli/format-imports file config exclude force [--force -c a/import-sorte
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "",
+  "stdout": "1 file modified.
+",
 }
 `;
 
@@ -62,7 +69,8 @@ exports[`cli/format-imports file config exclude force [-f -c a/import-sorter.jso
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "",
+  "stdout": "1 file modified.
+",
 }
 `;
 
@@ -70,7 +78,8 @@ exports[`cli/format-imports file config fileconfig [--config a/import-sorter.jso
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "",
+  "stdout": "1 file modified.
+",
 }
 `;
 
@@ -78,7 +87,8 @@ exports[`cli/format-imports file config fileconfig [-c a/import-sorter.json 1.ts
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "",
+  "stdout": "1 file modified.
+",
 }
 `;
 
@@ -121,7 +131,8 @@ exports[`cli/format-imports file output [--output a/2.ts 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "",
+  "stdout": "1 file created.
+",
 }
 `;
 
@@ -129,7 +140,8 @@ exports[`cli/format-imports file output [-o a/2.ts 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "",
+  "stdout": "1 file created.
+",
 }
 `;
 
@@ -137,7 +149,8 @@ exports[`cli/format-imports file output directory [--output a 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "",
+  "stdout": "1 file created.
+",
 }
 `;
 
@@ -145,7 +158,8 @@ exports[`cli/format-imports file output directory [-o a 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "",
+  "stdout": "1 file created.
+",
 }
 `;
 
@@ -205,7 +219,8 @@ exports[`cli/format-imports file output file [--output a/2.ts 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "",
+  "stdout": "1 file modified.
+",
 }
 `;
 
@@ -213,7 +228,8 @@ exports[`cli/format-imports file output file [-o a/2.ts 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "",
+  "stdout": "1 file modified.
+",
 }
 `;
 
@@ -247,7 +263,8 @@ exports[`cli/format-imports files [1.ts a/2.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "",
+  "stdout": "2 files modified.
+",
 }
 `;
 
@@ -255,7 +272,8 @@ exports[`cli/format-imports files config [--config c/import-sorter.json 1.ts a/2
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "",
+  "stdout": "2 files modified.
+",
 }
 `;
 
@@ -263,7 +281,8 @@ exports[`cli/format-imports files config [-c c/import-sorter.json 1.ts a/2.ts] 1
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "",
+  "stdout": "2 files modified.
+",
 }
 `;
 
@@ -272,6 +291,7 @@ Object {
   "status": 0,
   "stderr": "",
   "stdout": "'a/2.ts' is excluded by config.
+1 file modified.
 ",
 }
 `;
@@ -281,6 +301,7 @@ Object {
   "status": 0,
   "stderr": "",
   "stdout": "'a/2.ts' is excluded by config.
+1 file modified.
 ",
 }
 `;
@@ -289,7 +310,8 @@ exports[`cli/format-imports files config exclude force [--force -c c/import-sort
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "",
+  "stdout": "2 files modified.
+",
 }
 `;
 
@@ -297,7 +319,8 @@ exports[`cli/format-imports files config exclude force [-f -c c/import-sorter.js
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "",
+  "stdout": "2 files modified.
+",
 }
 `;
 
@@ -305,7 +328,8 @@ exports[`cli/format-imports files config fileconfig [--config c/import-sorter.js
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "",
+  "stdout": "2 files modified.
+",
 }
 `;
 
@@ -313,7 +337,8 @@ exports[`cli/format-imports files config fileconfig [-c c/import-sorter.json 1.t
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "",
+  "stdout": "2 files modified.
+",
 }
 `;
 
