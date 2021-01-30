@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import fs from 'fs';
+import fs from 'fs-extra';
 import path, { sep } from 'path';
 import tmp from 'tmp';
 
@@ -49,7 +49,7 @@ function outputResult(
     }
     dryRun
       ? process.stdout.write(result ?? source)
-      : fs.writeFileSync(outputFile, result ?? source);
+      : fs.outputFileSync(outputFile, result ?? source);
   } else if (inputFile) {
     if (dryRun) process.stdout.write(result ?? source);
     else if (result !== undefined) fs.writeFileSync(inputFile, result);

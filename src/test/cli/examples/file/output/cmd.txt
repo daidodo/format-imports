@@ -1,0 +1,2 @@
+--output a/2.ts 1.ts
+-o a/2.ts 1.ts
