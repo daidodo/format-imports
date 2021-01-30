@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`cli/format-imports files output [-o abc 1.ts 2.ts] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "Option output: should be empty if multiple files are provided.",
+  "stdout": "",
+}
+`;
+
 exports[`cli/format-imports help [--help] 1`] = `
 Object {
   "status": 1,
