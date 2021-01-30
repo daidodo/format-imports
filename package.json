@@ -12,9 +12,9 @@
     "compile": "tsc",
     "unit-test": "jest src/lib",
     "lib-test": "jest src/test/lib",
-    "cli-test": "jest src/test/cli",
-    "cli-test:watch": "jest --watch src/test/cli",
-    "cli-test:update": "jest -u src/test/cli"
+    "cli-test": "npm run compile && jest src/test/cli",
+    "cli-test:watch": "npm run compile && jest --watch src/test/cli",
+    "cli-test:update": "npm run compile && jest -u src/test/cli"
   },
   "repository": {
     "type": "git",
