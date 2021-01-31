@@ -81,6 +81,24 @@ Object {
 }
 `;
 
+exports[`cli/format-imports directory config nonexist [--config c/import-sorter.json a] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "ENOENT: no such file or directory, open 'c/import-sorter.json'
+",
+  "stdout": "",
+}
+`;
+
+exports[`cli/format-imports directory config nonexist [-c c/import-sorter.json a] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "ENOENT: no such file or directory, open 'c/import-sorter.json'
+",
+  "stdout": "",
+}
+`;
+
 exports[`cli/format-imports directory dry-run [--dry-run a] 1`] = `
 Object {
   "status": 0,
@@ -287,6 +305,24 @@ Object {
   "stderr": "",
   "stdout": "1 file modified.
 ",
+}
+`;
+
+exports[`cli/format-imports file config nonexist [--config a/import-sorter.json 1.ts] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "ENOENT: no such file or directory, open 'a/import-sorter.json'
+",
+  "stdout": "",
+}
+`;
+
+exports[`cli/format-imports file config nonexist [-c a/import-sorter.json 1.ts] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "ENOENT: no such file or directory, open 'a/import-sorter.json'
+",
+  "stdout": "",
 }
 `;
 
@@ -755,6 +791,24 @@ export {
   C,
 };
 ",
+}
+`;
+
+exports[`cli/format-imports stdin config nonexist [--config import-sorter.json] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "ENOENT: no such file or directory, open 'import-sorter.json'
+",
+  "stdout": "",
+}
+`;
+
+exports[`cli/format-imports stdin config nonexist [-c import-sorter.json] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "ENOENT: no such file or directory, open 'import-sorter.json'
+",
+  "stdout": "",
 }
 `;
 
