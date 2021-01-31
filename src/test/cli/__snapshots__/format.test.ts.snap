@@ -27,49 +27,21 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory config exclude dry-run [--dry-run -c c/import-sorter.json a] 1`] = `
+exports[`cli/format-imports directory config exclude dry-run [--dry-run --config c/import-sorter.json a] 1`] = `
 Object {
-  "status": 1,
-  "stderr": "Invalid option '-c' - perhaps you meant '-h'?
-
-format-imports [options] [FILE ...]
-    Format given file(s). If no files provided, read from STDIN.
-format-imports [options] DIR
-    Format supported files under given directory.
-
-  -h, --help                 Show help.
-  -v, --version              Show version number.
-  --config path::String      Path to base config file, e.g. import-sorter.json. The formatted file's config will be merged into this base config.
-  -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
-  -e, --extension String     File extension assumed when reading from STDIN and output file extension is unknown. - either: ts, tsx, js, or jsx - default: ts
-  --no-recursive             Format directory recursively or not.
-  -o, --output path::String  Specify the output file or directory.
-  -d, --dry-run              Test running without changing any files.
+  "status": 0,
+  "stderr": "",
+  "stdout": "1 file will be modified.
 ",
-  "stdout": "",
 }
 `;
 
-exports[`cli/format-imports directory config exclude dry-run [-d -c c/import-sorter.json a] 1`] = `
+exports[`cli/format-imports directory config exclude dry-run [-d --config c/import-sorter.json a] 1`] = `
 Object {
-  "status": 1,
-  "stderr": "Invalid option '-c' - perhaps you meant '-h'?
-
-format-imports [options] [FILE ...]
-    Format given file(s). If no files provided, read from STDIN.
-format-imports [options] DIR
-    Format supported files under given directory.
-
-  -h, --help                 Show help.
-  -v, --version              Show version number.
-  --config path::String      Path to base config file, e.g. import-sorter.json. The formatted file's config will be merged into this base config.
-  -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
-  -e, --extension String     File extension assumed when reading from STDIN and output file extension is unknown. - either: ts, tsx, js, or jsx - default: ts
-  --no-recursive             Format directory recursively or not.
-  -o, --output path::String  Specify the output file or directory.
-  -d, --dry-run              Test running without changing any files.
+  "status": 0,
+  "stderr": "",
+  "stdout": "1 file will be modified.
 ",
-  "stdout": "",
 }
 `;
 
@@ -683,6 +655,7 @@ format-imports [options] DIR
 
   -h, --help                 Show help.
   -v, --version              Show version number.
+  -c, --check                Check if the given files are formatted.
   --config path::String      Path to base config file, e.g. import-sorter.json. The formatted file's config will be merged into this base config.
   -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
   -e, --extension String     File extension assumed when reading from STDIN and output file extension is unknown. - either: ts, tsx, js, or jsx - default: ts
@@ -704,6 +677,7 @@ format-imports [options] DIR
 
   -h, --help                 Show help.
   -v, --version              Show version number.
+  -c, --check                Check if the given files are formatted.
   --config path::String      Path to base config file, e.g. import-sorter.json. The formatted file's config will be merged into this base config.
   -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
   -e, --extension String     File extension assumed when reading from STDIN and output file extension is unknown. - either: ts, tsx, js, or jsx - default: ts
@@ -796,6 +770,7 @@ format-imports [options] DIR
 
   -h, --help                 Show help.
   -v, --version              Show version number.
+  -c, --check                Check if the given files are formatted.
   --config path::String      Path to base config file, e.g. import-sorter.json. The formatted file's config will be merged into this base config.
   -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
   -e, --extension String     File extension assumed when reading from STDIN and output file extension is unknown. - either: ts, tsx, js, or jsx - default: ts
@@ -819,6 +794,7 @@ format-imports [options] DIR
 
   -h, --help                 Show help.
   -v, --version              Show version number.
+  -c, --check                Check if the given files are formatted.
   --config path::String      Path to base config file, e.g. import-sorter.json. The formatted file's config will be merged into this base config.
   -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
   -e, --extension String     File extension assumed when reading from STDIN and output file extension is unknown. - either: ts, tsx, js, or jsx - default: ts
