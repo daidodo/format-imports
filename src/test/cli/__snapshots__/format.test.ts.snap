@@ -92,6 +92,24 @@ Object {
 }
 `;
 
+exports[`cli/format-imports directory no-recursive dry-run [--dry-run --no-recursive a] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "'a/1.ts' will be modified.
+",
+}
+`;
+
+exports[`cli/format-imports directory no-recursive dry-run [-d --no-recursive a] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "'a/1.ts' will be modified.
+",
+}
+`;
+
 exports[`cli/format-imports file [1.ts] 1`] = `
 Object {
   "status": 0,

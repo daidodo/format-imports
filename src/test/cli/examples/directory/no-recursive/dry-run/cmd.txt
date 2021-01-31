@@ -1,0 +1,2 @@
+--dry-run --no-recursive a
+-d --no-recursive a
