@@ -139,6 +139,24 @@ Object {
 }
 `;
 
+exports[`cli/format-imports directory output [--output d a] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "2 files created.
+",
+}
+`;
+
+exports[`cli/format-imports directory output [-o d a] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "2 files created.
+",
+}
+`;
+
 exports[`cli/format-imports file [1.ts] 1`] = `
 Object {
   "status": 0,
