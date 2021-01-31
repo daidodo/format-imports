@@ -1,11 +1,11 @@
+const { name: EXE, version: VERSION } = require('../../package.json');
+
 const optionator: (options: any) => Results = require('optionator');
 
 type Results = {
   parseArgv: (input: string[]) => any;
   generateHelp: (helpOptions?: any) => string;
 };
-
-const EXE = 'format-imports';
 
 const { parseArgv, generateHelp } = optionator({
   prepend: [
@@ -90,8 +90,7 @@ export function usage() {
 }
 
 export function version() {
-  const v = require('../../package.json').version;
-  process.stderr.write(`v${v}\n`);
+  process.stderr.write(`v${VERSION}\n`);
   process.exit(1);
 }
 

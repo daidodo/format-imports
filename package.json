@@ -3,10 +3,7 @@
   "version": "1.0.0",
   "description": "JavaScript and TypeScript Import/Export Formatter.",
   "main": "dist/lib/index.js",
-  "bin": {
-    "format-imports": "dist/bin/format-cli.js",
-    "check-imports": "dist/bin/check-cli.js"
-  },
+  "bin": "dist/bin/format-cli.js",
   "scripts": {
     "clean": "rm -rf dist",
     "compile": "tsc",
