@@ -130,6 +130,15 @@ Object {
 }
 `;
 
+exports[`cli/format-imports directory nonexist [a] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "ENOENT: no such file or directory, stat 'a'
+",
+  "stdout": "",
+}
+`;
+
 exports[`cli/format-imports file [1.ts] 1`] = `
 Object {
   "status": 0,

@@ -131,8 +131,8 @@ async function processDirectory(dirPath: string, options: Options) {
       filePath,
     );
     if (error) process.exit(1);
-    modified += m ?? 0;
-    created += c ?? 0;
+    if (m) modified += m;
+    if (c) created += c;
   }
   summary(mode, modified, created);
 }
@@ -177,8 +177,8 @@ function processFiles(filePaths: string[], options: Options) {
         filePath,
       );
       if (error) process.exit(1);
-      modified += m ?? 0;
-      created += c ?? 0;
+      if (m) modified += m;
+      if (c) created += c;
     }
   }
   summary(mode, modified, created);
