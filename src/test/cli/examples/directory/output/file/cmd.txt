@@ -1,2 +1,4 @@
 --output d.txt a
 -o d.txt a
+--dry-run -o d.txt a
+-d -o d.txt a
