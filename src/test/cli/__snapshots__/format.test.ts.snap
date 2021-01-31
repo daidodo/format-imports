@@ -171,6 +171,46 @@ Object {
 }
 `;
 
+exports[`cli/format-imports directory output directory [--output d a] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "1 file modified.
+1 file created.
+",
+}
+`;
+
+exports[`cli/format-imports directory output directory [-o d a] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "1 file modified.
+1 file created.
+",
+}
+`;
+
+exports[`cli/format-imports directory output directory dry-run [--dry-run -o d a] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "1 file will be modified.
+1 file will be created.
+",
+}
+`;
+
+exports[`cli/format-imports directory output directory dry-run [-d -o d a] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "1 file will be modified.
+1 file will be created.
+",
+}
+`;
+
 exports[`cli/format-imports directory output dry-run [--dry-run -o d a] 1`] = `
 Object {
   "status": 0,

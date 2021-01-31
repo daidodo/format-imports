@@ -1,0 +1,2 @@
+--output d a
+-o d a
