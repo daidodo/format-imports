@@ -1,2 +1,2 @@
---dry-run -c c/import-sorter.json a
--d -c c/import-sorter.json a
+--dry-run --config c/import-sorter.json a
+-d --config c/import-sorter.json a

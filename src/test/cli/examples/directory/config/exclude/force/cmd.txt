@@ -1,2 +1,2 @@
---force -c c/import-sorter.json a
--f -c c/import-sorter.json a
+--force --config c/import-sorter.json a
+-f --config c/import-sorter.json a

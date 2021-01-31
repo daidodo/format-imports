@@ -59,7 +59,7 @@ function runCmd(options: string, resolved: string) {
   const r = compareSync(baseDirExpected, baseDir, { compareContent: true });
   tmpDir1.removeCallback();
   tmpDir2.removeCallback();
-  expect(r).toMatchObject({ same: true });
+  expect(r.same).toBeTruthy();
 }
 
 function run(options: string, env?: { stdin?: string; baseDir: string }) {

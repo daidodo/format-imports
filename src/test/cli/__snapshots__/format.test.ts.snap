@@ -18,25 +18,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory config [-c c/import-sorter.json a] 1`] = `
-Object {
-  "status": 0,
-  "stderr": "",
-  "stdout": "2 files modified.
-",
-}
-`;
-
 exports[`cli/format-imports directory config exclude [--config c/import-sorter.json a] 1`] = `
-Object {
-  "status": 0,
-  "stderr": "",
-  "stdout": "1 file modified.
-",
-}
-`;
-
-exports[`cli/format-imports directory config exclude [-c c/import-sorter.json a] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -47,23 +29,51 @@ Object {
 
 exports[`cli/format-imports directory config exclude dry-run [--dry-run -c c/import-sorter.json a] 1`] = `
 Object {
-  "status": 0,
-  "stderr": "",
-  "stdout": "1 file will be modified.
+  "status": 1,
+  "stderr": "Invalid option '-c' - perhaps you meant '-h'?
+
+format-imports [options] [FILE ...]
+    Format given file(s). If no files provided, read from STDIN.
+format-imports [options] DIR
+    Format supported files under given directory.
+
+  -h, --help                 Show help.
+  -v, --version              Show version number.
+  --config path::String      Path to base config file, e.g. import-sorter.json. The formatted file's config will be merged into this base config.
+  -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
+  -e, --extension String     File extension assumed when reading from STDIN and output file extension is unknown. - either: ts, tsx, js, or jsx - default: ts
+  --no-recursive             Format directory recursively or not.
+  -o, --output path::String  Specify the output file or directory.
+  -d, --dry-run              Test running without changing any files.
 ",
+  "stdout": "",
 }
 `;
 
 exports[`cli/format-imports directory config exclude dry-run [-d -c c/import-sorter.json a] 1`] = `
 Object {
-  "status": 0,
-  "stderr": "",
-  "stdout": "1 file will be modified.
+  "status": 1,
+  "stderr": "Invalid option '-c' - perhaps you meant '-h'?
+
+format-imports [options] [FILE ...]
+    Format given file(s). If no files provided, read from STDIN.
+format-imports [options] DIR
+    Format supported files under given directory.
+
+  -h, --help                 Show help.
+  -v, --version              Show version number.
+  --config path::String      Path to base config file, e.g. import-sorter.json. The formatted file's config will be merged into this base config.
+  -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
+  -e, --extension String     File extension assumed when reading from STDIN and output file extension is unknown. - either: ts, tsx, js, or jsx - default: ts
+  --no-recursive             Format directory recursively or not.
+  -o, --output path::String  Specify the output file or directory.
+  -d, --dry-run              Test running without changing any files.
 ",
+  "stdout": "",
 }
 `;
 
-exports[`cli/format-imports directory config exclude force [--force -c c/import-sorter.json a] 1`] = `
+exports[`cli/format-imports directory config exclude force [--force --config c/import-sorter.json a] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -72,7 +82,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory config exclude force [-f -c c/import-sorter.json a] 1`] = `
+exports[`cli/format-imports directory config exclude force [-f --config c/import-sorter.json a] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -90,25 +100,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory config fileconfig [-c c/import-sorter.json a] 1`] = `
-Object {
-  "status": 0,
-  "stderr": "",
-  "stdout": "2 files modified.
-",
-}
-`;
-
 exports[`cli/format-imports directory config nonexist [--config c/import-sorter.json a] 1`] = `
-Object {
-  "status": 1,
-  "stderr": "ENOENT: no such file or directory, open 'c/import-sorter.json'
-",
-  "stdout": "",
-}
-`;
-
-exports[`cli/format-imports directory config nonexist [-c c/import-sorter.json a] 1`] = `
 Object {
   "status": 1,
   "stderr": "ENOENT: no such file or directory, open 'c/import-sorter.json'
@@ -301,15 +293,6 @@ Object {
 }
 `;
 
-exports[`cli/format-imports file config [-c a/import-sorter.json 1.ts] 1`] = `
-Object {
-  "status": 0,
-  "stderr": "",
-  "stdout": "1 file modified.
-",
-}
-`;
-
 exports[`cli/format-imports file config exclude [--config a/import-sorter.json 1.ts] 1`] = `
 Object {
   "status": 0,
@@ -320,17 +303,7 @@ No files modified.
 }
 `;
 
-exports[`cli/format-imports file config exclude [-c a/import-sorter.json 1.ts] 1`] = `
-Object {
-  "status": 0,
-  "stderr": "",
-  "stdout": "'1.ts' is excluded by config.
-No files modified.
-",
-}
-`;
-
-exports[`cli/format-imports file config exclude force [--force -c a/import-sorter.json 1.ts] 1`] = `
+exports[`cli/format-imports file config exclude force [--force --config a/import-sorter.json 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -339,7 +312,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports file config exclude force [-f -c a/import-sorter.json 1.ts] 1`] = `
+exports[`cli/format-imports file config exclude force [-f --config a/import-sorter.json 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -357,25 +330,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports file config fileconfig [-c a/import-sorter.json 1.ts] 1`] = `
-Object {
-  "status": 0,
-  "stderr": "",
-  "stdout": "1 file modified.
-",
-}
-`;
-
 exports[`cli/format-imports file config nonexist [--config a/import-sorter.json 1.ts] 1`] = `
-Object {
-  "status": 1,
-  "stderr": "ENOENT: no such file or directory, open 'a/import-sorter.json'
-",
-  "stdout": "",
-}
-`;
-
-exports[`cli/format-imports file config nonexist [-c a/import-sorter.json 1.ts] 1`] = `
 Object {
   "status": 1,
   "stderr": "ENOENT: no such file or directory, open 'a/import-sorter.json'
@@ -613,15 +568,6 @@ Object {
 }
 `;
 
-exports[`cli/format-imports files config [-c c/import-sorter.json 1.ts a/2.ts] 1`] = `
-Object {
-  "status": 0,
-  "stderr": "",
-  "stdout": "2 files modified.
-",
-}
-`;
-
 exports[`cli/format-imports files config exclude [--config c/import-sorter.json 1.ts a/2.ts] 1`] = `
 Object {
   "status": 0,
@@ -632,17 +578,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports files config exclude [-c c/import-sorter.json 1.ts a/2.ts] 1`] = `
-Object {
-  "status": 0,
-  "stderr": "",
-  "stdout": "'a/2.ts' is excluded by config.
-1 file modified.
-",
-}
-`;
-
-exports[`cli/format-imports files config exclude force [--force -c c/import-sorter.json 1.ts a/2.ts] 1`] = `
+exports[`cli/format-imports files config exclude force [--force --config c/import-sorter.json 1.ts a/2.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -651,7 +587,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports files config exclude force [-f -c c/import-sorter.json 1.ts a/2.ts] 1`] = `
+exports[`cli/format-imports files config exclude force [-f --config c/import-sorter.json 1.ts a/2.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -669,25 +605,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports files config fileconfig [-c c/import-sorter.json 1.ts a/2.ts] 1`] = `
-Object {
-  "status": 0,
-  "stderr": "",
-  "stdout": "2 files modified.
-",
-}
-`;
-
 exports[`cli/format-imports files config nonexist [--config c/import-sorter.json 1.ts a/2.ts] 1`] = `
-Object {
-  "status": 1,
-  "stderr": "ENOENT: no such file or directory, open 'c/import-sorter.json'
-",
-  "stdout": "",
-}
-`;
-
-exports[`cli/format-imports files config nonexist [-c c/import-sorter.json 1.ts a/2.ts] 1`] = `
 Object {
   "status": 1,
   "stderr": "ENOENT: no such file or directory, open 'c/import-sorter.json'
@@ -765,7 +683,7 @@ format-imports [options] DIR
 
   -h, --help                 Show help.
   -v, --version              Show version number.
-  -c, --config path::String  Read base config from a file, e.g. import-sorter.json. Each source file can have specific config which will be merged into the base config.
+  --config path::String      Path to base config file, e.g. import-sorter.json. The formatted file's config will be merged into this base config.
   -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
   -e, --extension String     File extension assumed when reading from STDIN and output file extension is unknown. - either: ts, tsx, js, or jsx - default: ts
   --no-recursive             Format directory recursively or not.
@@ -786,7 +704,7 @@ format-imports [options] DIR
 
   -h, --help                 Show help.
   -v, --version              Show version number.
-  -c, --config path::String  Read base config from a file, e.g. import-sorter.json. Each source file can have specific config which will be merged into the base config.
+  --config path::String      Path to base config file, e.g. import-sorter.json. The formatted file's config will be merged into this base config.
   -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
   -e, --extension String     File extension assumed when reading from STDIN and output file extension is unknown. - either: ts, tsx, js, or jsx - default: ts
   --no-recursive             Format directory recursively or not.
@@ -831,37 +749,7 @@ export {
 }
 `;
 
-exports[`cli/format-imports stdin config [-c import-sorter.json] 1`] = `
-Object {
-  "status": 0,
-  "stderr": "",
-  "stdout": "import B
-  from 'a';
-import A
-  from 'b';
-import {
-  C,
-} from 'c';
-
-export {
-  A,
-  B,
-  C,
-};
-",
-}
-`;
-
 exports[`cli/format-imports stdin config nonexist [--config import-sorter.json] 1`] = `
-Object {
-  "status": 1,
-  "stderr": "ENOENT: no such file or directory, open 'import-sorter.json'
-",
-  "stdout": "",
-}
-`;
-
-exports[`cli/format-imports stdin config nonexist [-c import-sorter.json] 1`] = `
 Object {
   "status": 1,
   "stderr": "ENOENT: no such file or directory, open 'import-sorter.json'
@@ -908,7 +796,7 @@ format-imports [options] DIR
 
   -h, --help                 Show help.
   -v, --version              Show version number.
-  -c, --config path::String  Read base config from a file, e.g. import-sorter.json. Each source file can have specific config which will be merged into the base config.
+  --config path::String      Path to base config file, e.g. import-sorter.json. The formatted file's config will be merged into this base config.
   -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
   -e, --extension String     File extension assumed when reading from STDIN and output file extension is unknown. - either: ts, tsx, js, or jsx - default: ts
   --no-recursive             Format directory recursively or not.
@@ -931,7 +819,7 @@ format-imports [options] DIR
 
   -h, --help                 Show help.
   -v, --version              Show version number.
-  -c, --config path::String  Read base config from a file, e.g. import-sorter.json. Each source file can have specific config which will be merged into the base config.
+  --config path::String      Path to base config file, e.g. import-sorter.json. The formatted file's config will be merged into this base config.
   -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
   -e, --extension String     File extension assumed when reading from STDIN and output file extension is unknown. - either: ts, tsx, js, or jsx - default: ts
   --no-recursive             Format directory recursively or not.

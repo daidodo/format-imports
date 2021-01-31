@@ -1,2 +1,1 @@
 --config import-sorter.json
--c import-sorter.json
