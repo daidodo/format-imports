@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`cli/format-imports directory [a] 1`] = `
+exports[`cli/format directory [a] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -9,7 +9,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory config [--config c/import-sorter.json a] 1`] = `
+exports[`cli/format directory config [--config c/import-sorter.json a] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -18,7 +18,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory config exclude [--config c/import-sorter.json a] 1`] = `
+exports[`cli/format directory config exclude [--config c/import-sorter.json a] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -27,7 +27,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory config exclude dry-run [--dry-run --config c/import-sorter.json a] 1`] = `
+exports[`cli/format directory config exclude dry-run [--dry-run --config c/import-sorter.json a] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -36,7 +36,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory config exclude dry-run [-d --config c/import-sorter.json a] 1`] = `
+exports[`cli/format directory config exclude dry-run [-d --config c/import-sorter.json a] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -45,7 +45,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory config exclude force [--force --config c/import-sorter.json a] 1`] = `
+exports[`cli/format directory config exclude force [--force --config c/import-sorter.json a] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -54,7 +54,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory config exclude force [-f --config c/import-sorter.json a] 1`] = `
+exports[`cli/format directory config exclude force [-f --config c/import-sorter.json a] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -63,7 +63,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory config fileconfig [--config c/import-sorter.json a] 1`] = `
+exports[`cli/format directory config fileconfig [--config c/import-sorter.json a] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -72,7 +72,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory config nonexist [--config c/import-sorter.json a] 1`] = `
+exports[`cli/format directory config nonexist [--config c/import-sorter.json a] 1`] = `
 Object {
   "status": 1,
   "stderr": "ENOENT: no such file or directory, open 'c/import-sorter.json'
@@ -81,7 +81,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory dry-run [--dry-run a] 1`] = `
+exports[`cli/format directory dry-run [--dry-run a] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -90,7 +90,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory dry-run [-d a] 1`] = `
+exports[`cli/format directory dry-run [-d a] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -99,7 +99,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory no-recursive [--no-recursive a] 1`] = `
+exports[`cli/format directory no-recursive [--no-recursive a] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -108,7 +108,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory no-recursive dry-run [--dry-run --no-recursive a] 1`] = `
+exports[`cli/format directory no-recursive dry-run [--dry-run --no-recursive a] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -117,7 +117,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory no-recursive dry-run [-d --no-recursive a] 1`] = `
+exports[`cli/format directory no-recursive dry-run [-d --no-recursive a] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -126,7 +126,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory nonexist [a] 1`] = `
+exports[`cli/format directory nonexist [a] 1`] = `
 Object {
   "status": 1,
   "stderr": "ENOENT: no such file or directory, stat 'a'
@@ -135,7 +135,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory output [--output d a] 1`] = `
+exports[`cli/format directory output [--output d a] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -144,7 +144,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory output [-o d a] 1`] = `
+exports[`cli/format directory output [-o d a] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -153,7 +153,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory output directory [--output d a] 1`] = `
+exports[`cli/format directory output directory [--output d a] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -163,7 +163,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory output directory [-o d a] 1`] = `
+exports[`cli/format directory output directory [-o d a] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -173,7 +173,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory output directory dry-run [--dry-run -o d a] 1`] = `
+exports[`cli/format directory output directory dry-run [--dry-run -o d a] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -183,7 +183,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory output directory dry-run [-d -o d a] 1`] = `
+exports[`cli/format directory output directory dry-run [-d -o d a] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -193,7 +193,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory output dry-run [--dry-run -o d a] 1`] = `
+exports[`cli/format directory output dry-run [--dry-run -o d a] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -202,7 +202,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory output dry-run [-d -o d a] 1`] = `
+exports[`cli/format directory output dry-run [-d -o d a] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -211,7 +211,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory output file [--dry-run -o d.txt a] 1`] = `
+exports[`cli/format directory output file [--dry-run -o d.txt a] 1`] = `
 Object {
   "status": 1,
   "stderr": "Option output: 'd.txt' is not a directory.
@@ -220,7 +220,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory output file [--output d.txt a] 1`] = `
+exports[`cli/format directory output file [--output d.txt a] 1`] = `
 Object {
   "status": 1,
   "stderr": "Option output: 'd.txt' is not a directory.
@@ -229,7 +229,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory output file [-d -o d.txt a] 1`] = `
+exports[`cli/format directory output file [-d -o d.txt a] 1`] = `
 Object {
   "status": 1,
   "stderr": "Option output: 'd.txt' is not a directory.
@@ -238,7 +238,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports directory output file [-o d.txt a] 1`] = `
+exports[`cli/format directory output file [-o d.txt a] 1`] = `
 Object {
   "status": 1,
   "stderr": "Option output: 'd.txt' is not a directory.
@@ -247,7 +247,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports file [1.ts] 1`] = `
+exports[`cli/format file [1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -256,7 +256,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports file config [--config a/import-sorter.json 1.ts] 1`] = `
+exports[`cli/format file config [--config a/import-sorter.json 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -265,7 +265,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports file config exclude [--config a/import-sorter.json 1.ts] 1`] = `
+exports[`cli/format file config exclude [--config a/import-sorter.json 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -275,7 +275,7 @@ No files modified.
 }
 `;
 
-exports[`cli/format-imports file config exclude force [--force --config a/import-sorter.json 1.ts] 1`] = `
+exports[`cli/format file config exclude force [--force --config a/import-sorter.json 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -284,7 +284,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports file config exclude force [-f --config a/import-sorter.json 1.ts] 1`] = `
+exports[`cli/format file config exclude force [-f --config a/import-sorter.json 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -293,7 +293,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports file config fileconfig [--config a/import-sorter.json 1.ts] 1`] = `
+exports[`cli/format file config fileconfig [--config a/import-sorter.json 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -302,7 +302,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports file config nonexist [--config a/import-sorter.json 1.ts] 1`] = `
+exports[`cli/format file config nonexist [--config a/import-sorter.json 1.ts] 1`] = `
 Object {
   "status": 1,
   "stderr": "ENOENT: no such file or directory, open 'a/import-sorter.json'
@@ -311,7 +311,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports file dry-run [--dry-run 1.ts] 1`] = `
+exports[`cli/format file dry-run [--dry-run 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -324,7 +324,7 @@ export { A, B, C };
 }
 `;
 
-exports[`cli/format-imports file dry-run [-d 1.ts] 1`] = `
+exports[`cli/format file dry-run [-d 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -337,7 +337,7 @@ export { A, B, C };
 }
 `;
 
-exports[`cli/format-imports file nonexist [1.ts] 1`] = `
+exports[`cli/format file nonexist [1.ts] 1`] = `
 Object {
   "status": 1,
   "stderr": "ENOENT: no such file or directory, stat '1.ts'
@@ -346,7 +346,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports file output [--output a/2.ts 1.ts] 1`] = `
+exports[`cli/format file output [--output a/2.ts 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -355,7 +355,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports file output [-o a/2.ts 1.ts] 1`] = `
+exports[`cli/format file output [-o a/2.ts 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -364,7 +364,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports file output directory [--output a 1.ts] 1`] = `
+exports[`cli/format file output directory [--output a 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -373,7 +373,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports file output directory [-o a 1.ts] 1`] = `
+exports[`cli/format file output directory [-o a 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -382,7 +382,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports file output directory dry-run [--dry-run -o a 1.ts] 1`] = `
+exports[`cli/format file output directory dry-run [--dry-run -o a 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -395,7 +395,7 @@ export { A, B, C };
 }
 `;
 
-exports[`cli/format-imports file output directory dry-run [-d -o a 1.ts] 1`] = `
+exports[`cli/format file output directory dry-run [-d -o a 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -408,7 +408,7 @@ export { A, B, C };
 }
 `;
 
-exports[`cli/format-imports file output dry-run [--dry-run -o a/2.ts 1.ts] 1`] = `
+exports[`cli/format file output dry-run [--dry-run -o a/2.ts 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -421,7 +421,7 @@ export { A, B, C };
 }
 `;
 
-exports[`cli/format-imports file output dry-run [-d -o a/2.ts 1.ts] 1`] = `
+exports[`cli/format file output dry-run [-d -o a/2.ts 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -434,7 +434,7 @@ export { A, B, C };
 }
 `;
 
-exports[`cli/format-imports file output file [--output a/2.ts 1.ts] 1`] = `
+exports[`cli/format file output file [--output a/2.ts 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -443,7 +443,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports file output file [-o a/2.ts 1.ts] 1`] = `
+exports[`cli/format file output file [-o a/2.ts 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -452,7 +452,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports file output file dry-run [--dry-run -o a/2.ts 1.ts] 1`] = `
+exports[`cli/format file output file dry-run [--dry-run -o a/2.ts 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -465,7 +465,7 @@ export { A, B, C };
 }
 `;
 
-exports[`cli/format-imports file output file dry-run [-d -o a/2.ts 1.ts] 1`] = `
+exports[`cli/format file output file dry-run [-d -o a/2.ts 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -478,7 +478,7 @@ export { A, B, C };
 }
 `;
 
-exports[`cli/format-imports file output file equal [--output a/2.ts 1.ts] 1`] = `
+exports[`cli/format file output file equal [--output a/2.ts 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -487,7 +487,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports file output file equal [-o a/2.ts 1.ts] 1`] = `
+exports[`cli/format file output file equal [-o a/2.ts 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -496,7 +496,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports file output file equal dry-run [--dry-run -o a/2.ts 1.ts] 1`] = `
+exports[`cli/format file output file equal dry-run [--dry-run -o a/2.ts 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -509,7 +509,7 @@ export { A, B, C };
 }
 `;
 
-exports[`cli/format-imports file output file equal dry-run [-d -o a/2.ts 1.ts] 1`] = `
+exports[`cli/format file output file equal dry-run [-d -o a/2.ts 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -522,7 +522,7 @@ export { A, B, C };
 }
 `;
 
-exports[`cli/format-imports files [1.ts a/2.ts] 1`] = `
+exports[`cli/format files [1.ts a/2.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -531,7 +531,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports files config [--config c/import-sorter.json 1.ts a/2.ts] 1`] = `
+exports[`cli/format files config [--config c/import-sorter.json 1.ts a/2.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -540,7 +540,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports files config exclude [--config c/import-sorter.json 1.ts a/2.ts] 1`] = `
+exports[`cli/format files config exclude [--config c/import-sorter.json 1.ts a/2.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -550,7 +550,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports files config exclude force [--force --config c/import-sorter.json 1.ts a/2.ts] 1`] = `
+exports[`cli/format files config exclude force [--force --config c/import-sorter.json 1.ts a/2.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -559,7 +559,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports files config exclude force [-f --config c/import-sorter.json 1.ts a/2.ts] 1`] = `
+exports[`cli/format files config exclude force [-f --config c/import-sorter.json 1.ts a/2.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -568,7 +568,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports files config fileconfig [--config c/import-sorter.json 1.ts a/2.ts] 1`] = `
+exports[`cli/format files config fileconfig [--config c/import-sorter.json 1.ts a/2.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -577,7 +577,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports files config nonexist [--config c/import-sorter.json 1.ts a/2.ts] 1`] = `
+exports[`cli/format files config nonexist [--config c/import-sorter.json 1.ts a/2.ts] 1`] = `
 Object {
   "status": 1,
   "stderr": "ENOENT: no such file or directory, open 'c/import-sorter.json'
@@ -586,7 +586,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports files dry-run [--dry-run 1.ts a/2.ts] 1`] = `
+exports[`cli/format files dry-run [--dry-run 1.ts a/2.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -595,7 +595,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports files dry-run [-d 1.ts a/2.ts] 1`] = `
+exports[`cli/format files dry-run [-d 1.ts a/2.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -604,7 +604,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports files nonexist [1.ts a/2.ts] 1`] = `
+exports[`cli/format files nonexist [1.ts a/2.ts] 1`] = `
 Object {
   "status": 1,
   "stderr": "ENOENT: no such file or directory, stat 'a/2.ts'
@@ -613,7 +613,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports files nonfile [1.ts a/2.ts] 1`] = `
+exports[`cli/format files nonfile [1.ts a/2.ts] 1`] = `
 Object {
   "status": 1,
   "stderr": "Option: 'a/2.ts' is not a file.",
@@ -621,7 +621,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports files output [--dry-run -o abc 1.ts 2.ts] 1`] = `
+exports[`cli/format files output [--dry-run -o abc 1.ts 2.ts] 1`] = `
 Object {
   "status": 1,
   "stderr": "Option output: should be empty if multiple files are provided.",
@@ -629,7 +629,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports files output [-d -o abc 1.ts 2.ts] 1`] = `
+exports[`cli/format files output [-d -o abc 1.ts 2.ts] 1`] = `
 Object {
   "status": 1,
   "stderr": "Option output: should be empty if multiple files are provided.",
@@ -637,7 +637,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports files output [-o abc 1.ts 2.ts] 1`] = `
+exports[`cli/format files output [-o abc 1.ts 2.ts] 1`] = `
 Object {
   "status": 1,
   "stderr": "Option output: should be empty if multiple files are provided.",
@@ -645,17 +645,19 @@ Object {
 }
 `;
 
-exports[`cli/format-imports help [--help] 1`] = `
+exports[`cli/format help [--help] 1`] = `
 Object {
   "status": 1,
   "stderr": "format-imports [options] [FILE ...]
     Format given file(s). If no files provided, read from STDIN.
 format-imports [options] DIR
     Format supported files under given directory.
+format-imports -c [options] FILE/DIR [FILE/DIR ...]
+    Check if files (under directories) are formatted.
 
   -h, --help                 Show help.
   -v, --version              Show version number.
-  -c, --check                Check if the given files are formatted.
+  -c, --check                Check if files/directories are formatted.
   --config path::String      Path to base config file, e.g. import-sorter.json. The formatted file's config will be merged into this base config.
   -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
   -e, --extension String     File extension assumed when reading from STDIN and output file extension is unknown. - either: ts, tsx, js, or jsx - default: ts
@@ -667,17 +669,19 @@ format-imports [options] DIR
 }
 `;
 
-exports[`cli/format-imports help [-h] 1`] = `
+exports[`cli/format help [-h] 1`] = `
 Object {
   "status": 1,
   "stderr": "format-imports [options] [FILE ...]
     Format given file(s). If no files provided, read from STDIN.
 format-imports [options] DIR
     Format supported files under given directory.
+format-imports -c [options] FILE/DIR [FILE/DIR ...]
+    Check if files (under directories) are formatted.
 
   -h, --help                 Show help.
   -v, --version              Show version number.
-  -c, --check                Check if the given files are formatted.
+  -c, --check                Check if files/directories are formatted.
   --config path::String      Path to base config file, e.g. import-sorter.json. The formatted file's config will be merged into this base config.
   -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
   -e, --extension String     File extension assumed when reading from STDIN and output file extension is unknown. - either: ts, tsx, js, or jsx - default: ts
@@ -689,7 +693,7 @@ format-imports [options] DIR
 }
 `;
 
-exports[`cli/format-imports stdin [] 1`] = `
+exports[`cli/format stdin [] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -702,7 +706,7 @@ export { A, B, C };
 }
 `;
 
-exports[`cli/format-imports stdin config [--config import-sorter.json] 1`] = `
+exports[`cli/format stdin config [--config import-sorter.json] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -723,7 +727,7 @@ export {
 }
 `;
 
-exports[`cli/format-imports stdin config nonexist [--config import-sorter.json] 1`] = `
+exports[`cli/format stdin config nonexist [--config import-sorter.json] 1`] = `
 Object {
   "status": 1,
   "stderr": "ENOENT: no such file or directory, open 'import-sorter.json'
@@ -732,7 +736,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports stdin dry-run [--dry-run] 1`] = `
+exports[`cli/format stdin dry-run [--dry-run] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -745,7 +749,7 @@ export { A, B, C };
 }
 `;
 
-exports[`cli/format-imports stdin dry-run [-d] 1`] = `
+exports[`cli/format stdin dry-run [-d] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -758,7 +762,7 @@ export { A, B, C };
 }
 `;
 
-exports[`cli/format-imports stdin extension error [--extension xyz] 1`] = `
+exports[`cli/format stdin extension error [--extension xyz] 1`] = `
 Object {
   "status": 1,
   "stderr": "Option extension: 'xyz' not one of ts, tsx, js, or jsx.
@@ -767,10 +771,12 @@ format-imports [options] [FILE ...]
     Format given file(s). If no files provided, read from STDIN.
 format-imports [options] DIR
     Format supported files under given directory.
+format-imports -c [options] FILE/DIR [FILE/DIR ...]
+    Check if files (under directories) are formatted.
 
   -h, --help                 Show help.
   -v, --version              Show version number.
-  -c, --check                Check if the given files are formatted.
+  -c, --check                Check if files/directories are formatted.
   --config path::String      Path to base config file, e.g. import-sorter.json. The formatted file's config will be merged into this base config.
   -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
   -e, --extension String     File extension assumed when reading from STDIN and output file extension is unknown. - either: ts, tsx, js, or jsx - default: ts
@@ -782,7 +788,7 @@ format-imports [options] DIR
 }
 `;
 
-exports[`cli/format-imports stdin extension error [-e xyz] 1`] = `
+exports[`cli/format stdin extension error [-e xyz] 1`] = `
 Object {
   "status": 1,
   "stderr": "Option extension: 'xyz' not one of ts, tsx, js, or jsx.
@@ -791,10 +797,12 @@ format-imports [options] [FILE ...]
     Format given file(s). If no files provided, read from STDIN.
 format-imports [options] DIR
     Format supported files under given directory.
+format-imports -c [options] FILE/DIR [FILE/DIR ...]
+    Check if files (under directories) are formatted.
 
   -h, --help                 Show help.
   -v, --version              Show version number.
-  -c, --check                Check if the given files are formatted.
+  -c, --check                Check if files/directories are formatted.
   --config path::String      Path to base config file, e.g. import-sorter.json. The formatted file's config will be merged into this base config.
   -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
   -e, --extension String     File extension assumed when reading from STDIN and output file extension is unknown. - either: ts, tsx, js, or jsx - default: ts
@@ -806,7 +814,7 @@ format-imports [options] DIR
 }
 `;
 
-exports[`cli/format-imports stdin extension js [--extension js] 1`] = `
+exports[`cli/format stdin extension js [--extension js] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -819,7 +827,7 @@ export { A, B, C };
 }
 `;
 
-exports[`cli/format-imports stdin extension js [-e js] 1`] = `
+exports[`cli/format stdin extension js [-e js] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -832,7 +840,7 @@ export { A, B, C };
 }
 `;
 
-exports[`cli/format-imports stdin extension jsx [--extension jsx] 1`] = `
+exports[`cli/format stdin extension jsx [--extension jsx] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -845,7 +853,7 @@ export { A, B, C };
 }
 `;
 
-exports[`cli/format-imports stdin extension jsx [-e jsx] 1`] = `
+exports[`cli/format stdin extension jsx [-e jsx] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -858,7 +866,7 @@ export { A, B, C };
 }
 `;
 
-exports[`cli/format-imports stdin extension ts [--extension ts] 1`] = `
+exports[`cli/format stdin extension ts [--extension ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -871,7 +879,7 @@ export { A, B, C };
 }
 `;
 
-exports[`cli/format-imports stdin extension ts [-e ts] 1`] = `
+exports[`cli/format stdin extension ts [-e ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -884,7 +892,7 @@ export { A, B, C };
 }
 `;
 
-exports[`cli/format-imports stdin extension tsx [--extension tsx] 1`] = `
+exports[`cli/format stdin extension tsx [--extension tsx] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -897,7 +905,7 @@ export { A, B, C };
 }
 `;
 
-exports[`cli/format-imports stdin extension tsx [-e tsx] 1`] = `
+exports[`cli/format stdin extension tsx [-e tsx] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -910,7 +918,7 @@ export { A, B, C };
 }
 `;
 
-exports[`cli/format-imports stdin output [--output 1.ts] 1`] = `
+exports[`cli/format stdin output [--output 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -919,7 +927,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports stdin output [-o 1.ts] 1`] = `
+exports[`cli/format stdin output [-o 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -928,7 +936,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports stdin output directory [--output 1] 1`] = `
+exports[`cli/format stdin output directory [--output 1] 1`] = `
 Object {
   "status": 1,
   "stderr": "Option output: '1' is not a file.
@@ -937,7 +945,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports stdin output directory [-o 1] 1`] = `
+exports[`cli/format stdin output directory [-o 1] 1`] = `
 Object {
   "status": 1,
   "stderr": "Option output: '1' is not a file.
@@ -946,7 +954,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports stdin output dry-run [--dry-run -o 1.ts ] 1`] = `
+exports[`cli/format stdin output dry-run [--dry-run -o 1.ts ] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -959,7 +967,7 @@ export { A, B, C };
 }
 `;
 
-exports[`cli/format-imports stdin output dry-run [-d -o 1.ts ] 1`] = `
+exports[`cli/format stdin output dry-run [-d -o 1.ts ] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -972,7 +980,7 @@ export { A, B, C };
 }
 `;
 
-exports[`cli/format-imports stdin output file [--output 1.ts] 1`] = `
+exports[`cli/format stdin output file [--output 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -981,7 +989,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports stdin output file [-o 1.ts] 1`] = `
+exports[`cli/format stdin output file [-o 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -990,7 +998,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports stdin output file dry-run [--dry-run -o 1.ts] 1`] = `
+exports[`cli/format stdin output file dry-run [--dry-run -o 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -1003,7 +1011,7 @@ export { A, B, C };
 }
 `;
 
-exports[`cli/format-imports stdin output file dry-run [-d -o 1.ts] 1`] = `
+exports[`cli/format stdin output file dry-run [-d -o 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -1016,7 +1024,7 @@ export { A, B, C };
 }
 `;
 
-exports[`cli/format-imports stdin output file equal [--output 1.ts] 1`] = `
+exports[`cli/format stdin output file equal [--output 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -1025,7 +1033,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports stdin output file equal [-o 1.ts] 1`] = `
+exports[`cli/format stdin output file equal [-o 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -1034,7 +1042,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports stdin output file equal dry-run [--dry-run -o 1.ts] 1`] = `
+exports[`cli/format stdin output file equal dry-run [--dry-run -o 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -1047,7 +1055,7 @@ export { A, B, C };
 }
 `;
 
-exports[`cli/format-imports stdin output file equal dry-run [-d -o 1.ts] 1`] = `
+exports[`cli/format stdin output file equal dry-run [-d -o 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
@@ -1060,7 +1068,7 @@ export { A, B, C };
 }
 `;
 
-exports[`cli/format-imports version [--version] 1`] = `
+exports[`cli/format version [--version] 1`] = `
 Object {
   "status": 1,
   "stderr": "v1.0.0
@@ -1069,7 +1077,7 @@ Object {
 }
 `;
 
-exports[`cli/format-imports version [-v] 1`] = `
+exports[`cli/format version [-v] 1`] = `
 Object {
   "status": 1,
   "stderr": "v1.0.0

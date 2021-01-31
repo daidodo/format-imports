@@ -13,6 +13,8 @@ const { parseArgv, generateHelp } = optionator({
     '    Format given file(s). If no files provided, read from STDIN.',
     EXE + ' [options] DIR',
     '    Format supported files under given directory.',
+    EXE + ' -c [options] FILE/DIR [FILE/DIR ...]',
+    '    Check if files (under directories) are formatted.',
   ].join('\n'),
   options: [
     {
@@ -28,12 +30,16 @@ const { parseArgv, generateHelp } = optionator({
       description: 'Show version number.',
     },
     {
-      option: 'config',
+      option: 'check',
       alias: 'c',
+      type: 'Boolean',
+      description: 'Check if files/directories are formatted.',
+    },
+    {
+      option: 'config',
       type: 'path::String',
       description:
-        'Read base config from a file, e.g. import-sorter.json. Each source file can have specific config which will be merged into the base config.',
-      example: EXE + ' -c ./import-sorter.json source.ts',
+        "Path to base config file, e.g. import-sorter.json. The formatted file's config will be merged into this base config.",
     },
     {
       option: 'force',
@@ -75,6 +81,7 @@ const { parseArgv, generateHelp } = optionator({
 export interface Options {
   help?: boolean;
   version?: boolean;
+  check?: boolean;
   config?: string;
   force?: boolean;
   extension?: string;

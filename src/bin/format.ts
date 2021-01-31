@@ -11,12 +11,7 @@ import {
   resolveConfigForFile,
 } from '../lib';
 import { getFiles } from '../lib/common';
-import {
-  Options,
-  processArgv,
-  usage,
-  version,
-} from './options';
+import { Options } from './options';
 
 function loadBaseConfig({ config, force }: Options) {
   const cfg = config ? loadConfigFromJsonFile(config) : {};
@@ -41,7 +36,7 @@ function dryRunOutput(
   } else if (mode === OutputMode.DRY_RUN_FILE) process.stdout.write(result ?? source);
 }
 
-function checkFile(
+function checkFileContent(
   filePath: string,
   text: string,
 ): { exist: boolean; isFile?: boolean; equal?: boolean } {
@@ -64,7 +59,7 @@ function outputResult(
 ): { error?: boolean; modified?: number; created?: number } {
   if (outputFile) {
     const text = result ?? source;
-    const { exist, isFile, equal } = checkFile(outputFile, text);
+    const { exist, isFile, equal } = checkFileContent(outputFile, text);
     if (exist && !isFile) {
       process.stderr.write(`Option output: '${outputFile}' is not a file.\n`);
       return { error: true };
@@ -211,26 +206,15 @@ function sumResult(num: number, action: string) {
   return `${num === 0 ? 'No' : num} ${num === 1 ? 'file' : 'files'} ${action}.\n`;
 }
 
-async function main(argv: string[]) {
-  const options = processArgv(argv);
-  if (options.help) usage();
-  if (options.version) version();
-  try {
-    switch (options._.length) {
-      case 0:
-        processStdin(options);
-        break;
-      case 1:
-        await processDirectory(options._[0], options);
-        break;
-      default:
-        processFiles(options._, options);
-    }
-  } catch (e: unknown) {
-    const message = e instanceof Error ? e.message : `${e}`;
-    process.stderr.write(message + '\n');
-    process.exit(1);
+export async function format(options: Options) {
+  switch (options._.length) {
+    case 0:
+      processStdin(options);
+      break;
+    case 1:
+      await processDirectory(options._[0], options);
+      break;
+    default:
+      processFiles(options._, options);
   }
 }
-
-main(process.argv);

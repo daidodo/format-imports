@@ -3,15 +3,15 @@
   "version": "1.0.0",
   "description": "JavaScript and TypeScript Import/Export Formatter.",
   "main": "dist/lib/index.js",
-  "bin": "dist/bin/format-cli.js",
+  "bin": "dist/bin/main.js",
   "scripts": {
     "clean": "rm -rf dist",
     "compile": "tsc",
     "unit-test": "jest src/lib",
     "lib-test": "jest src/test/lib",
     "cli-test": "npm run compile && jest src/test/cli",
-    "cli-test:watch": "USE_TS_NODE=1 jest --watch src/test/cli",
-    "cli-test:update": "npm run compile && jest -u src/test/cli"
+    "cli-test:update": "npm run compile && jest -u src/test/cli",
+    "test:watch": "USE_TS_NODE=1 jest --watch"
   },
   "repository": {
     "type": "git",

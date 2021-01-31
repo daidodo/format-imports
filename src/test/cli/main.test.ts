@@ -15,7 +15,7 @@ const IN_DIR = '__in';
 const OUT_DIR = '__out';
 const TMP_PREFIX = 'format-imports';
 
-describe('cli/format-imports', () => {
+describe('cli/format', () => {
   // change 'example' to run specific test cases.
   const examples = path.resolve(__dirname, 'examples');
   runTestSuite(examples);
@@ -65,7 +65,7 @@ function runCmd(options: string, resolved: string) {
 function run(options: string, env?: { stdin?: string; baseDir: string }) {
   const useTsNode = process.env.USE_TS_NODE === '1' || process.env.USE_TS_NODE === 'true';
   // setup args
-  const script = path.resolve(useTsNode ? 'src/bin/format-cli.ts' : 'dist/bin/format-cli.js');
+  const script = path.resolve(useTsNode ? 'src/bin/main.ts' : 'dist/bin/main.js');
   const args = [script, ...options.split(' ')].filter(a => !!a);
   // setup CWD and STDIN for child process if needed.
   const cwd = env?.baseDir;
