@@ -581,6 +581,22 @@ Object {
 }
 `;
 
+exports[`cli/format-imports files output [--dry-run -o abc 1.ts 2.ts] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "Option output: should be empty if multiple files are provided.",
+  "stdout": "",
+}
+`;
+
+exports[`cli/format-imports files output [-d -o abc 1.ts 2.ts] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "Option output: should be empty if multiple files are provided.",
+  "stdout": "",
+}
+`;
+
 exports[`cli/format-imports files output [-o abc 1.ts 2.ts] 1`] = `
 Object {
   "status": 1,

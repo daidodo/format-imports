@@ -1,1 +1,3 @@
 -o abc 1.ts 2.ts
+--dry-run -o abc 1.ts 2.ts
+-d -o abc 1.ts 2.ts
