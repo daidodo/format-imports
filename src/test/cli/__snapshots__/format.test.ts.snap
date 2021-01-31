@@ -157,6 +157,24 @@ Object {
 }
 `;
 
+exports[`cli/format-imports directory output file [--output d.txt a] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "Option output: 'd.txt' is not a directory.
+",
+  "stdout": "",
+}
+`;
+
+exports[`cli/format-imports directory output file [-o d.txt a] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "Option output: 'd.txt' is not a directory.
+",
+  "stdout": "",
+}
+`;
+
 exports[`cli/format-imports file [1.ts] 1`] = `
 Object {
   "status": 0,

@@ -1,0 +1,2 @@
+--output d.txt a
+-o d.txt a
