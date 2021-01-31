@@ -27,6 +27,26 @@ Object {
 }
 `;
 
+exports[`cli/format-imports directory config exclude dry-run [--dry-run -c c/import-sorter.json a] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "'a/1.ts' will be modified.
+'a/b/2.ts' is excluded by config.
+",
+}
+`;
+
+exports[`cli/format-imports directory config exclude dry-run [-d -c c/import-sorter.json a] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "'a/1.ts' will be modified.
+'a/b/2.ts' is excluded by config.
+",
+}
+`;
+
 exports[`cli/format-imports directory config exclude force [--force -c c/import-sorter.json a] 1`] = `
 Object {
   "status": 0,
