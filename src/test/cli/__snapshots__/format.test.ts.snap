@@ -9,6 +9,24 @@ Object {
 }
 `;
 
+exports[`cli/format-imports directory config [--config c/import-sorter.json a] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "2 files modified.
+",
+}
+`;
+
+exports[`cli/format-imports directory config [-c c/import-sorter.json a] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "2 files modified.
+",
+}
+`;
+
 exports[`cli/format-imports directory config exclude [--config c/import-sorter.json a] 1`] = `
 Object {
   "status": 0,
