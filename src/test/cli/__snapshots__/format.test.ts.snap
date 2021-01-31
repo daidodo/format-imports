@@ -27,6 +27,24 @@ Object {
 }
 `;
 
+exports[`cli/format-imports directory config exclude force [--force -c c/import-sorter.json a] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "2 files modified.
+",
+}
+`;
+
+exports[`cli/format-imports directory config exclude force [-f -c c/import-sorter.json a] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "2 files modified.
+",
+}
+`;
+
 exports[`cli/format-imports directory config fileconfig [--config c/import-sorter.json a] 1`] = `
 Object {
   "status": 0,
