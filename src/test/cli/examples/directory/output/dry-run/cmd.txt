@@ -1,0 +1,2 @@
+--dry-run -o d a
+-d -o d a

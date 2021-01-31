@@ -31,8 +31,7 @@ exports[`cli/format-imports directory config exclude dry-run [--dry-run -c c/imp
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "'a/1.ts' will be modified.
-'a/b/2.ts' is excluded by config.
+  "stdout": "1 file will be modified.
 ",
 }
 `;
@@ -41,8 +40,7 @@ exports[`cli/format-imports directory config exclude dry-run [-d -c c/import-sor
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "'a/1.ts' will be modified.
-'a/b/2.ts' is excluded by config.
+  "stdout": "1 file will be modified.
 ",
 }
 `;
@@ -87,8 +85,7 @@ exports[`cli/format-imports directory dry-run [--dry-run a] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "'a/1.ts' will be modified.
-'a/b/2.ts' will be modified.
+  "stdout": "2 files will be modified.
 ",
 }
 `;
@@ -97,8 +94,7 @@ exports[`cli/format-imports directory dry-run [-d a] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "'a/1.ts' will be modified.
-'a/b/2.ts' will be modified.
+  "stdout": "2 files will be modified.
 ",
 }
 `;
@@ -116,7 +112,7 @@ exports[`cli/format-imports directory no-recursive dry-run [--dry-run --no-recur
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "'a/1.ts' will be modified.
+  "stdout": "1 file will be modified.
 ",
 }
 `;
@@ -125,7 +121,7 @@ exports[`cli/format-imports directory no-recursive dry-run [-d --no-recursive a]
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "'a/1.ts' will be modified.
+  "stdout": "1 file will be modified.
 ",
 }
 `;
@@ -143,7 +139,7 @@ exports[`cli/format-imports directory output [--output d a] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "2 files created.
+  "stdout": "3 files created.
 ",
 }
 `;
@@ -152,7 +148,25 @@ exports[`cli/format-imports directory output [-o d a] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "2 files created.
+  "stdout": "3 files created.
+",
+}
+`;
+
+exports[`cli/format-imports directory output dry-run [--dry-run -o d a] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "3 files will be created.
+",
+}
+`;
+
+exports[`cli/format-imports directory output dry-run [-d -o d a] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "3 files will be created.
 ",
 }
 `;
@@ -549,7 +563,6 @@ Object {
   "status": 0,
   "stderr": "",
   "stdout": "'1.ts' will be modified.
-'a/2.ts' remains the same.
 ",
 }
 `;
@@ -559,7 +572,6 @@ Object {
   "status": 0,
   "stderr": "",
   "stdout": "'1.ts' will be modified.
-'a/2.ts' remains the same.
 ",
 }
 `;
@@ -882,7 +894,8 @@ exports[`cli/format-imports stdin output [--output 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "",
+  "stdout": "1 file created.
+",
 }
 `;
 
@@ -890,7 +903,8 @@ exports[`cli/format-imports stdin output [-o 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "",
+  "stdout": "1 file created.
+",
 }
 `;
 
@@ -942,7 +956,8 @@ exports[`cli/format-imports stdin output file [--output 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "",
+  "stdout": "1 file modified.
+",
 }
 `;
 
@@ -950,7 +965,8 @@ exports[`cli/format-imports stdin output file [-o 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "",
+  "stdout": "1 file modified.
+",
 }
 `;
 
@@ -968,6 +984,50 @@ export { A, B, C };
 `;
 
 exports[`cli/format-imports stdin output file dry-run [-d -o 1.ts] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "import B from 'a';
+import A from 'b';
+import { C } from 'c';
+
+export { A, B, C };
+",
+}
+`;
+
+exports[`cli/format-imports stdin output file equal [--output 1.ts] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "No files modified.
+",
+}
+`;
+
+exports[`cli/format-imports stdin output file equal [-o 1.ts] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "No files modified.
+",
+}
+`;
+
+exports[`cli/format-imports stdin output file equal dry-run [--dry-run -o 1.ts] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "import B from 'a';
+import A from 'b';
+import { C } from 'c';
+
+export { A, B, C };
+",
+}
+`;
+
+exports[`cli/format-imports stdin output file equal dry-run [-d -o 1.ts] 1`] = `
 Object {
   "status": 0,
   "stderr": "",

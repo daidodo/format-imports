@@ -25,43 +25,60 @@ function loadBaseConfig({ config, force }: Options) {
 
 enum OutputMode {
   NORMAL,
-  DRY_RUN_SINGLE,
-  DRY_RUN,
+  DRY_RUN_FILE,
+  DRY_RUN_FILES,
+  DRY_RUN_DIR,
 }
 function dryRunOutput(
-  source: string,
-  result: string | undefined,
   mode: OutputMode,
-  inputFile?: string,
+  result: string | undefined,
+  source: string,
+  inputFile?: string | undefined,
 ) {
-  if (mode === OutputMode.DRY_RUN) {
-    if (result !== undefined) process.stdout.write(`'${inputFile}' will be modified.\n`);
-    else process.stdout.write(`'${inputFile}' remains the same.\n`);
-  } else if (mode === OutputMode.DRY_RUN_SINGLE) process.stdout.write(result ?? source);
+  if (mode === OutputMode.DRY_RUN_FILES) {
+    if (result !== undefined && inputFile)
+      process.stdout.write(`'${inputFile}' will be modified.\n`);
+  } else if (mode === OutputMode.DRY_RUN_FILE) process.stdout.write(result ?? source);
+}
+
+function checkFile(
+  filePath: string,
+  text: string,
+): { exist: boolean; isFile?: boolean; equal?: boolean } {
+  const exist = fs.existsSync(filePath);
+  if (!exist) return { exist };
+  const stat = fs.statSync(filePath);
+  const isFile = stat.isFile();
+  if (!isFile) return { exist, isFile };
+  if (stat.size !== text.length) return { exist, isFile, equal: false };
+  const content = fs.readFileSync(filePath).toString();
+  return { exist, isFile, equal: text === content };
 }
 
 function outputResult(
-  source: string,
+  mode: OutputMode,
   result: string | undefined,
   outputFile: string | undefined,
-  mode: OutputMode,
+  source: string,
   inputFile?: string,
 ): { error?: boolean; modified?: number; created?: number } {
   if (outputFile) {
-    const exist = fs.existsSync(outputFile);
-    if (exist && !fs.statSync(outputFile).isFile()) {
+    const text = result ?? source;
+    const { exist, isFile, equal } = checkFile(outputFile, text);
+    if (exist && !isFile) {
       process.stderr.write(`Option output: '${outputFile}' is not a file.\n`);
       return { error: true };
     }
-    if (mode === OutputMode.NORMAL) fs.outputFileSync(outputFile, result ?? source);
-    else dryRunOutput(source, result, mode, inputFile);
-    return exist ? { modified: 1 } : { created: 1 };
+    if (mode === OutputMode.NORMAL) {
+      if (!equal) fs.outputFileSync(outputFile, text);
+    } else dryRunOutput(mode, result, source);
+    return exist ? { modified: equal ? 0 : 1 } : { created: 1 };
   } else if (inputFile) {
     if (mode === OutputMode.NORMAL) {
       if (result !== undefined) fs.writeFileSync(inputFile, result);
-    } else dryRunOutput(source, result, mode, inputFile);
-    return result !== undefined ? { modified: 1 } : {};
-  } else process.stdout.write(result ?? source);
+    } else dryRunOutput(mode, result, source, inputFile);
+    return { modified: result !== undefined ? 1 : 0 };
+  } else dryRunOutput(OutputMode.DRY_RUN_FILE, result, source);
   return {};
 }
 
@@ -88,8 +105,10 @@ function processStdin(options: Options) {
     const { fd, name } = tmp.fileSync({ prefix: 'format-imports', postfix: `.${ext}` });
     fs.writeSync(fd, source);
     const result = formatSource(name, source, { config });
-    const mode = dryRun ? OutputMode.DRY_RUN_SINGLE : OutputMode.NORMAL;
-    if (outputResult(source, result, output, mode).error) process.exit(1);
+    const mode = dryRun ? OutputMode.DRY_RUN_FILE : OutputMode.NORMAL;
+    const { error, modified, created } = outputResult(mode, result, output, source);
+    if (error) process.exit(1);
+    if (mode === OutputMode.NORMAL && output) summary(mode, modified ?? 0, created ?? 0);
   });
 }
 
@@ -109,25 +128,22 @@ async function processDirectory(dirPath: string, options: Options) {
   const { output, recursive, dryRun } = options;
   const config = loadBaseConfig(options);
   ensureOutputDir(output, dryRun);
-  const mode = dryRun ? OutputMode.DRY_RUN : OutputMode.NORMAL;
+  const mode = dryRun ? OutputMode.DRY_RUN_DIR : OutputMode.NORMAL;
   let modified = 0;
   let created = 0;
   for await (const { relativePath, resolvedPath: inputFile } of getFiles(dirPath, !recursive)) {
     if (!isSupported(relativePath)) continue;
     const filePath = dirPath + sep + relativePath;
     const allConfig = resolveConfigForFile(inputFile, config);
-    if (isFileExcludedByConfig(inputFile, allConfig.config)) {
-      if (dryRun) process.stdout.write(`'${filePath}' is excluded by config.\n`);
-      continue;
-    }
+    if (isFileExcludedByConfig(inputFile, allConfig.config)) continue;
     const source = fs.readFileSync(inputFile).toString();
     const result = formatSource(inputFile, source, allConfig);
     const outputFile = output ? output + sep + relativePath : output;
     const { error, modified: m, created: c } = outputResult(
-      source,
+      mode,
       result,
       outputFile,
-      mode,
+      source,
       filePath,
     );
     if (error) process.exit(1);
@@ -152,8 +168,8 @@ function processFiles(filePaths: string[], options: Options) {
   const config = loadBaseConfig(options);
   const mode = dryRun
     ? single
-      ? OutputMode.DRY_RUN_SINGLE
-      : OutputMode.DRY_RUN
+      ? OutputMode.DRY_RUN_FILE
+      : OutputMode.DRY_RUN_FILES
     : OutputMode.NORMAL;
   let modified = 0;
   let created = 0;
@@ -170,10 +186,10 @@ function processFiles(filePaths: string[], options: Options) {
           ? path.resolve(output, path.basename(inputFile))
           : output;
       const { error, modified: m, created: c } = outputResult(
-        source,
+        mode,
         result,
         outputFile,
-        mode,
+        source,
         filePath,
       );
       if (error) process.exit(1);
@@ -185,9 +201,10 @@ function processFiles(filePaths: string[], options: Options) {
 }
 
 function summary(mode: OutputMode, modified: number, created: number) {
-  if (mode !== OutputMode.NORMAL) return;
-  if (modified || !created) process.stdout.write(sumResult(modified, 'modified'));
-  if (created) process.stdout.write(sumResult(created, 'created'));
+  if (mode === OutputMode.DRY_RUN_FILE || mode === OutputMode.DRY_RUN_FILES) return;
+  const tense = mode === OutputMode.NORMAL ? '' : 'will be ';
+  if (modified || !created) process.stdout.write(sumResult(modified, tense + 'modified'));
+  if (created) process.stdout.write(sumResult(created, tense + 'created'));
 }
 
 function sumResult(num: number, action: string) {
