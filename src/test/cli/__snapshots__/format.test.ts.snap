@@ -457,6 +457,24 @@ export { A, B, C };
 }
 `;
 
+exports[`cli/format-imports file output file equal [--output a/2.ts 1.ts] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "No files modified.
+",
+}
+`;
+
+exports[`cli/format-imports file output file equal [-o a/2.ts 1.ts] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "No files modified.
+",
+}
+`;
+
 exports[`cli/format-imports files [1.ts a/2.ts] 1`] = `
 Object {
   "status": 0,
