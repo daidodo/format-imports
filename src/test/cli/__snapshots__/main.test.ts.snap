@@ -18,6 +18,28 @@ Object {
 }
 `;
 
+exports[`CLI check nonexist [--check x.ts 1.ts] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "'x.ts' doesn't exist.
+",
+  "stdout": "Checked 1 files, of which:
+  1 file passed.
+",
+}
+`;
+
+exports[`CLI check nonexist [-c xyz 1.ts] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "'xyz' doesn't exist.
+",
+  "stdout": "Checked 1 files, of which:
+  1 file passed.
+",
+}
+`;
+
 exports[`CLI format directory [a] 1`] = `
 Object {
   "status": 0,
