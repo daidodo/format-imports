@@ -350,7 +350,8 @@ exports[`cli/format file not-supported [1.txt] 1`] = `
 Object {
   "status": 0,
   "stderr": "",
-  "stdout": "No files modified.
+  "stdout": "'1.txt' is not a supported file type.
+No files modified.
 ",
 }
 `;
