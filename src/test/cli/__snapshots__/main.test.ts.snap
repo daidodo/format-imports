@@ -346,6 +346,15 @@ Object {
 }
 `;
 
+exports[`cli/format file not-supported [1.txt] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "No files modified.
+",
+}
+`;
+
 exports[`cli/format file output [--output a/2.ts 1.ts] 1`] = `
 Object {
   "status": 0,
