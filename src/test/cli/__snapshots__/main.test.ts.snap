@@ -1,5 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`CLI check empty [--check] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "Expect at least 1 file or directory.
+",
+  "stdout": "",
+}
+`;
+
+exports[`CLI check empty [-c] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "Expect at least 1 file or directory.
+",
+  "stdout": "",
+}
+`;
+
 exports[`CLI format directory [a] 1`] = `
 Object {
   "status": 0,
