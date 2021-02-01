@@ -1,22 +1,20 @@
 #!/usr/bin/env node
 
 import fs from 'fs-extra';
-import path, { sep } from 'path';
+import path from 'path';
 import tmp from 'tmp';
 
 import {
   formatSource,
   isFileExcludedByConfig,
-  loadConfigFromJsonFile,
   resolveConfigForFile,
 } from '../lib';
-import { getFiles } from '../lib/common';
+import {
+  isSupported,
+  loadBaseConfig,
+} from './config';
 import { Options } from './options';
-
-function loadBaseConfig({ config, force }: Options) {
-  const cfg = config ? loadConfigFromJsonFile(config) : {};
-  return { ...cfg, force };
-}
+import { getFiles } from './utils';
 
 enum OutputMode {
   NORMAL,
@@ -107,11 +105,6 @@ function processStdin(options: Options) {
   });
 }
 
-// TODO: Move to lib?
-function isSupported(filePath: string | undefined) {
-  return !!filePath && /[^.\\\/]+\.(tsx?|jsx?)$/.test(filePath);
-}
-
 function getExt({ extension, output }: Options) {
   if (extension) return extension;
   if (output && isSupported(output)) return path.extname(output);
@@ -128,12 +121,12 @@ async function processDirectory(dirPath: string, options: Options) {
   let created = 0;
   for await (const { relativePath, resolvedPath: inputFile } of getFiles(dirPath, !recursive)) {
     if (!isSupported(relativePath)) continue;
-    const filePath = dirPath + sep + relativePath;
+    const filePath = path.join(dirPath, relativePath);
     const allConfig = resolveConfigForFile(inputFile, config);
     if (isFileExcludedByConfig(inputFile, allConfig.config)) continue;
     const source = fs.readFileSync(inputFile).toString();
     const result = formatSource(inputFile, source, allConfig);
-    const outputFile = output ? output + sep + relativePath : output;
+    const outputFile = output ? path.join(output, relativePath) : output;
     const { error, modified: m, created: c } = outputResult(
       mode,
       result,
@@ -169,6 +162,10 @@ function processFiles(filePaths: string[], options: Options) {
   let modified = 0;
   let created = 0;
   for (const filePath of filePaths) {
+    if (!isSupported(filePath)) {
+      process.stdout.write(`'${filePath}' is not a supported file type.\n`);
+      continue;
+    }
     const inputFile = path.resolve(filePath);
     const allConfig = resolveConfigForFile(inputFile, config);
     if (isFileExcludedByConfig(inputFile, allConfig.config)) {

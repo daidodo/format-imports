@@ -11,7 +11,7 @@ async function main(argv: string[]) {
   if (options.help) usage();
   if (options.version) version();
   try {
-    if (options.check) check(options);
+    if (options.check) await check(options);
     else await format(options);
   } catch (e: unknown) {
     const message = e instanceof Error ? e.message : `${e}`;
