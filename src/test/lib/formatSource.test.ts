@@ -6,8 +6,14 @@ import { CompilerOptions } from 'typescript';
 import { endOfLine } from '@dozerg/end-of-line';
 
 import { assertNonNull } from '../../lib/common';
-import { Configuration, mergeConfig } from '../../lib/config';
-import { ESLintConfig, loadESLintConfig } from '../../lib/config/eslint';
+import {
+  Configuration,
+  mergeConfig,
+} from '../../lib/config';
+import {
+  ESLintConfig,
+  loadESLintConfig,
+} from '../../lib/config/eslint';
 import { fileConfig } from '../../lib/config/importSorter';
 import { loadTsConfig } from '../../lib/config/tsconfig';
 import { formatSource } from '../../lib/format';
@@ -45,7 +51,7 @@ describe('lib/formatSource', () => {
   // Run all tests
   return runTestSuite(examples);
   // Or, run specific test case(s)
-  // return runTestSuite(examples, 'eslint');
+  // return runTestSuite(examples, 'group/level_0/null');
 });
 
 function getTestSuite(dir: string, name: string): TestSuite | undefined {

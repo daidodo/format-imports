@@ -23,7 +23,7 @@ export function sortImports(
   eslint?: ESLintConfigProcessed,
 ) {
   const { groupRules, keepUnused, sortImportsBy } = config;
-  const subGroups = groupRules ?? GROUP_RULES_DEFAULT;
+  const subGroups = groupRules === undefined ? GROUP_RULES_DEFAULT : groupRules;
   // The top group must be a match-all group.
   const group = new SortGroup(
     { flags: 'all', regex: '', subGroups },
