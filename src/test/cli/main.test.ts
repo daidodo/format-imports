@@ -15,7 +15,7 @@ const IN_DIR = '__in';
 const OUT_DIR = '__out';
 const TMP_PREFIX = 'format-imports';
 
-describe('cli/format', () => {
+describe('CLI', () => {
   // change 'example' to run specific test cases.
   const examples = path.resolve(__dirname, 'examples');
   runTestSuite(examples);
