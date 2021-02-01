@@ -1,2 +1,2 @@
---output a 1.ts
+--output a/ 1.ts
 -o a 1.ts

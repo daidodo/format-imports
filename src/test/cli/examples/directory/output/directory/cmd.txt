@@ -1,2 +1,2 @@
---output d a
+--output d a/
 -o d a

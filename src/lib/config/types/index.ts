@@ -47,3 +47,5 @@ export type Configuration = Readonly<
     };
   }>
 >;
+
+export const GROUP_RULES_DEFAULT = ['^react(-dom)?$', '^@angular/', '^vue$', {}, '^[@]', '^[.]'];

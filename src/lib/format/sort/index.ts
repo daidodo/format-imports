@@ -1,4 +1,5 @@
 import { Configuration } from '../../config';
+import { GROUP_RULES_DEFAULT } from '../../config/types';
 import { ESLintConfigProcessed } from '../config';
 import {
   ImportNode,
@@ -21,7 +22,8 @@ export function sortImports(
   sorter: Sorter,
   eslint?: ESLintConfigProcessed,
 ) {
-  const { groupRules: subGroups, keepUnused, sortImportsBy } = config;
+  const { groupRules, keepUnused, sortImportsBy } = config;
+  const subGroups = groupRules ?? GROUP_RULES_DEFAULT;
   // The top group must be a match-all group.
   const group = new SortGroup(
     { flags: 'all', regex: '', subGroups },
