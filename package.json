@@ -4,6 +4,7 @@
   "description": "JavaScript and TypeScript Import/Export Formatter.",
   "main": "dist/lib/index.js",
   "bin": "dist/bin/main.js",
+  "types": "dist/lib/index.d.ts",
   "private": false,
   "scripts": {
     "clean": "rm -rf dist",

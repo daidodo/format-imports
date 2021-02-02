@@ -1,2 +1,4 @@
 *
-!/dist/*
+!/dist/**/*
+/dist/bin/**/*.d.ts
+/dist/**/*.map
