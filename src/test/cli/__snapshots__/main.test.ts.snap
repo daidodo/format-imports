@@ -80,6 +80,70 @@ Object {
 }
 `;
 
+exports[`CLI check 2-processed excluded [--check 1.ts a] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "Checked 2 files, of which:
+  2 files were excluded.
+",
+}
+`;
+
+exports[`CLI check 2-processed excluded [-c 1.ts a] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "Checked 2 files, of which:
+  2 files were excluded.
+",
+}
+`;
+
+exports[`CLI check 2-processed passed [--check 1.ts a] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "Checked 2 files, of which:
+  2 files passed.
+",
+}
+`;
+
+exports[`CLI check 2-processed passed [-c 1.ts a] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "Checked 2 files, of which:
+  2 files passed.
+",
+}
+`;
+
+exports[`CLI check 2-processed rejected [--check a] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "'a/1.ts' is different after formatting.
+'a/b/2.ts' is different after formatting.
+",
+  "stdout": "Checked 2 files, of which:
+  2 files have formatting issues.
+",
+}
+`;
+
+exports[`CLI check 2-processed rejected [-c a] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "'a/1.ts' is different after formatting.
+'a/b/2.ts' is different after formatting.
+",
+  "stdout": "Checked 2 files, of which:
+  2 files have formatting issues.
+",
+}
+`;
+
 exports[`CLI check empty [--check] 1`] = `
 Object {
   "status": 1,

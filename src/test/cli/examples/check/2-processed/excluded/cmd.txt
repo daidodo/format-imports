@@ -1,0 +1,2 @@
+--check 1.ts a
+-c 1.ts a
