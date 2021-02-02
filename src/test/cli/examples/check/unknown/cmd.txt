@@ -1,2 +1,2 @@
---check /dev/null
--c /dev/null
+--check /dev/null 1.ts
+-c /dev/null 1.ts
