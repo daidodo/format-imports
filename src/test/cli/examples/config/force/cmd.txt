@@ -1,0 +1,2 @@
+--check --force --config c/import-sorter.json 1.ts a
+--check -f --config c/import-sorter.json 1.ts a

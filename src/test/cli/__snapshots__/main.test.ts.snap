@@ -248,6 +248,36 @@ Object {
 }
 `;
 
+exports[`CLI config force [--check --force --config c/import-sorter.json 1.ts a] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "'a/2.ts' is different after formatting.
+'a/b/3.ts' is different after formatting.
+'a/b/e1.ts' is different after formatting.
+'a/e2.ts' is different after formatting.
+",
+  "stdout": "Checked 5 files, of which:
+  1 file passed.
+  4 files have formatting issues.
+",
+}
+`;
+
+exports[`CLI config force [--check -f --config c/import-sorter.json 1.ts a] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "'a/2.ts' is different after formatting.
+'a/b/3.ts' is different after formatting.
+'a/b/e1.ts' is different after formatting.
+'a/e2.ts' is different after formatting.
+",
+  "stdout": "Checked 5 files, of which:
+  1 file passed.
+  4 files have formatting issues.
+",
+}
+`;
+
 exports[`CLI config nonexist [--check --config c/import-sorter.json a] 1`] = `
 Object {
   "status": 1,

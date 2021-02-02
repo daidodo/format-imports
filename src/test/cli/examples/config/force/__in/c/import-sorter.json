@@ -1,0 +1,4 @@
+{
+  "excludeGlob": ["**/e?.ts"],
+  "maxLineLength": 5
+}
