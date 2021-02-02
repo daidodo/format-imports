@@ -18,6 +18,26 @@ Object {
 }
 `;
 
+exports[`CLI check 1-processed passed [--check 1.ts] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "Checked 1 file, of which:
+  1 file passed.
+",
+}
+`;
+
+exports[`CLI check 1-processed passed [-c 1.ts] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "Checked 1 file, of which:
+  1 file passed.
+",
+}
+`;
+
 exports[`CLI check empty [--check] 1`] = `
 Object {
   "status": 1,
