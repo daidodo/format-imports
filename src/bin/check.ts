@@ -30,7 +30,7 @@ export async function check(options: Options) {
   for (const filePath of options._) {
     if (!fs.existsSync(filePath)) {
       STATS.otherIssues++;
-      outputIssue(`'${filePath}' doesn't exist.`);
+      process.stderr.write(`'${filePath}' doesn't exist.\n`);
       continue;
     }
     const stat = fs.statSync(filePath);
@@ -38,14 +38,10 @@ export async function check(options: Options) {
     else if (stat.isDirectory()) await processDirectory(options, config, filePath);
     else {
       STATS.otherIssues++;
-      outputIssue(`'${filePath}' is neither file nor directory.`);
+      process.stderr.write(`'${filePath}' is neither file nor directory.\n`);
     }
   }
   summary();
-}
-
-function outputIssue(msg: string) {
-  process.stderr.write(msg + '\n');
 }
 
 function processFile(config: Configuration, filePath: string, realPath?: string) {
@@ -61,7 +57,7 @@ function processFile(config: Configuration, filePath: string, realPath?: string)
   const result = formatSource(resolvedPath, source, allConfig);
   if (result !== undefined) {
     STATS.styleIssues++;
-    outputIssue(`'${filePath}' is different after formatting.`);
+    process.stderr.write(`'${filePath}' is different after formatting.\n`);
   }
 }
 
