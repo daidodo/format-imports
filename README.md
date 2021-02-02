@@ -6,19 +6,18 @@
 }
 -->
 
-# Format-imports
+# format-imports
 
-Automatically format **imports** and **exports** for **JavaScript** and **TypeScript** code.
+CLI and APIs for formatting **imports** and **exports** for **JavaScript** and **TypeScript** code.
 
-- [VSCode Plugin](https://marketplace.visualstudio.com/items?itemName=dozerg.tsimportsorter)
-- [Open Issues](https://github.com/daidodo/tsimportsorter/issues)
+It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](https://marketplace.visualstudio.com/items?itemName=dozerg.tsimportsorter), then extracted as standalone CLI and lib.
 
 ## [1.0] Release Notes
 
 ### Added
 
 - Publish APIs: `formatSource`, `resolveConfigForFile`, `isFileExcludedByConfig` and more.
-- Publish CLI `format-imports`.
+- Release CLI `format-imports`.
 
 # Table of contents
 
@@ -61,15 +60,29 @@ Automatically format **imports** and **exports** for **JavaScript** and **TypeSc
 npm i -D format-imports
 ```
 
-- Auto format on save when `autoFormat` is set to `onSave` (this is the default).
-- Press shortcut keys, default to `Alt+Shift+S`.
-- Use `Sort Imports/Exports` command in the Command Palette (`Ctrl+Shift+P`).
+# CLI
 
-  <img width="600" alt="1" src="https://user-images.githubusercontent.com/8170176/80916196-24598200-8d4f-11ea-99f5-208f46a9dcb5.png">
+## Format Files
 
-- Right click on editor content and select `Sort Imports/Exports`.
+```sh
+format-imports [options] [FILE1 FILE2 ...]
+```
 
-  <img width="350" alt="image" src="https://user-images.githubusercontent.com/8170176/80916268-874b1900-8d4f-11ea-97de-f18c52bb54c6.png">
+Format given files.
+
+If no files are provided, then read code from STDIN and format it.
+
+### Options
+
+#### `-o, --output path::String`
+
+If not set, the results will be written back to the source files, or STDOUT when reading from STDIN.
+
+If set, the results will be written to the path specified. You can't specify output path when there are multiple input files.
+
+#### `--config path::String`
+
+If set, `format-imports` will read configuration from provided file, e.g. `import-sorter.json`.
 
 # Extension Settings
 
