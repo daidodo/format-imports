@@ -34,7 +34,7 @@ export async function check(options: Options) {
       continue;
     }
     const stat = fs.statSync(filePath);
-    if (stat.isFile()) processFile(options, config, filePath);
+    if (stat.isFile()) processFile(config, filePath);
     else if (stat.isDirectory()) await processDirectory(options, config, filePath);
     else {
       STATS.otherIssues++;
@@ -48,7 +48,7 @@ function outputIssue(msg: string) {
   process.stderr.write(msg + '\n');
 }
 
-function processFile(options: Options, config: Configuration, filePath: string, realPath?: string) {
+function processFile(config: Configuration, filePath: string, realPath?: string) {
   if (!isSupported(filePath)) return;
   STATS.processed++;
   const resolvedPath = realPath ?? path.resolve(filePath);
@@ -69,7 +69,7 @@ async function processDirectory(options: Options, config: Configuration, dirPath
   const { recursive } = options;
   for await (const { relativePath, resolvedPath } of getFiles(dirPath, !recursive)) {
     const filePath = path.join(dirPath, relativePath);
-    processFile(options, config, filePath, resolvedPath);
+    processFile(config, filePath, resolvedPath);
   }
 }
 
