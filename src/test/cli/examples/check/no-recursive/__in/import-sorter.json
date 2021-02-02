@@ -1,0 +1,3 @@
+{
+  "excludeGlob": ["**/e?.ts"]
+}

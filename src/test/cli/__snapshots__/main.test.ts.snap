@@ -186,6 +186,20 @@ Object {
 }
 `;
 
+exports[`CLI check config fileconfig [--check --config c/import-sorter.json 1.ts a] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "'a/2.ts' is different after formatting.
+'a/b/3.ts' is different after formatting.
+",
+  "stdout": "Checked 5 files, of which:
+  1 file passed.
+  2 files were excluded.
+  2 files have formatting issues.
+",
+}
+`;
+
 exports[`CLI check config force [--check --force --config c/import-sorter.json 1.ts a] 1`] = `
 Object {
   "status": 1,
@@ -240,6 +254,19 @@ Object {
   "stderr": "Expect at least 1 file or directory.
 ",
   "stdout": "",
+}
+`;
+
+exports[`CLI check no-recursive [--check --no-recursive 1.ts a] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "'a/2.ts' is different after formatting.
+",
+  "stdout": "Checked 3 files, of which:
+  1 file passed.
+  1 file was excluded.
+  1 file has formatting issues.
+",
 }
 `;
 

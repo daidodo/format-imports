@@ -1,0 +1,1 @@
+--check --no-recursive 1.ts a
