@@ -76,7 +76,7 @@ async function processDirectory(options: Options, config: Configuration, dirPath
 function summary() {
   const { processed, excluded, otherIssues, styleIssues } = STATS;
   if (processed) {
-    process.stdout.write(`Checked ${processed} files, of which:\n`);
+    process.stdout.write(`Checked ${processed} ${processed === 1 ? 'file' : 'files'}, of which:\n`);
     const passed = processed - excluded - styleIssues;
     process.stdout.write(`  ${passed} ${passed === 1 ? 'file' : 'files'} passed.\n`);
     if (excluded > 0)
