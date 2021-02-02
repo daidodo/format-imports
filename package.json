@@ -1,6 +1,6 @@
 {
   "name": "format-imports",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "JavaScript and TypeScript Import/Export Formatter.",
   "main": "dist/lib/index.js",
   "bin": "dist/bin/main.js",
@@ -13,7 +13,8 @@
     "lib-test": "jest src/test/lib",
     "cli-test": "npm run compile && jest src/test/cli",
     "cli-test:update": "npm run compile && jest -u src/test/cli",
-    "test:watch": "USE_TS_NODE=1 jest --watch"
+    "test:watch": "USE_TS_NODE=1 jest --watch",
+    "prepublishOnly": "npm run clean && npm run compile"
   },
   "repository": {
     "type": "git",
