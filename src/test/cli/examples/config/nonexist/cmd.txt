@@ -1,0 +1,1 @@
+--check --config c/import-sorter.json a
