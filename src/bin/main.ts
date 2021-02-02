@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { check } from './check';
 import { format } from './format';
 import {
