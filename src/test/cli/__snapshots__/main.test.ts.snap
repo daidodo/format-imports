@@ -1,5 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`CLI check [--check 1.ts a] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "'a/2.ts' is different after formatting.
+'a/3.ts' is different after formatting.
+",
+  "stdout": "Checked 5 files, of which:
+  1 file passed.
+  2 files were excluded.
+  2 files have formatting issues.
+",
+}
+`;
+
+exports[`CLI check [-c 1.ts a] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "'a/2.ts' is different after formatting.
+'a/3.ts' is different after formatting.
+",
+  "stdout": "Checked 5 files, of which:
+  1 file passed.
+  2 files were excluded.
+  2 files have formatting issues.
+",
+}
+`;
+
 exports[`CLI check 0-processed [--check a] 1`] = `
 Object {
   "status": 0,
