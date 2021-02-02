@@ -38,6 +38,28 @@ Object {
 }
 `;
 
+exports[`CLI check 1-processed rejected [--check a] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "'a/1.ts' is different after formatting.
+",
+  "stdout": "Checked 1 file, of which:
+  1 file has formatting issues.
+",
+}
+`;
+
+exports[`CLI check 1-processed rejected [-c a] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "'a/1.ts' is different after formatting.
+",
+  "stdout": "Checked 1 file, of which:
+  1 file has formatting issues.
+",
+}
+`;
+
 exports[`CLI check empty [--check] 1`] = `
 Object {
   "status": 1,

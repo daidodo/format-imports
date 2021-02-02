@@ -78,7 +78,8 @@ function summary() {
   if (processed) {
     process.stdout.write(`Checked ${processed} ${processed === 1 ? 'file' : 'files'}, of which:\n`);
     const passed = processed - excluded - styleIssues;
-    process.stdout.write(`  ${passed} ${passed === 1 ? 'file' : 'files'} passed.\n`);
+    if (passed > 0)
+      process.stdout.write(`  ${passed} ${passed === 1 ? 'file' : 'files'} passed.\n`);
     if (excluded > 0)
       process.stdout.write(
         `  ${excluded} ${excluded === 1 ? 'file was' : 'files were'} excluded.\n`,
