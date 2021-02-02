@@ -1,5 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`CLI check 0-processed [--check a] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "Checked 0 files.
+",
+}
+`;
+
+exports[`CLI check 0-processed [-c a] 1`] = `
+Object {
+  "status": 0,
+  "stderr": "",
+  "stdout": "Checked 0 files.
+",
+}
+`;
+
 exports[`CLI check empty [--check] 1`] = `
 Object {
   "status": 1,
