@@ -22,4 +22,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Publish APIs: `formatSource`, `resolveConfigForFile`, `isFileExcludedByConfig` and more.
-- Publish CLI `format-imports`.
+- Release CLI `format-imports`.

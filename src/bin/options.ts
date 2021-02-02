@@ -82,11 +82,11 @@ export interface Options {
   help?: boolean;
   version?: boolean;
   check?: boolean;
+  output?: string;
   config?: string;
   force?: boolean;
   extension?: string;
   recursive?: boolean;
-  output?: string;
   dryRun?: boolean;
   _: string[];
 }
