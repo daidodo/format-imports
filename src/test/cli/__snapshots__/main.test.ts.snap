@@ -40,6 +40,26 @@ Object {
 }
 `;
 
+exports[`CLI check unknown [--check /dev/null] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "'/dev/null' is neither file nor directory.
+",
+  "stdout": "Checked 0 files.
+",
+}
+`;
+
+exports[`CLI check unknown [-c /dev/null] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "'/dev/null' is neither file nor directory.
+",
+  "stdout": "Checked 0 files.
+",
+}
+`;
+
 exports[`CLI format directory [a] 1`] = `
 Object {
   "status": 0,
