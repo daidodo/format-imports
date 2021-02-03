@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import fs from 'fs-extra';
 import path from 'path';
 import tmp from 'tmp';

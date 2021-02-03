@@ -1,5 +1,7 @@
 import fs from 'fs';
 
+import { endOfLineForFile } from '@dozerg/end-of-line';
+
 import {
   assert,
   logger,
@@ -20,7 +22,17 @@ export function loadImportSorterConfig(config: Configuration, sourceFileName: st
   const fConfig = fileConfig(cfgFileName, sourceFileName);
   log.debug('Load package.json config.');
   const pkgConfig = packageConfig(sourceFileName);
-  return mergeConfig(config, pretConfig, fConfig, pkgConfig);
+  log.debug('Enhance EOL.');
+  const c = enhanceEol(config, sourceFileName);
+  return mergeConfig(c, pretConfig, fConfig, pkgConfig);
+}
+
+function enhanceEol(config: Configuration, fileName: string) {
+  if (config.eol) return config;
+  const nl = endOfLineForFile(fileName);
+  const eol: Configuration['eol'] =
+    nl === '\r' ? 'CR' : nl === '\r\n' ? 'CRLF' : nl === '\n\r' ? 'LFCR' : 'LF';
+  return mergeConfig({ eol }, config);
 }
 
 function packageConfig(fileName: string) {

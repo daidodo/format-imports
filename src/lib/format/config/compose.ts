@@ -21,7 +21,7 @@ export function configForCompose({
   insertFinalNewline,
   eol,
 }: Configuration) {
-  const nl = eol === 'CRLF' ? '\r\n' : '\n';
+  const nl = eol === 'CR' ? '\r' : eol === 'CRLF' ? '\r\n' : eol === 'LFCR' ? '\n\r' : '\n';
   return {
     maxLength: (maxLineLength ?? 80) || Number.MAX_SAFE_INTEGER,
     maxWords: {

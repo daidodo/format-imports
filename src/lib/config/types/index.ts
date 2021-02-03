@@ -40,7 +40,7 @@ export type Configuration = Readonly<
     insertFinalNewline: boolean;
     bracketSpacing: boolean;
     // Internal or not configurable
-    eol: 'LF' | 'CRLF'; // This is not configurable because VS Code will format the file anyway.
+    eol: 'LF' | 'CR' | 'CRLF' | 'LFCR'; // Internal. Not configurable for VSCode.
     force: boolean; // Internal. Ignore exclude paths and file disable-comment.
     development: {
       enableDebug: boolean;
