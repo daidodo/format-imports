@@ -1391,21 +1391,3 @@ format-imports -c [options] FILE/DIR [FILE/DIR ...]
   "stdout": "",
 }
 `;
-
-exports[`CLI version [--version] 1`] = `
-Object {
-  "status": 1,
-  "stderr": "v1.0.0
-",
-  "stdout": "",
-}
-`;
-
-exports[`CLI version [-v] 1`] = `
-Object {
-  "status": 1,
-  "stderr": "v1.0.0
-",
-  "stdout": "",
-}
-`;

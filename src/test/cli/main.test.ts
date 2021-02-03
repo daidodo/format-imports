@@ -16,6 +16,22 @@ const OUT_DIR = '__out';
 const TMP_PREFIX = 'format-imports';
 
 describe('CLI', () => {
+  describe('version', () => {
+    const VER_PATTERN = /^v\d+\.\d+\.\d+\n$/;
+    test('--version', () => {
+      const { stdout, stderr, status } = run('--version');
+      expect(status).toBe(1);
+      expect(stdout).toBe('');
+      expect(stderr).toMatch(VER_PATTERN);
+    });
+    test('-v', () => {
+      const { stdout, stderr, status } = run('-v');
+      expect(status).toBe(1);
+      expect(stdout).toBe('');
+      expect(stderr).toMatch(VER_PATTERN);
+    });
+  });
+
   // change 'example' to run specific test cases.
   const examples = path.resolve(__dirname, 'examples');
   runTestSuite(examples);
@@ -49,7 +65,7 @@ function runCmd(options: string, resolved: string) {
   // copy files needed to the child base directory.
   const { inDir, outDir } = getDirs(resolved);
   if (inDir) fs.copySync(inDir, baseDir);
-  run(options, { stdin, baseDir });
+  runAndCheck(options, { stdin, baseDir });
   // setup the expected base directory
   const tmpDir2 = tmp.dirSync({ prefix: TMP_PREFIX, unsafeCleanup: true });
   const baseDirExpected = tmpDir2.name;
@@ -60,6 +76,12 @@ function runCmd(options: string, resolved: string) {
   tmpDir1.removeCallback();
   tmpDir2.removeCallback();
   expect(r.same).toBeTruthy();
+}
+
+// check execution results
+function runAndCheck(options: string, env?: { stdin?: string; baseDir: string }) {
+  const { stdout, stderr, status } = run(options, env);
+  expect({ stdout, stderr, status }).toMatchSnapshot();
 }
 
 function run(options: string, env?: { stdin?: string; baseDir: string }) {
@@ -74,12 +96,7 @@ function run(options: string, env?: { stdin?: string; baseDir: string }) {
   const { stdout, stderr, status } = useTsNode
     ? spawnSync('ts-node-script', ['-T', ...args], opt)
     : spawnSync('node', args, opt);
-  // check execution results
-  expect({
-    stdout: stdout.toString(),
-    stderr: stderr.toString(),
-    status,
-  }).toMatchSnapshot();
+  return { stdout: stdout.toString(), stderr: stderr.toString(), status };
 }
 
 function getCmd(dir: string) {

@@ -1,4 +1,5 @@
 import {
+  COMPARE_RULE_DEFAULT,
   CompareRule,
   SortRules,
 } from '../../config';
@@ -182,10 +183,11 @@ const COMPARE_DEF: Comparator = (a, b) => {
   return a < b ? -1 : a > b ? 1 : 0;
 };
 
-function comparatorFromRule(rule: CompareRule | undefined) {
-  if (rule === 'none') return undefined;
+function comparatorFromRule(rule: CompareRule | undefined | null) {
+  const r = rule === undefined ? COMPARE_RULE_DEFAULT : rule;
+  if (r === 'none') return undefined;
   const p = { map: new Map<number, Segment>() };
-  rule?.forEach((s, i) => new Segment(s, i, p));
+  r?.forEach((s, i) => new Segment(s, i, p));
   return !checkAndComplete(p, rule?.length ?? 0) ? COMPARE_DEF : comparatorFromP(p);
 }
 

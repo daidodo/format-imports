@@ -1,5 +1,7 @@
-import { Configuration } from '../../config';
-import { GROUP_RULES_DEFAULT } from '../../config/types';
+import {
+  Configuration,
+  GROUP_RULES_DEFAULT,
+} from '../../config';
 import { ESLintConfigProcessed } from '../config';
 import {
   ImportNode,

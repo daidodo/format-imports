@@ -1,5 +1,5 @@
-import B from 'a';
+import b from 'a';
 import A from 'b';
 import { C } from 'c';
 
-export { A, B, C };
+export { A, b, C };

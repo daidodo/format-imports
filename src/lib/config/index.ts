@@ -6,9 +6,11 @@ import { loadTsConfig } from './tsconfig';
 import { Configuration } from './types';
 
 export {
+  COMPARE_RULE_DEFAULT,
   CompareRule,
   Configuration,
   FlagSymbol,
+  GROUP_RULES_DEFAULT,
   GroupRule,
   KeepUnusedRule,
   SegSymbol,

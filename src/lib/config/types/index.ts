@@ -48,4 +48,13 @@ export type Configuration = Readonly<
   }>
 >;
 
-export const GROUP_RULES_DEFAULT = ['^react(-dom)?$', '^@angular/', '^vue$', {}, '^[@]', '^[.]'];
+export const GROUP_RULES_DEFAULT: Configuration['groupRules'] = [
+  '^react(-dom)?$',
+  '^@angular/',
+  '^vue$',
+  {},
+  '^[@]',
+  '^[.]',
+];
+
+export const COMPARE_RULE_DEFAULT: CompareRule = ['_', 'aA'];
