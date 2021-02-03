@@ -9,6 +9,7 @@
   "scripts": {
     "clean": "rm -rf dist",
     "compile": "tsc",
+    "test-all": "npm run compile && jest",
     "unit-test": "jest src/lib",
     "lib-test": "jest src/test/lib",
     "cli-test": "npm run compile && jest src/test/cli",
