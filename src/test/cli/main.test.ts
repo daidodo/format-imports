@@ -12,6 +12,7 @@ const OS = os.platform();
 
 const CMD = 'cmd.txt';
 const SKIP = 'skip.txt';
+const SPECIAL = 'special.txt';
 const STDIN = 'stdin.txt';
 const IN_DIR = '__in';
 const OUT_DIR = '__out';
@@ -38,7 +39,7 @@ describe('CLI', () => {
   // Run all tests
   // runTestSuite(examples);
   // Or, run specific test case(s)
-  runTestSuite(examples, 'check/0-processed');
+  runTestSuite(examples, 'check');
 });
 
 function runTestSuite(resolved: string, relative?: string | string[]): void {
@@ -64,9 +65,22 @@ function runTestSuite(resolved: string, relative?: string | string[]): void {
 function runTestCase(resolved: string) {
   const { cmds, skip } = getCmd(resolved);
   if (!cmds) return;
-  for (const cmd of cmds)
-    if (skip) test.skip(`[${cmd}]`, () => runCmd(cmd, resolved));
-    else test(`[${cmd}]`, () => runCmd(cmd, resolved));
+  const special = getSpecial(resolved);
+  for (const cmd of cmds) {
+    let found = false;
+    if (special)
+      for (const s of special) {
+        const name = `${s}[${cmd}]`;
+        if (s === OS) {
+          found = true;
+          if (skip) test.skip(name, () => runCmd(cmd, resolved));
+          else test(name, () => runCmd(cmd, resolved));
+        } else test.skip(name, () => runCmd(cmd, resolved));
+      }
+    const name = `[${cmd}]`;
+    if (found || skip) test.skip(name, () => runCmd(cmd, resolved));
+    else test(name, () => runCmd(cmd, resolved));
+  }
 }
 
 function runCmd(options: string, resolved: string) {
@@ -115,12 +129,16 @@ function run(options: string, env?: { stdin?: string; baseDir: string }) {
   };
 }
 
+function getCmd(dir: string) {
+  return { skip: getSkip(dir)?.has(OS), cmds: readLines(dir, CMD) };
+}
+
 function getSkip(dir: string) {
   return new Set(readLines(dir, SKIP));
 }
 
-function getCmd(dir: string) {
-  return { skip: getSkip(dir)?.has(OS), cmds: readLines(dir, CMD) };
+function getSpecial(dir: string) {
+  return readLines(dir, SPECIAL);
 }
 
 function getStdin(dir: string) {
