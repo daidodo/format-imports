@@ -4,12 +4,14 @@ import {
 } from 'child_process';
 import { compareSync } from 'dir-compare';
 import fs from 'fs-extra';
+import os from 'os';
 import path, { sep } from 'path';
 import tmp from 'tmp';
 
-import { assertNonNull } from '../../lib/common';
+const OS = os.platform();
 
 const CMD = 'cmd.txt';
+const EXCLUDE = 'exclude.txt';
 const STDIN = 'stdin.txt';
 const IN_DIR = '__in';
 const OUT_DIR = '__out';
@@ -52,9 +54,11 @@ function runTestSuite(resolved: string, relative?: string | string[]): void {
 }
 
 function runTestCase(resolved: string) {
-  const cmds = getCmd(resolved);
-  assertNonNull(cmds, 'Missing cmd.txt.');
-  for (const cmd of cmds) test(`[${cmd}]`, () => runCmd(cmd, resolved));
+  const { cmds, skip } = getCmd(resolved);
+  if (!cmds) return;
+  for (const cmd of cmds)
+    if (skip) test.skip(`[${cmd}]`, () => runCmd(cmd, resolved));
+    else test(`[${cmd}]`, () => runCmd(cmd, resolved));
 }
 
 function runCmd(options: string, resolved: string) {
@@ -96,11 +100,19 @@ function run(options: string, env?: { stdin?: string; baseDir: string }) {
   const { stdout, stderr, status } = useTsNode
     ? spawnSync('ts-node-script', ['-T', ...args], opt)
     : spawnSync('node', args, opt);
-  return { stdout: stdout.toString(), stderr: stderr.toString(), status };
+  return {
+    stdout: stdout.toString().replace(/\\/g, '/'),
+    stderr: stderr.toString().replace(/\\/g, '/'),
+    status,
+  };
+}
+
+function getExclude(dir: string) {
+  return new Set(readLines(dir, EXCLUDE));
 }
 
 function getCmd(dir: string) {
-  return readFile(dir, CMD)?.split(/\r?\n|\n?\r/);
+  return { skip: getExclude(dir)?.has(OS), cmds: readLines(dir, CMD) };
 }
 
 function getStdin(dir: string) {
@@ -123,4 +135,8 @@ function readFile(dir: string, fn: string) {
   const file = path.resolve(dir, fn);
   if (!fs.existsSync(file)) return undefined;
   return fs.readFileSync(file).toString();
+}
+
+function readLines(dir: string, fn: string) {
+  return readFile(dir, fn)?.split(/\r?\n|\n?\r/);
 }

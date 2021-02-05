@@ -14,7 +14,7 @@
     "lib-test": "jest src/test/lib",
     "cli-test": "npm run compile && jest src/test/cli",
     "cli-test:update": "npm run compile && jest -u src/test/cli",
-    "test:watch": "USE_TS_NODE=1 jest --watch",
+    "test:watch": "set USE_TS_NODE=1 && jest --watch",
     "prepublishOnly": "npm run clean && npm run compile"
   },
   "repository": {
