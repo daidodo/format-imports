@@ -2,15 +2,18 @@
 {
   "no-inline-html": {
     "allowed_elements": ["img"]
+  },
+  "no-duplicate-heading": {
+    "siblings_only": true
   }
 }
 -->
 
 # format-imports
 
-CLI and APIs for formatting **imports** and **exports** for **JavaScript** and **TypeScript** code.
+This package contains CLI and APIs to format **imports** and **exports** for **JavaScript** and **TypeScript** code.
 
-It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](https://marketplace.visualstudio.com/items?itemName=dozerg.tsimportsorter), then extracted as standalone CLI and lib.
+It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](https://marketplace.visualstudio.com/items?itemName=dozerg.tsimportsorter), then extracted to standalone CLI and lib for more use cases (e.g. CI/CD) and editors (hopefully).
 
 ## [1.0] Release Notes
 
@@ -53,6 +56,7 @@ It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](htt
 - Respect configs from [Prettier](https://prettier.io) and [EditorConfig](https://editorconfig.org).
 - Preserve `'use strict'`, `///` directives, shebang (`#!`) and comments.
 - Support [Type-Only imports/exports](https://devblogs.microsoft.com/typescript/announcing-typescript-3-8/#type-only-imports-exports).
+- Cross-platform consistency: Windows and MacOS.
 
 # Install
 
@@ -68,21 +72,61 @@ npm i -D format-imports
 format-imports [options] [FILE1 FILE2 ...]
 ```
 
-Format given files.
+This command formats a number of given files.
 
-If no files are provided, then read code from STDIN and format it.
+If no files provided, it'll read the source from `STDIN` and format it.
 
 ### Options
 
 #### `-o, --output path::String`
 
-If not set, the results will be written back to the source files, or STDOUT when reading from STDIN.
+If not set, the results will be written back to input files, or `STDOUT` when reading from `STDIN`.
 
-If set, the results will be written to the path specified. You can't specify output path when there are multiple input files.
+If set, the results will be written to that file. You can't specify output file when there are multiple input files.
+
+When there is one input file and the output path is a directory, the result will be written to a new file under the output path with the same name as the input file.
 
 #### `--config path::String`
 
-If set, `format-imports` will read configuration from provided file, e.g. `import-sorter.json`.
+If set, `format-imports` will read configurations from provided file, e.g. `path/to/import-sorter.json`. The path can be either absolute or relative to the CWD (current work directory).
+
+When formatting a source file, `format-imports` will try to resolve configurations specific to that source file, and then merge it with the configurations from `--config` option. Source file specific configurations will have higher precedence.
+
+#### `-f, --force`
+
+Format all supported files, and ignore exclude patterns/globs and file-disable comments from no matter `--config` option or source file specific configurations.
+
+#### `-d, --dry-run`
+
+Test-run the command without modifying or creating any files. Useful when you're not sure what will be changed and want to be cautious.
+
+#### `-e, --extension js|ts|jsx|tsx`
+
+Default to `ts`.
+
+When reading from `STDIN`, you can specify the source code type via this option.
+
+If it's not set but `--output` is provided, `format-imports` will try to infer code type from output file extension.
+
+## Format a Directory
+
+```sh
+format-imports [options] DIRECTORY
+```
+
+This command formats all supported files under a directory.
+
+### Options
+
+#### `-o, --output path::String`
+
+If not set, the results will be written back to input files.
+
+If set, the results will be written to new files under the output directory, with the same file structure as the input directory.
+
+If the output directory doesn't exist, it'll be created.
+
+#### `--config path::String`
 
 # Extension Settings
 
