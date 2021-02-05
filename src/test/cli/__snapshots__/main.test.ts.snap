@@ -108,6 +108,28 @@ Object {
 }
 `;
 
+exports[`CLI check 1-processed rejected win32[--check a] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "'a\\\\1.ts' is different after formatting.
+",
+  "stdout": "Checked 1 file, of which:
+  1 file has formatting issues.
+",
+}
+`;
+
+exports[`CLI check 1-processed rejected win32[-c a] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "'a\\\\1.ts' is different after formatting.
+",
+  "stdout": "Checked 1 file, of which:
+  1 file has formatting issues.
+",
+}
+`;
+
 exports[`CLI check 2-processed excluded [--check 1.ts a] 1`] = `
 Object {
   "status": 0,
@@ -172,6 +194,30 @@ Object {
 }
 `;
 
+exports[`CLI check 2-processed rejected win32[--check a] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "'a\\\\1.ts' is different after formatting.
+'a\\\\b\\\\2.ts' is different after formatting.
+",
+  "stdout": "Checked 2 files, of which:
+  2 files have formatting issues.
+",
+}
+`;
+
+exports[`CLI check 2-processed rejected win32[-c a] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "'a\\\\1.ts' is different after formatting.
+'a\\\\b\\\\2.ts' is different after formatting.
+",
+  "stdout": "Checked 2 files, of which:
+  2 files have formatting issues.
+",
+}
+`;
+
 exports[`CLI check config [--check --config c/import-sorter.json 1.ts a] 1`] = `
 Object {
   "status": 1,
@@ -191,6 +237,20 @@ Object {
   "status": 1,
   "stderr": "'a/2.ts' is different after formatting.
 'a/b/3.ts' is different after formatting.
+",
+  "stdout": "Checked 5 files, of which:
+  1 file passed.
+  2 files were excluded.
+  2 files have formatting issues.
+",
+}
+`;
+
+exports[`CLI check config fileconfig win32[--check --config c/import-sorter.json 1.ts a] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "'a\\\\2.ts' is different after formatting.
+'a\\\\b\\\\3.ts' is different after formatting.
 ",
   "stdout": "Checked 5 files, of which:
   1 file passed.
@@ -230,12 +290,56 @@ Object {
 }
 `;
 
+exports[`CLI check config force win32[--check --force --config c/import-sorter.json 1.ts a] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "'a\\\\2.ts' is different after formatting.
+'a\\\\b\\\\3.ts' is different after formatting.
+'a\\\\b\\\\e1.ts' is different after formatting.
+'a\\\\e2.ts' is different after formatting.
+",
+  "stdout": "Checked 5 files, of which:
+  1 file passed.
+  4 files have formatting issues.
+",
+}
+`;
+
+exports[`CLI check config force win32[--check -f --config c/import-sorter.json 1.ts a] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "'a\\\\2.ts' is different after formatting.
+'a\\\\b\\\\3.ts' is different after formatting.
+'a\\\\b\\\\e1.ts' is different after formatting.
+'a\\\\e2.ts' is different after formatting.
+",
+  "stdout": "Checked 5 files, of which:
+  1 file passed.
+  4 files have formatting issues.
+",
+}
+`;
+
 exports[`CLI check config nonexist [--check --config c/import-sorter.json a] 1`] = `
 Object {
   "status": 1,
   "stderr": "ENOENT: no such file or directory, open 'c/import-sorter.json'
 ",
   "stdout": "",
+}
+`;
+
+exports[`CLI check config win32[--check --config c/import-sorter.json 1.ts a] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "'a\\\\2.ts' is different after formatting.
+'a\\\\b\\\\3.ts' is different after formatting.
+",
+  "stdout": "Checked 5 files, of which:
+  1 file passed.
+  2 files were excluded.
+  2 files have formatting issues.
+",
 }
 `;
 
@@ -261,6 +365,19 @@ exports[`CLI check no-recursive [--check --no-recursive 1.ts a] 1`] = `
 Object {
   "status": 1,
   "stderr": "'a/2.ts' is different after formatting.
+",
+  "stdout": "Checked 3 files, of which:
+  1 file passed.
+  1 file was excluded.
+  1 file has formatting issues.
+",
+}
+`;
+
+exports[`CLI check no-recursive win32[--check --no-recursive 1.ts a] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "'a\\\\2.ts' is different after formatting.
 ",
   "stdout": "Checked 3 files, of which:
   1 file passed.
@@ -310,6 +427,34 @@ Object {
 ",
   "stdout": "Checked 1 file, of which:
   1 file passed.
+",
+}
+`;
+
+exports[`CLI check win32[--check 1.ts a] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "'a\\\\2.ts' is different after formatting.
+'a\\\\b\\\\3.ts' is different after formatting.
+",
+  "stdout": "Checked 5 files, of which:
+  1 file passed.
+  2 files were excluded.
+  2 files have formatting issues.
+",
+}
+`;
+
+exports[`CLI check win32[-c 1.ts a] 1`] = `
+Object {
+  "status": 1,
+  "stderr": "'a\\\\2.ts' is different after formatting.
+'a\\\\b\\\\3.ts' is different after formatting.
+",
+  "stdout": "Checked 5 files, of which:
+  1 file passed.
+  2 files were excluded.
+  2 files have formatting issues.
 ",
 }
 `;

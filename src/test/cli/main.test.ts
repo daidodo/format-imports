@@ -123,11 +123,7 @@ function run(options: string, env?: { stdin?: string; baseDir: string }) {
   const { stdout, stderr, status } = useTsNode
     ? spawnSync('ts-node-script', ['-T', ...args], opt)
     : spawnSync('node', args, opt);
-  return {
-    stdout: stdout.toString().replace(/\\/g, '/'),
-    stderr: stderr.toString().replace(/\\/g, '/'),
-    status,
-  };
+  return { stdout: stdout.toString(), stderr: stderr.toString(), status };
 }
 
 function getCmd(dir: string) {
