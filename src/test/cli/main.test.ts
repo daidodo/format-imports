@@ -100,7 +100,7 @@ function run(options: string, env?: { stdin?: string; baseDir: string }) {
 }
 
 function getCmd(dir: string) {
-  return readFile(dir, CMD)?.split('\n');
+  return readFile(dir, CMD)?.split(/\r?\n|\n?\r/);
 }
 
 function getStdin(dir: string) {
