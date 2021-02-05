@@ -13,7 +13,7 @@ const OS = os.platform();
 const CMD = 'cmd.txt';
 const SKIP = 'skip.txt';
 const SPECIAL = 'special.txt';
-const STDIN = 'stdin.txt';
+const STDIN = 'stdin.dat';
 const IN_DIR = '__in';
 const OUT_DIR = '__out';
 const TMP_PREFIX = 'format-imports';
@@ -37,9 +37,9 @@ describe('CLI', () => {
 
   const examples = path.resolve(__dirname, 'examples');
   // Run all tests
-  // runTestSuite(examples);
+  runTestSuite(examples);
   // Or, run specific test case(s)
-  runTestSuite(examples, 'check');
+  // runTestSuite(examples, 'check');
 });
 
 function runTestSuite(resolved: string, relative?: string | string[]): void {
