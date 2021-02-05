@@ -1,7 +1,12 @@
 import minimatch from 'minimatch';
 
+import { endOfLine } from '@dozerg/end-of-line';
+
 import { loadESLintConfig } from './eslint';
-import { loadImportSorterConfig } from './importSorter';
+import {
+  enhanceEol,
+  loadImportSorterConfig,
+} from './importSorter';
 import { loadTsConfig } from './tsconfig';
 import { Configuration } from './types';
 
@@ -27,6 +32,11 @@ export function resolveConfigForFile(fileName: string, config: Configuration = {
   const eslintConfig = loadESLintConfig(fileName);
   const tsCompilerOptions = loadTsConfig(fileName);
   return { config: extConfig, tsCompilerOptions, eslintConfig };
+}
+
+export function resolveConfigForSource(source: string, config: Configuration = {}) {
+  const extConfig = enhanceEol(config, () => endOfLine(source));
+  return { config: extConfig, tsCompilerOptions: undefined, eslintConfig: undefined };
 }
 
 // TODO: Tests.

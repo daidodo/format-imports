@@ -39,7 +39,7 @@ describe('CLI', () => {
   // Run all tests
   runTestSuite(examples);
   // Or, run specific test case(s)
-  // runTestSuite(examples, 'check');
+  // runTestSuite(examples, 'format/stdin');
 });
 
 function runTestSuite(resolved: string, relative?: string | string[]): void {

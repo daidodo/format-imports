@@ -6,6 +6,7 @@ import {
   formatSource,
   isFileExcludedByConfig,
   resolveConfigForFile,
+  resolveConfigForSource,
 } from '../lib';
 import {
   isSupported,
@@ -95,7 +96,8 @@ function processStdin(options: Options) {
     const ext = getExt(options);
     const { fd, name } = tmp.fileSync({ prefix: 'format-imports', postfix: `.${ext}` });
     fs.writeSync(fd, source);
-    const result = formatSource(name, source, { config });
+    const allConfig = resolveConfigForSource(source, config);
+    const result = formatSource(name, source, allConfig);
     const mode = dryRun ? OutputMode.DRY_RUN_FILE : OutputMode.NORMAL;
     const { error, modified, created } = outputResult(mode, result, output, source);
     if (error) process.exit(1);

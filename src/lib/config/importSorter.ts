@@ -23,13 +23,13 @@ export function loadImportSorterConfig(config: Configuration, sourceFileName: st
   log.debug('Load package.json config.');
   const pkgConfig = packageConfig(sourceFileName);
   log.debug('Enhance EOL.');
-  const c = enhanceEol(config, sourceFileName);
+  const c = enhanceEol(config, () => endOfLineForFile(sourceFileName));
   return mergeConfig(c, pretConfig, fConfig, pkgConfig);
 }
 
-function enhanceEol(config: Configuration, fileName: string) {
+export function enhanceEol(config: Configuration, detectEol: () => string) {
   if (config.eol) return config;
-  const nl = endOfLineForFile(fileName);
+  const nl = detectEol();
   const eol: Configuration['eol'] =
     nl === '\r' ? 'CR' : nl === '\r\n' ? 'CRLF' : nl === '\n\r' ? 'LFCR' : 'LF';
   return mergeConfig({ eol }, config);
