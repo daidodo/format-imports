@@ -11,7 +11,7 @@ import tmp from 'tmp';
 const OS = os.platform();
 
 const CMD = 'cmd.txt';
-const EXCLUDE = 'exclude.txt';
+const SKIP = 'skip.txt';
 const STDIN = 'stdin.txt';
 const IN_DIR = '__in';
 const OUT_DIR = '__out';
@@ -34,23 +34,31 @@ describe('CLI', () => {
     });
   });
 
-  // change 'example' to run specific test cases.
   const examples = path.resolve(__dirname, 'examples');
-  runTestSuite(examples);
+  // Run all tests
+  // runTestSuite(examples);
+  // Or, run specific test case(s)
+  runTestSuite(examples, 'check/0-processed');
 });
 
 function runTestSuite(resolved: string, relative?: string | string[]): void {
   const [name, ...rest] = relative
     ? typeof relative === 'string'
-      ? relative.split(sep)
+      ? relative.split(sep).filter(p => !!p)
       : relative
     : [];
-  if (name) return describe(name, () => runTestSuite(path.resolve(resolved, name), rest));
+  // if (name) return describe(name, () => runTestSuite(path.resolve(resolved, name), rest));
   const entries = fs.readdirSync(resolved, { withFileTypes: true });
   if (entries.some(e => e.name === CMD)) runTestCase(resolved);
   entries
     .filter(e => e.isDirectory() && e.name !== IN_DIR && e.name != OUT_DIR)
-    .forEach(e => describe(e.name, () => runTestSuite(path.resolve(resolved, e.name))));
+    .forEach(e => {
+      const rp = path.resolve(resolved, e.name);
+      if (e.name === name) {
+        if (rest && rest.length > 0) describe(e.name, () => runTestSuite(rp, rest));
+        else describe.only(e.name, () => runTestSuite(rp));
+      } else describe(e.name, () => runTestSuite(rp));
+    });
 }
 
 function runTestCase(resolved: string) {
@@ -107,12 +115,12 @@ function run(options: string, env?: { stdin?: string; baseDir: string }) {
   };
 }
 
-function getExclude(dir: string) {
-  return new Set(readLines(dir, EXCLUDE));
+function getSkip(dir: string) {
+  return new Set(readLines(dir, SKIP));
 }
 
 function getCmd(dir: string) {
-  return { skip: getExclude(dir)?.has(OS), cmds: readLines(dir, CMD) };
+  return { skip: getSkip(dir)?.has(OS), cmds: readLines(dir, CMD) };
 }
 
 function getStdin(dir: string) {
