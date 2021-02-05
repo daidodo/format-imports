@@ -128,6 +128,18 @@ If the output directory doesn't exist, it'll be created.
 
 #### `--config path::String`
 
+See [above](#--config-pathstring).
+
+#### `--no-recursive`
+
+If not set, `format-imports` will search for supported source files recursively under the input directory.
+
+Otherwise, the search will be non-recursive.
+
+#### `-f, --force`
+
+See [above](#-f,--force)
+
 # Extension Settings
 
 All VS Code settings under `"tsImportSorter"` section and their default values:
