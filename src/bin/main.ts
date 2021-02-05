@@ -10,8 +10,8 @@ import {
 
 async function main(argv: string[]) {
   const options = processArgv(argv);
-  if (options.help) usage();
-  if (options.version) version();
+  if (options.help) usage(0);
+  if (options.version) version(0);
   try {
     if (options.check) await check(options);
     else await format(options);

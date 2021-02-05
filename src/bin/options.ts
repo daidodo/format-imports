@@ -10,11 +10,13 @@ type Results = {
 const { parseArgv, generateHelp } = optionator({
   prepend: [
     EXE + ' [options] [FILE ...]',
-    '    Format given file(s). If no files provided, read from STDIN.',
+    '        Format given file(s). If no files provided, read from STDIN.',
+    '',
     EXE + ' [options] DIR',
-    '    Format supported files under given directory.',
+    '        Format supported files under given directory.',
+    '',
     EXE + ' -c [options] FILE/DIR [FILE/DIR ...]',
-    '    Check if files (under directories) are formatted.',
+    '        Check if files (under directories) are formatted.',
   ].join('\n'),
   options: [
     {
@@ -91,14 +93,16 @@ export interface Options {
   _: string[];
 }
 
-export function usage() {
-  process.stderr.write(`${generateHelp()}\n`);
-  process.exit(1);
+export function usage(code = 1) {
+  const out = code === 0 ? process.stdout : process.stderr;
+  out.write(`${generateHelp()}\n`);
+  process.exit(code);
 }
 
-export function version() {
-  process.stderr.write(`v${VERSION}\n`);
-  process.exit(1);
+export function version(code = 1) {
+  const out = code === 0 ? process.stdout : process.stderr;
+  out.write(`v${VERSION}\n`);
+  process.exit(code);
 }
 
 export function processArgv(argv: string[]) {

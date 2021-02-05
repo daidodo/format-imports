@@ -1189,11 +1189,13 @@ Object {
   "stderr": "Option extension: 'xyz' not one of ts, tsx, js, or jsx.
 
 format-imports [options] [FILE ...]
-    Format given file(s). If no files provided, read from STDIN.
+        Format given file(s). If no files provided, read from STDIN.
+
 format-imports [options] DIR
-    Format supported files under given directory.
+        Format supported files under given directory.
+
 format-imports -c [options] FILE/DIR [FILE/DIR ...]
-    Check if files (under directories) are formatted.
+        Check if files (under directories) are formatted.
 
   -h, --help                 Show help.
   -v, --version              Show version number.
@@ -1215,11 +1217,13 @@ Object {
   "stderr": "Option extension: 'xyz' not one of ts, tsx, js, or jsx.
 
 format-imports [options] [FILE ...]
-    Format given file(s). If no files provided, read from STDIN.
+        Format given file(s). If no files provided, read from STDIN.
+
 format-imports [options] DIR
-    Format supported files under given directory.
+        Format supported files under given directory.
+
 format-imports -c [options] FILE/DIR [FILE/DIR ...]
-    Check if files (under directories) are formatted.
+        Check if files (under directories) are formatted.
 
   -h, --help                 Show help.
   -v, --version              Show version number.
@@ -1491,13 +1495,16 @@ export { A, B, C };
 
 exports[`CLI help [--help] 1`] = `
 Object {
-  "status": 1,
-  "stderr": "format-imports [options] [FILE ...]
-    Format given file(s). If no files provided, read from STDIN.
+  "status": 0,
+  "stderr": "",
+  "stdout": "format-imports [options] [FILE ...]
+        Format given file(s). If no files provided, read from STDIN.
+
 format-imports [options] DIR
-    Format supported files under given directory.
+        Format supported files under given directory.
+
 format-imports -c [options] FILE/DIR [FILE/DIR ...]
-    Check if files (under directories) are formatted.
+        Check if files (under directories) are formatted.
 
   -h, --help                 Show help.
   -v, --version              Show version number.
@@ -1509,19 +1516,21 @@ format-imports -c [options] FILE/DIR [FILE/DIR ...]
   -o, --output path::String  Specify the output file or directory.
   -d, --dry-run              Test running without changing any files.
 ",
-  "stdout": "",
 }
 `;
 
 exports[`CLI help [-h] 1`] = `
 Object {
-  "status": 1,
-  "stderr": "format-imports [options] [FILE ...]
-    Format given file(s). If no files provided, read from STDIN.
+  "status": 0,
+  "stderr": "",
+  "stdout": "format-imports [options] [FILE ...]
+        Format given file(s). If no files provided, read from STDIN.
+
 format-imports [options] DIR
-    Format supported files under given directory.
+        Format supported files under given directory.
+
 format-imports -c [options] FILE/DIR [FILE/DIR ...]
-    Check if files (under directories) are formatted.
+        Check if files (under directories) are formatted.
 
   -h, --help                 Show help.
   -v, --version              Show version number.
@@ -1533,6 +1542,5 @@ format-imports -c [options] FILE/DIR [FILE/DIR ...]
   -o, --output path::String  Specify the output file or directory.
   -d, --dry-run              Test running without changing any files.
 ",
-  "stdout": "",
 }
 `;

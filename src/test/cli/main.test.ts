@@ -23,15 +23,15 @@ describe('CLI', () => {
     const VER_PATTERN = /^v\d+\.\d+\.\d+\n$/;
     test('--version', () => {
       const { stdout, stderr, status } = run('--version');
-      expect(status).toBe(1);
-      expect(stdout).toBe('');
-      expect(stderr).toMatch(VER_PATTERN);
+      expect(status).toBe(0);
+      expect(stdout).toMatch(VER_PATTERN);
+      expect(stderr).toBe('');
     });
     test('-v', () => {
       const { stdout, stderr, status } = run('-v');
-      expect(status).toBe(1);
-      expect(stdout).toBe('');
-      expect(stderr).toMatch(VER_PATTERN);
+      expect(status).toBe(0);
+      expect(stdout).toMatch(VER_PATTERN);
+      expect(stderr).toBe('');
     });
   });
 
