@@ -5,7 +5,7 @@ import {
 import { compareSync } from 'dir-compare';
 import fs from 'fs-extra';
 import os from 'os';
-import path, { sep } from 'path';
+import path from 'path';
 import tmp from 'tmp';
 
 const OS = os.platform();
@@ -37,15 +37,15 @@ describe('CLI', () => {
 
   const examples = path.resolve(__dirname, 'examples');
   // Run all tests
-  // runTestSuite(examples);
+  runTestSuite(examples);
   // Or, run specific test case(s)
-  runTestSuite(examples, 'check');
+  // runTestSuite(examples, 'check');
 });
 
 function runTestSuite(resolved: string, relative?: string | string[]): void {
   const [name, ...rest] = relative
     ? typeof relative === 'string'
-      ? relative.split(sep).filter(p => !!p)
+      ? relative.split('/').filter(p => !!p)
       : relative
     : [];
   // if (name) return describe(name, () => runTestSuite(path.resolve(resolved, name), rest));
@@ -101,6 +101,7 @@ function runCmd(options: string, resolved: string) {
   const r = compareSync(baseDirExpected, baseDir, { compareContent: true });
   tmpDir1.removeCallback();
   tmpDir2.removeCallback();
+  // The content of the base directory should be expected.
   expect(r.same).toBeTruthy();
 }
 
