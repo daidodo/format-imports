@@ -98,7 +98,7 @@ Format all supported files, and ignore exclude patterns/globs and file-disable c
 
 #### `-d, --dry-run`
 
-Test-run the command without modifying or creating any files. Useful when you're not sure what will be changed and want to be cautious.
+Test-run the command without modifying or creating any files. Useful when you're not sure what will happen and want to be cautious.
 
 #### `-e, --extension js|ts|jsx|tsx`
 
@@ -106,7 +106,7 @@ Default to `ts`.
 
 When reading from `STDIN`, you can specify the source code type via this option.
 
-If it's not set but `--output` is provided, `format-imports` will try to infer code type from output file extension.
+If it's not set but `--output` is provided, `format-imports` will try to infer code type from the output file extension.
 
 ## Format a Directory
 
@@ -138,7 +138,37 @@ Otherwise, the search will be non-recursive.
 
 #### `-f, --force`
 
-See [above](#-f,--force)
+See [above](#-f---force)
+
+#### `-d, --dry-run`
+
+See [above](#-d---dry-run)
+
+## Check Files and Directories
+
+```sh
+format-imports --check [options] FILE1/DIR1 [FILE2/DIR2 ...]
+```
+
+### Options
+
+#### `-c, --check`
+
+If set, `format-imports` will check if provided files/directories are formatted. No changes will be made to any of the files.
+
+A non-zero code will be returned if any file fails to match the format, or any other error happens.
+
+#### `--config path::String`
+
+See [above](#--config-pathstring).
+
+#### `--no-recursive`
+
+See [above](#--no-recursive).
+
+#### `-f, --force`
+
+Check all supported files, and ignore exclude patterns/globs and file-disable comments from no matter `--config` option or source file specific configurations.
 
 # Extension Settings
 
