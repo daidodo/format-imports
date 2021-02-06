@@ -56,7 +56,7 @@ It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](htt
 - Respect configs from [Prettier](https://prettier.io) and [EditorConfig](https://editorconfig.org).
 - Preserve `'use strict'`, `///` directives, shebang (`#!`) and comments.
 - Support [Type-Only imports/exports](https://devblogs.microsoft.com/typescript/announcing-typescript-3-8/#type-only-imports-exports).
-- Cross-platform consistency: Windows and MacOS.
+- Cross-platform consistency: Windows, MacOS and Linux (Ubuntu).
 
 # Install
 
@@ -94,7 +94,7 @@ When formatting a source file, `format-imports` will try to resolve configuratio
 
 #### `-f, --force`
 
-Format all supported files, and ignore exclude patterns/globs and file-disable comments from no matter `--config` option or source file specific configurations.
+Format all [supported files](#-e---extension-jstsjsxtsx), and ignore exclude patterns/globs and file-disable comments from no matter `--config` option or source file specific configurations.
 
 #### `-d, --dry-run`
 
@@ -104,7 +104,7 @@ Test-run the command without modifying or creating any files. Useful when you're
 
 Default to `ts`.
 
-When reading from `STDIN`, you can specify the source code type via this option.
+When reading from `STDIN`, you can specify source code type via this option. Supported types are `js`, `ts`, `jsx` and `tsx`.
 
 If it's not set but `--output` is provided, `format-imports` will try to infer code type from the output file extension.
 
@@ -114,7 +114,7 @@ If it's not set but `--output` is provided, `format-imports` will try to infer c
 format-imports [options] DIRECTORY
 ```
 
-This command formats all supported files under a directory.
+This command formats all [supported files](#-e---extension-jstsjsxtsx) under a directory.
 
 ### Options
 
@@ -132,7 +132,7 @@ See [above](#--config-pathstring).
 
 #### `--no-recursive`
 
-If not set, `format-imports` will search for supported source files recursively under the input directory.
+If not set, `format-imports` will search for [supported source files](#-e---extension-jstsjsxtsx) recursively under the input directory.
 
 Otherwise, the search will be non-recursive.
 
@@ -168,7 +168,9 @@ See [above](#--no-recursive).
 
 #### `-f, --force`
 
-Check all supported files, and ignore exclude patterns/globs and file-disable comments from no matter `--config` option or source file specific configurations.
+Check all [supported files](#-e---extension-jstsjsxtsx), and ignore exclude patterns/globs and file-disable comments from no matter `--config` option or source file specific configurations.
+
+# APIs
 
 # Extension Settings
 

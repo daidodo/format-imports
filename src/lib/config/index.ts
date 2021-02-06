@@ -34,6 +34,11 @@ export function resolveConfigForFile(fileName: string, config: Configuration = {
   return { config: extConfig, tsCompilerOptions, eslintConfig };
 }
 
+/**
+ * Resolve config for source code.
+ * @param source
+ * @param config
+ */
 export function resolveConfigForSource(source: string, config: Configuration = {}) {
   const extConfig = enhanceEol(config, () => endOfLine(source));
   return { config: extConfig, tsCompilerOptions: undefined, eslintConfig: undefined };

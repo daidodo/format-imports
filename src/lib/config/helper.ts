@@ -71,11 +71,9 @@ export function mergeConfig(...configs: Configuration[]) {
   });
 }
 
-function purify<T extends Record<string, unknown>>(a: T): Partial<T> {
-  const r: Partial<T> = {};
-  for (const k in a) {
-    const v = a[k];
-    if (v !== undefined) r[k] = v;
-  }
+function purify(a: Configuration): Configuration {
+  let r: Configuration = {};
+  let k: keyof Configuration;
+  for (k in a) if (a[k] !== undefined) r = { ...r, [k]: a[k] };
   return r;
 }

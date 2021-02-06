@@ -51,11 +51,11 @@ export function fileConfig(filename: string, path?: string) {
 }
 
 // TODO: Tests
-export function loadConfigFromJsonFile(filename: string) {
+export function loadConfigFromJsonFile(filename: string): Configuration {
   if (!filename) return {};
   const config = JSON.parse(fs.readFileSync(filename, 'utf8'));
   assert(isObject(config), `Bad config in "${filename}"`);
-  return config as Configuration;
+  return config;
 }
 
 function isObject(v: any) {

@@ -11,42 +11,40 @@ import { KeepUnusedRule } from './unused';
 
 export { CompareRule, FlagSymbol, GroupRule, KeepUnusedRule, SegSymbol, SortRules };
 
-export type Configuration = Readonly<
-  Partial<{
-    // From VS Code "tsImportSorter" settings
-    configurationFileName: string;
-    autoFormat: 'off' | 'onSave';
-    formatExports: boolean;
-    exclude: string[];
-    excludeGlob: string[];
-    sortImportsBy: 'paths' | 'names';
-    groupRules: (string | string[] | GroupRule)[];
-    sortRules: SortRules;
-    maxBindingNamesPerLine: number;
-    maxDefaultAndBindingNamesPerLine: number;
-    maxExportNamesPerLine: number;
-    maxNamesPerWrappedLine: number;
-    keepUnused: KeepUnusedRule[];
-    emptyLinesBetweenGroups: number;
-    emptyLinesAfterAllImports: number;
-    removeLastSlashInPath: boolean;
-    removeLastIndexInPath: boolean;
-    maxLineLength: number;
-    tabType: 'space' | 'tab';
-    tabSize: number;
-    quoteMark: 'single' | 'double';
-    trailingComma: 'none' | 'multiLine';
-    hasSemicolon: boolean;
-    insertFinalNewline: boolean;
-    bracketSpacing: boolean;
-    // Internal or not configurable
-    eol: 'LF' | 'CR' | 'CRLF' | 'LFCR'; // Internal. Not configurable for VSCode.
-    force: boolean; // Internal. Ignore exclude paths and file disable-comment.
-    development: {
-      enableDebug: boolean;
-    };
-  }>
->;
+export interface Configuration {
+  // From VS Code "tsImportSorter" settings
+  readonly configurationFileName?: string;
+  readonly autoFormat?: 'off' | 'onSave';
+  readonly formatExports?: boolean;
+  readonly exclude?: string[];
+  readonly excludeGlob?: string[];
+  readonly sortImportsBy?: 'paths' | 'names';
+  readonly groupRules?: (string | string[] | GroupRule)[];
+  readonly sortRules?: SortRules;
+  readonly maxBindingNamesPerLine?: number;
+  readonly maxDefaultAndBindingNamesPerLine?: number;
+  readonly maxExportNamesPerLine?: number;
+  readonly maxNamesPerWrappedLine?: number;
+  readonly keepUnused?: KeepUnusedRule[];
+  readonly emptyLinesBetweenGroups?: number;
+  readonly emptyLinesAfterAllImports?: number;
+  readonly removeLastSlashInPath?: boolean;
+  readonly removeLastIndexInPath?: boolean;
+  readonly maxLineLength?: number;
+  readonly tabType?: 'space' | 'tab';
+  readonly tabSize?: number;
+  readonly quoteMark?: 'single' | 'double';
+  readonly trailingComma?: 'none' | 'multiLine';
+  readonly hasSemicolon?: boolean;
+  readonly insertFinalNewline?: boolean;
+  readonly bracketSpacing?: boolean;
+  // Internal or not configurable
+  readonly eol?: 'LF' | 'CR' | 'CRLF' | 'LFCR'; // Internal. Not configurable for VSCode.
+  readonly force?: boolean; // Internal. Ignore exclude paths and file disable-comment.
+  readonly development?: {
+    readonly enableDebug?: boolean;
+  };
+}
 
 export const GROUP_RULES_DEFAULT: Configuration['groupRules'] = [
   '^react(-dom)?$',
