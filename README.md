@@ -221,13 +221,13 @@ If installed, [ESLint](https://eslint.org) and plugins rules will be detected an
 
 Currently supported rules are:
 
-- [sort-imports](../wiki/ESLint-Compatibility#import-sorting-sort-imports)
-- [import/newline-after-import](../wiki/ESLint-Compatibility#importnewline-after-import)
-- [import/no-useless-path-segments](../wiki/ESLint-Compatibility#importno-useless-path-segments)
+- [sort-imports](../../wiki/ESLint-Compatibility#import-sorting-sort-imports)
+- [import/newline-after-import](../../wiki/ESLint-Compatibility#importnewline-after-import)
+- [import/no-useless-path-segments](../../wiki/ESLint-Compatibility#importno-useless-path-segments)
 
 If there are conflicts between user config and ESLint rules, the ESLint rules will win to avoid any lint errors.
 
-For more info about how the conflicts are resolved, please check the [ESLint Compatibility](../wiki/ESLint-Compatibility) wiki.
+For more info about how the conflicts are resolved, please check the [ESLint Compatibility](../../wiki/ESLint-Compatibility) wiki.
 
 # Ignore files or declarations
 
