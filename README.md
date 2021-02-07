@@ -389,7 +389,7 @@ export {
 
 # Grouping Rules
 
-`format-imports` sorts imports into different groups separated by empty lines (configurable), based on the rules defined in [groupRules](docs/interfaces/configuration.md#groupRules).
+You can sorts imports into different groups separated by empty lines (configurable), based on the rules defined in [groupRules](docs/interfaces/configuration.md#groupRules).
 
 A grouping rule defines:
 
