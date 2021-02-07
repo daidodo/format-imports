@@ -1,89 +1,43 @@
-import { UnionToIntersection } from 'utility-types';
-
 import {
-  Configuration,
-  ESLintConfig,
-} from '../../../config';
-import { translateNewlineAfterImportRule } from './newlineAfterImport';
-import { translateNoUselessPathSegmentsRule } from './noUselessPathSegments';
-import { translateSortImportsRule } from './sortImports';
+  CLIEngine,
+  ESLint,
+} from 'eslint';
 
-export type ESLintConfigProcessed = NonNullable<
-  ReturnType<typeof translateESLintConfig>['processed']
->;
+import { logger } from '../../../common';
+import { Configuration } from '../../../config';
+import { apply } from './helper';
+import { translateNewlineAfterImportRule } from './rules/import/newline-after-import';
+import { translateNoUselessPathSegmentsRule } from './rules/import/no-useless-path-segments';
+import { translateSortImportsRule } from './rules/sort-imports';
 
-export function translateESLintConfig(config: Configuration, eslint: ESLintConfig | undefined) {
-  if (!eslint) return { config };
+export type ESLintConfigProcessed = NonNullable<ReturnType<typeof enhanceWithEslint>['processed']>;
+
+export function enhanceWithEslint(config: Configuration, fileName: string, configPath?: string) {
+  const rules = loadESLintConfig(fileName, configPath)?.rules;
+  if (!rules) return { config };
   return apply(
     config,
-    [translateSortImportsRule, eslint.sortImports],
-    [translateNewlineAfterImportRule, eslint.newlineAfterImport],
-    [translateNoUselessPathSegmentsRule, eslint.noUselessPathSegments],
+    rules,
+    translateSortImportsRule,
+    translateNewlineAfterImportRule,
+    translateNoUselessPathSegmentsRule,
   );
 }
 
-/* eslint-disable @typescript-eslint/ban-types */
-
-/**
- * A translator is a function receives a `Configuration` and an option,
- * and returns the new `config` and `processed` data if there are any.
- */
-type Translator<O extends object, P extends object> = (
-  config: Configuration,
-  option: O,
-) => { config: Configuration; processed?: P };
-/**
- * Pack translator and its option.
- */
-type TranslatorWithOpt<O extends object, P extends object> = [Translator<O, P>, O];
-type ProcessedAsUnion<T> = T extends TranslatorWithOpt<any, infer P>[] ? P : never;
-/**
- * Given a number of translators with options, infer the processed data type.
- */
-type Processed<T extends TranslatorWithOpt<any, any>[]> = Partial<
-  UnionToIntersection<ProcessedAsUnion<T>>
->;
-
-/**
- * Apply a number of `translations` to `config`.
- * @param config - The original configuration
- * @param translations - An array of translations.
- *                       Each translation consists of a *translator* and its *option*.
- * @returns The updated config and processed data if there are any
- */
-function apply<T extends TranslatorWithOpt<any, any>[]>(
-  config: Configuration,
-  ...translations: T
-): { config: Configuration; processed?: Processed<T> } {
-  const [t, ...rest] = translations;
-  if (!t) return { config };
-  const [translator, opt] = t;
-  const { config: c, processed } = applyOne(config, translator, opt);
-  return applyNext(c, processed, ...rest);
-}
-
-function applyOne<O extends object, P extends object, PP extends object>(
-  config: Configuration,
-  translator: Translator<O, P>,
-  opt: O,
-  processed?: PP,
-) {
-  const { config: c, processed: p } = translator(config, opt);
-  return { config: c, processed: merge(processed, p) };
-}
-
-function applyNext<T extends TranslatorWithOpt<any, any>[], P extends object>(
-  config: Configuration,
-  processed: P | undefined,
-  ...translations: T
-): { config: Configuration; processed: any } {
-  const [t, ...rest] = translations;
-  if (!t) return { config, processed };
-  const [translator, opt] = t;
-  const { config: c, processed: p } = applyOne(config, translator, opt, processed);
-  return applyNext(c, merge(processed, p), ...rest);
-}
-
-function merge<T extends object, U extends object>(t: T | undefined, u: U | undefined) {
-  return t ? (u ? { ...t, ...u } : t) : u;
+function loadESLintConfig(fileName: string, configFile?: string) {
+  const log = logger('format.loadESLintConfig');
+  log.debug('Start loading ESLint config for fileName:', fileName);
+  log.info('ESLint API version:', ESLint.version);
+  try {
+    const eslint = new CLIEngine({ configFile });
+    if (eslint.isPathIgnored(fileName)) {
+      log.debug('Ignored by ESLint for fileName:', fileName);
+      return undefined;
+    }
+    return eslint.getConfigForFile(fileName);
+  } catch (e: unknown) {
+    const msg = e instanceof Error ? e.message : `${e}`;
+    log.warn('Failed loading ESLint config:', msg);
+    return undefined;
+  }
 }

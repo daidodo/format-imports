@@ -1,14 +1,15 @@
 import fs from 'fs-extra';
 import path from 'path';
-import tmp from 'tmp';
 
 import {
-  formatSource,
+  formatSourceFromFile,
+  formatSourceWithoutFile,
   isFileExcludedByConfig,
   resolveConfigForFile,
   resolveConfigForSource,
 } from '../lib';
 import {
+  decideExtension,
   isSupported,
   loadBaseConfig,
 } from './config';
@@ -86,18 +87,18 @@ function ensureOutputDir(output: string | undefined, dryRun: boolean | undefined
 
 function processStdin(options: Options) {
   const { output, dryRun } = options;
-  const config = loadBaseConfig(options);
+  const baseConfig = loadBaseConfig(options);
   const chunks: string[] = [];
   process.stdin.on('data', data => chunks.push(data.toString()));
   process.stdin.on('end', () => {
     const source = chunks.join();
     if (!source) return;
-    tmp.setGracefulCleanup();
-    const ext = getExt(options);
-    const { fd, name } = tmp.fileSync({ prefix: 'format-imports', postfix: `.${ext}` });
-    fs.writeSync(fd, source);
-    const allConfig = resolveConfigForSource(source, config);
-    const result = formatSource(name, source, allConfig);
+    const config = resolveConfigForSource(source, baseConfig);
+    const ext = decideExtension(options);
+    const result = formatSourceWithoutFile(source, ext, config, {
+      skipEslintConfig: true,
+      skipTsConfig: true,
+    });
     const mode = dryRun ? OutputMode.DRY_RUN_FILE : OutputMode.NORMAL;
     const { error, modified, created } = outputResult(mode, result, output, source);
     if (error) process.exit(1);
@@ -105,16 +106,10 @@ function processStdin(options: Options) {
   });
 }
 
-function getExt({ extension, output }: Options) {
-  if (extension) return extension;
-  if (output && isSupported(output)) return path.extname(output);
-  return 'ts';
-}
-
 async function processDirectory(dirPath: string, options: Options) {
   if (!fs.statSync(dirPath).isDirectory()) return processFiles([dirPath], options);
   const { output, recursive, dryRun } = options;
-  const config = loadBaseConfig(options);
+  const baseConfig = loadBaseConfig(options);
   ensureOutputDir(output, dryRun);
   const mode = dryRun ? OutputMode.DRY_RUN_DIR : OutputMode.NORMAL;
   let modified = 0;
@@ -122,10 +117,10 @@ async function processDirectory(dirPath: string, options: Options) {
   for await (const { relativePath, resolvedPath: inputFile } of getFiles(dirPath, !recursive)) {
     if (!isSupported(relativePath)) continue;
     const filePath = path.join(dirPath, relativePath);
-    const allConfig = resolveConfigForFile(inputFile, config);
-    if (isFileExcludedByConfig(inputFile, allConfig.config)) continue;
+    const config = resolveConfigForFile(inputFile, baseConfig);
+    if (isFileExcludedByConfig(inputFile, config)) continue;
     const source = fs.readFileSync(inputFile).toString();
-    const result = formatSource(inputFile, source, allConfig);
+    const result = formatSourceFromFile(source, inputFile, config);
     const outputFile = output ? path.join(output, relativePath) : output;
     const { error, modified: m, created: c } = outputResult(
       mode,
@@ -153,7 +148,7 @@ function processFiles(filePaths: string[], options: Options) {
     process.stderr.write(`Option: '${f}' is not a file.`);
     process.exit(1);
   }
-  const config = loadBaseConfig(options);
+  const baseConfig = loadBaseConfig(options);
   const mode = dryRun
     ? single
       ? OutputMode.DRY_RUN_FILE
@@ -167,12 +162,12 @@ function processFiles(filePaths: string[], options: Options) {
       continue;
     }
     const inputFile = path.resolve(filePath);
-    const allConfig = resolveConfigForFile(inputFile, config);
-    if (isFileExcludedByConfig(inputFile, allConfig.config)) {
+    const config = resolveConfigForFile(inputFile, baseConfig);
+    if (isFileExcludedByConfig(inputFile, config)) {
       process.stdout.write(`'${filePath}' is excluded by config.\n`);
     } else {
       const source = fs.readFileSync(inputFile).toString();
-      const result = formatSource(inputFile, source, allConfig);
+      const result = formatSourceFromFile(source, inputFile, config);
       const outputFile =
         output && fs.existsSync(output) && fs.statSync(output).isDirectory()
           ? path.resolve(output, path.basename(inputFile))

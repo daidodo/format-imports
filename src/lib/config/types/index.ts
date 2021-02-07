@@ -12,7 +12,6 @@ import { KeepUnusedRule } from './unused';
 export { CompareRule, FlagSymbol, GroupRule, KeepUnusedRule, SegSymbol, SortRules };
 
 export interface Configuration {
-  // From VS Code "tsImportSorter" settings
   readonly configurationFileName?: string;
   readonly autoFormat?: 'off' | 'onSave';
   readonly formatExports?: boolean;
@@ -38,9 +37,8 @@ export interface Configuration {
   readonly hasSemicolon?: boolean;
   readonly insertFinalNewline?: boolean;
   readonly bracketSpacing?: boolean;
-  // Internal or not configurable
-  readonly eol?: 'LF' | 'CR' | 'CRLF' | 'LFCR'; // Internal. Not configurable for VSCode.
-  readonly force?: boolean; // Internal. Ignore exclude paths and file disable-comment.
+  readonly force?: boolean;
+  readonly eol?: 'LF' | 'CR' | 'CRLF' | 'LFCR'; // Not configurable. Internal use only.
   readonly development?: {
     readonly enableDebug?: boolean;
   };

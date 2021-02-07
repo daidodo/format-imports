@@ -2,12 +2,7 @@ import minimatch from 'minimatch';
 
 import { endOfLine } from '@dozerg/end-of-line';
 
-import { loadESLintConfig } from './eslint';
-import {
-  enhanceEol,
-  loadImportSorterConfig,
-} from './importSorter';
-import { loadTsConfig } from './tsconfig';
+import { enhanceEol } from './importSorter';
 import { Configuration } from './types';
 
 export {
@@ -24,24 +19,14 @@ export {
 
 export { mergeConfig } from './helper';
 export { ESLintConfig } from './eslint';
-export { loadConfigFromJsonFile } from './importSorter';
+export {
+  loadConfigFromJsonFile,
+  loadImportSorterConfig as resolveConfigForFile,
+} from './importSorter';
 
 // TODO: Tests.
-export function resolveConfigForFile(fileName: string, config: Configuration = {}) {
-  const extConfig = loadImportSorterConfig(config, fileName);
-  const eslintConfig = loadESLintConfig(fileName);
-  const tsCompilerOptions = loadTsConfig(fileName);
-  return { config: extConfig, tsCompilerOptions, eslintConfig };
-}
-
-/**
- * Resolve config for source code.
- * @param source
- * @param config
- */
-export function resolveConfigForSource(source: string, config: Configuration = {}) {
-  const extConfig = enhanceEol(config, () => endOfLine(source));
-  return { config: extConfig, tsCompilerOptions: undefined, eslintConfig: undefined };
+export function resolveConfigForSource(text: string, config: Configuration = {}) {
+  return enhanceEol(config, () => endOfLine(text));
 }
 
 // TODO: Tests.

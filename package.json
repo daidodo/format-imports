@@ -1,6 +1,6 @@
 {
   "name": "format-imports",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "JavaScript and TypeScript Import/Export Formatter.",
   "main": "dist/lib/index.js",
   "bin": "dist/bin/main.js",
@@ -16,7 +16,8 @@
     "lib-test": "jest src/test/lib",
     "cli-test": "jest src/test/cli",
     "cli-test:update": "jest -u src/test/cli",
-    "prepublishOnly": "npm run clean && npm run compile"
+    "prepublishOnly": "npm run clean && npm run compile",
+    "docs": "rm -rf docs && typedoc"
   },
   "repository": {
     "type": "git",
@@ -119,6 +120,8 @@
     "jest": "^26.6.3",
     "ts-jest": "^26.5.0",
     "ts-node": "^9.1.1",
+    "typedoc": "^0.20.21",
+    "typedoc-plugin-markdown": "^3.4.5",
     "utility-types": "^3.10.0"
   },
   "dependencies": {

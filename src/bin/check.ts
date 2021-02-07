@@ -3,7 +3,7 @@ import path from 'path';
 
 import {
   Configuration,
-  formatSource,
+  formatSourceFromFile,
   isFileExcludedByConfig,
   resolveConfigForFile,
 } from '../lib';
@@ -44,17 +44,17 @@ export async function check(options: Options) {
   summary();
 }
 
-function processFile(config: Configuration, filePath: string, realPath?: string) {
+function processFile(baseConfig: Configuration, filePath: string, realPath?: string) {
   if (!isSupported(filePath)) return;
   STATS.processed++;
   const resolvedPath = realPath ?? path.resolve(filePath);
-  const allConfig = resolveConfigForFile(resolvedPath, config);
-  if (isFileExcludedByConfig(resolvedPath, allConfig.config)) {
+  const config = resolveConfigForFile(resolvedPath, baseConfig);
+  if (isFileExcludedByConfig(resolvedPath, config)) {
     STATS.excluded++;
     return;
   }
   const source = fs.readFileSync(resolvedPath).toString();
-  const result = formatSource(resolvedPath, source, allConfig);
+  const result = formatSourceFromFile(source, resolvedPath, config);
   if (result !== undefined) {
     STATS.styleIssues++;
     process.stderr.write(`'${filePath}' is different after formatting.\n`);

@@ -1,15 +1,31 @@
 import {
   CompareRule,
   Configuration,
-  ESLintConfig,
   FlagSymbol,
   mergeConfig,
-} from '../../../config';
+} from '../../../../config';
+import {
+  extractOptions,
+  Rules,
+} from '../helper';
 
-type SortImportsOptions = NonNullable<ESLintConfig['sortImports']>;
+const DEFAULT_OPTIONS = {
+  ignoreCase: false,
+  ignoreDeclarationSort: false,
+  ignoreMemberSort: false,
+  memberSyntaxSortOrder: ['none' as const, 'all' as const, 'multiple' as const, 'single' as const],
+  allowSeparatedGroups: false,
+};
 
-export function translateSortImportsRule(config: Configuration, options?: SortImportsOptions) {
+type Options = typeof DEFAULT_OPTIONS;
+
+export function translateSortImportsRule(config: Configuration, rules: Rules) {
+  const options = extractOptions(rules, 'sort-imports', DEFAULT_OPTIONS);
   if (!options) return { config };
+  return process(config, options);
+}
+
+function process(config: Configuration, options: Options) {
   const sortImportsBy = calcSortImportsBy(options);
   const sortRules = calcSortRules(options);
   const aliasFirst = !!sortRules;
@@ -19,15 +35,11 @@ export function translateSortImportsRule(config: Configuration, options?: SortIm
   return { config: c, processed: { groupOrder, ignoreSorting, aliasFirst } };
 }
 
-function calcSortImportsBy({ ignoreDeclarationSort }: SortImportsOptions) {
+function calcSortImportsBy({ ignoreDeclarationSort }: Options) {
   return ignoreDeclarationSort ? undefined : ('names' as const);
 }
 
-function calcSortRules({
-  ignoreCase,
-  ignoreDeclarationSort,
-  ignoreMemberSort,
-}: SortImportsOptions) {
+function calcSortRules({ ignoreCase, ignoreDeclarationSort, ignoreMemberSort }: Options) {
   if (ignoreDeclarationSort && ignoreMemberSort) return undefined;
   const names: CompareRule = ignoreCase ? ['_', 'aA'] : ['AZ', '_'];
   return { names };
@@ -37,7 +49,7 @@ function calcGroupRules({
   memberSyntaxSortOrder,
   allowSeparatedGroups,
   ignoreDeclarationSort,
-}: SortImportsOptions) {
+}: Options) {
   if (ignoreDeclarationSort) return {};
   const groupOrder: FlagSymbol[] = memberSyntaxSortOrder.map(v => {
     switch (v) {

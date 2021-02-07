@@ -29,11 +29,11 @@ function isRegularFile(path: string) {
 }
 
 /**
- * Get parent folder for path.
+ * Get parent folder for a file. It's different from `path.join(fileName, '..')`.
  */
-export function parentFolder(path: string | undefined | null) {
-  if (!path) return '';
-  const p = path.replace(/\/+/g, '/').replace(/\\+/g, '\\');
+export function parentFolder(fileName: string | undefined | null) {
+  if (!fileName) return '';
+  const p = fileName.replace(/\/+/g, '/').replace(/\\+/g, '\\');
   const i = p.search(/[\\/][^\\/]*$/);
   if (i < 0) return '';
   if (i === 0) return /[\\/]$/.test(p) ? '' : p.substr(0, 1);

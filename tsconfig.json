@@ -10,5 +10,11 @@
     "outDir": "dist"
   },
   "include": ["src"],
-  "exclude": ["src/test", "src/**/*.test.ts"]
+  "exclude": ["src/test", "src/**/*.test.ts"],
+  "typedocOptions": {
+    "entryPoints": ["src/lib/index.ts"],
+    "hideInPageTOC": true,
+    "hideBreadcrumbs": true,
+    "disableSources": true
+  }
 }

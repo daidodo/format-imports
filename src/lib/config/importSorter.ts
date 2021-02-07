@@ -13,17 +13,18 @@ import {
 import { loadPretConfig } from './prettier';
 import { Configuration } from './types';
 
-export function loadImportSorterConfig(config: Configuration, sourceFileName: string) {
+// TODO: Tests.
+export function loadImportSorterConfig(fileName: string, config: Configuration = {}) {
   const log = logger('config.loadImportSorterConfig');
   log.debug('Load Prettier/EditorConfig config.');
-  const pretConfig = loadPretConfig(sourceFileName);
+  const pretConfig = loadPretConfig(fileName);
   const cfgFileName = config.configurationFileName || 'import-sorter.json';
   log.debug('Load import-sorter config from', cfgFileName);
-  const fConfig = fileConfig(cfgFileName, sourceFileName);
+  const fConfig = fileConfig(cfgFileName, fileName);
   log.debug('Load package.json config.');
-  const pkgConfig = packageConfig(sourceFileName);
+  const pkgConfig = packageConfig(fileName);
   log.debug('Enhance EOL.');
-  const c = enhanceEol(config, () => endOfLineForFile(sourceFileName));
+  const c = enhanceEol(config, () => endOfLineForFile(fileName));
   return mergeConfig(c, pretConfig, fConfig, pkgConfig);
 }
 

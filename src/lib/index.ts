@@ -7,4 +7,4 @@ export {
   resolveConfigForSource,
 } from './config';
 
-export * from './format';
+export * from './format/main';
