@@ -44,7 +44,7 @@ export interface Configuration {
    *   "^[.]"
    * ]
    * ```
-   * @see [Grouping Rules](../wiki/Grouping-Rules)
+   * @see [Grouping Rules](../../../../wiki/Grouping-Rules)
    */
   readonly groupRules?: (string | string[] | GroupRule)[];
   readonly sortRules?: SortRules;

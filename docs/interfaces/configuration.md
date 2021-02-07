@@ -96,7 +96,7 @@ Grouping rules for path patterns for imports. Default to:
 ]
 ```
 
-**`see`** [Grouping Rules](../wiki/Grouping-Rules)
+**`see`** [Grouping Rules](../../../../wiki/Grouping-Rules)
 
 ___
 
