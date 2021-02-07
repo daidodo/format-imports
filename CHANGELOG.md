@@ -17,9 +17,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -->
 
-## [1.0.0] - 2021-02-XX
+## [1.0] - 2021-02-07
 
 ### Added
 
-- Publish APIs: `formatSource`, `resolveConfigForFile`, `isFileExcludedByConfig` and more.
+- Publish APIs: `formatSourceForFile`, `resolveConfigForFile`, `isFileExcludedByConfig` and more.
 - Release CLI `format-imports`.
