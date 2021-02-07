@@ -33,7 +33,8 @@ export interface Configuration {
    */
   readonly sortImportsBy?: 'paths' | 'names';
   /**
-   * Grouping rules for path patterns for imports. Default to [GROUP_RULES_DEFAULT](../README#GROUP_RULES_DEFAULT)
+   * Grouping rules for path patterns for imports. Default to [GROUP_RULES_DEFAULT]
+   * (../README#GROUP_RULES_DEFAULT)
    * @see [Grouping Rules](../../../../wiki/Grouping-Rules)
    */
   readonly groupRules?: (string | string[] | GroupRule)[];
@@ -53,7 +54,8 @@ export interface Configuration {
    */
   readonly maxBindingNamesPerLine?: number;
   /**
-   * Max default and binding names per line before wrapping for imports. 0 for no limit. Default to _2_.
+   * Max default and binding names per line before wrapping for imports. 0 for no limit. Default
+   * to _2_.
    */
   readonly maxDefaultAndBindingNamesPerLine?: number;
   /**
@@ -65,7 +67,8 @@ export interface Configuration {
    */
   readonly maxNamesPerWrappedLine?: number;
   /**
-   * By default all unused imports are removed. Keep some or all of them around with this setting if you need.
+   * By default all unused imports are removed. Keep some or all of them around with this setting
+   * if you need.
    */
   readonly keepUnused?: KeepUnusedRule[];
   /**
@@ -113,11 +116,13 @@ export interface Configuration {
    */
   readonly insertFinalNewline?: boolean;
   /**
-   * Whether to add spaces between brackets. _true_ for '{ id }' and _false_ for '{id}'. Default to _true_.
+   * Whether to add spaces between brackets. _true_ for '{ id }' and _false_ for '{id}'. Default to
+   * _true_.
    */
   readonly bracketSpacing?: boolean;
   /**
-   * Whether to disregard exclude/excludeGlob patterns and file-disable comments. Default to _false_.
+   * Whether to disregard [exclude](#exclude)/[excludeGlob](#excludeGlob) patterns and file-disable
+   * comments. Default to _false_.
    */
   readonly force?: boolean;
   /**

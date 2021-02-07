@@ -190,7 +190,7 @@ import {
   resolveConfigForFile,
 } from 'format-imports';
 
-const fileName = 'path/to/source/file.ts';
+const fileName = '/path/to/source/file.ts';
 
 const config = resolveConfigForFile(fileName)
 // Skip if file is excluded.
