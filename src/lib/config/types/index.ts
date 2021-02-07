@@ -33,17 +33,7 @@ export interface Configuration {
    */
   readonly sortImportsBy?: 'paths' | 'names';
   /**
-   * Grouping rules for path patterns for imports. Default to:
-   * ```json
-   * [
-   *   "^react(-dom)?$",
-   *   "^@angular/",
-   *   "^vue$",
-   *   {},
-   *   "^[@]",
-   *   "^[.]"
-   * ]
-   * ```
+   * Grouping rules for path patterns for imports. Default to [GROUP_RULES_DEFAULT](../README#GROUP_RULES_DEFAULT)
    * @see [Grouping Rules](../../../../wiki/Grouping-Rules)
    */
   readonly groupRules?: (string | string[] | GroupRule)[];
@@ -58,32 +48,98 @@ export interface Configuration {
    * @see [Sorting rules](../../../../wiki/Sorting-Rules)
    */
   readonly sortRules?: SortRules;
+  /**
+   * Max binding names per line before wrapping for imports. 0 for no limit. Default to _1_.
+   */
   readonly maxBindingNamesPerLine?: number;
+  /**
+   * Max default and binding names per line before wrapping for imports. 0 for no limit. Default to _2_.
+   */
   readonly maxDefaultAndBindingNamesPerLine?: number;
+  /**
+   * Max binding names per line before wrapping for exports. 0 for no limit. Default to _0_.
+   */
   readonly maxExportNamesPerLine?: number;
+  /**
+   * Max names on wrapped lines for imports/exports. 0 for no limit. Default to _1_.
+   */
   readonly maxNamesPerWrappedLine?: number;
+  /**
+   * By default all unused imports are removed. Keep some or all of them around with this setting if you need.
+   */
   readonly keepUnused?: KeepUnusedRule[];
+  /**
+   * Number of empty lines between groups (NOT sub-groups). Default to _1_.
+   */
   readonly emptyLinesBetweenGroups?: number;
+  /**
+   * Number of empty lines after the last import declaration. Default to _1_.
+   */
   readonly emptyLinesAfterAllImports?: number;
+  /**
+   * Whether to remove the last slash when normalizing paths. Default to _false_.
+   */
   readonly removeLastSlashInPath?: boolean;
+  /**
+   * Whether to remove the last 'index' when normalizing paths. Default to _false_.
+   */
   readonly removeLastIndexInPath?: boolean;
+  /**
+   * Max line length before wrapping. 0 for no limit. Default to _80_.
+   */
   readonly maxLineLength?: number;
+  /**
+   * Indent lines with tabs or spaces. Default to _space_.
+   */
   readonly tabType?: 'space' | 'tab';
+  /**
+   * Number of spaces to replace a TAB. Default to _2_.
+   */
   readonly tabSize?: number;
+  /**
+   * Use single or double quotes. Default to _single_.
+   */
   readonly quoteMark?: 'single' | 'double';
+  /**
+   * When to add a trailing comma for the last name. Default to _multiLine_.
+   */
   readonly trailingComma?: 'none' | 'multiLine';
+  /**
+   * Whether to add semicolons at the end of declarations. Default to _true_.
+   */
   readonly hasSemicolon?: boolean;
+  /**
+   * Whether to end files with a new line. Default to _true_.
+   */
   readonly insertFinalNewline?: boolean;
+  /**
+   * Whether to add spaces between brackets. _true_ for '{ id }' and _false_ for '{id}'. Default to _true_.
+   */
   readonly bracketSpacing?: boolean;
+  /**
+   * Whether to disregard exclude/excludeGlob patterns and file-disable comments. Default to _false_.
+   */
   readonly force?: boolean;
+  /**
+   * EOL of the source text. Internal use only.
+   * @private
+   */
   readonly eol?: 'LF' | 'CR' | 'CRLF' | 'LFCR'; // Not configurable. Internal use only.
-
+  /**
+   * @private
+   */
   readonly autoFormat?: 'off' | 'onSave';
+  /**
+   * @private
+   */
   readonly development?: {
     readonly enableDebug?: boolean;
   };
 }
 
+/**
+ * Default grouping rules.
+ */
 export const GROUP_RULES_DEFAULT: Configuration['groupRules'] = [
   '^react(-dom)?$',
   '^@angular/',
@@ -93,4 +149,7 @@ export const GROUP_RULES_DEFAULT: Configuration['groupRules'] = [
   '^[.]',
 ];
 
+/**
+ * Default comparison rule for paths and names.
+ */
 export const COMPARE_RULE_DEFAULT: CompareRule = ['_', 'aA'];

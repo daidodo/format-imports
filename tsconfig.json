@@ -14,9 +14,8 @@
   "typedocOptions": {
     "entryPoints": ["src/lib/index.ts"],
     "hideInPageTOC": true,
-    "hideBreadcrumbs": true,
-    "disableSources": true,
     "readme": "none",
-    "name": "APIs"
+    "name": "APIs",
+    "excludePrivate": true
   }
 }

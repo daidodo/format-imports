@@ -9,7 +9,7 @@ import {
 } from './eslint';
 import { loadTsConfig } from './tsconfig';
 
-export interface ConfigOptions {
+export interface FormatOptions {
   skipTsConfig?: boolean;
   tsConfigPath?: string;
   skipEslintConfig?: boolean;
@@ -18,7 +18,7 @@ export interface ConfigOptions {
 
 export { ComposeConfig, ESLintConfigProcessed };
 
-export function enhanceConfig(config: Configuration, fileName: string, options?: ConfigOptions) {
+export function enhanceConfig(config: Configuration, fileName: string, options?: FormatOptions) {
   const tsCompilerOptions = options?.skipTsConfig
     ? undefined
     : loadTsConfig(fileName, options?.tsConfigPath);
