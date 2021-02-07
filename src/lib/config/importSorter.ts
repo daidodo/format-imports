@@ -67,20 +67,12 @@ export function fileConfig(filename: string, path?: string) {
 /**
  * Load config from given file, e.g. _path/to/import-sorter.json_.
  *
- * Will throw an error if file is unreadable or content is not a valid json object.
- *
- * Example:
- * ```ts
- * const config1 = { maxLineLength: 80, tabSize: 2 };
- * const config2 = { maxLineLength: 100 };
- *
- * const config = mergeConfig(config1, config2);  // { maxLineLength: 100, tabSize: 2 }
- * ```
+ * Will throw an error if file is unreadable or content is not a valid JSON object.
  */
-export function loadConfigFromJsonFile(filename: string): Configuration {
-  if (!filename) return {};
-  const config = JSON.parse(fs.readFileSync(filename, 'utf8'));
-  assert(isObject(config), `Bad config in "${filename}"`);
+export function loadConfigFromJsonFile(fileName: string): Configuration {
+  if (!fileName) return {};
+  const config = JSON.parse(fs.readFileSync(fileName, 'utf8'));
+  assert(isObject(config), `Bad config in "${fileName}"`);
   return config;
 }
 

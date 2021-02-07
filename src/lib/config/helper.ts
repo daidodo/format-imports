@@ -56,6 +56,13 @@ const KEYS_TO_MERGE = [
  * This function is preferred to `{...config1, ...config2}` in a sense that some keys need to be
  * merged instead of overwritten, e.g. `exclude`.
  *
+ * Example:
+ * ```ts
+ * const config1 = { maxLineLength: 80, tabSize: 2 };
+ * const config2 = { maxLineLength: 100 };
+ *
+ * const config = mergeConfig(config1, config2);  // { maxLineLength: 100, tabSize: 2 }
+ * ```
  * @param configs An array of config objects
  */
 export function mergeConfig(...configs: Configuration[]) {
