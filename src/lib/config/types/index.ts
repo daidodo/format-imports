@@ -47,6 +47,16 @@ export interface Configuration {
    * @see [Grouping Rules](../../../../wiki/Grouping-Rules)
    */
   readonly groupRules?: (string | string[] | GroupRule)[];
+  /**
+   * Sorting rules for paths and names. Default to:
+   * ```json
+   * {
+   *   "paths": ["_", "aA"],
+   *   "names": ["_", "aA"]
+   * }
+   * ```
+   * @see [Sorting rules](../../../../wiki/Sorting-Rules)
+   */
   readonly sortRules?: SortRules;
   readonly maxBindingNamesPerLine?: number;
   readonly maxDefaultAndBindingNamesPerLine?: number;

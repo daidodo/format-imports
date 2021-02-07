@@ -178,6 +178,16 @@ ___
 
 • `Optional` `Readonly` **sortRules**: *undefined* \| SortRules
 
+Sorting rules for paths and names. Default to:
+```json
+{
+  "paths": ["_", "aA"],
+  "names": ["_", "aA"]
+}
+```
+
+**`see`** [Sorting rules](../../../../wiki/Sorting-Rules)
+
 ___
 
 ### tabSize
