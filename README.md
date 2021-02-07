@@ -9,7 +9,7 @@
 }
 -->
 
-# format-imports
+# Format-Imports
 
 This package contains CLI and APIs to format **imports** and **exports** for **JavaScript** and **TypeScript** code.
 
@@ -19,7 +19,7 @@ It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](htt
 
 ### Added
 
-- Publish APIs: `formatSource`, `resolveConfigForFile`, `isFileExcludedByConfig` and more.
+- Publish APIs: `formatSourceForFile`, `resolveConfigForFile`, `isFileExcludedByConfig` and more.
 - Release CLI `format-imports`.
 
 # Table of contents
@@ -101,7 +101,7 @@ If no files provided, it'll read the source from `STDIN` and format it.
 
   - `-f, --force`
 
-    Format all [supported files](#-e---extension-jstsjsxtsx), and ignore exclude patterns/globs and file-disable comments from no matter `--config` option or source file specific configurations.
+    Format all [supported files](docs/README.md#supported_extensions), and ignore exclude patterns/globs and file-disable comments from no matter `--config` option or source file specific configurations.
 
   - `-d, --dry-run`
 
@@ -121,7 +121,7 @@ If no files provided, it'll read the source from `STDIN` and format it.
 format-imports [options] DIRECTORY
 ```
 
-This command formats all [supported files](#-e---extension-jstsjsxtsx) under a directory.
+This command formats all [supported files](docs/README.md#supported_extensions) under a directory.
 
 - Options
 
@@ -135,21 +135,21 @@ This command formats all [supported files](#-e---extension-jstsjsxtsx) under a d
 
   - `--config path::String`
 
-    See [above](#--config-pathstring).
+    See above.
 
   - `--no-recursive`
 
-    If not set, `format-imports` will search for [supported source files](#-e---extension-jstsjsxtsx) recursively under the input directory.
+    If not set, `format-imports` will search for [supported source files](docs/README.md#supported_extensions) recursively under the input directory.
 
     Otherwise, the search will be non-recursive.
 
   - `-f, --force`
 
-    See [above](#-f---force)
+    See above.
 
   - `-d, --dry-run`
 
-    See [above](#-d---dry-run)
+    See above.
 
 ## Check Files and Directories
 
@@ -167,15 +167,15 @@ format-imports --check [options] FILE1/DIR1 [FILE2/DIR2 ...]
 
   - `--config path::String`
 
-    See [above](#--config-pathstring).
+    See above.
 
   - `--no-recursive`
 
-    See [above](#--no-recursive).
+    See above.
 
   - `-f, --force`
 
-    Check all [supported files](#-e---extension-jstsjsxtsx), and ignore exclude patterns/globs and file-disable comments from no matter `--config` option or source file specific configurations.
+    Check all [supported files](docs/README.md#supported_extensions), and ignore exclude patterns/globs and file-disable comments from no matter `--config` option or source file specific configurations.
 
 # APIs
 
