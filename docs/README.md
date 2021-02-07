@@ -1,4 +1,4 @@
-# APIs
+# APIs Documentation
 
 ## Table of contents
 
@@ -14,7 +14,7 @@
 
 A type representing file extensions supported.
 
-Defined in: [format/main/index.ts:14](https://github.com/daidodo/format-imports/blob/d9643c0/src/lib/format/main/index.ts#L14)
+Defined in: [format/main/index.ts:14](https://github.com/daidodo/format-imports/blob/09c5b15/src/lib/format/main/index.ts#L14)
 
 ## Variables
 
@@ -26,7 +26,7 @@ Default comparison rule for paths and names, which is:
 * Comparing letters case-insensitively, and
 * `'_'` is in front of `[a-zA-Z]`.
 
-Defined in: [config/types/index.ts:157](https://github.com/daidodo/format-imports/blob/d9643c0/src/lib/config/types/index.ts#L157)
+Defined in: [config/types/index.ts:157](https://github.com/daidodo/format-imports/blob/09c5b15/src/lib/config/types/index.ts#L157)
 
 ___
 
@@ -36,7 +36,7 @@ ___
 
 Default grouping rules.
 
-Defined in: [config/types/index.ts:143](https://github.com/daidodo/format-imports/blob/d9643c0/src/lib/config/types/index.ts#L143)
+Defined in: [config/types/index.ts:143](https://github.com/daidodo/format-imports/blob/09c5b15/src/lib/config/types/index.ts#L143)
 
 ___
 
@@ -46,7 +46,7 @@ ___
 
 File extensions supported.
 
-Defined in: [format/main/index.ts:19](https://github.com/daidodo/format-imports/blob/d9643c0/src/lib/format/main/index.ts#L19)
+Defined in: [format/main/index.ts:19](https://github.com/daidodo/format-imports/blob/09c5b15/src/lib/format/main/index.ts#L19)
 
 ## Functions
 
@@ -75,7 +75,7 @@ Name | Type | Description |
 
 Result text or `undefined` if nothing changes.
 
-Defined in: [format/main/index.ts:37](https://github.com/daidodo/format-imports/blob/d9643c0/src/lib/format/main/index.ts#L37)
+Defined in: [format/main/index.ts:37](https://github.com/daidodo/format-imports/blob/09c5b15/src/lib/format/main/index.ts#L37)
 
 ___
 
@@ -104,7 +104,7 @@ Name | Type | Description |
 
 Result text or `undefined` if nothing changes.
 
-Defined in: [format/main/index.ts:63](https://github.com/daidodo/format-imports/blob/d9643c0/src/lib/format/main/index.ts#L63)
+Defined in: [format/main/index.ts:63](https://github.com/daidodo/format-imports/blob/09c5b15/src/lib/format/main/index.ts#L63)
 
 ___
 
@@ -125,7 +125,7 @@ Name | Type |
 
 **Returns:** *boolean*
 
-Defined in: [config/index.ts:44](https://github.com/daidodo/format-imports/blob/d9643c0/src/lib/config/index.ts#L44)
+Defined in: [config/index.ts:44](https://github.com/daidodo/format-imports/blob/09c5b15/src/lib/config/index.ts#L44)
 
 ___
 
@@ -145,7 +145,7 @@ Name | Type |
 
 **Returns:** [*Configuration*](interfaces/configuration.md)
 
-Defined in: [config/importSorter.ts:72](https://github.com/daidodo/format-imports/blob/d9643c0/src/lib/config/importSorter.ts#L72)
+Defined in: [config/importSorter.ts:72](https://github.com/daidodo/format-imports/blob/09c5b15/src/lib/config/importSorter.ts#L72)
 
 ___
 
@@ -174,7 +174,7 @@ Name | Type | Description |
 
 **Returns:** [*Configuration*](interfaces/configuration.md)
 
-Defined in: [config/helper.ts:68](https://github.com/daidodo/format-imports/blob/d9643c0/src/lib/config/helper.ts#L68)
+Defined in: [config/helper.ts:68](https://github.com/daidodo/format-imports/blob/09c5b15/src/lib/config/helper.ts#L68)
 
 ___
 
@@ -201,7 +201,7 @@ Name | Type | Default value | Description |
 
 **Returns:** [*Configuration*](interfaces/configuration.md)
 
-Defined in: [config/importSorter.ts:30](https://github.com/daidodo/format-imports/blob/d9643c0/src/lib/config/importSorter.ts#L30)
+Defined in: [config/importSorter.ts:30](https://github.com/daidodo/format-imports/blob/09c5b15/src/lib/config/importSorter.ts#L30)
 
 ___
 
@@ -222,4 +222,4 @@ Name | Type | Default value | Description |
 
 **Returns:** [*Configuration*](interfaces/configuration.md)
 
-Defined in: [config/index.ts:35](https://github.com/daidodo/format-imports/blob/d9643c0/src/lib/config/index.ts#L35)
+Defined in: [config/index.ts:35](https://github.com/daidodo/format-imports/blob/09c5b15/src/lib/config/index.ts#L35)

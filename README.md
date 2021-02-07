@@ -172,6 +172,35 @@ Check all [supported files](#-e---extension-jstsjsxtsx), and ignore exclude patt
 
 # APIs
 
+Example:
+
+```ts
+import fs from 'fs';
+
+import {
+  formatSourceFromFile,
+  isFileExcludedByConfig,
+  resolveConfigForFile,
+} from 'format-imports';
+
+const fileName = 'path/to/source/file.ts';
+
+const config = resolveConfigForFile(fileName)
+// Skip if file is excluded.
+if (isFileExcludedByConfig(fileName, config))
+  return;
+
+const text = fs.readFileSync(fileName).toString();
+const newText = formatSourceFromFile(text, fileName, config);
+
+if (newText === undefined)
+  console.log("Everything is sorted!");
+else
+  console.log(newText);
+```
+
+Please read [APIs Documentation](docs/README) for more details.
+
 # Extension Settings
 
 All VS Code settings under `"tsImportSorter"` section and their default values:
