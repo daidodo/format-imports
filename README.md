@@ -221,7 +221,7 @@ If installed, [ESLint](https://eslint.org) and plugins rules will be detected an
 
 Currently supported rules are:
 
-- [sort-imports](../../wiki/ESLint-Compatibility#import-sorting-sort-imports)
+- [sort-imports](../../wiki/ESLint-Compatibility#sort-imports)
 - [import/newline-after-import](../../wiki/ESLint-Compatibility#importnewline-after-import)
 - [import/no-useless-path-segments](../../wiki/ESLint-Compatibility#importno-useless-path-segments)
 
