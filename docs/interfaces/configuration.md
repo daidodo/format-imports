@@ -22,6 +22,8 @@ ___
 
 • `Optional` `Readonly` **configurationFileName**: *undefined* \| *string*
 
+JSON configuration file name. Default to _import-sorter.json_.
+
 ___
 
 ### development
@@ -52,11 +54,15 @@ ___
 
 • `Optional` `Readonly` **exclude**: *undefined* \| *string*[]
 
+Disable formatting for files matching regular expressions. Default to _["node_modules"]_
+
 ___
 
 ### excludeGlob
 
 • `Optional` `Readonly` **excludeGlob**: *undefined* \| *string*[]
+
+Disable formatting for files matching glob patterns.
 
 ___
 
@@ -70,11 +76,27 @@ ___
 
 • `Optional` `Readonly` **formatExports**: *undefined* \| *boolean*
 
+Whether to format exports as well. Default to _false_.
+
 ___
 
 ### groupRules
 
 • `Optional` `Readonly` **groupRules**: *undefined* \| (*string* \| *string*[] \| GroupRule)[]
+
+Grouping rules for path patterns for imports. Default to:
+```json
+[
+  "^react(-dom)?$",
+  "^@angular/",
+  "^vue$",
+  {},
+  "^[@]",
+  "^[.]"
+]
+```
+
+**`see`** [Grouping Rules](../wiki/Grouping-Rules)
 
 ___
 
@@ -147,6 +169,8 @@ ___
 ### sortImportsBy
 
 • `Optional` `Readonly` **sortImportsBy**: *undefined* \| *paths* \| *names*
+
+Sort import declarations by paths or first names. Default to _paths_.
 
 ___
 

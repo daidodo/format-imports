@@ -12,12 +12,40 @@ import { KeepUnusedRule } from './unused';
 export { CompareRule, FlagSymbol, GroupRule, KeepUnusedRule, SegSymbol, SortRules };
 
 export interface Configuration {
+  /**
+   * JSON configuration file name. Default to _import-sorter.json_.
+   */
   readonly configurationFileName?: string;
-  readonly autoFormat?: 'off' | 'onSave';
+  /**
+   * Whether to format exports as well. Default to _false_.
+   */
   readonly formatExports?: boolean;
+  /**
+   * Disable formatting for files matching regular expressions. Default to _["node_modules"]_
+   */
   readonly exclude?: string[];
+  /**
+   * Disable formatting for files matching glob patterns.
+   */
   readonly excludeGlob?: string[];
+  /**
+   * Sort import declarations by paths or first names. Default to _paths_.
+   */
   readonly sortImportsBy?: 'paths' | 'names';
+  /**
+   * Grouping rules for path patterns for imports. Default to:
+   * ```json
+   * [
+   *   "^react(-dom)?$",
+   *   "^@angular/",
+   *   "^vue$",
+   *   {},
+   *   "^[@]",
+   *   "^[.]"
+   * ]
+   * ```
+   * @see [Grouping Rules](../wiki/Grouping-Rules)
+   */
   readonly groupRules?: (string | string[] | GroupRule)[];
   readonly sortRules?: SortRules;
   readonly maxBindingNamesPerLine?: number;
@@ -39,6 +67,8 @@ export interface Configuration {
   readonly bracketSpacing?: boolean;
   readonly force?: boolean;
   readonly eol?: 'LF' | 'CR' | 'CRLF' | 'LFCR'; // Not configurable. Internal use only.
+
+  readonly autoFormat?: 'off' | 'onSave';
   readonly development?: {
     readonly enableDebug?: boolean;
   };
