@@ -24,12 +24,23 @@ export {
   loadImportSorterConfig as resolveConfigForFile,
 } from './importSorter';
 
-// TODO: Tests.
+/**
+ * Resolve config for given source text.
+ *
+ * This function will detect EOL for the text and update the base config provided.
+ *
+ * @param text Source text
+ * @param config Base config
+ */
 export function resolveConfigForSource(text: string, config: Configuration = {}) {
   return enhanceEol(config, () => endOfLine(text));
 }
 
-// TODO: Tests.
+/**
+ * Test if a file is excluded by the given config, taking `config.force` flag into account.
+ *
+ * The file name will be normalized to use `/` when matching.
+ */
 export function isFileExcludedByConfig(fileName: string, config: Configuration) {
   const { exclude, excludeGlob, force } = config;
   if (force) return false;

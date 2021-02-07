@@ -8,7 +8,10 @@ import {
 } from '../config';
 import { formatSource } from './format';
 
-type Extension = 'js' | 'ts' | 'jsx' | 'tsx';
+/**
+ * A type representing file extensions supported.
+ */
+export type Extension = 'js' | 'ts' | 'jsx' | 'tsx';
 
 /**
  * File extensions supported.
@@ -18,11 +21,18 @@ export const SUPPORTED_EXTENSIONS: Extension[] = ['js', 'ts', 'jsx', 'tsx'];
 /**
  * Format given source text from a file.
  *
+ * This function will try to find _tsconfig.json_ and ESLint config relating to the source file,
+ * and merge them to the base config provided.
+ *
+ * `options` can be used to change _tsconfig.json_ and ESLint config loading behavior for testing
+ * purpose.
+ *
  * @param text Source text
  * @param fileName Source file name
  * @param config Base config
- * @param options Format options
- * @returns Formatted text or `undefined` if nothing changes
+ * @param options Internal/testing options
+ *
+ * @returns Result text or `undefined` if nothing changes.
  */
 export function formatSourceFromFile(
   text: string,
@@ -34,6 +44,22 @@ export function formatSourceFromFile(
   return formatSource(text, fileName, allConfig);
 }
 
+/**
+ * Format given source text without knowing the source file.
+ *
+ * This function will try to find _tsconfig.json_ and ESLint config relating to the source file,
+ * and merge them to the base config provided.
+ *
+ * `options` can be used to change _tsconfig.json_ and ESLint config loading behavior for testing
+ * purpose.
+ *
+ * @param text Source text
+ * @param extension File extension to reveal the source language
+ * @param config Base config
+ * @param options Internal/testing options
+ *
+ * @returns Result text or `undefined` if nothing changes.
+ */
 export function formatSourceWithoutFile(
   text: string,
   extension: Extension,

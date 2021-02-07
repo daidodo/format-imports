@@ -14,7 +14,7 @@
 
 Whether to add spaces between brackets. _true_ for '{ id }' and _false_ for '{id}'. Default to _true_.
 
-Defined in: [config/types/index.ts:118](https://github.com/daidodo/format-imports/blob/cd1a4d5/src/lib/config/types/index.ts#L118)
+Defined in: [config/types/index.ts:118](https://github.com/daidodo/format-imports/blob/aecebd4/src/lib/config/types/index.ts#L118)
 
 ___
 
@@ -24,7 +24,7 @@ ___
 
 JSON configuration file name. Default to _import-sorter.json_.
 
-Defined in: [config/types/index.ts:18](https://github.com/daidodo/format-imports/blob/cd1a4d5/src/lib/config/types/index.ts#L18)
+Defined in: [config/types/index.ts:18](https://github.com/daidodo/format-imports/blob/aecebd4/src/lib/config/types/index.ts#L18)
 
 ___
 
@@ -34,7 +34,7 @@ ___
 
 Number of empty lines after the last import declaration. Default to _1_.
 
-Defined in: [config/types/index.ts:78](https://github.com/daidodo/format-imports/blob/cd1a4d5/src/lib/config/types/index.ts#L78)
+Defined in: [config/types/index.ts:78](https://github.com/daidodo/format-imports/blob/aecebd4/src/lib/config/types/index.ts#L78)
 
 ___
 
@@ -44,7 +44,7 @@ ___
 
 Number of empty lines between groups (NOT sub-groups). Default to _1_.
 
-Defined in: [config/types/index.ts:74](https://github.com/daidodo/format-imports/blob/cd1a4d5/src/lib/config/types/index.ts#L74)
+Defined in: [config/types/index.ts:74](https://github.com/daidodo/format-imports/blob/aecebd4/src/lib/config/types/index.ts#L74)
 
 ___
 
@@ -54,7 +54,7 @@ ___
 
 Disable formatting for files matching regular expressions. Default to _["node_modules"]_
 
-Defined in: [config/types/index.ts:26](https://github.com/daidodo/format-imports/blob/cd1a4d5/src/lib/config/types/index.ts#L26)
+Defined in: [config/types/index.ts:26](https://github.com/daidodo/format-imports/blob/aecebd4/src/lib/config/types/index.ts#L26)
 
 ___
 
@@ -64,7 +64,7 @@ ___
 
 Disable formatting for files matching glob patterns.
 
-Defined in: [config/types/index.ts:30](https://github.com/daidodo/format-imports/blob/cd1a4d5/src/lib/config/types/index.ts#L30)
+Defined in: [config/types/index.ts:30](https://github.com/daidodo/format-imports/blob/aecebd4/src/lib/config/types/index.ts#L30)
 
 ___
 
@@ -74,7 +74,7 @@ ___
 
 Whether to disregard exclude/excludeGlob patterns and file-disable comments. Default to _false_.
 
-Defined in: [config/types/index.ts:122](https://github.com/daidodo/format-imports/blob/cd1a4d5/src/lib/config/types/index.ts#L122)
+Defined in: [config/types/index.ts:122](https://github.com/daidodo/format-imports/blob/aecebd4/src/lib/config/types/index.ts#L122)
 
 ___
 
@@ -84,7 +84,7 @@ ___
 
 Whether to format exports as well. Default to _false_.
 
-Defined in: [config/types/index.ts:22](https://github.com/daidodo/format-imports/blob/cd1a4d5/src/lib/config/types/index.ts#L22)
+Defined in: [config/types/index.ts:22](https://github.com/daidodo/format-imports/blob/aecebd4/src/lib/config/types/index.ts#L22)
 
 ___
 
@@ -96,7 +96,7 @@ Grouping rules for path patterns for imports. Default to [GROUP_RULES_DEFAULT](.
 
 **`see`** [Grouping Rules](../../../../wiki/Grouping-Rules)
 
-Defined in: [config/types/index.ts:39](https://github.com/daidodo/format-imports/blob/cd1a4d5/src/lib/config/types/index.ts#L39)
+Defined in: [config/types/index.ts:39](https://github.com/daidodo/format-imports/blob/aecebd4/src/lib/config/types/index.ts#L39)
 
 ___
 
@@ -106,7 +106,7 @@ ___
 
 Whether to add semicolons at the end of declarations. Default to _true_.
 
-Defined in: [config/types/index.ts:110](https://github.com/daidodo/format-imports/blob/cd1a4d5/src/lib/config/types/index.ts#L110)
+Defined in: [config/types/index.ts:110](https://github.com/daidodo/format-imports/blob/aecebd4/src/lib/config/types/index.ts#L110)
 
 ___
 
@@ -116,7 +116,7 @@ ___
 
 Whether to end files with a new line. Default to _true_.
 
-Defined in: [config/types/index.ts:114](https://github.com/daidodo/format-imports/blob/cd1a4d5/src/lib/config/types/index.ts#L114)
+Defined in: [config/types/index.ts:114](https://github.com/daidodo/format-imports/blob/aecebd4/src/lib/config/types/index.ts#L114)
 
 ___
 
@@ -126,7 +126,7 @@ ___
 
 By default all unused imports are removed. Keep some or all of them around with this setting if you need.
 
-Defined in: [config/types/index.ts:70](https://github.com/daidodo/format-imports/blob/cd1a4d5/src/lib/config/types/index.ts#L70)
+Defined in: [config/types/index.ts:70](https://github.com/daidodo/format-imports/blob/aecebd4/src/lib/config/types/index.ts#L70)
 
 ___
 
@@ -136,7 +136,7 @@ ___
 
 Max binding names per line before wrapping for imports. 0 for no limit. Default to _1_.
 
-Defined in: [config/types/index.ts:54](https://github.com/daidodo/format-imports/blob/cd1a4d5/src/lib/config/types/index.ts#L54)
+Defined in: [config/types/index.ts:54](https://github.com/daidodo/format-imports/blob/aecebd4/src/lib/config/types/index.ts#L54)
 
 ___
 
@@ -146,7 +146,7 @@ ___
 
 Max default and binding names per line before wrapping for imports. 0 for no limit. Default to _2_.
 
-Defined in: [config/types/index.ts:58](https://github.com/daidodo/format-imports/blob/cd1a4d5/src/lib/config/types/index.ts#L58)
+Defined in: [config/types/index.ts:58](https://github.com/daidodo/format-imports/blob/aecebd4/src/lib/config/types/index.ts#L58)
 
 ___
 
@@ -156,7 +156,7 @@ ___
 
 Max binding names per line before wrapping for exports. 0 for no limit. Default to _0_.
 
-Defined in: [config/types/index.ts:62](https://github.com/daidodo/format-imports/blob/cd1a4d5/src/lib/config/types/index.ts#L62)
+Defined in: [config/types/index.ts:62](https://github.com/daidodo/format-imports/blob/aecebd4/src/lib/config/types/index.ts#L62)
 
 ___
 
@@ -166,7 +166,7 @@ ___
 
 Max line length before wrapping. 0 for no limit. Default to _80_.
 
-Defined in: [config/types/index.ts:90](https://github.com/daidodo/format-imports/blob/cd1a4d5/src/lib/config/types/index.ts#L90)
+Defined in: [config/types/index.ts:90](https://github.com/daidodo/format-imports/blob/aecebd4/src/lib/config/types/index.ts#L90)
 
 ___
 
@@ -176,7 +176,7 @@ ___
 
 Max names on wrapped lines for imports/exports. 0 for no limit. Default to _1_.
 
-Defined in: [config/types/index.ts:66](https://github.com/daidodo/format-imports/blob/cd1a4d5/src/lib/config/types/index.ts#L66)
+Defined in: [config/types/index.ts:66](https://github.com/daidodo/format-imports/blob/aecebd4/src/lib/config/types/index.ts#L66)
 
 ___
 
@@ -186,7 +186,7 @@ ___
 
 Use single or double quotes. Default to _single_.
 
-Defined in: [config/types/index.ts:102](https://github.com/daidodo/format-imports/blob/cd1a4d5/src/lib/config/types/index.ts#L102)
+Defined in: [config/types/index.ts:102](https://github.com/daidodo/format-imports/blob/aecebd4/src/lib/config/types/index.ts#L102)
 
 ___
 
@@ -196,7 +196,7 @@ ___
 
 Whether to remove the last 'index' when normalizing paths. Default to _false_.
 
-Defined in: [config/types/index.ts:86](https://github.com/daidodo/format-imports/blob/cd1a4d5/src/lib/config/types/index.ts#L86)
+Defined in: [config/types/index.ts:86](https://github.com/daidodo/format-imports/blob/aecebd4/src/lib/config/types/index.ts#L86)
 
 ___
 
@@ -206,7 +206,7 @@ ___
 
 Whether to remove the last slash when normalizing paths. Default to _false_.
 
-Defined in: [config/types/index.ts:82](https://github.com/daidodo/format-imports/blob/cd1a4d5/src/lib/config/types/index.ts#L82)
+Defined in: [config/types/index.ts:82](https://github.com/daidodo/format-imports/blob/aecebd4/src/lib/config/types/index.ts#L82)
 
 ___
 
@@ -216,7 +216,7 @@ ___
 
 Sort import declarations by paths or first names. Default to _paths_.
 
-Defined in: [config/types/index.ts:34](https://github.com/daidodo/format-imports/blob/cd1a4d5/src/lib/config/types/index.ts#L34)
+Defined in: [config/types/index.ts:34](https://github.com/daidodo/format-imports/blob/aecebd4/src/lib/config/types/index.ts#L34)
 
 ___
 
@@ -234,7 +234,7 @@ Sorting rules for paths and names. Default to:
 
 **`see`** [Sorting rules](../../../../wiki/Sorting-Rules)
 
-Defined in: [config/types/index.ts:50](https://github.com/daidodo/format-imports/blob/cd1a4d5/src/lib/config/types/index.ts#L50)
+Defined in: [config/types/index.ts:50](https://github.com/daidodo/format-imports/blob/aecebd4/src/lib/config/types/index.ts#L50)
 
 ___
 
@@ -244,7 +244,7 @@ ___
 
 Number of spaces to replace a TAB. Default to _2_.
 
-Defined in: [config/types/index.ts:98](https://github.com/daidodo/format-imports/blob/cd1a4d5/src/lib/config/types/index.ts#L98)
+Defined in: [config/types/index.ts:98](https://github.com/daidodo/format-imports/blob/aecebd4/src/lib/config/types/index.ts#L98)
 
 ___
 
@@ -254,7 +254,7 @@ ___
 
 Indent lines with tabs or spaces. Default to _space_.
 
-Defined in: [config/types/index.ts:94](https://github.com/daidodo/format-imports/blob/cd1a4d5/src/lib/config/types/index.ts#L94)
+Defined in: [config/types/index.ts:94](https://github.com/daidodo/format-imports/blob/aecebd4/src/lib/config/types/index.ts#L94)
 
 ___
 
@@ -264,4 +264,4 @@ ___
 
 When to add a trailing comma for the last name. Default to _multiLine_.
 
-Defined in: [config/types/index.ts:106](https://github.com/daidodo/format-imports/blob/cd1a4d5/src/lib/config/types/index.ts#L106)
+Defined in: [config/types/index.ts:106](https://github.com/daidodo/format-imports/blob/aecebd4/src/lib/config/types/index.ts#L106)

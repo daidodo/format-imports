@@ -13,7 +13,20 @@ import {
 import { loadPretConfig } from './prettier';
 import { Configuration } from './types';
 
-// TODO: Tests.
+/**
+ * Resolve config for a source file.
+ *
+ * The following sources will be considered if found (in precedence from high to low):
+ * - [ESLint configuration](https://eslint.org/docs/user-guide/configuring)
+ * - `"importSorter"` section in `package.json`
+ * - `import-sorter.json` (File name is configurable from the base config)
+ * - [Prettier configuration](https://github.com/prettier/prettier-vscode#configuration)
+ * - `.editorconfig`
+ * - The base config provided as parameter
+ *
+ * @param fileName Source file name
+ * @param config Base config
+ */
 export function loadImportSorterConfig(fileName: string, config: Configuration = {}) {
   const log = logger('config.loadImportSorterConfig');
   log.debug('Load Prettier/EditorConfig config.');
@@ -51,7 +64,19 @@ export function fileConfig(filename: string, path?: string) {
   return loadConfigFromJsonFile(configFile);
 }
 
-// TODO: Tests
+/**
+ * Load config from given file, e.g. _path/to/import-sorter.json_.
+ *
+ * Will throw an error if file is unreadable or content is not a valid json object.
+ *
+ * Example:
+ * ```ts
+ * const config1 = { maxLineLength: 80, tabSize: 2 };
+ * const config2 = { maxLineLength: 100 };
+ *
+ * const config = mergeConfig(config1, config2);  // { maxLineLength: 100, tabSize: 2 }
+ * ```
+ */
 export function loadConfigFromJsonFile(filename: string): Configuration {
   if (!filename) return {};
   const config = JSON.parse(fs.readFileSync(filename, 'utf8'));

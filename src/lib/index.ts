@@ -9,6 +9,4 @@ export {
   resolveConfigForSource,
 } from './config';
 
-export { FormatOptions } from './format/config';
-
 export * from './format/main';

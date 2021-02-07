@@ -50,7 +50,14 @@ const KEYS_TO_MERGE = [
   'keepUnused' as const,
 ];
 
-// TODO: Tests.
+/**
+ * Merge multiple configs together. The latter takes precedence if values have conflicts.
+ *
+ * This function is preferred to `{...config1, ...config2}` in a sense that some keys need to be
+ * merged instead of overwritten, e.g. `exclude`.
+ *
+ * @param configs An array of config objects
+ */
 export function mergeConfig(...configs: Configuration[]) {
   return configs.reduce((a, b) => {
     const obj: Configuration = KEYS_TO_MERGE.map(k => {
