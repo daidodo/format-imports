@@ -17,7 +17,7 @@ export interface Configuration {
    */
   readonly configurationFileName?: string;
   /**
-   * Whether to format exports as well. Default to _false_.
+   * Whether to format exports as well as imports. Default to _true_.
    */
   readonly formatExports?: boolean;
   /**
