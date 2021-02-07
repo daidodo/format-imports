@@ -63,11 +63,13 @@ const KEYS_TO_MERGE = [
  *
  * const config = mergeConfig(config1, config2);  // { maxLineLength: 100, tabSize: 2 }
  * ```
+ * @typeparam T A type extended from Configuration
+ *
  * @param configs An array of config objects
  */
-export function mergeConfig(...configs: Configuration[]) {
+export function mergeConfig<T extends Configuration>(...configs: T[]) {
   return configs.reduce((a, b) => {
-    const obj: Configuration = KEYS_TO_MERGE.map(k => {
+    const obj = KEYS_TO_MERGE.map(k => {
       const e1 = a[k];
       const e2 = b[k];
       return {
@@ -85,9 +87,9 @@ export function mergeConfig(...configs: Configuration[]) {
   });
 }
 
-function purify(a: Configuration): Configuration {
-  let r: Configuration = {};
-  let k: keyof Configuration;
+function purify<T extends object>(a: T): T {
+  let r = {} as T;
+  let k: keyof T;
   for (k in a) if (a[k] !== undefined) r = { ...r, [k]: a[k] };
   return r;
 }

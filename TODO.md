@@ -25,6 +25,7 @@
 
 ### DONE
 
+- ~~Standalone npm package, CLI version. ([Link](https://github.com/znikola/vscode-es6-typescript-import-sorter/issues/20), [Link](https://github.com/SoominHan/import-sorter/issues/57), [Example](https://github.com/znikola/vscode-es6-typescript-import-sorter))~~
 - ~~Support `\r` and `\n\r` as newlines.~~
 - ~~Do NOT sort script imports.~~
 - ~~Do not remove `export {}` if there is no import/export left, see [here](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/unambiguous.md).~~

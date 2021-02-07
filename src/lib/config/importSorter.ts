@@ -24,29 +24,35 @@ import { Configuration } from './types';
  * - `.editorconfig`
  * - The base config provided as parameter
  *
+ * @typeparam T A type extended from Configuration
+ *
  * @param fileName Source file name
  * @param config Base config
  */
-export function loadImportSorterConfig(fileName: string, config: Configuration = {}) {
+export function loadImportSorterConfig<T extends Configuration = Configuration>(
+  fileName: string,
+  config?: T,
+) {
   const log = logger('config.loadImportSorterConfig');
+  const cfg = config ?? ({} as T);
   log.debug('Load Prettier/EditorConfig config.');
-  const pretConfig = loadPretConfig(fileName);
-  const cfgFileName = config.configurationFileName || 'import-sorter.json';
+  const pretConfig = loadPretConfig(fileName) as T;
+  const cfgFileName = cfg.configurationFileName || 'import-sorter.json';
   log.debug('Load import-sorter config from', cfgFileName);
-  const fConfig = fileConfig(cfgFileName, fileName);
+  const fConfig = fileConfig(cfgFileName, fileName) as T;
   log.debug('Load package.json config.');
-  const pkgConfig = packageConfig(fileName);
+  const pkgConfig = packageConfig(fileName) as T;
   log.debug('Enhance EOL.');
-  const c = enhanceEol(config, () => endOfLineForFile(fileName));
+  const c = enhanceEol(cfg, () => endOfLineForFile(fileName));
   return mergeConfig(c, pretConfig, fConfig, pkgConfig);
 }
 
-export function enhanceEol(config: Configuration, detectEol: () => string) {
+export function enhanceEol<T extends Configuration>(config: T, detectEol: () => string) {
   if (config.eol) return config;
   const nl = detectEol();
   const eol: Configuration['eol'] =
     nl === '\r' ? 'CR' : nl === '\r\n' ? 'CRLF' : nl === '\n\r' ? 'LFCR' : 'LF';
-  return mergeConfig({ eol }, config);
+  return mergeConfig({ eol } as T, config);
 }
 
 function packageConfig(fileName: string) {

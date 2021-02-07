@@ -18,7 +18,7 @@ export {
 } from './types';
 
 export { mergeConfig } from './helper';
-export { ESLintConfig } from './eslint';
+
 export {
   loadConfigFromJsonFile,
   loadImportSorterConfig as resolveConfigForFile,
@@ -29,11 +29,16 @@ export {
  *
  * This function will detect EOL for the text and update the base config provided.
  *
+ * @typeparam T A type extended from Configuration
+ *
  * @param text Source text
  * @param config Base config
  */
-export function resolveConfigForSource(text: string, config: Configuration = {}) {
-  return enhanceEol(config, () => endOfLine(text));
+export function resolveConfigForSource<T extends Configuration = Configuration>(
+  text: string,
+  config?: T,
+) {
+  return enhanceEol(config ?? ({} as T), () => endOfLine(text));
 }
 
 /**

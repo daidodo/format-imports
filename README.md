@@ -403,7 +403,7 @@ _Notes:_
 
 - _There are NO blank lines between sub-groups._
 - _Use [emptyLinesBetweenGroups](docs/interfaces/configuration.md#emptyLinesBetweenGroups) to change empty lines between groups._
-- _A group can have its own [sortImportsBy](docs/interfaces/configuration.md#sortImportsBy) regardless of the global option, and sub groups will respect it._
+- _A group can have its own [sortImportsBy](docs/interfaces/grouprule.md#sortImportsBy) regardless of the global option, and sub groups will respect it._
 
 For example, `"groupRules": ["^react$", {}, "^[.]"]` defines 3 groups (and their order):
 

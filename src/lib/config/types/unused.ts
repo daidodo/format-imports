@@ -1,18 +1,21 @@
 /**
  * This is for keeping unused names.
- * `string` elems will be expanded to `{ path: elem }`.
+ *
+ * `string` elements will be expanded to `{ path: element }`.
  */
 export type KeepUnusedRule =
   | string
   | {
       /**
        * Import path pattern.
-       * If it's `undefined` or empty, the rule will be ignored.
+       *
+       * If it's _undefined_ or empty, the rule will be ignored.
        */
       path: string;
       /**
        * Imported name pattern.
-       * If it's `undefined` or empty, all names will match.
+       *
+       * If it's _undefined_ or empty, all names will match.
        */
       names?: string[];
     };

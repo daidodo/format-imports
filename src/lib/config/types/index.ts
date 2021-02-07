@@ -130,16 +130,6 @@ export interface Configuration {
    * @private
    */
   readonly eol?: 'LF' | 'CR' | 'CRLF' | 'LFCR'; // Not configurable. Internal use only.
-  /**
-   * @private
-   */
-  readonly autoFormat?: 'off' | 'onSave';
-  /**
-   * @private
-   */
-  readonly development?: {
-    readonly enableDebug?: boolean;
-  };
 }
 
 /**

@@ -2,29 +2,31 @@
 
 /**
  * Symbols for char segments:
- * * 'az' - Lower case letters, i.e. [a-z].
- * * 'AZ' - Upper case letters, i.e. [A-Z].
- * * 'aA' - Both case letters and lower case first, i.e. [a-zA-Z] and `'a' < 'A' < 'b' < 'B' < ...`
- * * 'Aa' - Both case letters and upper case first, i.e. [a-zA-Z] and `'A' < 'a' < 'B' < 'b' < ...`
- * * '_' - Chars with ASCII from 91 to 96, i.e. `[`, `\`, `]`, `^`, `_`, `` ` ``(backtick).
+ * - _az_ - Lower case letters, i.e. [a-z].
+ * - _AZ_ - Upper case letters, i.e. [A-Z].
+ * - _aA_ - Both case letters and lower case first, i.e. [a-zA-Z] and `'a' < 'A' < 'b' < 'B' < ...`
+ * - _Aa_ - Both case letters and upper case first, i.e. [a-zA-Z] and `'A' < 'a' < 'B' < 'b' < ...`
+ * - _\__ - Chars with ASCII from 91 to 96, i.e. `[`, `\`, `]`, `^`, `_`, `` ` ``(backtick).
  */
 export type SegSymbol = 'az' | 'AZ' | 'aA' | 'Aa' | '_';
 
 /**
  * String comparison rule.
  *
- * If it's 'none', then there is no sorting at all.
+ * If it's _none_, then there is no sorting at all.
  */
 export type CompareRule = SegSymbol[] | 'none';
 
 export interface SortRules {
   /**
-   * Sorting rule for import paths.
+   * Sorting rule for import paths. Default to
+   * [COMPARE_RULE_DEFAULT](../README.md#COMPARE_RULE_DEFAULT).
    */
   paths?: CompareRule;
 
   /**
-   * Sorting rule for imported names.
+   * Sorting rule for imported/exported names. Default to
+   * [COMPARE_RULE_DEFAULT](../README.md#COMPARE_RULE_DEFAULT).
    */
   names?: CompareRule;
 }

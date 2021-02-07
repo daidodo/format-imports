@@ -5,8 +5,22 @@
 ### Interfaces
 
 - [Configuration](interfaces/configuration.md)
+- [GroupRule](interfaces/grouprule.md)
+- [SortRules](interfaces/sortrules.md)
 
 ## Type aliases
+
+### CompareRule
+
+Ƭ **CompareRule**: [*SegSymbol*](README.md#segsymbol)[] \| *none*
+
+String comparison rule.
+
+If it's _none_, then there is no sorting at all.
+
+Defined in: [config/types/sorting.ts:18](https://github.com/daidodo/format-imports/blob/380a9d2/src/lib/config/types/sorting.ts#L18)
+
+___
 
 ### Extension
 
@@ -14,19 +28,72 @@
 
 A type representing file extensions supported.
 
-Defined in: [format/main/index.ts:14](https://github.com/daidodo/format-imports/blob/c8f3e5f/src/lib/format/main/index.ts#L14)
+Defined in: [format/main/index.ts:14](https://github.com/daidodo/format-imports/blob/380a9d2/src/lib/format/main/index.ts#L14)
+
+___
+
+### FlagSymbol
+
+Ƭ **FlagSymbol**: *scripts* \| *multiple* \| *single* \| *namespace* \| *named* \| *all*
+
+Symbols for different types of imports:
+- _scripts_: Script imports, e.g. `import 'some_scripts'`.
+- _multiple_: Import multiple members, e.g.:
+  ```ts
+  import A, {B, C} from 'a';
+  import A, * as B from 'a';
+  ```
+- _single_: Import single member, e.g.:
+  ```ts
+  import A from 'a';
+  import { A } from 'a';
+  ```
+- _namespace_: Import a namespace, e.g.:
+  ```ts
+  import * as A from 'a';
+  ```
+- _named_: All _multiple_, _single_ and _namespace_ combined.
+- _all_: All _scripts_ and _named_ combined.
+
+Defined in: [config/types/grouping.ts:23](https://github.com/daidodo/format-imports/blob/380a9d2/src/lib/config/types/grouping.ts#L23)
+
+___
+
+### KeepUnusedRule
+
+Ƭ **KeepUnusedRule**: *string* \| { `names?`: *string*[] ; `path`: *string*  }
+
+This is for keeping unused names.
+`string` elems will be expanded to `{ path: elem }`.
+
+Defined in: [config/types/unused.ts:5](https://github.com/daidodo/format-imports/blob/380a9d2/src/lib/config/types/unused.ts#L5)
+
+___
+
+### SegSymbol
+
+Ƭ **SegSymbol**: *az* \| *AZ* \| *aA* \| *Aa* \| *_*
+
+Symbols for char segments:
+- _az_ - Lower case letters, i.e. [a-z].
+- _AZ_ - Upper case letters, i.e. [A-Z].
+- _aA_ - Both case letters and lower case first, i.e. [a-zA-Z] and `'a' < 'A' < 'b' < 'B' < ...`
+- _Aa_ - Both case letters and upper case first, i.e. [a-zA-Z] and `'A' < 'a' < 'B' < 'b' < ...`
+- _\__ - Chars with ASCII from 91 to 96, i.e. `[`, `\`, `]`, `^`, `_`, `` ` ``(backtick).
+
+Defined in: [config/types/sorting.ts:11](https://github.com/daidodo/format-imports/blob/380a9d2/src/lib/config/types/sorting.ts#L11)
 
 ## Variables
 
 ### COMPARE\_RULE\_DEFAULT
 
-• `Const` **COMPARE\_RULE\_DEFAULT**: CompareRule
+• `Const` **COMPARE\_RULE\_DEFAULT**: [*CompareRule*](README.md#comparerule)
 
 Default comparison rule for paths and names, which is:
 * Comparing letters case-insensitively, and
 * `'_'` is in front of `[a-zA-Z]`.
 
-Defined in: [config/types/index.ts:162](https://github.com/daidodo/format-imports/blob/c8f3e5f/src/lib/config/types/index.ts#L162)
+Defined in: [config/types/index.ts:152](https://github.com/daidodo/format-imports/blob/380a9d2/src/lib/config/types/index.ts#L152)
 
 ___
 
@@ -36,7 +103,7 @@ ___
 
 Default grouping rules.
 
-Defined in: [config/types/index.ts:148](https://github.com/daidodo/format-imports/blob/c8f3e5f/src/lib/config/types/index.ts#L148)
+Defined in: [config/types/index.ts:138](https://github.com/daidodo/format-imports/blob/380a9d2/src/lib/config/types/index.ts#L138)
 
 ___
 
@@ -46,7 +113,7 @@ ___
 
 File extensions supported.
 
-Defined in: [format/main/index.ts:19](https://github.com/daidodo/format-imports/blob/c8f3e5f/src/lib/format/main/index.ts#L19)
+Defined in: [format/main/index.ts:19](https://github.com/daidodo/format-imports/blob/380a9d2/src/lib/format/main/index.ts#L19)
 
 ## Functions
 
@@ -75,7 +142,7 @@ Name | Type | Description |
 
 Result text or `undefined` if nothing changes.
 
-Defined in: [format/main/index.ts:37](https://github.com/daidodo/format-imports/blob/c8f3e5f/src/lib/format/main/index.ts#L37)
+Defined in: [format/main/index.ts:37](https://github.com/daidodo/format-imports/blob/380a9d2/src/lib/format/main/index.ts#L37)
 
 ___
 
@@ -104,7 +171,7 @@ Name | Type | Description |
 
 Result text or `undefined` if nothing changes.
 
-Defined in: [format/main/index.ts:63](https://github.com/daidodo/format-imports/blob/c8f3e5f/src/lib/format/main/index.ts#L63)
+Defined in: [format/main/index.ts:63](https://github.com/daidodo/format-imports/blob/380a9d2/src/lib/format/main/index.ts#L63)
 
 ___
 
@@ -125,7 +192,7 @@ Name | Type |
 
 **Returns:** *boolean*
 
-Defined in: [config/index.ts:44](https://github.com/daidodo/format-imports/blob/c8f3e5f/src/lib/config/index.ts#L44)
+Defined in: [config/index.ts:49](https://github.com/daidodo/format-imports/blob/380a9d2/src/lib/config/index.ts#L49)
 
 ___
 
@@ -145,13 +212,13 @@ Name | Type |
 
 **Returns:** [*Configuration*](interfaces/configuration.md)
 
-Defined in: [config/importSorter.ts:72](https://github.com/daidodo/format-imports/blob/c8f3e5f/src/lib/config/importSorter.ts#L72)
+Defined in: [config/importSorter.ts:78](https://github.com/daidodo/format-imports/blob/380a9d2/src/lib/config/importSorter.ts#L78)
 
 ___
 
 ### mergeConfig
 
-▸ **mergeConfig**(...`configs`: [*Configuration*](interfaces/configuration.md)[]): [*Configuration*](interfaces/configuration.md)
+▸ **mergeConfig**<T\>(...`configs`: T[]): T
 
 Merge multiple configs together. The latter takes precedence if values have conflicts.
 
@@ -166,21 +233,27 @@ const config2 = { maxLineLength: 100 };
 const config = mergeConfig(config1, config2);  // { maxLineLength: 100, tabSize: 2 }
 ```
 
+#### Type parameters:
+
+Name | Type | Description |
+------ | ------ | ------ |
+`T` | [*Configuration*](interfaces/configuration.md) | A type extended from Configuration    |
+
 #### Parameters:
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`...configs` | [*Configuration*](interfaces/configuration.md)[] | An array of config objects    |
+`...configs` | T[] | An array of config objects    |
 
-**Returns:** [*Configuration*](interfaces/configuration.md)
+**Returns:** T
 
-Defined in: [config/helper.ts:68](https://github.com/daidodo/format-imports/blob/c8f3e5f/src/lib/config/helper.ts#L68)
+Defined in: [config/helper.ts:70](https://github.com/daidodo/format-imports/blob/380a9d2/src/lib/config/helper.ts#L70)
 
 ___
 
 ### resolveConfigForFile
 
-▸ **resolveConfigForFile**(`fileName`: *string*, `config?`: [*Configuration*](interfaces/configuration.md)): [*Configuration*](interfaces/configuration.md)
+▸ **resolveConfigForFile**<T\>(`fileName`: *string*, `config?`: T): T
 
 Resolve config for a source file.
 
@@ -192,34 +265,46 @@ The following sources will be considered if found (in precedence from high to lo
 - `.editorconfig`
 - The base config provided as parameter
 
+#### Type parameters:
+
+Name | Type | Default | Description |
+------ | ------ | ------ | ------ |
+`T` | [*Configuration*](interfaces/configuration.md) | [*Configuration*](interfaces/configuration.md) | A type extended from Configuration    |
+
 #### Parameters:
 
-Name | Type | Default value | Description |
------- | ------ | ------ | ------ |
-`fileName` | *string* | - | Source file name   |
-`config` | [*Configuration*](interfaces/configuration.md) | ... | Base config    |
+Name | Type | Description |
+------ | ------ | ------ |
+`fileName` | *string* | Source file name   |
+`config?` | T | Base config    |
 
-**Returns:** [*Configuration*](interfaces/configuration.md)
+**Returns:** T
 
-Defined in: [config/importSorter.ts:30](https://github.com/daidodo/format-imports/blob/c8f3e5f/src/lib/config/importSorter.ts#L30)
+Defined in: [config/importSorter.ts:32](https://github.com/daidodo/format-imports/blob/380a9d2/src/lib/config/importSorter.ts#L32)
 
 ___
 
 ### resolveConfigForSource
 
-▸ **resolveConfigForSource**(`text`: *string*, `config?`: [*Configuration*](interfaces/configuration.md)): [*Configuration*](interfaces/configuration.md)
+▸ **resolveConfigForSource**<T\>(`text`: *string*, `config?`: T): T
 
 Resolve config for given source text.
 
 This function will detect EOL for the text and update the base config provided.
 
+#### Type parameters:
+
+Name | Type | Default | Description |
+------ | ------ | ------ | ------ |
+`T` | [*Configuration*](interfaces/configuration.md) | [*Configuration*](interfaces/configuration.md) | A type extended from Configuration    |
+
 #### Parameters:
 
-Name | Type | Default value | Description |
------- | ------ | ------ | ------ |
-`text` | *string* | - | Source text   |
-`config` | [*Configuration*](interfaces/configuration.md) | ... | Base config    |
+Name | Type | Description |
+------ | ------ | ------ |
+`text` | *string* | Source text   |
+`config?` | T | Base config    |
 
-**Returns:** [*Configuration*](interfaces/configuration.md)
+**Returns:** T
 
-Defined in: [config/index.ts:35](https://github.com/daidodo/format-imports/blob/c8f3e5f/src/lib/config/index.ts#L35)
+Defined in: [config/index.ts:37](https://github.com/daidodo/format-imports/blob/380a9d2/src/lib/config/index.ts#L37)
