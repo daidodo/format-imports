@@ -521,4 +521,4 @@ This is a community supported project so your contribution will be well apprecia
 
 # License
 
-MIT
+MIT © Zhao DAI <daidodo@gmail.com>
