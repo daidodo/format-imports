@@ -28,11 +28,17 @@ It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](htt
 <!--ts-->
 
 - [Features](#features)
-- [How to use](#how-to-use)
-- [Extension Settings](#extension-settings)
+- [Install](#install)
+- [CLI](#cli)
+  - [Format Files](#format-files)
+  - [Format a Directory](#format-a-directory)
+  - [Check Files and Directories](#check-files-and-directories)
+- [APIs](#apis)
 - [Configuration](#configuration)
   - [ESLint Compatibility](#eslint-compatibility)
-- [Ignore files or declarations](#ignore-files-or-declarations)
+- [Ignore Files or Declarations](#ignore-files-or-declarations)
+  - [Ignore Files](#ignore-files)
+  - [Ignore Declarations](#ignore-declarations)
 - [Maximum names per line](#maximum-names-per-line)
   - [maxBindingNamesPerLine](#maxbindingnamesperline)
   - [maxDefaultAndBindingNamesPerLine](#maxdefaultandbindingnamesperline)
@@ -42,8 +48,9 @@ It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](htt
 - [Sorting Rules](#sorting-rules)
 - [Unused Imports Removal](#unused-imports-removal)
 - [Contribution](#contribution)
-- [Thanks](#thanks)
 - [License](#license)
+
+<!-- Added by: zddai, at: Sun  7 Feb 2021 19:48:13 GMT -->
 
 <!--te-->
 
@@ -76,37 +83,37 @@ This command formats a number of given files.
 
 If no files provided, it'll read the source from `STDIN` and format it.
 
-### Options
+- Options
 
-#### `-o, --output path::String`
+  - `-o, --output path::String`
 
-If not set, the results will be written back to input files, or `STDOUT` when reading from `STDIN`.
+    If not set, the results will be written back to input files, or `STDOUT` when reading from `STDIN`.
 
-If set, the results will be written to that file. You can't specify output file when there are multiple input files.
+    If set, the results will be written to that file. You can't specify output file when there are multiple input files.
 
-When there is one input file and the output path is a directory, the result will be written to a new file under the output path with the same name as the input file.
+    When there is one input file and the output path is a directory, the result will be written to a new file under the output path with the same name as the input file.
 
-#### `--config path::String`
+  - `--config path::String`
 
-If set, `format-imports` will read configurations from provided file, e.g. `path/to/import-sorter.json`. The path can be either absolute or relative to the CWD (current work directory).
+    If set, `format-imports` will read configurations from provided file, e.g. `path/to/import-sorter.json`. The path can be either absolute or relative to the CWD (current work directory).
 
-When formatting a source file, `format-imports` will try to resolve configurations specific to that source file, and then merge it with the configurations from `--config` option. Source file specific configurations will have higher precedence.
+    When formatting a source file, `format-imports` will try to resolve configurations specific to that source file, and then merge it with the configurations from `--config` option. Source file specific configurations will have higher precedence.
 
-#### `-f, --force`
+  - `-f, --force`
 
-Format all [supported files](#-e---extension-jstsjsxtsx), and ignore exclude patterns/globs and file-disable comments from no matter `--config` option or source file specific configurations.
+    Format all [supported files](#-e---extension-jstsjsxtsx), and ignore exclude patterns/globs and file-disable comments from no matter `--config` option or source file specific configurations.
 
-#### `-d, --dry-run`
+  - `-d, --dry-run`
 
-Test-run the command without modifying or creating any files. Useful when you're not sure what will happen and want to be cautious.
+    Test-run the command without modifying or creating any files. Useful when you're not sure what will happen and want to be cautious.
 
-#### `-e, --extension js|ts|jsx|tsx`
+  - `-e, --extension js|ts|jsx|tsx`
 
-Default to `ts`.
+    Default to `ts`.
 
-When reading from `STDIN`, you can specify source code type via this option. Supported types are `js`, `ts`, `jsx` and `tsx`.
+    When reading from `STDIN`, you can specify source code type via this option. Supported types are `js`, `ts`, `jsx` and `tsx`.
 
-If it's not set but `--output` is provided, `format-imports` will try to infer code type from the output file extension.
+    If it's not set but `--output` is provided, `format-imports` will try to infer code type from the output file extension.
 
 ## Format a Directory
 
@@ -116,33 +123,33 @@ format-imports [options] DIRECTORY
 
 This command formats all [supported files](#-e---extension-jstsjsxtsx) under a directory.
 
-### Options
+- Options
 
-#### `-o, --output path::String`
+  - `-o, --output path::String`
 
-If not set, the results will be written back to input files.
+    If not set, the results will be written back to input files.
 
-If set, the results will be written to new files under the output directory, with the same file structure as the input directory.
+    If set, the results will be written to new files under the output directory, with the same file structure as the input directory.
 
-If the output directory doesn't exist, it'll be created.
+    If the output directory doesn't exist, it'll be created.
 
-#### `--config path::String`
+  - `--config path::String`
 
-See [above](#--config-pathstring).
+    See [above](#--config-pathstring).
 
-#### `--no-recursive`
+  - `--no-recursive`
 
-If not set, `format-imports` will search for [supported source files](#-e---extension-jstsjsxtsx) recursively under the input directory.
+    If not set, `format-imports` will search for [supported source files](#-e---extension-jstsjsxtsx) recursively under the input directory.
 
-Otherwise, the search will be non-recursive.
+    Otherwise, the search will be non-recursive.
 
-#### `-f, --force`
+  - `-f, --force`
 
-See [above](#-f---force)
+    See [above](#-f---force)
 
-#### `-d, --dry-run`
+  - `-d, --dry-run`
 
-See [above](#-d---dry-run)
+    See [above](#-d---dry-run)
 
 ## Check Files and Directories
 
@@ -150,25 +157,25 @@ See [above](#-d---dry-run)
 format-imports --check [options] FILE1/DIR1 [FILE2/DIR2 ...]
 ```
 
-### Options
+- Options
 
-#### `-c, --check`
+  - `-c, --check`
 
-If set, `format-imports` will check if provided files/directories are formatted. No changes will be made to any of the files.
+    If set, `format-imports` will check if provided files/directories are formatted. No changes will be made to any of the files.
 
-A non-zero code will be returned if any file fails to match the format, or any other error happens.
+    A non-zero code will be returned if any file fails to match the format, or any other error happens.
 
-#### `--config path::String`
+  - `--config path::String`
 
-See [above](#--config-pathstring).
+    See [above](#--config-pathstring).
 
-#### `--no-recursive`
+  - `--no-recursive`
 
-See [above](#--no-recursive).
+    See [above](#--no-recursive).
 
-#### `-f, --force`
+  - `-f, --force`
 
-Check all [supported files](#-e---extension-jstsjsxtsx), and ignore exclude patterns/globs and file-disable comments from no matter `--config` option or source file specific configurations.
+    Check all [supported files](#-e---extension-jstsjsxtsx), and ignore exclude patterns/globs and file-disable comments from no matter `--config` option or source file specific configurations.
 
 # APIs
 
@@ -229,23 +236,23 @@ If there are conflicts between user config and ESLint rules, the ESLint rules wi
 
 For more info about how the conflicts are resolved, please check the [ESLint Compatibility](../../wiki/ESLint-Compatibility) wiki.
 
-# Ignore files or declarations
+# Ignore Files or Declarations
+
+## Ignore Files
 
 There are a few ways to exclude files from inspection:
 
-1. Add path patterns to `exclude` or `excludeGlob` in user or workspace settings in VSCode.
+1. Add [exclude](docs/interfaces/configuration.md#exclude) or [excludeGlob](docs/interfaces/configuration.md#excludeGlob) patterns to `package.json` or `import-sorter.json`. E.g.:
 
    ```json
-   "tsImportSorter.configuration.exclude": ["regexPattern"],
-   "tsImportSorter.configuration.excludeGlob": ["globPattern"],
+   "exclude": ["regexPattern"],
+   "excludeGlob": ["globPattern"],
    ```
-
-2. Add path patterns to `package.json` or `import-sorter.json`.
 
    - _All path patterns are **merged** together instead of overwritten._
    - _Use **forward-slash** (`/`) as path separator no matter in MacOS, \*nix or Windows._
 
-3. Add the following comment at the beginning of the source file and keep at least one empty line from the next declaration:
+2. Add the following comment at the beginning of the source file and keep at least one empty line from the next statement:
 
 ```ts
 // ts-import-sorter: disable
@@ -263,7 +270,9 @@ or
 
 _Note:_
 
-- _Excluded paths and file disable-comments are **ignored** if the formatting is triggered manually, i.e. from Command Palette, editor context menu or shortcut._
+- _Excluded paths and file disable-comments are **ignored** if [force](docs/interfaces/configuration.md#force) flag is set in configuration._
+
+## Ignore Declarations
 
 To exclude a specific `import` or `export` declaration from formatting, please add the following as its leading or trailing comments:
 
@@ -278,13 +287,13 @@ or
 export { Excluded } from 'import/sorter'; /* ts-import-sorter: disable */
 ```
 
-To disable formatting for all exports, just set `"formatExports": false` in the config.
+To disable formatting for all exports, just set [formatExports](docs/interfaces/configuration.md#formatExports) to `false`.
 
 # Maximum names per line
 
-Whether to wrap an `import` declaration is decided by `maxBindingNamesPerLine` and `maxDefaultAndBindingNamesPerLine`, as well as `maxLineLength`.
+Whether to wrap an `import` declaration is decided by [maxBindingNamesPerLine](docs/interfaces/configuration.md#maxBindingNamesPerLine), [maxDefaultAndBindingNamesPerLine](docs/interfaces/configuration.md#maxDefaultAndBindingNamesPerLine) and [maxLineLength](docs/interfaces/configuration.md#maxLineLength).
 
-Whether to wrap an `export` declaration is decided by `maxExportNamesPerLine`, as well as `maxLineLength`.
+Whether to wrap an `export` declaration is decided by [maxExportNamesPerLine](docs/interfaces/configuration.md#maxExportNamesPerLine) and [maxLineLength](docs/interfaces/configuration.md#maxLineLength).
 
 ## `maxBindingNamesPerLine`
 
@@ -380,21 +389,21 @@ export {
 
 # Grouping Rules
 
-JS/TS Import/Export Sorter can put imports into different groups separated by empty lines (configurable), based on the rules defined in `groupRules`.
+`format-imports` sorts imports into different groups separated by empty lines (configurable), based on the rules defined in [groupRules](docs/interfaces/configuration.md#groupRules).
 
 A grouping rule defines:
 
 - Types of imports to apply.
 - Path pattern to match.
 - How to sort imports, by paths or first names, inside the group.
-- [Sorting Rules](https://github.com/daidodo/tsimportsorter/wiki/Sorting-Rules) for paths and names within the group.
+- [Sorting Rules](../../wiki/Sorting-Rules) for paths and names within the group.
 - Sub-groups to further adjust the order.
 
 _Notes:_
 
 - _There are NO blank lines between sub-groups._
-- _Use `emptyLinesBetweenGroups` to change empty lines between groups._
-- _A group can have its own `sortImportsBy` regardless of the global option, and sub groups will respect it._
+- _Use [emptyLinesBetweenGroups](docs/interfaces/configuration.md#emptyLinesBetweenGroups) to change empty lines between groups._
+- _A group can have its own [sortImportsBy](docs/interfaces/configuration.md#sortImportsBy) regardless of the global option, and sub groups will respect it._
 
 For example, `"groupRules": ["^react$", {}, "^[.]"]` defines 3 groups (and their order):
 
@@ -418,7 +427,7 @@ _Notes:_
 - _Script imports will NOT be sorted within a (sub) group, though sub groups may change their order._
 - _Exports will NOT be grouped. Grouping Rules are only for imports._
 
-For a complete guide, please refer to [the Wiki](https://github.com/daidodo/tsimportsorter/wiki/Grouping-Rules).
+For a complete guide, please refer to [the Wiki](../../wiki/Grouping-Rules).
 
 # Sorting Rules
 
@@ -470,7 +479,7 @@ _Note:_
 
 - _Setting `paths` or `names` to `null` doesn't disable sorting but uses the fall-back sorting rules, i.e. `["AZ", "_", "az"]`.\_
 
-For more details and how to construct your own rules, please read [the Wiki](https://github.com/daidodo/tsimportsorter/wiki/Sorting-Rules).
+For more details and how to construct your own rules, please read [the Wiki](../../wiki/Sorting-Rules).
 
 # Unused Imports Removal
 
@@ -499,7 +508,7 @@ Both `path` and `names` are converted to regular expressions so you can get real
 _Note:_
 
 - _You DON'T need to add `React` ([React](https://reactjs.org)) and `h` ([Stencil](https://stenciljs.com/)) to `keepUnused` as they are handled already._
-- _By default, `"keepUnused"` array is empty, i.e. DON'T keep any unused imports._
+- _By default, [keepUnused](docs/interfaces/configuration.md#keepUnused) array is empty, i.e. DON'T keep any unused imports._
 - _To keep ALL unused imports you can simply set:_
 
 ```json
@@ -508,11 +517,7 @@ _Note:_
 
 # Contribution
 
-This is a community supported project so your contribution will be well appreciated. Please refer to [CONTRIBUTING.md](https://github.com/daidodo/tsimportsorter/blob/master/CONTRIBUTING.md) for more information.
-
-# Thanks
-
-The initiative came from [import-sorter](https://github.com/SoominHan/import-sorter).
+This is a community supported project so your contribution will be well appreciated. Please refer to [CONTRIBUTING.md](CONTRIBUTING.md) for more information.
 
 # License
 
