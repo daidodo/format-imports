@@ -33,8 +33,8 @@ export interface Configuration {
    */
   readonly sortImportsBy?: 'paths' | 'names';
   /**
-   * Grouping rules for path patterns for imports. Default to [GROUP_RULES_DEFAULT]
-   * (../README#GROUP_RULES_DEFAULT)
+   * Grouping rules for path patterns for imports. Default to
+   * [GROUP_RULES_DEFAULT](../README#GROUP_RULES_DEFAULT)
    * @see [Grouping Rules](../../../../wiki/Grouping-Rules)
    */
   readonly groupRules?: (string | string[] | GroupRule)[];
