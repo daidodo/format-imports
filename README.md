@@ -199,7 +199,7 @@ else
   console.log(newText);
 ```
 
-Please read [APIs Documentation](docs/README) for more details.
+Please read [APIs Documentation](docs/README.md) for more details.
 
 # Extension Settings
 
