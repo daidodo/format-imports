@@ -201,183 +201,19 @@ else
 
 Please read [APIs Documentation](docs/README.md) for more details.
 
-# Extension Settings
-
-All VS Code settings under `"tsImportSorter"` section and their default values:
-
-```json
-// Configuration file name.
-"tsImportSorter.configuration.configurationFileName": "import-sorter.json",
-
-// When to auto format imports/exports. Valid values are 'off' or 'onSave'.
-"tsImportSorter.configuration.autoFormat": "onSave",
-
-// Whether to format exports as well.
-"tsImportSorter.configuration.formatExports": true,
-
-// Disable formatting for files matching regular expressions.
-"tsImportSorter.configuration.exclude": ["node_modules"],
-
-// Disable formatting for files matching glob patterns.
-"tsImportSorter.configuration.excludeGlob": [],
-
-// Sort import declarations by paths or first names. Valid values are 'paths' or 'names'.
-"tsImportSorter.sortImportsBy": "paths",
-
-// Grouping rules for path patterns for imports. {} is the fall-back group.
-"tsImportSorter.configuration.groupRules": [
-  "^react(-dom)?$",
-  "^@angular/",
-  "^vue$",
-  {},
-  "^[@]",
-  "^[.]"
-],
-
-// Sorting rule for import paths. Valid values are 'none' or string array.
-"tsImportSorter.configuration.sortRules.paths": ["_", "aA"],
-
-// Sorting rule for imported/exported names. Valid values are 'none' or string array.
-"tsImportSorter.configuration.sortRules.names": ["_", "aA"],
-
-// By default all unused imports are removed. Keep some or all them around with this setting if you need.
-"tsImportSorter.configuration.keepUnused": [],
-
-// Max binding names per line before wrapping for imports. 0 for no limit.
-"tsImportSorter.configuration.maxBindingNamesPerLine": 1,
-
-// Max default and binding names per line before wrapping for imports. 0 for no limit.
-"tsImportSorter.configuration.maxDefaultAndBindingNamesPerLine": 2,
-
-// Max binding names per line before wrapping for exports. 0 for no limit.
-"tsImportSorter.configuration.maxExportNamesPerLine": 0,
-
-// Max names on wrapped lines. 0 for no limit.
-"tsImportSorter.configuration.maxNamesPerWrappedLine": 1,
-
-// Number of empty lines between groups (NOT sub-groups).
-"tsImportSorter.configuration.emptyLinesBetweenGroups": 1,
-
-// Number of empty lines after the last import declaration.
-"tsImportSorter.configuration.emptyLinesAfterAllImports": 1,
-
-// Whether to remove the last slash when normalizing paths.
-"tsImportSorter.configuration.removeLastSlashInPath": false,
-
-// Whether to remove the last 'index' when normalizing paths.
-"tsImportSorter.configuration.removeLastIndexInPath": false,
-
-// Whether to enable debug mode and print detailed logs to the output channel.
-"tsImportSorter.configuration.development.enableDebug": false,
-```
-
 # Configuration
 
-JS/TS Import/Export Sorter reads configurations from the following sources (in precedence from high to low):
+The following configuration sources will be checked and merged when formatting a file:
 
-- [ESLint configuration](https://eslint.org/docs/user-guide/configuring) if installed.
+- [ESLint configuration](https://eslint.org/docs/user-guide/configuring).
 - `"importSorter"` section in `package.json`
 - `import-sorter.json` (File name is configurable)
-- [Prettier configuration](https://github.com/prettier/prettier-vscode#configuration) if installed
+- [Prettier configuration](https://github.com/prettier/prettier-vscode#configuration)
 - `.editorconfig`
-- VS Code `"editor"` and `"files"` settings
-- VS Code `"tsImportSorter"` settings
 
-Here are all configs in `package.json` under `"importSorter"` section and their default values:
+It's ok if any or all of them are not found, in which case default values will be used in config.
 
-```javascript
-{
-  "importSorter": {
-    // When to auto format imports/exports. Valid values are 'off' or 'onSave'.
-    "autoFormat": "onSave",
-
-    // Whether to format exports as well.
-    "formatExports": true,
-
-    // Disable formatting for files matching regular expressions.
-    "exclude": ["node_modules"],
-
-    // Disable formatting for files matching glob patterns.
-    "excludeGlob": [],
-
-    // Sort import declarations by paths or first names. Valid values are 'paths' or 'names'.
-    "sortImportsBy": "paths",
-
-    // Grouping rules for path patterns for imports. {} is the fall-back group.
-    "groupRules": ["^react(-dom)?$", "^@angular/", "^vue$", {}, "^[@]", "^[.]"],
-
-    "sortRules": {
-      // Sorting rule for import paths. Valid values are 'none' or string array.
-      "paths": ["_", "aA"],
-
-      // Sorting rule for imported/exported names. Valid values are 'none' or string array.
-      "names": ["_", "aA"]
-    },
-
-    // By default all unused imports are removed. Keep some or all them around with this setting if you need.
-    "keepUnused": [],
-
-    // Max line length before wrapping. 0 for no limit.
-    "maxLineLength": 80,
-
-    // Max binding names per line before wrapping for imports. 0 for no limit.
-    "maxBindingNamesPerLine": 1,
-
-    // Max default and binding names per line before wrapping for imports. 0 for no limit.
-    "maxDefaultAndBindingNamesPerLine": 2,
-
-    // Max binding names per line before wrapping for exports. 0 for no limit.
-    "maxExportNamesPerLine": 0,
-
-    // Max names on wrapped lines. 0 for no limit.
-    "maxNamesPerWrappedLine": 1,
-
-    // Number of empty lines between groups (NOT sub-groups).
-    "emptyLinesBetweenGroups": 1,
-
-    // Number of empty lines after the last import declaration.
-    "emptyLinesAfterAllImports": 1,
-
-    // Whether to remove the last slash when normalizing paths.
-    "removeLastSlashInPath": false,
-
-    // Whether to remove the last 'index' when normalizing paths.
-    "removeLastIndexInPath": false,
-
-    // Number of spaces to replace a TAB.
-    "tabSize": 2,
-
-    // Indent lines with tabs or spaces. Valid values are 'tab' or 'space'.
-    "tabType": "space",
-
-    // Use single or double quotes. Valid values are 'single' or 'double'.
-    "quoteMark": "single",
-
-    // When to add trailing a comma for the last name. Valid values are 'none' or 'multiLine'.
-    "trailingComma": "multiLine",
-
-    // Whether to add semicolons at the end of declarations.
-    "hasSemicolon": true,
-
-    // Whether to end files with a new line.
-    "insertFinalNewline": true,
-
-    // Whether to add spaces between brackets. true for '{ id }' and false for '{id}'.
-    "bracketSpacing": true
-  }
-}
-```
-
-`import-sorter.json` has all configs above. Example:
-
-```json
-{
-  "maxLineLength": 100,
-  "quoteMark": "double",
-  "tabSize": 4,
-  "insertFinalNewline": false
-}
-```
+All config fields you can set in `import-sorter.json` or `package.json` under `"importSorter"` section can be found in [Configuration](docs/interfaces/configuration.md).
 
 ## ESLint Compatibility
 
@@ -385,13 +221,13 @@ If installed, [ESLint](https://eslint.org) and plugins rules will be detected an
 
 Currently supported rules are:
 
-- [sort-imports](https://github.com/daidodo/tsimportsorter/wiki/ESLint-Compatibility#import-sorting-sort-imports)
-- [import/newline-after-import](https://github.com/daidodo/tsimportsorter/wiki/ESLint-Compatibility#importnewline-after-import)
-- [import/no-useless-path-segments](https://github.com/daidodo/tsimportsorter/wiki/ESLint-Compatibility#importno-useless-path-segments)
+- [sort-imports](../wiki/ESLint-Compatibility#import-sorting-sort-imports)
+- [import/newline-after-import](../wiki/ESLint-Compatibility#importnewline-after-import)
+- [import/no-useless-path-segments](../wiki/ESLint-Compatibility#importno-useless-path-segments)
 
 If there are conflicts between user config and ESLint rules, the ESLint rules will win to avoid any lint errors.
 
-For more info about how the conflicts are resolved, please check the [ESLint Compatibility](https://github.com/daidodo/tsimportsorter/wiki/ESLint-Compatibility) wiki.
+For more info about how the conflicts are resolved, please check the [ESLint Compatibility](../wiki/ESLint-Compatibility) wiki.
 
 # Ignore files or declarations
 
