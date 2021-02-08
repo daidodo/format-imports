@@ -12,6 +12,7 @@
     "compile:watch": "tsc --watch",
     "test": "jest",
     "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage src/lib src/test/lib",
     "unit-test": "jest src/lib",
     "lib-test": "jest src/test/lib",
     "cli-test": "jest src/test/cli",
