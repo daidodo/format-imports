@@ -14,7 +14,7 @@ Types of imports this group supports.
 
 If _undefined_, infer the flags from its parent and sub groups.
 
-Defined in: [config/types/grouping.ts:31](https://github.com/daidodo/format-imports/blob/380a9d2/src/lib/config/types/grouping.ts#L31)
+Defined in: [config/types/grouping.ts:31](https://github.com/daidodo/format-imports/blob/968e169/src/lib/config/types/grouping.ts#L31)
 
 ___
 
@@ -31,7 +31,7 @@ If it's _undefined_, only imports matching one of [subGroups](#subGroups) fall i
 If both [regex](#regex) and [subGroups](#subGroups) are _undefined_, then this is a _fall-back_ group,
 i.e. any paths don't match any other groups will fall into this group.
 
-Defined in: [config/types/grouping.ts:43](https://github.com/daidodo/format-imports/blob/380a9d2/src/lib/config/types/grouping.ts#L43)
+Defined in: [config/types/grouping.ts:43](https://github.com/daidodo/format-imports/blob/968e169/src/lib/config/types/grouping.ts#L43)
 
 ___
 
@@ -47,7 +47,7 @@ _undefined_, then inherit either or both from the parent.
 If it's _none_, or either [paths](sortrules.md#paths) or [names](sortrules.md#names) is
 _none_, then don't sort either or both of them.
 
-Defined in: [config/types/grouping.ts:73](https://github.com/daidodo/format-imports/blob/380a9d2/src/lib/config/types/grouping.ts#L73)
+Defined in: [config/types/grouping.ts:75](https://github.com/daidodo/format-imports/blob/968e169/src/lib/config/types/grouping.ts#L75)
 
 ___
 
@@ -60,18 +60,20 @@ Sort import statements by paths or first names.
 If it's _undefined_, then use the parent's value, or _paths_ if this is a top group.
 
 If by paths, the result is:
+
 ```ts
 import B from 'a';
 import A from 'b';
 ```
 
 If by names, the result is:
+
 ```ts
 import A from 'b';
 import B from 'a';
 ```
 
-Defined in: [config/types/grouping.ts:62](https://github.com/daidodo/format-imports/blob/380a9d2/src/lib/config/types/grouping.ts#L62)
+Defined in: [config/types/grouping.ts:64](https://github.com/daidodo/format-imports/blob/968e169/src/lib/config/types/grouping.ts#L64)
 
 ___
 
@@ -83,4 +85,4 @@ Sub-groups and rules. Imports will be sorted as the same order as sub groups def
 - `string` items will be expanded to `{ regex: elem }`.
 - `string[]` items will be expanded to `{ subGroups: elem }`.
 
-Defined in: [config/types/grouping.ts:80](https://github.com/daidodo/format-imports/blob/380a9d2/src/lib/config/types/grouping.ts#L80)
+Defined in: [config/types/grouping.ts:82](https://github.com/daidodo/format-imports/blob/968e169/src/lib/config/types/grouping.ts#L82)

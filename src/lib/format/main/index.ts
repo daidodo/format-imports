@@ -1,6 +1,7 @@
 import fs from 'fs';
 import tmp from 'tmp';
 
+import { logger } from '../../common';
 import { Configuration } from '../../config';
 import {
   enhanceConfig,
@@ -40,6 +41,8 @@ export function formatSourceFromFile(
   config: Configuration,
   options?: FormatOptions,
 ) {
+  const log = logger('format-imports.formatSourceFromFile');
+  log.info('Formatting fileName:', fileName, 'with config:', config);
   const allConfig = enhanceConfig(config, fileName, options);
   return formatSource(text, fileName, allConfig);
 }

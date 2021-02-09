@@ -25,8 +25,8 @@ export function enhanceWithEslint(config: Configuration, fileName: string, confi
 }
 
 function loadESLintConfig(fileName: string, configFile?: string) {
-  const log = logger('format.loadESLintConfig');
-  log.debug('Start loading ESLint config for fileName:', fileName);
+  const log = logger('format-imports.loadESLintConfig');
+  log.debug('Loading ESLint config for fileName:', fileName, 'from', configFile ?? 'default');
   log.info('ESLint API version:', ESLint.version);
   try {
     const eslint = new CLIEngine({ configFile });
@@ -37,7 +37,7 @@ function loadESLintConfig(fileName: string, configFile?: string) {
     return eslint.getConfigForFile(fileName);
   } catch (e: unknown) {
     const msg = e instanceof Error ? e.message : `${e}`;
-    log.warn('Failed loading ESLint config:', msg);
+    log.warn('Failed to load ESLint config for fileName:', fileName, 'with error:', msg);
     return undefined;
   }
 }

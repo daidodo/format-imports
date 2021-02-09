@@ -5,8 +5,9 @@ import { Configuration } from './types';
 
 // https://prettier.io/docs/en/options.html
 export function loadPretConfig(fileName: string): Configuration {
-  const log = logger('config.loadPretConfig');
-  log.info('Prettier API version: ', pt.version);
+  const log = logger('format-imports.loadPretConfig');
+  log.debug('Loading Prettier/EditorConfig config for fileName:', fileName);
+  log.info('Prettier API version:', pt.version);
   try {
     const config = pt.resolveConfig.sync(fileName, { useCache: false, editorconfig: true });
     if (!config) return {};
@@ -33,7 +34,12 @@ export function loadPretConfig(fileName: string): Configuration {
     };
   } catch (e: unknown) {
     const msg = e instanceof Error ? e.message : `${e}`;
-    log.warn('Failed loading Prettier config:', msg);
+    log.warn(
+      'Failed to load Prettier/EditorConfig config for filename:',
+      fileName,
+      'with error:',
+      msg,
+    );
     return {};
   }
 }

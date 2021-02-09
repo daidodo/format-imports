@@ -33,41 +33,43 @@ export function loadImportSorterConfig<T extends Configuration = Configuration>(
   fileName: string,
   config?: T,
 ) {
-  const log = logger('config.loadImportSorterConfig');
   const cfg = config ?? ({} as T);
-  log.debug('Load Prettier/EditorConfig config.');
   const pretConfig = loadPretConfig(fileName) as T;
   const cfgFileName = cfg.configurationFileName || 'import-sorter.json';
-  log.debug('Load import-sorter config from', cfgFileName);
   const fConfig = fileConfig(cfgFileName, fileName) as T;
-  log.debug('Load package.json config.');
   const pkgConfig = packageConfig(fileName) as T;
-  log.debug('Enhance EOL.');
   const c = enhanceEol(cfg, () => endOfLineForFile(fileName));
   return mergeConfig(c, pretConfig, fConfig, pkgConfig);
 }
 
-export function enhanceEol<T extends Configuration>(config: T, detectEol: () => string) {
-  if (config.eol) return config;
-  const nl = detectEol();
-  const eol: Configuration['eol'] =
-    nl === '\r' ? 'CR' : nl === '\r\n' ? 'CRLF' : nl === '\n\r' ? 'LFCR' : 'LF';
-  return mergeConfig({ eol } as T, config);
+// Exported for testing purpose.
+export function fileConfig(fileName: string, path?: string) {
+  const log = logger('format-imports.fileConfig');
+  log.debug('Loading JSON config from', fileName);
+  const [configFile] = findFileFromPathAndParents(fileName, path);
+  return loadConfigFromJsonFile(configFile);
 }
 
 function packageConfig(fileName: string) {
+  const log = logger('format-imports.packageConfig');
+  log.debug('Loading package.json config for fileName:', fileName);
   const [packageFile] = findFileFromPathAndParents('package.json', fileName);
   if (!packageFile) return {};
+  log.debug('Found package.json in', packageFile);
   const { importSorter: config } = JSON.parse(fs.readFileSync(packageFile, 'utf8'));
   if (!config) return {};
   assert(isObject(config), `Bad "importSorter" config in "${packageFile}"`);
   return config as Configuration;
 }
 
-// Exported for testing purpose.
-export function fileConfig(filename: string, path?: string) {
-  const [configFile] = findFileFromPathAndParents(filename, path);
-  return loadConfigFromJsonFile(configFile);
+export function enhanceEol<T extends Configuration>(config: T, detectEol: () => string) {
+  const log = logger('format-imports.enhanceEol');
+  log.debug('Determining EOL');
+  if (config.eol) return config;
+  const nl = detectEol();
+  const eol: Configuration['eol'] =
+    nl === '\r' ? 'CR' : nl === '\r\n' ? 'CRLF' : nl === '\n\r' ? 'LFCR' : 'LF';
+  return mergeConfig({ eol } as T, config);
 }
 
 /**

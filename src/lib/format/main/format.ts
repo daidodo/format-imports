@@ -34,7 +34,11 @@ export function formatSource(
   fileName: string,
   { config, tsCompilerOptions, processed, composeConfig }: AllConfig,
 ) {
-  const log = logger('parser.formatSource');
+  const log = logger('format-imports.formatSource');
+  log.debug('Enhanced config:', config);
+  log.debug('tsCompilerOptions:', tsCompilerOptions);
+  log.debug('ESLint config processed:', processed);
+  log.debug('composeConfig:', composeConfig);
   const sourceFile = ts.createSourceFile(fileName, text, ScriptTarget.Latest);
   const { importNodes, importsInsertPoint: point, exportNodes, allIds, unhandled } = parseSource(
     sourceFile,
@@ -44,7 +48,6 @@ export function formatSource(
   );
   const editManager = new EditManager([...importNodes, ...exportNodes]);
   if (editManager.empty()) return undefined;
-  log.debug('composeConfig:', composeConfig);
   const unusedIds = () =>
     getUnusedIds(allIds, importNodes, fileName, sourceFile, tsCompilerOptions);
   const sorter = sorterFromRules(config.sortRules);
@@ -59,8 +62,9 @@ export function formatSource(
   );
   if (result && point)
     editManager.insert({ range: point, text: result, minTrailingNewLines: composeConfig.groupEnd });
-  const mustBeModule = unhandled > 0 || !!result; // If there are import/export declarations, it's must be a module.
-  const edits = formatExports(exportNodes, composeConfig, sorter, mustBeModule);
+  const isModule = unhandled > 0 || !!result; // If there are import/export declarations, it is a module.
+  log.debug('isModule:', isModule);
+  const edits = formatExports(exportNodes, composeConfig, sorter, isModule);
   edits.forEach(e => editManager.insert(e));
   return apply(text, sourceFile, editManager.generateEdits(composeConfig));
 }
@@ -84,11 +88,11 @@ function formatExports(
   exportNodes: ExportNode[],
   composeConfig: ComposeConfig,
   sorter: Sorter,
-  mustBeModule: boolean,
+  isModule: boolean,
 ) {
   if (!exportNodes.length) return [];
   const sorted = sortExports(exportNodes, sorter.compareNames);
   const filtered = sorted.filter(n => !n.empty());
-  const nodes = filtered.length > 0 || mustBeModule ? filtered : decideKeep(sorted);
+  const nodes = filtered.length > 0 || isModule ? filtered : decideKeep(sorted);
   return nodes.map(n => ({ range: n.range, text: n.compose(composeConfig) }));
 }
