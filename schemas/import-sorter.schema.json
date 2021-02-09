@@ -133,6 +133,11 @@
       "type": "boolean",
       "default": true,
       "description": "Whether to add spaces between brackets. true for '{ id }' and false for '{id}'."
+    },
+    "force": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to format anyway and disregard exclude/excludeGlob patterns and file-disable comments."
     }
   },
   "$def": {

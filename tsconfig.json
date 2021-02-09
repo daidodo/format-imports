@@ -17,6 +17,6 @@
     "hideBreadcrumbs": true,
     "readme": "none",
     "name": "APIs Documentation",
-    "excludePrivate": true
+    "excludeInternal": true
   }
 }

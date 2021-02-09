@@ -127,7 +127,8 @@ export interface Configuration {
   readonly force?: boolean;
   /**
    * EOL of the source text. Internal use only.
-   * @private
+   *
+   * @internal
    */
   readonly eol?: 'LF' | 'CR' | 'CRLF' | 'LFCR'; // Not configurable. Internal use only.
 }
