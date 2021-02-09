@@ -14,7 +14,7 @@ Types of imports this group supports.
 
 If _undefined_, infer the flags from its parent and sub groups.
 
-Defined in: [config/types/grouping.ts:31](https://github.com/daidodo/format-imports/blob/968e169/src/lib/config/types/grouping.ts#L31)
+Defined in: [config/types/grouping.ts:31](https://github.com/daidodo/format-imports/blob/3e88cf9/src/lib/config/types/grouping.ts#L31)
 
 ___
 
@@ -31,7 +31,7 @@ If it's _undefined_, only imports matching one of [subGroups](#subGroups) fall i
 If both [regex](#regex) and [subGroups](#subGroups) are _undefined_, then this is a _fall-back_ group,
 i.e. any paths don't match any other groups will fall into this group.
 
-Defined in: [config/types/grouping.ts:43](https://github.com/daidodo/format-imports/blob/968e169/src/lib/config/types/grouping.ts#L43)
+Defined in: [config/types/grouping.ts:43](https://github.com/daidodo/format-imports/blob/3e88cf9/src/lib/config/types/grouping.ts#L43)
 
 ___
 
@@ -47,7 +47,7 @@ _undefined_, then inherit either or both from the parent.
 If it's _none_, or either [paths](sortrules.md#paths) or [names](sortrules.md#names) is
 _none_, then don't sort either or both of them.
 
-Defined in: [config/types/grouping.ts:75](https://github.com/daidodo/format-imports/blob/968e169/src/lib/config/types/grouping.ts#L75)
+Defined in: [config/types/grouping.ts:75](https://github.com/daidodo/format-imports/blob/3e88cf9/src/lib/config/types/grouping.ts#L75)
 
 ___
 
@@ -73,7 +73,7 @@ import A from 'b';
 import B from 'a';
 ```
 
-Defined in: [config/types/grouping.ts:64](https://github.com/daidodo/format-imports/blob/968e169/src/lib/config/types/grouping.ts#L64)
+Defined in: [config/types/grouping.ts:64](https://github.com/daidodo/format-imports/blob/3e88cf9/src/lib/config/types/grouping.ts#L64)
 
 ___
 
@@ -85,4 +85,4 @@ Sub-groups and rules. Imports will be sorted as the same order as sub groups def
 - `string` items will be expanded to `{ regex: elem }`.
 - `string[]` items will be expanded to `{ subGroups: elem }`.
 
-Defined in: [config/types/grouping.ts:82](https://github.com/daidodo/format-imports/blob/968e169/src/lib/config/types/grouping.ts#L82)
+Defined in: [config/types/grouping.ts:82](https://github.com/daidodo/format-imports/blob/3e88cf9/src/lib/config/types/grouping.ts#L82)

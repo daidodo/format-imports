@@ -18,7 +18,7 @@ String comparison rule.
 
 If it's _none_, then there is no sorting at all.
 
-Defined in: [config/types/sorting.ts:18](https://github.com/daidodo/format-imports/blob/968e169/src/lib/config/types/sorting.ts#L18)
+Defined in: [config/types/sorting.ts:18](https://github.com/daidodo/format-imports/blob/3e88cf9/src/lib/config/types/sorting.ts#L18)
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 A type representing file extensions supported.
 
-Defined in: [format/main/index.ts:14](https://github.com/daidodo/format-imports/blob/968e169/src/lib/format/main/index.ts#L14)
+Defined in: [format/main/index.ts:15](https://github.com/daidodo/format-imports/blob/3e88cf9/src/lib/format/main/index.ts#L15)
 
 ___
 
@@ -55,7 +55,7 @@ Symbols for different types of imports:
 - _named_: All _multiple_, _single_ and _namespace_ combined.
 - _all_: All _scripts_ and _named_ combined.
 
-Defined in: [config/types/grouping.ts:23](https://github.com/daidodo/format-imports/blob/968e169/src/lib/config/types/grouping.ts#L23)
+Defined in: [config/types/grouping.ts:23](https://github.com/daidodo/format-imports/blob/3e88cf9/src/lib/config/types/grouping.ts#L23)
 
 ___
 
@@ -67,7 +67,7 @@ This is for keeping unused names.
 
 `string` elements will be expanded to `{ path: element }`.
 
-Defined in: [config/types/unused.ts:6](https://github.com/daidodo/format-imports/blob/968e169/src/lib/config/types/unused.ts#L6)
+Defined in: [config/types/unused.ts:6](https://github.com/daidodo/format-imports/blob/3e88cf9/src/lib/config/types/unused.ts#L6)
 
 ___
 
@@ -82,7 +82,7 @@ Symbols for char segments:
 - _Aa_ - Both case letters and upper case first, i.e. [a-zA-Z] and `'A' < 'a' < 'B' < 'b' < ...`
 - _\__ - Chars with ASCII from 91 to 96, i.e. `[`, `\`, `]`, `^`, `_`, `` ` ``(backtick).
 
-Defined in: [config/types/sorting.ts:11](https://github.com/daidodo/format-imports/blob/968e169/src/lib/config/types/sorting.ts#L11)
+Defined in: [config/types/sorting.ts:11](https://github.com/daidodo/format-imports/blob/3e88cf9/src/lib/config/types/sorting.ts#L11)
 
 ## Variables
 
@@ -94,7 +94,7 @@ Default comparison rule for paths and names, which is:
 * Comparing letters case-insensitively, and
 * `'_'` is in front of `[a-zA-Z]`.
 
-Defined in: [config/types/index.ts:152](https://github.com/daidodo/format-imports/blob/968e169/src/lib/config/types/index.ts#L152)
+Defined in: [config/types/index.ts:153](https://github.com/daidodo/format-imports/blob/3e88cf9/src/lib/config/types/index.ts#L153)
 
 ___
 
@@ -104,7 +104,7 @@ ___
 
 Default grouping rules.
 
-Defined in: [config/types/index.ts:138](https://github.com/daidodo/format-imports/blob/968e169/src/lib/config/types/index.ts#L138)
+Defined in: [config/types/index.ts:139](https://github.com/daidodo/format-imports/blob/3e88cf9/src/lib/config/types/index.ts#L139)
 
 ___
 
@@ -114,7 +114,7 @@ ___
 
 File extensions supported.
 
-Defined in: [format/main/index.ts:19](https://github.com/daidodo/format-imports/blob/968e169/src/lib/format/main/index.ts#L19)
+Defined in: [format/main/index.ts:20](https://github.com/daidodo/format-imports/blob/3e88cf9/src/lib/format/main/index.ts#L20)
 
 ## Functions
 
@@ -143,7 +143,7 @@ Name | Type | Description |
 
 Result text or `undefined` if nothing changes.
 
-Defined in: [format/main/index.ts:37](https://github.com/daidodo/format-imports/blob/968e169/src/lib/format/main/index.ts#L37)
+Defined in: [format/main/index.ts:38](https://github.com/daidodo/format-imports/blob/3e88cf9/src/lib/format/main/index.ts#L38)
 
 ___
 
@@ -172,7 +172,7 @@ Name | Type | Description |
 
 Result text or `undefined` if nothing changes.
 
-Defined in: [format/main/index.ts:63](https://github.com/daidodo/format-imports/blob/968e169/src/lib/format/main/index.ts#L63)
+Defined in: [format/main/index.ts:66](https://github.com/daidodo/format-imports/blob/3e88cf9/src/lib/format/main/index.ts#L66)
 
 ___
 
@@ -193,7 +193,7 @@ Name | Type |
 
 **Returns:** *boolean*
 
-Defined in: [config/index.ts:49](https://github.com/daidodo/format-imports/blob/968e169/src/lib/config/index.ts#L49)
+Defined in: [config/index.ts:49](https://github.com/daidodo/format-imports/blob/3e88cf9/src/lib/config/index.ts#L49)
 
 ___
 
@@ -213,7 +213,7 @@ Name | Type |
 
 **Returns:** [*Configuration*](interfaces/configuration.md)
 
-Defined in: [config/importSorter.ts:78](https://github.com/daidodo/format-imports/blob/968e169/src/lib/config/importSorter.ts#L78)
+Defined in: [config/importSorter.ts:80](https://github.com/daidodo/format-imports/blob/3e88cf9/src/lib/config/importSorter.ts#L80)
 
 ___
 
@@ -248,7 +248,7 @@ Name | Type | Description |
 
 **Returns:** T
 
-Defined in: [config/helper.ts:70](https://github.com/daidodo/format-imports/blob/968e169/src/lib/config/helper.ts#L70)
+Defined in: [config/helper.ts:70](https://github.com/daidodo/format-imports/blob/3e88cf9/src/lib/config/helper.ts#L70)
 
 ___
 
@@ -281,7 +281,7 @@ Name | Type | Description |
 
 **Returns:** T
 
-Defined in: [config/importSorter.ts:32](https://github.com/daidodo/format-imports/blob/968e169/src/lib/config/importSorter.ts#L32)
+Defined in: [config/importSorter.ts:32](https://github.com/daidodo/format-imports/blob/3e88cf9/src/lib/config/importSorter.ts#L32)
 
 ___
 
@@ -308,4 +308,4 @@ Name | Type | Description |
 
 **Returns:** T
 
-Defined in: [config/index.ts:37](https://github.com/daidodo/format-imports/blob/968e169/src/lib/config/index.ts#L37)
+Defined in: [config/index.ts:37](https://github.com/daidodo/format-imports/blob/3e88cf9/src/lib/config/index.ts#L37)
