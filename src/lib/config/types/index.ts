@@ -147,7 +147,7 @@ export const GROUP_RULES_DEFAULT: Configuration['groupRules'] = [
 
 /**
  * Default comparison rule for paths and names, which is:
- * * Comparing letters case-insensitively, and
- * * `'_'` is in front of `[a-zA-Z]`.
+ * - Comparing letters case-insensitively, and
+ * - `'_'` is in front of `[a-zA-Z]`.
  */
 export const COMPARE_RULE_DEFAULT: CompareRule = ['_', 'aA'];

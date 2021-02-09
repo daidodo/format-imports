@@ -9,7 +9,7 @@
 }
 -->
 
-# Format-Imports
+# Format-Imports <!-- omit in toc -->
 
 This package contains CLI and APIs to format **imports** and **exports** for **JavaScript** and **TypeScript** code.
 
@@ -22,10 +22,7 @@ It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](htt
 - Publish APIs: `formatSourceForFile`, `resolveConfigForFile`, `isFileExcludedByConfig` and more.
 - Release CLI `format-imports`.
 
-# Table of contents
-
-<!--Updated via `gh-md-toc --insert ./README.md`-->
-<!--ts-->
+# Table of contents <!-- omit in toc -->
 
 - [Features](#features)
 - [Install](#install)
@@ -34,10 +31,10 @@ It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](htt
   - [Format a Directory](#format-a-directory)
   - [Check Files and Directories](#check-files-and-directories)
 - [APIs](#apis)
-- [Configuration](#configuration)
+- [Configuration Resolution](#configuration-resolution)
   - [ESLint Compatibility](#eslint-compatibility)
-- [Ignore Files or Declarations](#ignore-files-or-declarations)
-  - [Ignore Files](#ignore-files)
+- [Ignoring Files or Declarations](#ignoring-files-or-declarations)
+  - [Ignoring Files](#ignoring-files)
   - [Ignore Declarations](#ignore-declarations)
 - [Maximum names per line](#maximum-names-per-line)
   - [maxBindingNamesPerLine](#maxbindingnamesperline)
@@ -49,10 +46,6 @@ It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](htt
 - [Unused Imports Removal](#unused-imports-removal)
 - [Contribution](#contribution)
 - [License](#license)
-
-<!-- Added by: zddai, at: Sun  7 Feb 2021 19:48:13 GMT -->
-
-<!--te-->
 
 # Features
 
@@ -208,7 +201,7 @@ else
 
 Please read [APIs Documentation](docs/README.md) for more details.
 
-# Configuration
+# Configuration Resolution
 
 The following configuration sources will be checked and merged when formatting a file:
 
@@ -236,23 +229,23 @@ If there are conflicts between user config and ESLint rules, the ESLint rules wi
 
 For more info about how the conflicts are resolved, please check the [ESLint Compatibility](../../wiki/ESLint-Compatibility) wiki.
 
-# Ignore Files or Declarations
+# Ignoring Files or Declarations
 
-## Ignore Files
+## Ignoring Files
 
 There are a few ways to exclude files from inspection:
 
-1. Add [exclude](docs/interfaces/configuration.md#exclude) or [excludeGlob](docs/interfaces/configuration.md#excludeGlob) patterns to `package.json` or `import-sorter.json`. E.g.:
+1. Add [exclude](docs/interfaces/configuration.md#exclude) or [excludeGlob](docs/interfaces/configuration.md#excludeGlob) patterns to [Configuration](docs/interfaces/configuration.md), or via `package.json` or `import-sorter.json`. E.g.:
 
    ```json
    "exclude": ["regexPattern"],
    "excludeGlob": ["globPattern"],
    ```
 
-   - _All path patterns are **merged** together instead of overwritten._
-   - _Use **forward-slash** (`/`) as path separator no matter in MacOS, \*nix or Windows._
+   - _[mergeConfig](docs/README.md#mergeConfig) will **merge** all path patterns instead of overwrite._
+   - _Use **forward-slash** (`/`) as path separator no matter in MacOS, Linux or Windows, because [isFileExcludedByConfig](docs/README.md#isFileExcludedByConfig) will normalize the file name before matching._
 
-2. Add the following comment at the beginning of the source file and keep at least one empty line from the next statement:
+2. Add the following comment at the beginning of the source file and add at least one empty line after:
 
 ```ts
 // ts-import-sorter: disable
@@ -270,7 +263,7 @@ or
 
 _Note:_
 
-- _Excluded paths and file disable-comments are **ignored** if [force](docs/interfaces/configuration.md#force) flag is set in configuration._
+- _Excluded paths and file-disable comments are **ignored** if [force](docs/interfaces/configuration.md#force) flag is set._
 
 ## Ignore Declarations
 
@@ -295,7 +288,7 @@ Whether to wrap an `import` declaration is decided by [maxBindingNamesPerLine](d
 
 Whether to wrap an `export` declaration is decided by [maxExportNamesPerLine](docs/interfaces/configuration.md#maxExportNamesPerLine) and [maxLineLength](docs/interfaces/configuration.md#maxLineLength).
 
-## `maxBindingNamesPerLine`
+## maxBindingNamesPerLine
 
 For a declaration importing only _binding names_, this value determines how many names are allowed before wrapping.
 
@@ -318,7 +311,7 @@ import {
 } from 'c';   // Wrapped as there are more than 2 names
 ```
 
-## `maxDefaultAndBindingNamesPerLine`
+## maxDefaultAndBindingNamesPerLine
 
 For a declaration importing _default_ and _binding names_, this value determines how many names are allowed before wrapping.
 
@@ -339,7 +332,7 @@ import D, {
 } from 'c'; // Wrapped as there are more than 2 names
 ```
 
-## `maxExportNamesPerLine`
+## maxExportNamesPerLine
 
 For `export {}` or `export {} from 'x'` declarations, this value determines how many names are allowed before wrapping.
 
@@ -361,7 +354,7 @@ export {
 } from 'c'; // Wrapped as there are more than 2 names
 ```
 
-## `maxNamesPerWrappedLine`
+## maxNamesPerWrappedLine
 
 If an import/export declaration is wrapped, this value decides how many names there are per line.
 
@@ -517,7 +510,7 @@ _Note:_
 
 # Contribution
 
-This is a community supported project so your contribution will be well appreciated. Please refer to [CONTRIBUTING.md](CONTRIBUTING.md) for more information.
+This is an open source project so your contribution will be well appreciated. Please refer to [CONTRIBUTING.md](CONTRIBUTING.md) for more information.
 
 # License
 

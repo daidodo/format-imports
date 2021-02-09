@@ -44,7 +44,7 @@ export function resolveConfigForSource<T extends Configuration = Configuration>(
 /**
  * Test if a file is excluded by the given config, taking `config.force` flag into account.
  *
- * The file name will be normalized to use `/` when matching.
+ * The file name will be normalized to use `/` as path separator before matching.
  */
 export function isFileExcludedByConfig(fileName: string, config: Configuration) {
   const { exclude, excludeGlob, force } = config;
