@@ -2,6 +2,8 @@
 
 ### Features
 
+- Use client node_modules/ ESLint. ([Link](https://github.com/eslint/eslint/issues/13974))
+- Webpack.
 - Type `optionator`.
 - Add `skipTsConfig` and `skipEslintConfig` to in config/development.
 - Support for .vue files. ([Link](https://github.com/daidodo/tsimportsorter/issues/37), [Link](https://github.com/MLoughry/sort-typescript-imports/issues/31))
