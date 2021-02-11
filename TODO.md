@@ -2,6 +2,7 @@
 
 ### Features
 
+- Test CLI in CI/CD pipelines.
 - Use client node_modules/ ESLint. ([Link](https://github.com/eslint/eslint/issues/13974))
 - Webpack.
 - Type `optionator`.
