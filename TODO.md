@@ -4,7 +4,7 @@
 
 - Test CLI in CI/CD pipelines.
 - Use client node_modules/ ESLint. ([Link](https://github.com/eslint/eslint/issues/13974))
-- Webpack.
+- Webpack. ([Link](https://github.com/eslint/eslint/issues/13974))
 - Type `optionator`.
 - Add `skipTsConfig` and `skipEslintConfig` to in config/development. ([Link](https://github.com/daidodo/tsimportsorter/issues/27#issuecomment-747553733))
 - Support for .vue files. ([Link](https://github.com/daidodo/tsimportsorter/issues/37), [Link](https://github.com/MLoughry/sort-typescript-imports/issues/31))
