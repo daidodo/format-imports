@@ -6,7 +6,7 @@
 - Use client node_modules/ ESLint. ([Link](https://github.com/eslint/eslint/issues/13974))
 - Webpack.
 - Type `optionator`.
-- Add `skipTsConfig` and `skipEslintConfig` to in config/development.
+- Add `skipTsConfig` and `skipEslintConfig` to in config/development. ([Link](https://github.com/daidodo/tsimportsorter/issues/27#issuecomment-747553733))
 - Support for .vue files. ([Link](https://github.com/daidodo/tsimportsorter/issues/37), [Link](https://github.com/MLoughry/sort-typescript-imports/issues/31))
 - Sort numbers naturally. ([Example](https://github.com/lydell/eslint-plugin-simple-import-sort#sorting))
 - Support rules from [awesome-eslint](https://github.com/dustinspecker/awesome-eslint).
