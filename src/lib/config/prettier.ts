@@ -10,6 +10,7 @@ export function loadPretConfig(fileName: string): Configuration {
   log.info('Prettier API version:', pt.version);
   try {
     const config = pt.resolveConfig.sync(fileName, { useCache: false, editorconfig: true });
+    log.debug('Prettier config:', config);
     if (!config) return {};
     const {
       printWidth,
