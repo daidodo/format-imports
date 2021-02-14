@@ -8,8 +8,9 @@ import {
   SortRules,
 } from './sorting';
 import { KeepUnusedRule } from './unused';
+import { WrappingRule } from './wrapping';
 
-export { CompareRule, FlagSymbol, GroupRule, KeepUnusedRule, SegSymbol, SortRules };
+export { CompareRule, FlagSymbol, GroupRule, KeepUnusedRule, SegSymbol, SortRules, WrappingRule };
 
 export interface Configuration {
   /**
@@ -50,22 +51,19 @@ export interface Configuration {
    */
   readonly sortRules?: SortRules;
   /**
-   * Max binding names per line before wrapping for imports. 0 for no limit. Default to _1_.
+   * When and how to wrap a line. Default to:
+   * ```json
+   * {
+   *   "maxBindingNamesPerLine": 1,
+   *   "maxDefaultAndBindingNamesPerLine": 2,
+   *   "maxExportNamesPerLine": 0,
+   *   "maxNamesPerWrappedLine": 1
+   * }
+   * ```
+   *
+   * If it's set to _prettier_, then wrap lines in compatible with [Prettier](https://prettier.io/).
    */
-  readonly maxBindingNamesPerLine?: number;
-  /**
-   * Max default and binding names per line before wrapping for imports. 0 for no limit. Default
-   * to _2_.
-   */
-  readonly maxDefaultAndBindingNamesPerLine?: number;
-  /**
-   * Max binding names per line before wrapping for exports. 0 for no limit. Default to _0_.
-   */
-  readonly maxExportNamesPerLine?: number;
-  /**
-   * Max names on wrapped lines for imports/exports. 0 for no limit. Default to _1_.
-   */
-  readonly maxNamesPerWrappedLine?: number;
+  readonly wrappingStyle?: WrappingRule | 'prettier';
   /**
    * By default all unused imports are removed. Keep some or all of them around with this setting
    * if you need.

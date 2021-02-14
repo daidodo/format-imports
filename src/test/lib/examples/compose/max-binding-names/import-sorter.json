@@ -1,5 +1,7 @@
 {
-  "maxBindingNamesPerLine": 3,
-  "maxExportNamesPerLine": 2,
+  "wrappingStyle": {
+    "maxBindingNamesPerLine": 3,
+    "maxExportNamesPerLine": 2
+  },
   "formatExports": true
 }

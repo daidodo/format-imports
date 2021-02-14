@@ -6,10 +6,7 @@ export type ComposeConfig = DeepReadonly<ReturnType<typeof configForCompose>>;
 
 export function configForCompose({
   maxLineLength,
-  maxBindingNamesPerLine,
-  maxDefaultAndBindingNamesPerLine,
-  maxExportNamesPerLine,
-  maxNamesPerWrappedLine,
+  wrappingStyle,
   emptyLinesBetweenGroups,
   emptyLinesAfterAllImports,
   tabType,
@@ -22,14 +19,25 @@ export function configForCompose({
   eol,
 }: Configuration) {
   const nl = eol === 'CR' ? '\r' : eol === 'CRLF' ? '\r\n' : eol === 'LFCR' ? '\n\r' : '\n';
+  const max = Number.MAX_SAFE_INTEGER;
   return {
-    maxLength: (maxLineLength ?? 80) || Number.MAX_SAFE_INTEGER,
-    maxWords: {
-      withoutDefault: (maxBindingNamesPerLine ?? 1) || Number.MAX_SAFE_INTEGER,
-      withDefault: (maxDefaultAndBindingNamesPerLine ?? 2) || Number.MAX_SAFE_INTEGER,
-      wrapped: (maxNamesPerWrappedLine ?? 1) || Number.MAX_SAFE_INTEGER,
-      exported: maxExportNamesPerLine || Number.MAX_SAFE_INTEGER,
-    },
+    maxLength: (maxLineLength ?? 80) || max,
+    wrap:
+      wrappingStyle === 'prettier'
+        ? {
+            withoutDefault: max,
+            withDefault: max,
+            perLine: 1,
+            exported: max,
+            parts: false,
+          }
+        : {
+            withoutDefault: (wrappingStyle?.maxBindingNamesPerLine ?? 1) || max,
+            withDefault: (wrappingStyle?.maxDefaultAndBindingNamesPerLine ?? 2) || max,
+            perLine: (wrappingStyle?.maxNamesPerWrappedLine ?? 1) || max,
+            exported: wrappingStyle?.maxExportNamesPerLine || max,
+            parts: true,
+          },
     groupSep: nl.repeat((emptyLinesBetweenGroups ?? 1) + 1),
     groupEnd: (emptyLinesAfterAllImports ?? 1) + 1,
     tab: tabType?.toLowerCase() === 'tab' ? '\t' : ' '.repeat(tabSize ?? 2),

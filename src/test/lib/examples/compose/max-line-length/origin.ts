@@ -29,5 +29,11 @@ xxx*/
 export type { a, b } from 'a';
 export type { a, b } from 'aa';
 
+import C, * as D from 'aaaaa';
+import CC, * as DD from 'aaaaa';
+import CCCCCCCCCCCCCCCCCCCCCCCCC, * as DDD from 'aaaaa';
+import CCCCCCCCCCCCCCCCCCCCCCCCC, * as DDDDDDDDDDDDDDDDDDDDDDD from 'aaa';
+import { A, B } from 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
 
-type X = C & CC & CCC & BB & D & DD & DDD & AAAA & BBBB;
+
+type X = C & CC & CCC & BB & D & DD & DDD & AAAA & BBBB & CCCCCCCCCCCCCCCCCCCCCCCCC & DDDDDDDDDDDDDDDDDDDDDDD;

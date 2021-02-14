@@ -1,5 +1,7 @@
 {
   "trailingComma": "none",
-  "maxExportNamesPerLine": 1,
+  "wrappingStyle": {
+    "maxExportNamesPerLine": 1
+  },
   "formatExports": true
 }

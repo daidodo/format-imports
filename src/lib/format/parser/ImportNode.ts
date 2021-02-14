@@ -211,13 +211,11 @@ export default class ImportNode extends Statement {
   }
 
   private composeImport(commentLength: number, config: ComposeConfig) {
-    const { semi } = config;
-    const extraLength = commentLength + semi.length;
     switch (this.node_.kind) {
       case SyntaxKind.ImportDeclaration:
-        return this.composeDecl(extraLength, config) + semi;
+        return this.composeDecl(commentLength, config);
       case SyntaxKind.ImportEqualsDeclaration:
-        return this.composeEqDecl(extraLength, config) + semi;
+        return this.composeEqDecl(commentLength, config);
     }
   }
 
@@ -270,10 +268,10 @@ export default class ImportNode extends Statement {
    * ```
    */
   private composeDecl(extraLength: number, config: ComposeConfig) {
-    const { quote } = config;
+    const { quote, semi } = config;
     const path = this.moduleIdentifier;
     const ending = quote(path);
-    if (this.isScript) return `import ${ending}`;
+    if (this.isScript) return `import ${ending}${semi}`;
     const verb = 'import' + (this.isTypeOnly ? ' type' : '');
     const from = `from ${ending}`;
     if (this.binding_?.type === 'named')

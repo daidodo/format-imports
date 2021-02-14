@@ -1,5 +1,7 @@
 {
-  "maxBindingNamesPerLine": 0,
-  "maxDefaultAndBindingNamesPerLine": 0,
+  "wrappingStyle": {
+    "maxBindingNamesPerLine": 0,
+    "maxDefaultAndBindingNamesPerLine": 0
+  },
   "sortImportsBy": "names"
 }

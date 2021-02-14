@@ -3,12 +3,24 @@ import 'aaaaaaaaaaaaaaaaaaaaa';
 
 import A
   from 'aa';   //comment
+import CCCCCCCCCCCCCCCCCCCCCCCCC,
+  * as DDDDDDDDDDDDDDDDDDDDDDD
+  from 'aaa';
 import type AAAA from 'aaaaa';
+import C, * as D from 'aaaaa';
+import CC, * as DD
+  from 'aaaaa';
+import CCCCCCCCCCCCCCCCCCCCCCCCC,
+  * as DDD from 'aaaaa';
 import type AAAA
   from 'aaaaaa';
 import AAA from 'aaaaaaaaaaa';
 import AA
   from 'aaaaaaaaaaaaa';
+import {
+  A,
+  B,
+} from 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
 import type { BBBB } from 'b';
 import type {
   BBBB,
@@ -45,4 +57,4 @@ export type {
   b,
 } from 'aa';
 
-type X = C & CC & CCC & BB & D & DD & DDD & AAAA & BBBB;
+type X = C & CC & CCC & BB & D & DD & DDD & AAAA & BBBB & CCCCCCCCCCCCCCCCCCCCCCCCC & DDDDDDDDDDDDDDDDDDDDDDD;

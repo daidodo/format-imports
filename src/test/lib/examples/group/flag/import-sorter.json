@@ -1,5 +1,7 @@
 {
-  "maxBindingNamesPerLine": 0,
+  "wrappingStyle": {
+    "maxBindingNamesPerLine": 0
+  },
   "groupRules": [
     { "flags": "single" },
     { "flags": "scripts" },

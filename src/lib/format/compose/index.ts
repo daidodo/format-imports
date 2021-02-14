@@ -13,22 +13,24 @@ export function composeNodeAsParts(
   parts: string[],
   from: string,
   extraLength: number,
-  { maxLength, tab, nl }: ComposeConfig,
+  { wrap, maxLength, tab, nl, semi }: ComposeConfig,
 ) {
   const [first, ...rest] = parts;
   assert(!!first, `Invalid parts=${parts} for verb=${verb}, from=${from}`);
+  const canWrap = wrap.parts;
   let text = `${verb} ${first}` + (rest.length ? ',' : '');
   const lines = [];
   rest.forEach((p, i, a) => {
     const c = i + 1 < a.length ? ',' : '';
     const n = `${text} ${p}${c}`;
-    if (n.length >= maxLength) {
+    if (canWrap && n.length >= maxLength) {
       lines.push(text);
       text = tab + p + c;
     } else text = n;
   });
-  const n = `${text} ${from}`;
-  if (n.length + extraLength > maxLength) lines.push(text, tab + from);
+  const f = from + semi;
+  const n = `${text} ${f}`;
+  if (canWrap && n.length + extraLength > maxLength) lines.push(text, tab + f);
   else lines.push(n);
   return lines.join(nl);
 }
@@ -41,29 +43,36 @@ export function composeComments(comments: NodeComment[] | undefined, { nl }: Com
 export function composeNodeAsNames(
   verb: string,
   defaultName: string | undefined,
-  names: NameBinding[] | undefined,
+  names: NameBinding[],
   from: string | undefined,
   extraLength: number,
   config: ComposeConfig,
 ) {
-  const { maxLength } = config;
-  const { text, canWrap } = composeNodeAsNamesImpl(verb, defaultName, names, from, config, false);
-  if (maxLength >= text.length + extraLength || !canWrap) return text;
-  return composeNodeAsNamesImpl(verb, defaultName, names, from, config, true).text;
+  const { wrap, maxLength } = config;
+  const { text, wrapped } = composeNodeAsNamesImpl(verb, defaultName, names, from, config, false);
+  const noMoreWrap =
+    wrapped ||
+    (wrap.parts
+      ? maxLength >= text.length + extraLength
+      : maxLength >= text.length || (!defaultName && names.length < 2));
+  return noMoreWrap
+    ? text
+    : composeNodeAsNamesImpl(verb, defaultName, names, from, config, true).text;
 }
 
 function composeNodeAsNamesImpl(
   verb: string,
   defaultName: string | undefined,
-  names: NameBinding[] | undefined,
+  names: NameBinding[],
   from: string | undefined,
   config: ComposeConfig,
   forceWrap: boolean,
 ) {
-  const { text: t, canWrap } = composeNames(verb, !!defaultName, names, config, forceWrap);
+  const { semi } = config;
+  const { text: t, wrapped } = composeNames(verb, !!defaultName, names, config, forceWrap);
   const all = [defaultName, t].filter(s => !!s).join(', ') || '{}';
-  const text = [verb, all, from].filter(s => !!s).join(' ');
-  return { text, canWrap };
+  const text = [verb, all, from].filter(s => !!s).join(' ') + semi;
+  return { text, wrapped };
 }
 
 function composeNames(
@@ -73,25 +82,22 @@ function composeNames(
   config: ComposeConfig,
   forceWrap: boolean,
 ) {
-  const { maxWords: mw, maxLength, bracket, nl } = config;
+  const { wrap, bracket, nl } = config;
   const maxWords = hasDefault
-    ? mw.withDefault - 1
+    ? wrap.withDefault - 1
     : verb.startsWith('export')
-    ? mw.exported
-    : mw.withoutDefault;
+    ? wrap.exported
+    : wrap.withoutDefault;
   const words = names?.map(composeName).filter((w): w is string => !!w);
   if (!words || !words.length) return {};
-  if (!forceWrap && words.length <= maxWords) {
-    const text = bracket(words.join(', '));
-    if (text.length <= maxLength) return { text, canWrap: true };
-  }
+  if (!forceWrap && words.length <= maxWords) return { text: bracket(words.join(', ')) };
   const lines = [];
   for (let n = words; n.length; ) {
     const { text, left } = composeOneLineNames(n, config);
     lines.push(text);
     n = left;
   }
-  return { text: `{${nl}${lines.join(nl)}${nl}}` };
+  return { text: `{${nl}${lines.join(nl)}${nl}}`, wrapped: true };
 }
 
 function composeName(name: NameBinding | undefined) {
@@ -102,12 +108,9 @@ function composeName(name: NameBinding | undefined) {
   return `* as ${aliasName}`;
 }
 
-function composeOneLineNames(
-  words: string[],
-  { tab, maxWords: mw, maxLength, comma }: ComposeConfig,
-) {
+function composeOneLineNames(words: string[], { tab, wrap, maxLength, comma }: ComposeConfig) {
   assert(words.length > 0);
-  const maxWords = mw.wrapped;
+  const maxWords = wrap.perLine;
   const append = (t: string, n: string, s: boolean, e: boolean) =>
     t + (s ? '' : ' ') + n + (e ? comma : ',');
   const [first, ...rest] = words;

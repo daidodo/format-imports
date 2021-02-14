@@ -67,11 +67,10 @@ export default class ExportNode extends Statement {
   }
 
   private composeExport(commentLength: number, config: ComposeConfig) {
-    const { quote, semi } = config;
+    const { quote } = config;
     const verb = 'export' + (this.isTypeOnly_ ? ' type' : '');
     const path = this.moduleIdentifier_;
     const from = path ? 'from ' + quote(path) : undefined;
-    const extraLength = commentLength + semi.length;
-    return composeNodeAsNames(verb, undefined, this.names, from, extraLength, config) + semi;
+    return composeNodeAsNames(verb, undefined, this.names, from, commentLength, config);
   }
 }

@@ -1,4 +1,6 @@
 {
-  "maxDefaultAndBindingNamesPerLine": 0,
+  "wrappingStyle": {
+    "maxDefaultAndBindingNamesPerLine": 0
+  },
   "maxLineLength": 50
 }
