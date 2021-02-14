@@ -1,0 +1,6 @@
+{
+  "wrappingStyle": "prettier",
+  "maxLineLength": 30,
+  "formatExports": true,
+  "keepUnused": [".*"]
+}
