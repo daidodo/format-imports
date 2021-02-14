@@ -13,7 +13,7 @@
 Whether to add spaces between brackets. _true_ for '{ id }' and _false_ for '{id}'. Default to
 _true_.
 
-Defined in: [config/types/index.ts:122](https://github.com/daidodo/format-imports/blob/30cacaa/src/lib/config/types/index.ts#L122)
+Defined in: [config/types/index.ts:120](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/types/index.ts#L120)
 
 ___
 
@@ -23,7 +23,7 @@ ___
 
 JSON configuration file name. Default to _import-sorter.json_.
 
-Defined in: [config/types/index.ts:18](https://github.com/daidodo/format-imports/blob/30cacaa/src/lib/config/types/index.ts#L18)
+Defined in: [config/types/index.ts:19](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/types/index.ts#L19)
 
 ___
 
@@ -33,7 +33,7 @@ ___
 
 Number of empty lines after the last import declaration. Default to _1_.
 
-Defined in: [config/types/index.ts:81](https://github.com/daidodo/format-imports/blob/30cacaa/src/lib/config/types/index.ts#L81)
+Defined in: [config/types/index.ts:79](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/types/index.ts#L79)
 
 ___
 
@@ -43,7 +43,7 @@ ___
 
 Number of empty lines between groups (NOT sub-groups). Default to _1_.
 
-Defined in: [config/types/index.ts:77](https://github.com/daidodo/format-imports/blob/30cacaa/src/lib/config/types/index.ts#L77)
+Defined in: [config/types/index.ts:75](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/types/index.ts#L75)
 
 ___
 
@@ -53,7 +53,7 @@ ___
 
 Disable formatting for files matching regular expressions. Default to _["node_modules"]_
 
-Defined in: [config/types/index.ts:26](https://github.com/daidodo/format-imports/blob/30cacaa/src/lib/config/types/index.ts#L26)
+Defined in: [config/types/index.ts:27](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/types/index.ts#L27)
 
 ___
 
@@ -63,7 +63,7 @@ ___
 
 Disable formatting for files matching glob patterns.
 
-Defined in: [config/types/index.ts:30](https://github.com/daidodo/format-imports/blob/30cacaa/src/lib/config/types/index.ts#L30)
+Defined in: [config/types/index.ts:31](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/types/index.ts#L31)
 
 ___
 
@@ -74,7 +74,7 @@ ___
 Whether to disregard [exclude](#exclude)/[excludeGlob](#excludeGlob) patterns and file-disable
 comments. Default to _false_.
 
-Defined in: [config/types/index.ts:127](https://github.com/daidodo/format-imports/blob/30cacaa/src/lib/config/types/index.ts#L127)
+Defined in: [config/types/index.ts:125](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/types/index.ts#L125)
 
 ___
 
@@ -84,7 +84,7 @@ ___
 
 Whether to format exports as well as imports. Default to _true_.
 
-Defined in: [config/types/index.ts:22](https://github.com/daidodo/format-imports/blob/30cacaa/src/lib/config/types/index.ts#L22)
+Defined in: [config/types/index.ts:23](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/types/index.ts#L23)
 
 ___
 
@@ -97,7 +97,7 @@ Grouping rules for path patterns for imports. Default to
 
 **`see`** [Grouping Rules](../../../../wiki/Grouping-Rules)
 
-Defined in: [config/types/index.ts:40](https://github.com/daidodo/format-imports/blob/30cacaa/src/lib/config/types/index.ts#L40)
+Defined in: [config/types/index.ts:41](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/types/index.ts#L41)
 
 ___
 
@@ -107,7 +107,7 @@ ___
 
 Whether to add semicolons at the end of declarations. Default to _true_.
 
-Defined in: [config/types/index.ts:113](https://github.com/daidodo/format-imports/blob/30cacaa/src/lib/config/types/index.ts#L113)
+Defined in: [config/types/index.ts:111](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/types/index.ts#L111)
 
 ___
 
@@ -117,7 +117,7 @@ ___
 
 Whether to end files with a new line. Default to _true_.
 
-Defined in: [config/types/index.ts:117](https://github.com/daidodo/format-imports/blob/30cacaa/src/lib/config/types/index.ts#L117)
+Defined in: [config/types/index.ts:115](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/types/index.ts#L115)
 
 ___
 
@@ -128,38 +128,7 @@ ___
 By default all unused imports are removed. Keep some or all of them around with this setting
 if you need.
 
-Defined in: [config/types/index.ts:73](https://github.com/daidodo/format-imports/blob/30cacaa/src/lib/config/types/index.ts#L73)
-
-___
-
-### maxBindingNamesPerLine
-
-• `Optional` `Readonly` **maxBindingNamesPerLine**: *undefined* \| *number*
-
-Max binding names per line before wrapping for imports. 0 for no limit. Default to _1_.
-
-Defined in: [config/types/index.ts:55](https://github.com/daidodo/format-imports/blob/30cacaa/src/lib/config/types/index.ts#L55)
-
-___
-
-### maxDefaultAndBindingNamesPerLine
-
-• `Optional` `Readonly` **maxDefaultAndBindingNamesPerLine**: *undefined* \| *number*
-
-Max default and binding names per line before wrapping for imports. 0 for no limit. Default
-to _2_.
-
-Defined in: [config/types/index.ts:60](https://github.com/daidodo/format-imports/blob/30cacaa/src/lib/config/types/index.ts#L60)
-
-___
-
-### maxExportNamesPerLine
-
-• `Optional` `Readonly` **maxExportNamesPerLine**: *undefined* \| *number*
-
-Max binding names per line before wrapping for exports. 0 for no limit. Default to _0_.
-
-Defined in: [config/types/index.ts:64](https://github.com/daidodo/format-imports/blob/30cacaa/src/lib/config/types/index.ts#L64)
+Defined in: [config/types/index.ts:71](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/types/index.ts#L71)
 
 ___
 
@@ -169,17 +138,7 @@ ___
 
 Max line length before wrapping. 0 for no limit. Default to _80_.
 
-Defined in: [config/types/index.ts:93](https://github.com/daidodo/format-imports/blob/30cacaa/src/lib/config/types/index.ts#L93)
-
-___
-
-### maxNamesPerWrappedLine
-
-• `Optional` `Readonly` **maxNamesPerWrappedLine**: *undefined* \| *number*
-
-Max names on wrapped lines for imports/exports. 0 for no limit. Default to _1_.
-
-Defined in: [config/types/index.ts:68](https://github.com/daidodo/format-imports/blob/30cacaa/src/lib/config/types/index.ts#L68)
+Defined in: [config/types/index.ts:91](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/types/index.ts#L91)
 
 ___
 
@@ -189,7 +148,7 @@ ___
 
 Use single or double quotes. Default to _single_.
 
-Defined in: [config/types/index.ts:105](https://github.com/daidodo/format-imports/blob/30cacaa/src/lib/config/types/index.ts#L105)
+Defined in: [config/types/index.ts:103](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/types/index.ts#L103)
 
 ___
 
@@ -199,7 +158,7 @@ ___
 
 Whether to remove the last 'index' when normalizing paths. Default to _false_.
 
-Defined in: [config/types/index.ts:89](https://github.com/daidodo/format-imports/blob/30cacaa/src/lib/config/types/index.ts#L89)
+Defined in: [config/types/index.ts:87](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/types/index.ts#L87)
 
 ___
 
@@ -209,7 +168,7 @@ ___
 
 Whether to remove the last slash when normalizing paths. Default to _false_.
 
-Defined in: [config/types/index.ts:85](https://github.com/daidodo/format-imports/blob/30cacaa/src/lib/config/types/index.ts#L85)
+Defined in: [config/types/index.ts:83](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/types/index.ts#L83)
 
 ___
 
@@ -219,7 +178,7 @@ ___
 
 Sort import declarations by paths or first names. Default to _paths_.
 
-Defined in: [config/types/index.ts:34](https://github.com/daidodo/format-imports/blob/30cacaa/src/lib/config/types/index.ts#L34)
+Defined in: [config/types/index.ts:35](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/types/index.ts#L35)
 
 ___
 
@@ -237,7 +196,7 @@ Sorting rules for paths and names. Default to:
 
 **`see`** [Sorting rules](../../../../wiki/Sorting-Rules)
 
-Defined in: [config/types/index.ts:51](https://github.com/daidodo/format-imports/blob/30cacaa/src/lib/config/types/index.ts#L51)
+Defined in: [config/types/index.ts:52](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/types/index.ts#L52)
 
 ___
 
@@ -247,7 +206,7 @@ ___
 
 Number of spaces to replace a TAB. Default to _2_.
 
-Defined in: [config/types/index.ts:101](https://github.com/daidodo/format-imports/blob/30cacaa/src/lib/config/types/index.ts#L101)
+Defined in: [config/types/index.ts:99](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/types/index.ts#L99)
 
 ___
 
@@ -257,7 +216,7 @@ ___
 
 Indent lines with tabs or spaces. Default to _space_.
 
-Defined in: [config/types/index.ts:97](https://github.com/daidodo/format-imports/blob/30cacaa/src/lib/config/types/index.ts#L97)
+Defined in: [config/types/index.ts:95](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/types/index.ts#L95)
 
 ___
 
@@ -267,4 +226,24 @@ ___
 
 When to add a trailing comma for the last name. Default to _multiLine_.
 
-Defined in: [config/types/index.ts:109](https://github.com/daidodo/format-imports/blob/30cacaa/src/lib/config/types/index.ts#L109)
+Defined in: [config/types/index.ts:107](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/types/index.ts#L107)
+
+___
+
+### wrappingStyle
+
+• `Optional` `Readonly` **wrappingStyle**: *undefined* \| [*WrappingRule*](wrappingrule.md) \| *prettier*
+
+When and how to wrap a line. Default to:
+```json
+{
+  "maxBindingNamesPerLine": 1,
+  "maxDefaultAndBindingNamesPerLine": 2,
+  "maxExportNamesPerLine": 0,
+  "maxNamesPerWrappedLine": 1
+}
+```
+
+If it's set to _prettier_, then wrap lines in compatible with [Prettier](https://prettier.io/).
+
+Defined in: [config/types/index.ts:66](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/types/index.ts#L66)
