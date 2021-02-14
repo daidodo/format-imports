@@ -5,17 +5,7 @@ import { endOfLine } from '@dozerg/end-of-line';
 import { enhanceEol } from './importSorter';
 import { Configuration } from './types';
 
-export {
-  COMPARE_RULE_DEFAULT,
-  CompareRule,
-  Configuration,
-  FlagSymbol,
-  GROUP_RULES_DEFAULT,
-  GroupRule,
-  KeepUnusedRule,
-  SegSymbol,
-  SortRules,
-} from './types';
+export * from './types';
 
 export { mergeConfig } from './helper';
 

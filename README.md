@@ -36,14 +36,10 @@ It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](htt
 - [Ignoring Files or Declarations](#ignoring-files-or-declarations)
   - [Ignoring Files](#ignoring-files)
   - [Ignore Declarations](#ignore-declarations)
-- [Maximum names per line](#maximum-names-per-line)
-  - [maxBindingNamesPerLine](#maxbindingnamesperline)
-  - [maxDefaultAndBindingNamesPerLine](#maxdefaultandbindingnamesperline)
-  - [maxExportNamesPerLine](#maxexportnamesperline)
-  - [maxNamesPerWrappedLine](#maxnamesperwrappedline)
 - [Grouping Rules](#grouping-rules)
 - [Sorting Rules](#sorting-rules)
 - [Unused Imports Removal](#unused-imports-removal)
+- [Line Wrapping Style](#line-wrapping-style)
 - [Contribution](#contribution)
 - [License](#license)
 
@@ -282,104 +278,6 @@ export { Excluded } from 'import/sorter'; /* ts-import-sorter: disable */
 
 To disable formatting for all exports, just set [formatExports](docs/interfaces/configuration.md#formatExports) to `false`.
 
-# Maximum names per line
-
-Whether to wrap an `import` declaration is decided by [maxBindingNamesPerLine](docs/interfaces/configuration.md#maxBindingNamesPerLine), [maxDefaultAndBindingNamesPerLine](docs/interfaces/configuration.md#maxDefaultAndBindingNamesPerLine) and [maxLineLength](docs/interfaces/configuration.md#maxLineLength).
-
-Whether to wrap an `export` declaration is decided by [maxExportNamesPerLine](docs/interfaces/configuration.md#maxExportNamesPerLine) and [maxLineLength](docs/interfaces/configuration.md#maxLineLength).
-
-## maxBindingNamesPerLine
-
-For a declaration importing only _binding names_, this value determines how many names are allowed before wrapping.
-
-For example, if you set:
-
-```json
-"maxBindingNamesPerLine": 2,
-```
-
-then
-
-```typescript
-import { A } from 'a';    // No wrap as there is 1 name
-import { B, C } from 'b'; // No wrap as there are 2 names
-
-import {
-  D,
-  E,
-  F,
-} from 'c';   // Wrapped as there are more than 2 names
-```
-
-## maxDefaultAndBindingNamesPerLine
-
-For a declaration importing _default_ and _binding names_, this value determines how many names are allowed before wrapping.
-
-For example, if you set:
-
-```json
-"maxDefaultAndBindingNamesPerLine": 2,
-```
-
-then
-
-```typescript
-import A from 'a';        // No wrap as there is 1 name
-import B, { C } from 'b'; // No wrap as there are 2 names
-import D, {
-  E,
-  F,
-} from 'c'; // Wrapped as there are more than 2 names
-```
-
-## maxExportNamesPerLine
-
-For `export {}` or `export {} from 'x'` declarations, this value determines how many names are allowed before wrapping.
-
-For example, if you set:
-
-```json
-"maxExportNamesPerLine": 2,
-```
-
-then
-
-```typescript
-export { A };             // No wrap as there is 1 name
-export { B, C } from 'b'; // No wrap as there are 2 names
-export {
-  D,
-  E,
-  F,
-} from 'c'; // Wrapped as there are more than 2 names
-```
-
-## maxNamesPerWrappedLine
-
-If an import/export declaration is wrapped, this value decides how many names there are per line.
-
-For example, if you set:
-
-```json
-"maxNamesPerWrappedLine": 2,
-```
-
-then
-
-```typescript
-import {
-  A, B,
-  C, D,
-  E,
-} from 'a'; // There are 2 names at most per wrapped line
-
-export {
-  A, B,
-  C, D,
-  E,
-}; // There are 2 names at most per wrapped line
-```
-
 # Grouping Rules
 
 You can sorts imports into different groups separated by empty lines (configurable), based on the rules defined in [groupRules](docs/interfaces/configuration.md#groupRules).
@@ -507,6 +405,14 @@ _Note:_
 ```json
 "keepUnused": [".*"]
 ```
+
+# Line Wrapping Style
+
+You can determine when and how an import/export declaration is wrapped, e.g. how many binding names are allowed before wrapping.
+
+There is also a preset style compatible with [Prettier](https://prettier.io), that could be useful when, e.g., you are using `prettier --check` in your CI/CD process.
+
+For details please refer to [the Wiki](../../wiki/Line-Wrapping-Style).
 
 # Contribution
 

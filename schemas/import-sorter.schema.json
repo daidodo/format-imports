@@ -35,37 +35,24 @@
       "default": {
         "paths": ["_", "aA"],
         "names": ["_", "aA"]
-      }
+      },
+      "markdownDescription": "Sorting rules for paths and names. See the [wiki](https://github.com/daidodo/format-imports/wiki/Sorting-Rules) for more details."
+    },
+    "wrappingStyle": {
+      "$ref": "#/$def/wrappingStyle",
+      "default": {
+        "maxBindingNamesPerLine": 1,
+        "maxDefaultAndBindingNamesPerLine": 2,
+        "maxExportNamesPerLine": 0,
+        "maxNamesPerWrappedLine": 1
+      },
+      "markdownDescription": "When and how to wrap a line. See the [wiki](https://github.com/daidodo/format-imports/wiki/Line-Wrapping-Style) for more details."
     },
     "keepUnused": {
       "type": "array",
       "default": [],
       "items": { "$ref": "#/$def/keepUnusedRule" },
       "markdownDescription": "By default all unused imports are removed. Keep some or all them around with this setting if you need."
-    },
-    "maxBindingNamesPerLine": {
-      "type": "integer",
-      "minimum": 0,
-      "default": 1,
-      "description": "Max binding names per line before wrapping for imports. 0 for no limit."
-    },
-    "maxDefaultAndBindingNamesPerLine": {
-      "type": "integer",
-      "minimum": 0,
-      "default": 2,
-      "description": "Max default and binding names per line before wrapping for imports. 0 for no limit."
-    },
-    "maxExportNamesPerLine": {
-      "type": "integer",
-      "minimum": 0,
-      "default": 0,
-      "description": "Max binding names per line before wrapping for exports. 0 for no limit."
-    },
-    "maxNamesPerWrappedLine": {
-      "type": "integer",
-      "minimum": 0,
-      "default": 1,
-      "description": "Max names on wrapped lines for imports/exports. 0 for no limit."
     },
     "emptyLinesBetweenGroups": {
       "type": "integer",
@@ -147,21 +134,27 @@
       "items": { "$ref": "#/$def/sortSegment" },
       "uniqueItems": true
     },
+    "none": { "type": "string", "enum": ["none"] },
     "sortRule": {
-      "oneOf": [{ "type": "string", "enum": ["none"] }, { "$ref": "#/$def/sortSegments" }]
+      "oneOf": [{ "$ref": "#/$def/none" }, { "$ref": "#/$def/sortSegments" }]
     },
     "sortRules": {
-      "type": "object",
-      "properties": {
-        "paths": {
-          "$ref": "#/$def/sortRule",
-          "markdownDescription": "Sorting rule for import paths. See the [wiki](https://github.com/daidodo/format-imports/wiki/Sorting-Rules) for more details."
-        },
-        "names": {
-          "$ref": "#/$def/sortRule",
-          "markdownDescription": "Sorting rule for imported/exported names. See the [wiki](https://github.com/daidodo/format-imports/wiki/Sorting-Rules) for more details."
+      "oneOf": [
+        { "$ref": "#/$def/none" },
+        {
+          "type": "object",
+          "properties": {
+            "paths": {
+              "$ref": "#/$def/sortRule",
+              "markdownDescription": "Sorting rule for import paths. See the [wiki](https://github.com/daidodo/format-imports/wiki/Sorting-Rules) for more details."
+            },
+            "names": {
+              "$ref": "#/$def/sortRule",
+              "markdownDescription": "Sorting rule for imported/exported names. See the [wiki](https://github.com/daidodo/format-imports/wiki/Sorting-Rules) for more details."
+            }
+          }
         }
-      }
+      ]
     },
     "flagSymbol": {
       "type": "string",
@@ -223,6 +216,40 @@
       "enum": ["paths", "names"],
       "default": "paths",
       "description": "Sort import statements by paths or first names."
+    },
+    "wrappingStyle": {
+      "oneOf": [
+        { "type": "string", "enum": ["prettier"] },
+        {
+          "type": "object",
+          "properties": {
+            "maxBindingNamesPerLine": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 1,
+              "description": "Max binding names per line before wrapping for imports. 0 for no limit."
+            },
+            "maxDefaultAndBindingNamesPerLine": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 2,
+              "description": "Max default and binding names per line before wrapping for imports. 0 for no limit."
+            },
+            "maxExportNamesPerLine": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "description": "Max binding names per line before wrapping for exports. 0 for no limit."
+            },
+            "maxNamesPerWrappedLine": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 1,
+              "description": "Max names on wrapped lines for imports/exports. 0 for no limit."
+            }
+          }
+        }
+      ]
     }
   }
 }
