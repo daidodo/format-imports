@@ -1,6 +1,6 @@
 {
   "name": "format-imports",
-  "version": "1.0.7",
+  "version": "2.0.0",
   "description": "JavaScript and TypeScript Import/Export Formatter.",
   "main": "dist/lib/index.js",
   "bin": "dist/bin/main.js",

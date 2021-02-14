@@ -15,12 +15,23 @@ This package contains CLI and APIs to format **imports** and **exports** for **J
 
 It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](https://marketplace.visualstudio.com/items?itemName=dozerg.tsimportsorter), then extracted to standalone CLI and lib for more use cases (e.g. CI/CD) and editors (hopefully).
 
-## [1.0] Release Notes
+## [2.0] Release Notes
 
 ### Added
 
-- Publish APIs: `formatSourceForFile`, `resolveConfigForFile`, `isFileExcludedByConfig` and more.
-- Release CLI `format-imports`.
+- Config `wrappingStyle` which can be either the preset style `"prettier"` or an object of:
+  - `maxBindingNamesPerLine`
+  - `maxDefaultAndBindingNamesPerLine`
+  - `maxExportNamesPerLine`
+  - `maxNamesPerWrappedLine`
+
+### Removed
+
+- Top level config:
+  - `maxBindingNamesPerLine`
+  - `maxDefaultAndBindingNamesPerLine`
+  - `maxExportNamesPerLine`
+  - `maxNamesPerWrappedLine`
 
 # Table of contents <!-- omit in toc -->
 
