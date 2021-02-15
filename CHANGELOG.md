@@ -21,7 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Config `wrappingStyle` which can be either the preset style `"prettier"` or an object of:
+- Config `wrappingStyle` which can be either a preset style `"prettier"` or an object of:
   - `maxBindingNamesPerLine`
   - `maxDefaultAndBindingNamesPerLine`
   - `maxExportNamesPerLine`
