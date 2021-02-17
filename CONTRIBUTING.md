@@ -37,7 +37,7 @@ After you've made some code changes, you should always add integration tests and
 
 ### `src/test/cli/main.test.ts`
 
-The test will search `examples/` directory for `cmd.txt`, and spawn CLI in a child process and compare the output (exist code, `STDOUT` and `STDERR`) and written files. The exist code, `STDOUT` and `STDERR` output are tested against snapshots.
+The test will search `examples/` directory for `cmd.txt`, and spawn CLI in a child process and compare the output (exit code, `STDOUT` and `STDERR`) and updated files. The exit code, `STDOUT` and `STDERR` output are tested against snapshots.
 
 All test cases are organized the same way as the file structure under `example/` for easy management. For example, `example/check/empty/cmd.txt` will generate test cases:
 
@@ -61,7 +61,7 @@ _cmd.txt:_
 -c
 ```
 
-Two child processes will be spawned to run `format-imports --check` and `format-imports -c` respectively.
+Will spawn two child processes running `format-imports --check` and `format-imports -c` respectively.
 
 #### `stdin.dat`
 
@@ -87,13 +87,13 @@ _skip.txt:_
 win32
 ```
 
-Will skip test cases if running on Windows. OS names will be compared via [os.platform](https://nodejs.org/api/os.html#os_os_platform).
+OS names will be compared to [os.platform()](https://nodejs.org/api/os.html#os_os_platform).
 
 #### `special.txt`
 
-When a test case is useful but has different results between OSes, you can specify the minority in `special.txt`.
+When a test case has different results on different OSes, you can specify them in `special.txt`.
 
-For example, `examples/check/1-processed/reject/cmd.txt` has different results on \*nix (MacOS and Linux) and Windows. To reflect that, there is a:
+For example, `examples/check/1-processed/reject/cmd.txt` has different results on MacOS/Linux and Windows. To reflect that, there is a:
 
 _special.txt:_
 
@@ -101,7 +101,7 @@ _special.txt:_
 win32
 ```
 
-So that different snapshots are selected based on the OS running the test case:
+So that a different snapshot is generated for Windows:
 
 ```snap
 exports[`CLI check 1-processed rejected [--check a] 1`] = `
@@ -146,23 +146,23 @@ compose
 You can specify test cases to run by changing the 2nd parameter of `runTestSuite`:
 
 - `runTestSuite(examples)` will run all test cases.
-- `runTestSuite(examples, 'some/folder')` will test test cases under `examples/some/folder/`, including sub-folders.
-- `runTestSuite(examples, 'folder/name')` will test single use case `examples/folder/name.origin.ts`. (Please note `.origin.ts` is not included in the parameter)
-- `runTestSuite(examples, 'folder/default')` will test single test case `examples/folder/origin.ts`.
+- `runTestSuite(examples, 'some/folder')` will run test cases under `examples/some/folder/`, including sub-folders.
+- `runTestSuite(examples, 'folder/name')` will run single test case `examples/folder/name.origin.ts`. (Please note that `.origin.ts` is not included in the parameter)
+- `runTestSuite(examples, 'folder/default')` will run single test case `examples/folder/origin.ts`.
 
 #### Configuration Files
 
-You can provide custom config files to your examples to test all scenarios.
+You can provide config files to your test cases to cover different scenarios.
 
 - `import-sorter.json`
 
   Configurations from `import-sorter.json` will be MERGED from current folder to its parent and so on until `src/test/suite/examples/`. The closer to the example, the higher precedence.
 
-  That means you can put general configs in the parent folders, and example specific configs in the current folder. It's also ok if there is no `import-sorter.json`, which means the parent's configs will be used.
+  That means you can put general configs in the parent folders, and test case specific configs in the current folder. It's also ok if there is no `import-sorter.json`, which means the parent's configs will be used.
 
 - `tsconfig.json`
 
-  If you need to customize TypeScript compiler options for your test cases, you can add a `tsconfig.json` file in your example folder.
+  If you need to customize TypeScript compiler options for your test cases, you can add a `tsconfig.json` in your test case folder.
 
   Please note that `tsconfig.json` is NOT inheritable, which means parent folders' `tsconfig.json` will not affect the children. If there is no `tsconfig.json`, the TypeScript compiler options will be undefined.
 
@@ -170,7 +170,7 @@ You can provide custom config files to your examples to test all scenarios.
 
 - `.eslintrc.json`
 
-  To test ESLint related test cases, you can add an `.eslintrc.json` to your example folder.
+  To test ESLint related test cases, you can add an `.eslintrc.json` to your test case folder.
 
   It is recommended that you always add `"root": true` in your `.eslintrc.json` to avoid unexpected rules from parent folders. That way, `.eslintrc.json` becomes non-inheritable, which means parent folders' `.eslintrc.json` will not affect the children, the same as `tsconfig.json`.
 
@@ -190,7 +190,7 @@ There are a few convenient features to reduce boiler-plate code:
   import { A } from 'a';
   ```
 
-  You don't need an `abc.result.ts` because the library won't change the code as it's disabled.
+  You don't need an `abc.result.ts` because the library won't change the code because of the file-disable comment.
 
 - If multiple `.origin.ts`s share the same output, you can merge them into one `result.ts`. E.g.:
 
