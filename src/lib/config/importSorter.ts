@@ -6,10 +6,8 @@ import {
   assert,
   logger,
 } from '../common';
-import {
-  findFileFromPathAndParents,
-  mergeConfig,
-} from './helper';
+import { findFileFromPathAndParents } from './helper';
+import { mergeConfig } from './merge';
 import { loadPretConfig } from './prettier';
 import { Configuration } from './types';
 
