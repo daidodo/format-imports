@@ -48,7 +48,7 @@ export const DEFAULT_MERGER: Merger<Configuration> = {
  * @param configs An array of config objects
  */
 export function mergeConfig<T extends Configuration = Configuration>(...configs: T[]) {
-  return mergeConfigWithMerger(DEFAULT_MERGER, ...configs);
+  return mergeConfigWithMerger(DEFAULT_MERGER as Merger<T>, ...configs);
 }
 
 /**

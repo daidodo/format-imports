@@ -75,18 +75,41 @@ describe('config/merge', () => {
         };
         expect(mergeConfig(C1, C2)).toEqual(C);
       });
-      test('sortRules', () => {
-        const C1: Configuration = {
-          sortRules: { paths: ['AZ', '_'], names: ['Aa'] },
-          maxLineLength: 10,
-        };
-        const C2: Configuration = { sortRules: { paths: ['az', '_'] }, sortImportsBy: 'names' };
-        const C: Configuration = {
-          sortRules: { paths: ['az', '_'], names: ['Aa'] },
-          maxLineLength: 10,
-          sortImportsBy: 'names',
-        };
-        expect(mergeConfig(C1, C2)).toEqual(C);
+      describe('sortRules', () => {
+        describe('none', () => {
+          const C1: Configuration = { sortRules: 'none' };
+          test('paths', () => {
+            const C2: Configuration = { sortRules: { paths: ['AZ', '_'] } };
+            const C: Configuration = { sortRules: { paths: ['AZ', '_'], names: 'none' } };
+            expect(mergeConfig(C1, C2)).toEqual(C);
+            expect(mergeConfig(C2, C1)).toEqual({ sortRules: { names: 'none', paths: 'none' } });
+          });
+          test('names', () => {
+            const C2: Configuration = { sortRules: { names: ['AZ', '_'] } };
+            const C: Configuration = { sortRules: { names: ['AZ', '_'], paths: 'none' } };
+            expect(mergeConfig(C1, C2)).toEqual(C);
+            expect(mergeConfig(C2, C1)).toEqual({ sortRules: { names: 'none', paths: 'none' } });
+          });
+          test('both', () => {
+            const C2: Configuration = { sortRules: { names: ['AZ', '_'], paths: ['Aa'] } };
+            const C: Configuration = { sortRules: { names: ['AZ', '_'], paths: ['Aa'] } };
+            expect(mergeConfig(C1, C2)).toEqual(C);
+            expect(mergeConfig(C2, C1)).toEqual({ sortRules: { names: 'none', paths: 'none' } });
+          });
+        });
+        test('value', () => {
+          const C1: Configuration = {
+            sortRules: { paths: ['AZ', '_'], names: ['Aa'] },
+            maxLineLength: 10,
+          };
+          const C2: Configuration = { sortRules: { paths: ['az', '_'] }, sortImportsBy: 'names' };
+          const C: Configuration = {
+            sortRules: { paths: ['az', '_'], names: ['Aa'] },
+            maxLineLength: 10,
+            sortImportsBy: 'names',
+          };
+          expect(mergeConfig(C1, C2)).toEqual(C);
+        });
       });
     });
   });
