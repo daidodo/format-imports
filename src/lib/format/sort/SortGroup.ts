@@ -43,10 +43,9 @@ export default class SortGroup {
       this.sorter_ = parent.sorter;
     } else {
       this.sortImportsBy_ = sortImportsBy ?? parent.sortImportsBy ?? 'paths';
-      const sortRules = sort === 'none' ? { paths: 'none' as const, names: 'none' as const } : sort;
       this.sorter_ = parent.sorter
-        ? updateSorterWithRules(parent.sorter, sortRules)
-        : sorterFromRules(sortRules);
+        ? updateSorterWithRules(parent.sorter, sort)
+        : sorterFromRules(sort);
     }
     this.subGroups_ = this.calcSubGroups(subGroups, flags1, eslint);
     this.flags_ = SortGroup.inferFlags2(flags, flags1, this.subGroups_);

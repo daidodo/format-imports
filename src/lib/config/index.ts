@@ -7,7 +7,7 @@ import { Configuration } from './types';
 
 export * from './types';
 
-export { mergeConfig } from './merge';
+export * from './merge';
 
 export {
   loadConfigFromJsonFile,

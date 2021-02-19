@@ -66,11 +66,11 @@ export interface GroupRule {
   /**
    * Sorting rules for this group.
    *
-   * If it's _undefined_, or either [paths](sortrules.md#paths) or [names](sortrules.md#names) is
-   * _undefined_, then inherit either or both from the parent.
+   * If it's _undefined_, or either/both [paths](sortrules.md#paths) or [names](sortrules.md#names) is
+   * _undefined_, then inherit either/both from the parent.
    *
-   * If it's _none_, or either [paths](sortrules.md#paths) or [names](sortrules.md#names) is
-   * _none_, then don't sort either or both of them.
+   * If it's _none_, or either/both [paths](sortrules.md#paths) or [names](sortrules.md#names) is
+   * _none_, then don't sort either/both of them.
    */
   sort?: 'none' | SortRules;
 

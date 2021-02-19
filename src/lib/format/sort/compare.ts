@@ -18,18 +18,20 @@ export interface Sorter extends SortRules {
   compareNames?: Comparator;
 }
 
-export function sorterFromRules(rules: SortRules | undefined): Sorter {
+export function sorterFromRules(rules: 'none' | SortRules | undefined): Sorter {
+  const r = rules === 'none' ? { paths: 'none' as const, names: 'none' as const } : rules;
   return {
-    ...rules,
-    comparePaths: comparatorFromRule(rules?.paths),
-    compareNames: comparatorFromRule(rules?.names),
+    ...r,
+    comparePaths: comparatorFromRule(r?.paths),
+    compareNames: comparatorFromRule(r?.names),
   };
 }
 
-export function updateSorterWithRules(sorter: Sorter, rules: SortRules | undefined) {
+export function updateSorterWithRules(sorter: Sorter, rules: 'none' | SortRules | undefined) {
   if (!rules) return sorter;
   const r = { ...sorter };
-  const { paths, names } = rules;
+  const { paths, names } =
+    rules === 'none' ? { paths: 'none' as const, names: 'none' as const } : rules;
   if (paths && paths !== r.paths) {
     r.paths = paths;
     r.comparePaths = comparatorFromRule(paths);

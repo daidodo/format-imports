@@ -41,17 +41,23 @@ export interface Configuration {
   readonly groupRules?: (string | string[] | GroupRule)[];
   /**
    * Sorting rules for paths and names. Default to:
+   *
    * ```json
    * {
    *   "paths": ["_", "aA"],
    *   "names": ["_", "aA"]
    * }
    * ```
+   *
+   * If it's _none_, then there is no sorting in all groups, unless they have their own
+   * [sort](grouprule.md#sort) defined.
+   *
    * @see [Sorting rules](../../../../wiki/Sorting-Rules)
    */
-  readonly sortRules?: SortRules;
+  readonly sortRules?: 'none' | SortRules;
   /**
    * When and how to wrap a line. Default to:
+   *
    * ```json
    * {
    *   "maxBindingNamesPerLine": 1,

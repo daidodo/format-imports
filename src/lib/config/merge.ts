@@ -4,18 +4,37 @@ type Merger<T extends object> = {
   [P in keyof T]?: (a: T[P], b: T[P]) => T[P];
 };
 
+/**
+ * Default merge policy for [mergeConfig](#mergeConfig), which is:
+ *
+ * - [exclude](interface/configuration.md#exclude),
+ * [excludeGlob](interface/configuration.md#excludeGlob) and
+ * [keepUnused](interface/configuration.md#keepUnused) arrays will be concatenated instead of
+ * replaced;
+ * - [sortRules](interface/configuration.md#sortRules) object will be merged instead of replaced;
+ * - All other fields will be replaced and the latter config takes precedence.
+ *
+ * When creating your own merge policy, make sure to inherit the default merger and just override
+ * the ones different.
+ */
 export const DEFAULT_MERGER: Merger<Configuration> = {
   exclude: concatArray(),
   excludeGlob: concatArray(),
   keepUnused: concatArray(),
-  sortRules: mergeHelper((a, b) => ({ ...a, ...b })),
+  sortRules: customize((a, b) => {
+    const aa = a === 'none' ? { paths: 'none' as const, names: 'none' as const } : a;
+    const bb = b === 'none' ? { paths: 'none' as const, names: 'none' as const } : b;
+    return { ...aa, ...bb };
+  }),
 };
 
 /**
  * Merge multiple configs together. The latter takes precedence if values have conflicts.
  *
  * This function is preferred to `{...config1, ...config2}` in a sense that some keys need to be
- * merged instead of overwritten, e.g. `exclude`.
+ * merged instead of overwritten, e.g. `exclude`. Please refer to
+ * [mergeConfigWithMerger](#mergeConfigWithMerger) and [DEFAULT_MERGER](#DEFAULT_MERGER)
+ * for more details.
  *
  * Example:
  * ```ts
@@ -32,6 +51,25 @@ export function mergeConfig<T extends Configuration = Configuration>(...configs:
   return mergeConfigWithMerger(DEFAULT_MERGER, ...configs);
 }
 
+/**
+ * Merge multiple configs with custom merger.
+ *
+ * A merger is an object with the same keys as _T_ but the values are functions, e.g.:
+ *
+ * ```ts
+ * interface Merger {
+ *   formatExports?: (a: boolean, b: boolean) => boolean;
+ *   exclude?: (a: string[], b: string[]) => string[];
+ *   // ...
+ * };
+ * ```
+ *
+ * Each field in a merger defines how that field is merged between configs. If _undefined_, the field
+ * will use the default policy which is replacement by the latter.
+ *
+ * @param merger A custom object with merge functions for all fields in a config
+ * @param configs An array of config objects
+ */
 export function mergeConfigWithMerger<T extends Configuration = Configuration>(
   merger: Merger<T>,
   ...configs: T[]
@@ -55,10 +93,10 @@ function purify<T extends object>(a: T): T {
   return r;
 }
 
-function mergeHelper<T>(m: (a: T, b: T) => T) {
+function customize<T>(m: (a: T, b: T) => T) {
   return (a: T | undefined, b: T | undefined) => (a ? (b ? m(a, b) : a) : b);
 }
 
 function concatArray<T>() {
-  return mergeHelper((a: T[], b: T[]) => [...a, ...b]);
+  return customize((a: T[], b: T[]) => [...a, ...b]);
 }
