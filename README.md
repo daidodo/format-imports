@@ -194,7 +194,7 @@ else
   console.log(newText);
 ```
 
-Please read [APIs Documentation](docs/README.md) for more details.
+Please refer to [APIs Documentation](docs/README.md) for more details.
 
 # Configuration Resolution
 
