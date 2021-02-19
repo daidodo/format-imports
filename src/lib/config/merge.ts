@@ -7,11 +7,11 @@ type Merger<T extends object> = {
 /**
  * Default merge policy for [mergeConfig](#mergeConfig), which is:
  *
- * - [exclude](interface/configuration.md#exclude),
- * [excludeGlob](interface/configuration.md#excludeGlob) and
- * [keepUnused](interface/configuration.md#keepUnused) arrays will be concatenated instead of
+ * - [exclude](interfaces/configuration.md#exclude),
+ * [excludeGlob](interfaces/configuration.md#excludeGlob) and
+ * [keepUnused](interfaces/configuration.md#keepUnused) arrays will be concatenated instead of
  * replaced;
- * - [sortRules](interface/configuration.md#sortRules) object will be merged instead of replaced;
+ * - [sortRules](interfaces/configuration.md#sortRules) object will be merged instead of replaced;
  * - All other fields will be replaced and the latter config takes precedence.
  *
  * When creating your own merge policy, make sure to inherit the default merger and just override
@@ -66,6 +66,8 @@ export function mergeConfig<T extends Configuration = Configuration>(...configs:
  *
  * Each field in a merger defines how that field is merged between configs. If _undefined_, the field
  * will use the default policy which is replacement by the latter.
+ *
+ * @typeparam T A type extended from Configuration
  *
  * @param merger A custom object with merge functions for all fields in a config
  * @param configs An array of config objects
