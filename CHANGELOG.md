@@ -17,6 +17,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -->
 
+## [2.1] - 2021-02-19
+
+### Changed
+
+- Config `sortRules` can also be `"none"` which means both `paths` and `names` are `"none"`.
+
 ## [2.0] - 2021-02-14
 
 ### Added

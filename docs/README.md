@@ -19,7 +19,7 @@ String comparison rule.
 
 If it's _none_, then there is no sorting at all.
 
-Defined in: [config/types/sorting.ts:18](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/types/sorting.ts#L18)
+Defined in: [config/types/sorting.ts:18](https://github.com/daidodo/format-imports/blob/45c2bb7/src/lib/config/types/sorting.ts#L18)
 
 ___
 
@@ -29,7 +29,7 @@ ___
 
 A type representing file extensions supported.
 
-Defined in: [format/main/index.ts:15](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/format/main/index.ts#L15)
+Defined in: [format/main/index.ts:15](https://github.com/daidodo/format-imports/blob/45c2bb7/src/lib/format/main/index.ts#L15)
 
 ___
 
@@ -56,7 +56,7 @@ Symbols for different types of imports:
 - _named_: All _multiple_, _single_ and _namespace_ combined.
 - _all_: All _scripts_ and _named_ combined.
 
-Defined in: [config/types/grouping.ts:23](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/types/grouping.ts#L23)
+Defined in: [config/types/grouping.ts:23](https://github.com/daidodo/format-imports/blob/45c2bb7/src/lib/config/types/grouping.ts#L23)
 
 ___
 
@@ -68,7 +68,7 @@ This is for keeping unused names.
 
 `string` elements will be expanded to `{ path: element }`.
 
-Defined in: [config/types/unused.ts:6](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/types/unused.ts#L6)
+Defined in: [config/types/unused.ts:6](https://github.com/daidodo/format-imports/blob/45c2bb7/src/lib/config/types/unused.ts#L6)
 
 ___
 
@@ -83,7 +83,7 @@ Symbols for char segments:
 - _Aa_ - Both case letters and upper case first, i.e. [a-zA-Z] and `'A' < 'a' < 'B' < 'b' < ...`
 - _\__ - Chars with ASCII from 91 to 96, i.e. `[`, `\`, `]`, `^`, `_`, `` ` ``(backtick).
 
-Defined in: [config/types/sorting.ts:11](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/types/sorting.ts#L11)
+Defined in: [config/types/sorting.ts:11](https://github.com/daidodo/format-imports/blob/45c2bb7/src/lib/config/types/sorting.ts#L11)
 
 ## Variables
 
@@ -95,7 +95,27 @@ Default comparison rule for paths and names, which is:
 - Comparing letters case-insensitively, and
 - `'_'` is in front of `[a-zA-Z]`.
 
-Defined in: [config/types/index.ts:151](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/types/index.ts#L151)
+Defined in: [config/types/index.ts:157](https://github.com/daidodo/format-imports/blob/45c2bb7/src/lib/config/types/index.ts#L157)
+
+___
+
+### DEFAULT\_MERGER
+
+• `Const` **DEFAULT\_MERGER**: *Merger*<[*Configuration*](interfaces/configuration.md)\>
+
+Default merge policy for [mergeConfig](#mergeConfig), which is:
+
+- [exclude](interface/configuration.md#exclude),
+[excludeGlob](interface/configuration.md#excludeGlob) and
+[keepUnused](interface/configuration.md#keepUnused) arrays will be concatenated instead of
+replaced;
+- [sortRules](interface/configuration.md#sortRules) object will be merged instead of replaced;
+- All other fields will be replaced and the latter config takes precedence.
+
+When creating your own merge policy, make sure to inherit the default merger and just override
+the ones different.
+
+Defined in: [config/merge.ts:20](https://github.com/daidodo/format-imports/blob/45c2bb7/src/lib/config/merge.ts#L20)
 
 ___
 
@@ -105,7 +125,7 @@ ___
 
 Default grouping rules.
 
-Defined in: [config/types/index.ts:137](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/types/index.ts#L137)
+Defined in: [config/types/index.ts:143](https://github.com/daidodo/format-imports/blob/45c2bb7/src/lib/config/types/index.ts#L143)
 
 ___
 
@@ -115,7 +135,7 @@ ___
 
 File extensions supported.
 
-Defined in: [format/main/index.ts:20](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/format/main/index.ts#L20)
+Defined in: [format/main/index.ts:20](https://github.com/daidodo/format-imports/blob/45c2bb7/src/lib/format/main/index.ts#L20)
 
 ## Functions
 
@@ -144,7 +164,7 @@ Name | Type | Description |
 
 Result text or `undefined` if nothing changes.
 
-Defined in: [format/main/index.ts:38](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/format/main/index.ts#L38)
+Defined in: [format/main/index.ts:38](https://github.com/daidodo/format-imports/blob/45c2bb7/src/lib/format/main/index.ts#L38)
 
 ___
 
@@ -173,7 +193,7 @@ Name | Type | Description |
 
 Result text or `undefined` if nothing changes.
 
-Defined in: [format/main/index.ts:66](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/format/main/index.ts#L66)
+Defined in: [format/main/index.ts:66](https://github.com/daidodo/format-imports/blob/45c2bb7/src/lib/format/main/index.ts#L66)
 
 ___
 
@@ -194,7 +214,7 @@ Name | Type |
 
 **Returns:** *boolean*
 
-Defined in: [config/index.ts:39](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/index.ts#L39)
+Defined in: [config/index.ts:39](https://github.com/daidodo/format-imports/blob/45c2bb7/src/lib/config/index.ts#L39)
 
 ___
 
@@ -214,7 +234,7 @@ Name | Type |
 
 **Returns:** [*Configuration*](interfaces/configuration.md)
 
-Defined in: [config/importSorter.ts:82](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/importSorter.ts#L82)
+Defined in: [config/importSorter.ts:80](https://github.com/daidodo/format-imports/blob/45c2bb7/src/lib/config/importSorter.ts#L80)
 
 ___
 
@@ -225,7 +245,9 @@ ___
 Merge multiple configs together. The latter takes precedence if values have conflicts.
 
 This function is preferred to `{...config1, ...config2}` in a sense that some keys need to be
-merged instead of overwritten, e.g. `exclude`.
+merged instead of overwritten, e.g. `exclude`. Please refer to
+[mergeConfigWithMerger](#mergeConfigWithMerger) and [DEFAULT_MERGER](#DEFAULT_MERGER)
+for more details.
 
 Example:
 ```ts
@@ -237,9 +259,9 @@ const config = mergeConfig(config1, config2);  // { maxLineLength: 100, tabSize:
 
 #### Type parameters:
 
-Name | Type | Description |
------- | ------ | ------ |
-`T` | [*Configuration*](interfaces/configuration.md) | A type extended from Configuration    |
+Name | Type | Default | Description |
+------ | ------ | ------ | ------ |
+`T` | [*Configuration*](interfaces/configuration.md) | [*Configuration*](interfaces/configuration.md) | A type extended from Configuration    |
 
 #### Parameters:
 
@@ -249,7 +271,45 @@ Name | Type | Description |
 
 **Returns:** T
 
-Defined in: [config/helper.ts:70](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/helper.ts#L70)
+Defined in: [config/merge.ts:50](https://github.com/daidodo/format-imports/blob/45c2bb7/src/lib/config/merge.ts#L50)
+
+___
+
+### mergeConfigWithMerger
+
+▸ **mergeConfigWithMerger**<T\>(`merger`: *Merger*<T\>, ...`configs`: T[]): T
+
+Merge multiple configs with custom merger.
+
+A merger is an object with the same keys as _T_ but the values are functions, e.g.:
+
+```ts
+interface Merger {
+  formatExports?: (a: boolean, b: boolean) => boolean;
+  exclude?: (a: string[], b: string[]) => string[];
+  // ...
+};
+```
+
+Each field in a merger defines how that field is merged between configs. If _undefined_, the field
+will use the default policy which is replacement by the latter.
+
+#### Type parameters:
+
+Name | Type | Default |
+------ | ------ | ------ |
+`T` | [*Configuration*](interfaces/configuration.md) | [*Configuration*](interfaces/configuration.md) |
+
+#### Parameters:
+
+Name | Type | Description |
+------ | ------ | ------ |
+`merger` | *Merger*<T\> | A custom object with merge functions for all fields in a config   |
+`...configs` | T[] | An array of config objects    |
+
+**Returns:** T
+
+Defined in: [config/merge.ts:73](https://github.com/daidodo/format-imports/blob/45c2bb7/src/lib/config/merge.ts#L73)
 
 ___
 
@@ -282,7 +342,7 @@ Name | Type | Description |
 
 **Returns:** T
 
-Defined in: [config/importSorter.ts:32](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/importSorter.ts#L32)
+Defined in: [config/importSorter.ts:30](https://github.com/daidodo/format-imports/blob/45c2bb7/src/lib/config/importSorter.ts#L30)
 
 ___
 
@@ -309,4 +369,4 @@ Name | Type | Description |
 
 **Returns:** T
 
-Defined in: [config/index.ts:27](https://github.com/daidodo/format-imports/blob/38995ba/src/lib/config/index.ts#L27)
+Defined in: [config/index.ts:27](https://github.com/daidodo/format-imports/blob/45c2bb7/src/lib/config/index.ts#L27)
