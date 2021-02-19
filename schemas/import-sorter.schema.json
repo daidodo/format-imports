@@ -146,10 +146,12 @@
           "properties": {
             "paths": {
               "$ref": "#/$def/sortRule",
+              "default": ["_", "aA"],
               "markdownDescription": "Sorting rule for import paths. See the [wiki](https://github.com/daidodo/format-imports/wiki/Sorting-Rules) for more details."
             },
             "names": {
               "$ref": "#/$def/sortRule",
+              "default": ["_", "aA"],
               "markdownDescription": "Sorting rule for imported/exported names. See the [wiki](https://github.com/daidodo/format-imports/wiki/Sorting-Rules) for more details."
             }
           }
