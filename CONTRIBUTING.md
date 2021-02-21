@@ -6,16 +6,31 @@
 }
 -->
 
-# Thanks
+# Thanks <!-- omit in toc -->
 
 Thank you for helping improve the project!
 
-# Open an issue
+# Open an issue <!-- omit in toc -->
 
 Please use the following links to:
 
 - [Request a New Feature](https://github.com/daidodo/format-imports/issues/new?template=feature_request.md), or
 - [Report a Bug](https://github.com/daidodo/tsimportsorter/issues/new?template=bug_report.md)
+
+# Table of Content <!-- omit in toc -->
+
+- [Contribute to code](#contribute-to-code)
+- [Integration Tests and Examples](#integration-tests-and-examples)
+  - [Integration Tests for CLI](#integration-tests-for-cli)
+    - [`cmd.txt`](#cmdtxt)
+    - [`stdin.dat`](#stdindat)
+    - [`__in/`](#__in)
+    - [`__out/`](#__out)
+    - [`skip.txt`](#skiptxt)
+    - [`special.txt`](#specialtxt)
+  - [Integration Tests for library](#integration-tests-for-library)
+    - [Configuration Files](#configuration-files)
+    - [More Tips](#more-tips)
 
 # Contribute to code
 
@@ -35,7 +50,7 @@ After you've made some code changes, you should always add integration tests and
 
 ## Integration Tests for CLI
 
-### `src/test/cli/main.test.ts`
+The main test entry point is in `src/test/cli/main.test.ts`.
 
 The test will search `examples/` directory for `cmd.txt`, and spawn CLI in a child process and compare the output (exit code, `STDOUT` and `STDERR`) and updated files. The exit code, `STDOUT` and `STDERR` output are tested against snapshots.
 
@@ -50,7 +65,7 @@ check
 
 Under the hook, the child process runs in a sandbox environment, with `CWD` set to a temporary directory. The environment will be teared down after child process exits.
 
-#### `cmd.txt`
+### `cmd.txt`
 
 This file specifies options to the CLI, one per line, e.g.:
 
@@ -63,19 +78,19 @@ _cmd.txt:_
 
 Will spawn two child processes running `format-imports --check` and `format-imports -c` respectively.
 
-#### `stdin.dat`
+### `stdin.dat`
 
 If your test case needs input from `STDIN`, you can put them in `stdin.dat`.
 
-#### `__in/`
+### `__in/`
 
 If your test case needs input files, e.g. a source file for CLI to read, you can put them under `__in/` directory of your example. The files and directories will be copied to the sandbox environment of the child process.
 
-#### `__out/`
+### `__out/`
 
 If your test case creates or updates files, you can put expected files in `__out/` directory. After the child process finishes, these files will be compared to the actual written files in the sandbox environment to validate the execution.
 
-#### `skip.txt`
+### `skip.txt`
 
 Some test cases are meaningless in certain OS. For example, `formats-imports --check /dev/null` will produce unwanted results in Windows because it doesn't have `/dev/null`.
 
@@ -89,7 +104,7 @@ win32
 
 OS names will be compared to [os.platform()](https://nodejs.org/api/os.html#os_os_platform).
 
-#### `special.txt`
+### `special.txt`
 
 When a test case has different results on different OSes, you can specify them in `special.txt`.
 
@@ -131,7 +146,7 @@ Please note the `win32` tag in the 2nd snapshot.
 
 ## Integration Tests for library
 
-### `src/test/lib/formatSource.test.ts`
+All tests start from `src/test/lib/formatSource.test.ts`
 
 The test will look into `examples/` directory and search for `.origin.ts` files as input, format it, and compare the output with the corresponding `.result.ts` files, e.g. `abc.origin.ts` => `abc.result.ts`, `origin.ts` => `result.ts`.
 
@@ -150,7 +165,7 @@ You can specify test cases to run by changing the 2nd parameter of `runTestSuite
 - `runTestSuite(examples, 'folder/name')` will run single test case `examples/folder/name.origin.ts`. (Please note that `.origin.ts` is not included in the parameter)
 - `runTestSuite(examples, 'folder/default')` will run single test case `examples/folder/origin.ts`.
 
-#### Configuration Files
+### Configuration Files
 
 You can provide config files to your test cases to cover different scenarios.
 
@@ -176,7 +191,7 @@ You can provide config files to your test cases to cover different scenarios.
 
   Please check `examples/eslint/` for more examples.
 
-#### More Tips
+### More Tips
 
 There are a few convenient features to reduce boiler-plate code:
 
