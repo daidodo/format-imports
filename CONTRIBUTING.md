@@ -52,9 +52,9 @@ After you've made some code changes, you should always add integration tests and
 
 The main test entry point is in `src/test/cli/main.test.ts`.
 
-The test will search `examples/` directory for `cmd.txt`, and spawn CLI in a child process and compare the output (exit code, `STDOUT` and `STDERR`) and updated files. The exit code, `STDOUT` and `STDERR` output are tested against snapshots.
+The test will search `examples/` directory for `cmd.txt`, and spawn child processes to run CLI and check the output (exit code, `STDOUT` and `STDERR`) and updated files. The exit code, `STDOUT` and `STDERR` are tested against snapshots.
 
-All test cases are organized the same way as the file structure under `example/` for easy management. For example, `example/check/empty/cmd.txt` will generate test cases:
+All test cases are organized in the same way as the file structure under `example/` for easy management. For example, `example/check/empty/cmd.txt` will generate test cases:
 
 ```sh
 check
