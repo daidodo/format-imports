@@ -13,7 +13,7 @@
 Sorting rule for imported/exported names. Default to
 [COMPARE_RULE_DEFAULT](../README.md#COMPARE_RULE_DEFAULT).
 
-Defined in: [config/types/sorting.ts:31](https://github.com/daidodo/format-imports/blob/3225846/src/lib/config/types/sorting.ts#L31)
+Defined in: [config/types/sorting.ts:31](https://github.com/daidodo/format-imports/blob/e966d7c/src/lib/config/types/sorting.ts#L31)
 
 ___
 
@@ -24,4 +24,4 @@ ___
 Sorting rule for import paths. Default to
 [COMPARE_RULE_DEFAULT](../README.md#COMPARE_RULE_DEFAULT).
 
-Defined in: [config/types/sorting.ts:25](https://github.com/daidodo/format-imports/blob/3225846/src/lib/config/types/sorting.ts#L25)
+Defined in: [config/types/sorting.ts:25](https://github.com/daidodo/format-imports/blob/e966d7c/src/lib/config/types/sorting.ts#L25)
