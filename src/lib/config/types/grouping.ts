@@ -46,8 +46,8 @@ export interface GroupRule {
    * Whether to accepts `import` or `import type`:
    *
    * - If it's _true_, the group accepts only `import type`;
-   * - If it's _false_, the group accepts only `import`.
-   * - If it's _undefined_, the group accepts both;
+   * - If it's _false_, the group accepts only `import`;
+   * - If it's _undefined_, the group accepts both.
    *
    * Default to _undefined_.
    */
