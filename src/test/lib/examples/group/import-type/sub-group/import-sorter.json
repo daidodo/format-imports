@@ -1,0 +1,11 @@
+{
+  "groupRules": [
+    [
+      { "regex": "^a", "importType": false },
+      { "importType": true },
+      { "importType": false },
+      { "regex": "^b", "importType": true }
+    ]
+  ],
+  "keepUnused": [".*"]
+}

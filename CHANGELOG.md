@@ -17,6 +17,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -->
 
+## [2.2] - 2021-02-22
+
+### Added
+
+- Add `importType` to `GroupRule` to distinguish `import` and `import type`.
+
 ## [2.1] - 2021-02-19
 
 ### Changed

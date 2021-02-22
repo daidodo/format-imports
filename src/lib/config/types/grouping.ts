@@ -43,6 +43,17 @@ export interface GroupRule {
   regex?: string;
 
   /**
+   * Whether to accepts `import` or `import type`:
+   *
+   * - If it's _true_, the group accepts only `import type`;
+   * - If it's _false_, the group accepts only `import`.
+   * - If it's _undefined_, the group accepts both;
+   *
+   * Default to _undefined_.
+   */
+  importType?: boolean;
+
+  /**
    * Sort import statements by paths or first names.
    *
    * If it's _undefined_, then use the parent's value, or _paths_ if this is a top group.

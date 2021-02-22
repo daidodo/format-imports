@@ -185,6 +185,10 @@
               ]
             },
             "regex": { "type": "string", "description": "Import path pattern." },
+            "importType": {
+              "type": "boolean",
+              "description": "Whether to accept 'import' (true) or 'import type' (false), or both (undefined)."
+            },
             "sortImportsBy": { "$ref": "#/$def/sortImportsBy" },
             "sort": { "$ref": "#/$def/sortRules", "description": "Sorting rules for this group." },
             "subGroups": { "$ref": "#/$def/groupRules", "description": "Sub-groups and rules." }

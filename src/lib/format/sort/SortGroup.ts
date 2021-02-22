@@ -21,6 +21,7 @@ type SubGroups = Required<GroupRule>['subGroups'];
 export default class SortGroup {
   private readonly flags_: FlagSymbol[];
   private readonly regex_: RegExp | undefined;
+  private readonly importType_: boolean | undefined;
   private readonly sortImportsBy_: SortImportsBy;
   private readonly sorter_: Sorter;
   private readonly subGroups_?: SortGroup[];
@@ -31,13 +32,14 @@ export default class SortGroup {
   private ignoreSubGroups_ = false;
 
   constructor(
-    { flags: originFlags, regex, sortImportsBy, sort, subGroups }: GroupRule,
+    { flags: originFlags, regex, importType, sortImportsBy, sort, subGroups }: GroupRule,
     parent: { sorter: Sorter; flags?: FlagSymbol[]; sortImportsBy?: SortImportsBy },
     eslint?: ESLintConfigProcessed,
   ) {
     const flags = breakFlags(originFlags);
     const flags1 = SortGroup.inferFlags1(flags, parent.flags);
     this.regex_ = regex || regex === '' ? RegExp(regex) : undefined;
+    this.importType_ = importType;
     if (eslint?.ignoreSorting) {
       this.sortImportsBy_ = parent.sortImportsBy ?? 'paths';
       this.sorter_ = parent.sorter;
@@ -59,7 +61,8 @@ export default class SortGroup {
    * @returns Whether node is added to this group
    */
   add(node: ImportNode, fallBack = false) {
-    const { flagType, moduleIdentifier } = node;
+    const { flagType, moduleIdentifier, isTypeOnly } = node;
+    if ((this.importType_ ?? isTypeOnly) !== isTypeOnly) return false;
     if (!isFlagIncluded(flagType, this.flags_)) return false;
     const isScript = flagType === 'scripts';
     if (this.regex_) {
@@ -87,13 +90,13 @@ export default class SortGroup {
    * 1. If `eslintGroupOrder_` is undefined, then sort `nodes_` and `subGroups_`
    *    based on user config.
    * 2. Otherwise:
-   *    * If this is the top group (`level === 0`), then:
-   *      * Sort `nodes_` (fallback group) based on ESLint and user config.
-   *      * Sort `subGroups_` (user config groups) based on their rules.
-   *    * If this is the user config group (`level === 1`), then:
-   *      * Disregard `subGroups_`.
-   *      * Merge all imports together and sort them based on ESLint and user config.
-   *    * Else, no sort is needed.
+   *   * If this is the top group (`level === 0`), then:
+   *     * Sort `nodes_` (fallback group) based on ESLint and user config.
+   *     * Sort `subGroups_` (user config groups) based on their rules.
+   *   * If this is the user config group (`level === 1`), then:
+   *     * Disregard `subGroups_`.
+   *     * Merge all imports together and sort them based on ESLint and user config.
+   *   * Else, no sort is needed.
    */
   sort(level = 0) {
     const { nodes_, sorter_, sortImportsBy_, eslintGroupOrder_: flags, aliasFirst_ } = this;
