@@ -215,14 +215,14 @@ interface MyConfig extends Configuration {
   sayHello?: boolean; // Must be optional
 }
 
-const baseConfig: MyConfig = initMyConfig();
+const initialConfig: MyConfig = initMyConfig();
 const extraConfig: MyConfig = loadExtraConfig();
 
 // Merge extended configs
-const mergedConfig = mergeConfig(baseConfig, extraConfig)
+const baseConfig = mergeConfig(initialConfig, extraConfig)
 
 // Resolve extended config for source file
-const config = resolveConfigForFile('/path/to/file.ts', mergedConfig);
+const config = resolveConfigForFile('/path/to/file.ts', baseConfig);
 
 if (config.sayHello) {
   console.log('Hello!');
