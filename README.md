@@ -30,6 +30,8 @@ It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](htt
   - [Format a Directory](#format-a-directory)
   - [Check Files and Directories](#check-files-and-directories)
 - [APIs](#apis)
+  - [Extending Configuration](#extending-configuration)
+  - [Extending JSON schemas](#extending-json-schemas)
 - [Configuration Resolution](#configuration-resolution)
   - [ESLint Compatibility](#eslint-compatibility)
 - [Ignoring Files or Declarations](#ignoring-files-or-declarations)
@@ -195,6 +197,60 @@ else
 ```
 
 Please refer to [APIs Documentation](docs/README.md) for more details.
+
+## Extending Configuration
+
+You might want to extend [Configuration](docs/interfaces/configuration.md) and add your own options when integrating the APIs. It's already supported and actually working in [JS/TS Imports/Exports Sorter](https://marketplace.visualstudio.com/items?itemName=dozerg.tsimportsorter) extension.
+
+All you need to do is defining your extended config type and using it as normal:
+
+```ts
+import {
+  Configuration,
+  mergeConfig,
+  resolveConfigForFile,
+} from 'format-imports';
+
+interface MyConfig extends Configuration {
+  sayHello?: boolean; // Must be optional
+}
+
+const baseConfig: MyConfig = initMyConfig();
+const extraConfig: MyConfig = loadExtraConfig();
+
+// Merge extended configs
+const mergedConfig = mergeConfig(baseConfig, extraConfig)
+
+// Resolve extended config for source file
+const config = resolveConfigForFile('/path/to/file.ts', mergedConfig);
+
+if (config.sayHello) {
+  console.log('Hello!');
+}
+
+// ...
+```
+
+Please note that the new options must be **optional**.
+
+_import-sorter.json:_
+
+```ts
+{
+  "sayHello": true
+  // ...
+}
+```
+
+You can even customize how options are merged between configs. Please refer to [mergeConfig](docs/README.md#mergeConfig) and [mergeConfigWithMerger](docs/README.md#mergeConfigWithMerger) for more details.
+
+## Extending JSON schemas
+
+This package provides config JSON schemas for `import-sorter.json` and `package.json` (under `schemas/`):
+
+<img width="527" alt="1" src="https://user-images.githubusercontent.com/8170176/109087085-b37fbe00-7704-11eb-8599-0137c69ea2e4.png">
+
+It's recommended to update the schemas after you've extended your config, if you want the new options to be available in `import-sorter.json` and `package.json`. An example of how that works can be found in [JS/TS Imports/Exports Sorter](https://marketplace.visualstudio.com/items?itemName=dozerg.tsimportsorter) extension [source code](https://github.com/daidodo/tsimportsorter/tree/master/schemas).
 
 # Configuration Resolution
 
