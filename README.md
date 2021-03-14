@@ -250,7 +250,7 @@ This package provides config JSON schemas for `import-sorter.json` and `package.
 
 <img width="527" alt="1" src="https://user-images.githubusercontent.com/8170176/109087085-b37fbe00-7704-11eb-8599-0137c69ea2e4.png">
 
-It's recommended to update the schemas after you've extended your config, if you want the new options to be available in `import-sorter.json` and `package.json`. An example of how that works can be found in [JS/TS Imports/Exports Sorter](https://marketplace.visualstudio.com/items?itemName=dozerg.tsimportsorter) extension [source code](https://github.com/daidodo/tsimportsorter/tree/master/schemas).
+It's recommended to update the schemas after you've extended your config, if you want the new options to be available in `import-sorter.json` and `package.json`. An example of how that works can be found in [JS/TS Imports/Exports Sorter](https://marketplace.visualstudio.com/items?itemName=dozerg.tsimportsorter) extension [source code](https://github.com/daidodo/format-imports-vscode/tree/master/schemas).
 
 # Configuration Resolution
 

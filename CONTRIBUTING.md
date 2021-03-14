@@ -15,7 +15,7 @@ Thank you for helping improve the project!
 Please use the following links to:
 
 - [Request a New Feature](https://github.com/daidodo/format-imports/issues/new?template=feature_request.md), or
-- [Report a Bug](https://github.com/daidodo/tsimportsorter/issues/new?template=bug_report.md)
+- [Report a Bug](https://github.com/daidodo/format-imports/issues/new?template=bug_report.md)
 
 # Table of Content <!-- omit in toc -->
 

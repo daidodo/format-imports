@@ -8,8 +8,8 @@
 - Use client node_modules/ ESLint. ([Link](https://github.com/eslint/eslint/issues/13974))
 - Webpack. ([Link](https://github.com/eslint/eslint/issues/13974))
 - Type `optionator`.
-- Add `skipTsConfig` and `skipEslintConfig` to in config/development. ([Link](https://github.com/daidodo/tsimportsorter/issues/27#issuecomment-747553733))
-- Support for .vue files. ([Link](https://github.com/daidodo/tsimportsorter/issues/37), [Link](https://github.com/MLoughry/sort-typescript-imports/issues/31))
+- Add `skipTsConfig` and `skipEslintConfig` to in config/development. ([Link](https://github.com/daidodo/format-imports-vscode/issues/27#issuecomment-747553733))
+- Support for .vue files. ([Link](https://github.com/daidodo/format-imports-vscode/issues/37), [Link](https://github.com/MLoughry/sort-typescript-imports/issues/31))
 - Sort numbers naturally. ([Example](https://github.com/lydell/eslint-plugin-simple-import-sort#sorting))
 - Support rules from [awesome-eslint](https://github.com/dustinspecker/awesome-eslint).
 - Support [benmosher/eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import) rules. ([Link](https://github.com/SoominHan/import-sorter/issues/43), [exports-last](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/exports-last.md), [import/order](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/order.md))
@@ -39,15 +39,15 @@
 - ~~Do not remove `export {}` if there is no import/export left, see [here](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/unambiguous.md).~~
 - ~~Support ESLint plugin import/order. ([Link](https://github.com/SoominHan/import-sorter/issues/65), [Rule](https://eslint.org/docs/rules/sort-imports), [Rule](https://eslint.org/docs/rules/no-duplicate-imports), [API](https://github.com/eslint/eslintrc/blob/a75bacd9a743a7bbcdb8c59e5d4f9de3dc8b0f20/lib/config-array-factory.js#L16))~~
 - ~~Organize Imports should sort by import name instead path. ([Link](https://github.com/microsoft/TypeScript/issues/23279), [Link](https://github.com/SoominHan/import-sorter/issues/40))~~
-- ~~Infer 'flag' from sub-groups in GroupRule. ([Link](https://github.com/daidodo/tsimportsorter/issues/17))~~
+- ~~Infer 'flag' from sub-groups in GroupRule. ([Link](https://github.com/daidodo/format-imports-vscode/issues/17))~~
 - ~~Test coverage. ([Example](https://github.com/codecov/example-typescript-vscode-extension), [Doc](https://rpeshkov.net/blog/vscode-extension-coverage/))~~
-- ~~Support [twin.macro](https://github.com/ben-rogerson/twin.macro). ([Link](https://github.com/daidodo/tsimportsorter/issues/12))~~
+- ~~Support [twin.macro](https://github.com/ben-rogerson/twin.macro). ([Link](https://github.com/daidodo/format-imports-vscode/issues/12))~~
 - ~~Write CONTRIBUTING.md.~~
 - ~~Add config json schema.~~
 - ~~Debug logs, open issue template, easy way to copy/paste logs for bug fix.~~
 - ~~Test `unused/deep` fails on Windows 10 + VS Code 1.42.1.~~
 - ~~Unit tests.~~
-- ~~Sort exports. ([Link](https://github.com/daidodo/tsimportsorter/issues/6#issuecomment-619185391), [Doc](https://github.com/tc39/proposal-export-ns-from))~~
+- ~~Sort exports. ([Link](https://github.com/daidodo/format-imports-vscode/issues/6#issuecomment-619185391), [Doc](https://github.com/tc39/proposal-export-ns-from))~~
 - ~~Required `h` import missing (StencilJS). ([Link](https://gitlab.com/smartive-private/christoph/typescript-hero/-/issues/488))~~
 - ~~Provide an option to not sort "Plain import". ([Link](https://gitlab.com/smartive-private/christoph/typescript-hero/-/issues/454))~~
 - ~~Shebangs are moved after imports. ([Link](https://github.com/MLoughry/sort-typescript-imports/issues/37))~~
