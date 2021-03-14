@@ -63,7 +63,7 @@ check
         ✓ [-c]
 ```
 
-Under the hook, the child process runs in a sandbox environment, with `CWD` set to a temporary directory. The environment will be teared down after child process exits.
+Under the hood, the child process runs in a sandbox environment, with `CWD` set to a temporary directory. The environment will be teared down after child process exits.
 
 ### `cmd.txt`
 
