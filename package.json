@@ -132,6 +132,7 @@
     "fs-extra": "^9.1.0",
     "log4js": "^6.3.0",
     "minimatch": "^3.0.4",
+    "node-cache": "^5.1.2",
     "optionator": "^0.9.1",
     "prettier": "^2.2.1",
     "tmp": "^0.2.1",
