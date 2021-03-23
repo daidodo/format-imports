@@ -29,6 +29,7 @@
 
 ### Bugs
 
+- "Maximum call stack size exceeded" on [TypeScript](https://github.com/microsoft/TypeScript) repo.
 - Inner comments are removed after formatting. E.g. `import A /*inner comment*/ from 'a'`.
 
 ### DONE
