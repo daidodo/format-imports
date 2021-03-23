@@ -28,10 +28,10 @@ export const SUPPORTED_EXTENSIONS: Extension[] = ['js', 'ts', 'jsx', 'tsx'];
  * `options` can be used to change _tsconfig.json_ and ESLint config loading behavior for testing
  * purpose.
  *
- * @param text Source text
- * @param fileName Source file name
- * @param config Base config
- * @param options Internal/testing options
+ * @param text - Source text
+ * @param fileName - Source file name
+ * @param config - Base config
+ * @param options - Internal/testing options
  *
  * @returns Result text or `undefined` if nothing changes.
  */
@@ -56,10 +56,10 @@ export function formatSourceFromFile(
  * `options` can be used to change _tsconfig.json_ and ESLint config loading behavior for testing
  * purpose.
  *
- * @param text Source text
- * @param extension File extension to reveal the source language
- * @param config Base config
- * @param options Internal/testing options
+ * @param text - Source text
+ * @param extension - File extension to reveal the source language
+ * @param config - Base config
+ * @param options - Internal/testing options
  *
  * @returns Result text or `undefined` if nothing changes.
  */

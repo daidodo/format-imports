@@ -22,10 +22,10 @@ import { Configuration } from './types';
  * - `.editorconfig`
  * - The base config provided as parameter
  *
- * @typeparam T A type extended from Configuration
+ * @typeparam T - A type extended from Configuration
  *
- * @param fileName Source file name
- * @param config Base config
+ * @param fileName - Source file name
+ * @param config - Base config
  */
 export function loadImportSorterConfig<T extends Configuration = Configuration>(
   fileName: string,
@@ -80,7 +80,7 @@ export function enhanceEol<T extends Configuration>(config: T, detectEol: () => 
 export function loadConfigFromJsonFile(fileName: string): Configuration {
   const log = logger('format-imports.loadConfigFromJsonFile');
   if (!fileName) return {};
-  const config = JSON.parse(fs.readFileSync(fileName, 'utf8'));
+  const config: Configuration = JSON.parse(fs.readFileSync(fileName, 'utf8'));
   log.debug('JSON config:', config);
   assert(isObject(config), `Bad config in "${fileName}"`);
   return config;
