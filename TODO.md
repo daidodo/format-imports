@@ -2,8 +2,9 @@
 
 ### Features
 
+- Add debug mode to CLI. ([Link](https://github.com/daidodo/format-imports/issues/3))
 - Support more IDEs. ([Link](https://github.com/SoominHan/import-sorter/issues/63))
-  - IDEA Ultimate and WebStorm ([Link](https://youtrack.jetbrains.com/issue/WEB-21182?_ga=2.153460280.1892322594.1614289013-2059845846.1614289013))
+  - ~~IDEA Ultimate and WebStorm ([Link](https://youtrack.jetbrains.com/issue/WEB-21182?_ga=2.153460280.1892322594.1614289013-2059845846.1614289013))~~
   - Prettier plugin.
 - Test CLI in CI/CD pipelines.
 - Use client node_modules/ ESLint. ([Link](https://github.com/eslint/eslint/issues/13974))
