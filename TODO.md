@@ -30,7 +30,7 @@
 
 ### Bugs
 
-- "Maximum call stack size exceeded" on [TypeScript](https://github.com/microsoft/TypeScript) repo.
+- CLI "Maximum call stack size exceeded" on [TypeScript](https://github.com/microsoft/TypeScript) repo.
 - Inner comments are removed after formatting. E.g. `import A /*inner comment*/ from 'a'`.
 
 ### DONE
@@ -70,7 +70,7 @@
 - ~~Wrap default import.([Link](https://github.com/SoominHan/import-sorter/issues/23))~~
 - ~~Support absolute config paths. ([Link](https://github.com/SoominHan/import-sorter/issues/26))~~
 - ~~Special comment to disable import sorter for a file or line.~~
-- ~~`exclude` should be merged instead of replaced.~~
+- ~~"exclude" should be merged instead of replaced.~~
 - ~~Handle implicit React.~~
 - ~~Preserve comments after sorting.~~
 - ~~Handle script imports.~~

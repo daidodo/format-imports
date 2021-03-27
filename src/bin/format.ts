@@ -22,6 +22,7 @@ enum OutputMode {
   DRY_RUN_FILES,
   DRY_RUN_DIR,
 }
+
 function dryRunOutput(
   mode: OutputMode,
   result: string | undefined,
