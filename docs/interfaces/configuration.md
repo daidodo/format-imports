@@ -1,190 +1,186 @@
 # Interface: Configuration
 
-## Hierarchy
-
-* **Configuration**
-
 ## Properties
 
 ### bracketSpacing
 
-• `Optional` `Readonly` **bracketSpacing**: *undefined* \| *boolean*
+• `Optional` `Readonly` **bracketSpacing**: *boolean*
 
 Whether to add spaces between brackets. _true_ for '{ id }' and _false_ for '{id}'. Default to
 _true_.
 
-Defined in: [config/types/index.ts:126](https://github.com/daidodo/format-imports/blob/e966d7c/src/lib/config/types/index.ts#L126)
+Defined in: [config/types/index.ts:126](https://github.com/daidodo/format-imports/blob/43a28b9/src/lib/config/types/index.ts#L126)
 
 ___
 
 ### configurationFileName
 
-• `Optional` `Readonly` **configurationFileName**: *undefined* \| *string*
+• `Optional` `Readonly` **configurationFileName**: *string*
 
 JSON configuration file name. Default to _import-sorter.json_.
 
-Defined in: [config/types/index.ts:19](https://github.com/daidodo/format-imports/blob/e966d7c/src/lib/config/types/index.ts#L19)
+Defined in: [config/types/index.ts:19](https://github.com/daidodo/format-imports/blob/43a28b9/src/lib/config/types/index.ts#L19)
 
 ___
 
 ### emptyLinesAfterAllImports
 
-• `Optional` `Readonly` **emptyLinesAfterAllImports**: *undefined* \| *number*
+• `Optional` `Readonly` **emptyLinesAfterAllImports**: *number*
 
 Number of empty lines after the last import declaration. Default to _1_.
 
-Defined in: [config/types/index.ts:85](https://github.com/daidodo/format-imports/blob/e966d7c/src/lib/config/types/index.ts#L85)
+Defined in: [config/types/index.ts:85](https://github.com/daidodo/format-imports/blob/43a28b9/src/lib/config/types/index.ts#L85)
 
 ___
 
 ### emptyLinesBetweenGroups
 
-• `Optional` `Readonly` **emptyLinesBetweenGroups**: *undefined* \| *number*
+• `Optional` `Readonly` **emptyLinesBetweenGroups**: *number*
 
 Number of empty lines between groups (NOT sub-groups). Default to _1_.
 
-Defined in: [config/types/index.ts:81](https://github.com/daidodo/format-imports/blob/e966d7c/src/lib/config/types/index.ts#L81)
+Defined in: [config/types/index.ts:81](https://github.com/daidodo/format-imports/blob/43a28b9/src/lib/config/types/index.ts#L81)
 
 ___
 
 ### exclude
 
-• `Optional` `Readonly` **exclude**: *undefined* \| *string*[]
+• `Optional` `Readonly` **exclude**: *string*[]
 
 Disable formatting for files matching regular expressions. Default to _["node_modules"]_
 
-Defined in: [config/types/index.ts:27](https://github.com/daidodo/format-imports/blob/e966d7c/src/lib/config/types/index.ts#L27)
+Defined in: [config/types/index.ts:27](https://github.com/daidodo/format-imports/blob/43a28b9/src/lib/config/types/index.ts#L27)
 
 ___
 
 ### excludeGlob
 
-• `Optional` `Readonly` **excludeGlob**: *undefined* \| *string*[]
+• `Optional` `Readonly` **excludeGlob**: *string*[]
 
 Disable formatting for files matching glob patterns.
 
-Defined in: [config/types/index.ts:31](https://github.com/daidodo/format-imports/blob/e966d7c/src/lib/config/types/index.ts#L31)
+Defined in: [config/types/index.ts:31](https://github.com/daidodo/format-imports/blob/43a28b9/src/lib/config/types/index.ts#L31)
 
 ___
 
 ### force
 
-• `Optional` `Readonly` **force**: *undefined* \| *boolean*
+• `Optional` `Readonly` **force**: *boolean*
 
 Whether to disregard [exclude](#exclude)/[excludeGlob](#excludeGlob) patterns and file-disable
 comments. Default to _false_.
 
-Defined in: [config/types/index.ts:131](https://github.com/daidodo/format-imports/blob/e966d7c/src/lib/config/types/index.ts#L131)
+Defined in: [config/types/index.ts:131](https://github.com/daidodo/format-imports/blob/43a28b9/src/lib/config/types/index.ts#L131)
 
 ___
 
 ### formatExports
 
-• `Optional` `Readonly` **formatExports**: *undefined* \| *boolean*
+• `Optional` `Readonly` **formatExports**: *boolean*
 
 Whether to format exports as well as imports. Default to _true_.
 
-Defined in: [config/types/index.ts:23](https://github.com/daidodo/format-imports/blob/e966d7c/src/lib/config/types/index.ts#L23)
+Defined in: [config/types/index.ts:23](https://github.com/daidodo/format-imports/blob/43a28b9/src/lib/config/types/index.ts#L23)
 
 ___
 
 ### groupRules
 
-• `Optional` `Readonly` **groupRules**: *undefined* \| (*string* \| *string*[] \| [*GroupRule*](grouprule.md))[]
+• `Optional` `Readonly` **groupRules**: (*string* \| *string*[] \| [*GroupRule*](grouprule.md))[]
 
 Grouping rules for path patterns for imports. Default to
 [GROUP_RULES_DEFAULT](../README.md#GROUP_RULES_DEFAULT)
 
 **`see`** [Grouping Rules](../../../../wiki/Grouping-Rules)
 
-Defined in: [config/types/index.ts:41](https://github.com/daidodo/format-imports/blob/e966d7c/src/lib/config/types/index.ts#L41)
+Defined in: [config/types/index.ts:41](https://github.com/daidodo/format-imports/blob/43a28b9/src/lib/config/types/index.ts#L41)
 
 ___
 
 ### hasSemicolon
 
-• `Optional` `Readonly` **hasSemicolon**: *undefined* \| *boolean*
+• `Optional` `Readonly` **hasSemicolon**: *boolean*
 
 Whether to add semicolons at the end of declarations. Default to _true_.
 
-Defined in: [config/types/index.ts:117](https://github.com/daidodo/format-imports/blob/e966d7c/src/lib/config/types/index.ts#L117)
+Defined in: [config/types/index.ts:117](https://github.com/daidodo/format-imports/blob/43a28b9/src/lib/config/types/index.ts#L117)
 
 ___
 
 ### insertFinalNewline
 
-• `Optional` `Readonly` **insertFinalNewline**: *undefined* \| *boolean*
+• `Optional` `Readonly` **insertFinalNewline**: *boolean*
 
 Whether to end files with a new line. Default to _true_.
 
-Defined in: [config/types/index.ts:121](https://github.com/daidodo/format-imports/blob/e966d7c/src/lib/config/types/index.ts#L121)
+Defined in: [config/types/index.ts:121](https://github.com/daidodo/format-imports/blob/43a28b9/src/lib/config/types/index.ts#L121)
 
 ___
 
 ### keepUnused
 
-• `Optional` `Readonly` **keepUnused**: *undefined* \| [*KeepUnusedRule*](../README.md#keepunusedrule)[]
+• `Optional` `Readonly` **keepUnused**: [*KeepUnusedRule*](../README.md#keepunusedrule)[]
 
 By default all unused imports are removed. Keep some or all of them around with this setting
 if you need.
 
-Defined in: [config/types/index.ts:77](https://github.com/daidodo/format-imports/blob/e966d7c/src/lib/config/types/index.ts#L77)
+Defined in: [config/types/index.ts:77](https://github.com/daidodo/format-imports/blob/43a28b9/src/lib/config/types/index.ts#L77)
 
 ___
 
 ### maxLineLength
 
-• `Optional` `Readonly` **maxLineLength**: *undefined* \| *number*
+• `Optional` `Readonly` **maxLineLength**: *number*
 
 Max line length before wrapping. 0 for no limit. Default to _80_.
 
-Defined in: [config/types/index.ts:97](https://github.com/daidodo/format-imports/blob/e966d7c/src/lib/config/types/index.ts#L97)
+Defined in: [config/types/index.ts:97](https://github.com/daidodo/format-imports/blob/43a28b9/src/lib/config/types/index.ts#L97)
 
 ___
 
 ### quoteMark
 
-• `Optional` `Readonly` **quoteMark**: *undefined* \| *single* \| *double*
+• `Optional` `Readonly` **quoteMark**: *single* \| *double*
 
 Use single or double quotes. Default to _single_.
 
-Defined in: [config/types/index.ts:109](https://github.com/daidodo/format-imports/blob/e966d7c/src/lib/config/types/index.ts#L109)
+Defined in: [config/types/index.ts:109](https://github.com/daidodo/format-imports/blob/43a28b9/src/lib/config/types/index.ts#L109)
 
 ___
 
 ### removeLastIndexInPath
 
-• `Optional` `Readonly` **removeLastIndexInPath**: *undefined* \| *boolean*
+• `Optional` `Readonly` **removeLastIndexInPath**: *boolean*
 
 Whether to remove the last 'index' when normalizing paths. Default to _false_.
 
-Defined in: [config/types/index.ts:93](https://github.com/daidodo/format-imports/blob/e966d7c/src/lib/config/types/index.ts#L93)
+Defined in: [config/types/index.ts:93](https://github.com/daidodo/format-imports/blob/43a28b9/src/lib/config/types/index.ts#L93)
 
 ___
 
 ### removeLastSlashInPath
 
-• `Optional` `Readonly` **removeLastSlashInPath**: *undefined* \| *boolean*
+• `Optional` `Readonly` **removeLastSlashInPath**: *boolean*
 
 Whether to remove the last slash when normalizing paths. Default to _false_.
 
-Defined in: [config/types/index.ts:89](https://github.com/daidodo/format-imports/blob/e966d7c/src/lib/config/types/index.ts#L89)
+Defined in: [config/types/index.ts:89](https://github.com/daidodo/format-imports/blob/43a28b9/src/lib/config/types/index.ts#L89)
 
 ___
 
 ### sortImportsBy
 
-• `Optional` `Readonly` **sortImportsBy**: *undefined* \| *paths* \| *names*
+• `Optional` `Readonly` **sortImportsBy**: *paths* \| *names*
 
 Sort import declarations by paths or first names. Default to _paths_.
 
-Defined in: [config/types/index.ts:35](https://github.com/daidodo/format-imports/blob/e966d7c/src/lib/config/types/index.ts#L35)
+Defined in: [config/types/index.ts:35](https://github.com/daidodo/format-imports/blob/43a28b9/src/lib/config/types/index.ts#L35)
 
 ___
 
 ### sortRules
 
-• `Optional` `Readonly` **sortRules**: *undefined* \| *none* \| [*SortRules*](sortrules.md)
+• `Optional` `Readonly` **sortRules**: *none* \| [*SortRules*](sortrules.md)
 
 Sorting rules for paths and names. Default to:
 
@@ -200,43 +196,43 @@ If it's _none_, then there is no sorting in all groups, unless they have their o
 
 **`see`** [Sorting rules](../../../../wiki/Sorting-Rules)
 
-Defined in: [config/types/index.ts:57](https://github.com/daidodo/format-imports/blob/e966d7c/src/lib/config/types/index.ts#L57)
+Defined in: [config/types/index.ts:57](https://github.com/daidodo/format-imports/blob/43a28b9/src/lib/config/types/index.ts#L57)
 
 ___
 
 ### tabSize
 
-• `Optional` `Readonly` **tabSize**: *undefined* \| *number*
+• `Optional` `Readonly` **tabSize**: *number*
 
 Number of spaces to replace a TAB. Default to _2_.
 
-Defined in: [config/types/index.ts:105](https://github.com/daidodo/format-imports/blob/e966d7c/src/lib/config/types/index.ts#L105)
+Defined in: [config/types/index.ts:105](https://github.com/daidodo/format-imports/blob/43a28b9/src/lib/config/types/index.ts#L105)
 
 ___
 
 ### tabType
 
-• `Optional` `Readonly` **tabType**: *undefined* \| *space* \| *tab*
+• `Optional` `Readonly` **tabType**: *space* \| *tab*
 
 Indent lines with tabs or spaces. Default to _space_.
 
-Defined in: [config/types/index.ts:101](https://github.com/daidodo/format-imports/blob/e966d7c/src/lib/config/types/index.ts#L101)
+Defined in: [config/types/index.ts:101](https://github.com/daidodo/format-imports/blob/43a28b9/src/lib/config/types/index.ts#L101)
 
 ___
 
 ### trailingComma
 
-• `Optional` `Readonly` **trailingComma**: *undefined* \| *none* \| *multiLine*
+• `Optional` `Readonly` **trailingComma**: *none* \| *multiLine*
 
 When to add a trailing comma for the last name. Default to _multiLine_.
 
-Defined in: [config/types/index.ts:113](https://github.com/daidodo/format-imports/blob/e966d7c/src/lib/config/types/index.ts#L113)
+Defined in: [config/types/index.ts:113](https://github.com/daidodo/format-imports/blob/43a28b9/src/lib/config/types/index.ts#L113)
 
 ___
 
 ### wrappingStyle
 
-• `Optional` `Readonly` **wrappingStyle**: *undefined* \| [*WrappingRule*](wrappingrule.md) \| *prettier*
+• `Optional` `Readonly` **wrappingStyle**: [*WrappingRule*](wrappingrule.md) \| *prettier*
 
 When and how to wrap a line. Default to:
 
@@ -251,4 +247,4 @@ When and how to wrap a line. Default to:
 
 If it's set to _prettier_, then wrap lines in compatible with [Prettier](https://prettier.io/).
 
-Defined in: [config/types/index.ts:72](https://github.com/daidodo/format-imports/blob/e966d7c/src/lib/config/types/index.ts#L72)
+Defined in: [config/types/index.ts:72](https://github.com/daidodo/format-imports/blob/43a28b9/src/lib/config/types/index.ts#L72)
