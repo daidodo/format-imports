@@ -20,6 +20,7 @@ export function configForCompose({
 }: Configuration) {
   const nl = eol === 'CR' ? '\r' : eol === 'CRLF' ? '\r\n' : eol === 'LFCR' ? '\n\r' : '\n';
   const max = Number.MAX_SAFE_INTEGER;
+  const tabSz = tabSize ?? 2;
   return {
     maxLength: (maxLineLength ?? 80) || max,
     wrap:
@@ -40,7 +41,8 @@ export function configForCompose({
           },
     groupSep: nl.repeat((emptyLinesBetweenGroups ?? 1) + 1),
     groupEnd: (emptyLinesAfterAllImports ?? 1) + 1,
-    tab: tabType?.toLowerCase() === 'tab' ? '\t' : ' '.repeat(tabSize ?? 2),
+    tab: tabType?.toLowerCase() === 'tab' ? '\t' : ' '.repeat(tabSz),
+    tabSz,
     quote:
       quoteMark?.toLowerCase() === 'double' ? (s: string) => `"${s}"` : (s: string) => `'${s}'`,
     comma: trailingComma?.toLowerCase() === 'none' ? '' : ',',

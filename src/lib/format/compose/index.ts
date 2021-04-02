@@ -108,18 +108,21 @@ function composeName(name: NameBinding | undefined) {
   return `* as ${aliasName}`;
 }
 
-function composeOneLineNames(words: string[], { tab, wrap, maxLength, comma }: ComposeConfig) {
+function composeOneLineNames(
+  words: string[],
+  { tab, tabSz, wrap, maxLength, comma }: ComposeConfig,
+) {
   assert(words.length > 0);
   const maxWords = wrap.perLine;
-  const append = (t: string, n: string, s: boolean, e: boolean) =>
-    t + (s ? '' : ' ') + n + (e ? comma : ',');
+  const append = (n: string, s: boolean, e: boolean) => (s ? '' : ' ') + n + (e ? comma : ',');
   const [first, ...rest] = words;
-  let text = append(tab, first, true, !rest.length);
+  let text = append(first, true, !rest.length);
   for (let i = 0; i < rest.length; ++i) {
     const n = rest[i];
-    const t = append(text, n, false, i + 1 >= rest.length);
-    if (i + 2 > maxWords || t.length > maxLength) return { text, left: rest.slice(i) };
+    const t = text + append(n, false, i + 1 >= rest.length);
+    if (i + 2 > maxWords || t.length + tabSz > maxLength)
+      return { text: tab + text, left: rest.slice(i) };
     text = t;
   }
-  return { text, left: [] };
+  return { text: tab + text, left: [] };
 }

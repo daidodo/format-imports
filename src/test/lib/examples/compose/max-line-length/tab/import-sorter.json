@@ -1,0 +1,8 @@
+{
+  "maxLineLength": 10,
+  "tabType": "tab",
+  "tabSize": 4,
+  "wrappingStyle": {
+    "maxNamesPerWrappedLine": 0
+  }
+}
