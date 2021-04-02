@@ -31,6 +31,7 @@ export function configForCompose({
             perLine: 1,
             exported: max,
             parts: false,
+            skipCmt: true,
           }
         : {
             withoutDefault: (wrappingStyle?.maxBindingNamesPerLine ?? 1) || max,
@@ -38,6 +39,7 @@ export function configForCompose({
             perLine: (wrappingStyle?.maxNamesPerWrappedLine ?? 1) || max,
             exported: wrappingStyle?.maxExportNamesPerLine || max,
             parts: true,
+            skipCmt: !!wrappingStyle?.ignoreComments,
           },
     groupSep: nl.repeat((emptyLinesBetweenGroups ?? 1) + 1),
     groupEnd: (emptyLinesAfterAllImports ?? 1) + 1,

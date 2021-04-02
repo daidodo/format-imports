@@ -16,4 +16,8 @@ export interface WrappingRule {
    * Max names on wrapped lines for imports/exports. 0 for no limit. Default to _1_.
    */
   readonly maxNamesPerWrappedLine?: number;
+  /**
+   * Whether to ignore trailing comments when counting line length. Default to _false_.
+   */
+  readonly ignoreComments?: boolean;
 }

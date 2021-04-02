@@ -17,20 +17,21 @@ export function composeNodeAsParts(
 ) {
   const [first, ...rest] = parts;
   assert(!!first, `Invalid parts=${parts} for verb=${verb}, from=${from}`);
-  const canWrap = wrap.parts;
+  const wrapParts = wrap.parts;
   let text = `${verb} ${first}` + (rest.length ? ',' : '');
   const lines = [];
   rest.forEach((p, i, a) => {
     const c = i + 1 < a.length ? ',' : '';
     const n = `${text} ${p}${c}`;
-    if (canWrap && n.length >= maxLength) {
+    if (wrapParts && n.length >= maxLength) {
       lines.push(text);
       text = tab + p + c;
     } else text = n;
   });
   const f = from + semi;
   const n = `${text} ${f}`;
-  if (canWrap && n.length + extraLength > maxLength) lines.push(text, tab + f);
+  const inLen = maxLength >= n.length + (wrap.skipCmt ? 0 : extraLength);
+  if (wrapParts && !inLen) lines.push(text, tab + f);
   else lines.push(n);
   return lines.join(nl);
 }
@@ -50,11 +51,8 @@ export function composeNodeAsNames(
 ) {
   const { wrap, maxLength } = config;
   const { text, wrapped } = composeNodeAsNamesImpl(verb, defaultName, names, from, config, false);
-  const noMoreWrap =
-    wrapped ||
-    (wrap.parts
-      ? maxLength >= text.length + extraLength
-      : maxLength >= text.length || (!defaultName && names.length < 2));
+  const inLen = maxLength >= text.length + (wrap.skipCmt ? 0 : extraLength);
+  const noMoreWrap = wrapped || inLen || (!wrap.parts && !defaultName && names.length < 2);
   return noMoreWrap
     ? text
     : composeNodeAsNamesImpl(verb, defaultName, names, from, config, true).text;

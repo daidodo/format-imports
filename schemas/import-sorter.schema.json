@@ -252,6 +252,11 @@
               "minimum": 0,
               "default": 1,
               "description": "Max names on wrapped lines for imports/exports. 0 for no limit."
+            },
+            "ignoreComments": {
+              "type": "boolean",
+              "default": false,
+              "description": "Whether to ignore trailing comments when counting line length."
             }
           }
         }

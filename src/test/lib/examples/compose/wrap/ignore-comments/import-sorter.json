@@ -1,0 +1,7 @@
+{
+  "wrappingStyle": {
+    "ignoreComments": true
+  },
+  "maxLineLength": 30,
+  "formatExports": true
+}
