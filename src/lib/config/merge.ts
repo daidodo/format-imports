@@ -2,6 +2,9 @@
 
 import { Configuration } from './types';
 
+/**
+ * @internal
+ */
 export type Merger<T extends object> = {
   [P in keyof T]?: (a: T[P], b: T[P]) => T[P];
 };
