@@ -17,6 +17,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -->
 
+## [2.3.1] - 2021-04-06
+
+### Added
+
+- Support ESLint [max-len](https://eslint.org/docs/rules/max-len) rule.
+
 ## [2.3] - 2021-04-02
 
 ### Added

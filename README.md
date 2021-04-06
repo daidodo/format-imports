@@ -15,11 +15,11 @@ This package contains CLI and APIs to format **imports** and **exports** for **J
 
 It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](https://marketplace.visualstudio.com/items?itemName=dozerg.tsimportsorter), then extracted to standalone CLI and lib for more use cases (e.g. CI/CD) and editors (hopefully).
 
-## [2.3] Release Notes
+## [2.3.1] Release Notes
 
 ### Added
 
-- Add `wrappingStyle.ignoreComments` to skip trailing comments when counting line length.
+- Support ESLint [max-len](https://eslint.org/docs/rules/max-len) rule.
 
 # Table of contents <!-- omit in toc -->
 
@@ -273,6 +273,7 @@ If installed, [ESLint](https://eslint.org) and plugins rules will be detected an
 Currently supported rules are:
 
 - [sort-imports](../../wiki/ESLint-Compatibility#sort-imports)
+- [max-len](../../wiki/ESLint-Compatibility#max-len)
 - [import/newline-after-import](../../wiki/ESLint-Compatibility#importnewline-after-import)
 - [import/no-useless-path-segments](../../wiki/ESLint-Compatibility#importno-useless-path-segments)
 
