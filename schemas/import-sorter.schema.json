@@ -44,7 +44,8 @@
         "maxBindingNamesPerLine": 1,
         "maxDefaultAndBindingNamesPerLine": 2,
         "maxExportNamesPerLine": 0,
-        "maxNamesPerWrappedLine": 1
+        "maxNamesPerWrappedLine": 1,
+        "ignoreComments": false
       },
       "markdownDescription": "When and how to wrap a line. See the [wiki](https://github.com/daidodo/format-imports/wiki/Line-Wrapping-Style) for more details."
     },
