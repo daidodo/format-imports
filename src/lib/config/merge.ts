@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/ban-types */
+
 import { Configuration } from './types';
 
-type Merger<T extends object> = {
+export type Merger<T extends object> = {
   [P in keyof T]?: (a: T[P], b: T[P]) => T[P];
 };
 
@@ -43,9 +45,9 @@ export const DEFAULT_MERGER: Merger<Configuration> = {
  *
  * const config = mergeConfig(config1, config2);  // { maxLineLength: 100, tabSize: 2 }
  * ```
- * @typeparam T A type extended from Configuration
+ * @typeparam T - A type extended from Configuration
  *
- * @param configs An array of config objects
+ * @param configs - An array of config objects
  */
 export function mergeConfig<T extends Configuration = Configuration>(...configs: T[]) {
   return mergeConfigWithMerger(DEFAULT_MERGER as Merger<T>, ...configs);
@@ -67,10 +69,10 @@ export function mergeConfig<T extends Configuration = Configuration>(...configs:
  * Each field in a merger defines how that field is merged between configs. If _undefined_, the field
  * will use the default policy which is replacement by the latter.
  *
- * @typeparam T A type extended from Configuration
+ * @typeparam T - A type extended from Configuration
  *
- * @param merger A custom object with merge functions for all fields in a config
- * @param configs An array of config objects
+ * @param merger - A custom object with merge functions for all fields in a config
+ * @param configs - An array of config objects
  */
 export function mergeConfigWithMerger<T extends Configuration = Configuration>(
   merger: Merger<T>,
@@ -95,7 +97,7 @@ function purify<T extends object>(a: T): T {
   return r;
 }
 
-function customize<T>(m: (a: T, b: T) => T) {
+export function customize<T>(m: (a: T, b: T) => T) {
   return (a: T | undefined, b: T | undefined) => (a ? (b ? m(a, b) : a) : b);
 }
 

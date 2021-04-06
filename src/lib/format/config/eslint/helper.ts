@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/ban-types */
 
 import { Linter } from 'eslint';
 import { UnionToIntersection } from 'utility-types';
@@ -40,18 +41,19 @@ type ProcessedAsUnion<T> = T extends Translator<infer P>[] ? P : never;
 type Processed<T extends Translator<any>[]> = Partial<UnionToIntersection<ProcessedAsUnion<T>>>;
 
 /**
- * Apply a number of `translations` to `config`.
+ * Apply a number of `translators` to `config`.
+ *
  * @param config - The original configuration
- * @param translations - An array of translations.
- *                       Each translation consists of a *translator* and its *option*.
+ * @param rules - ESLint rules
+ * @param translators - An array of translations.
  * @returns The updated config and processed data if there are any
  */
 export function apply<T extends Translator<any>[]>(
   config: Configuration,
   rules: Rules,
-  ...translations: T
+  ...translators: T
 ): { config: Configuration; processed?: Processed<T> } {
-  const [translator, ...rest] = translations;
+  const [translator, ...rest] = translators;
   if (!translator) return { config };
   const { config: c, processed } = applyOne(config, rules, translator);
   return applyNext(c, rules, processed, ...rest);

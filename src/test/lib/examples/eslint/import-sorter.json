@@ -1,7 +1,8 @@
 {
   "wrappingStyle": {
     "maxBindingNamesPerLine": 0,
-    "maxDefaultAndBindingNamesPerLine": 0
+    "maxDefaultAndBindingNamesPerLine": 0,
+    "maxNamesPerWrappedLine": 0
   },
   "maxLineLength": 120,
   "keepUnused": [".*"],
