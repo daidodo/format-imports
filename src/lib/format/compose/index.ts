@@ -108,7 +108,7 @@ function composeName(name: NameBinding | undefined) {
 
 function composeOneLineNames(
   words: string[],
-  { tab, tabSz, wrap, maxLength, comma }: ComposeConfig,
+  { tab, tabw, wrap, maxLength, comma }: ComposeConfig,
 ) {
   assert(words.length > 0);
   const maxWords = wrap.perLine;
@@ -118,7 +118,7 @@ function composeOneLineNames(
   for (let i = 0; i < rest.length; ++i) {
     const n = rest[i];
     const t = text + append(n, false, i + 1 >= rest.length);
-    if (i + 2 > maxWords || t.length + tabSz > maxLength)
+    if (i + 2 > maxWords || t.length + tabw > maxLength)
       return { text: tab + text, left: rest.slice(i) };
     text = t;
   }

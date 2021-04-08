@@ -33,7 +33,7 @@ export function translateMaxLenRule(config: Configuration, rules: Rules) {
 
 function process(
   config: Configuration,
-  { code: maxLineLength, tabWidth: tabSize, ignoreComments, ignoreTrailingComments }: Options,
+  { code: maxLineLength, tabWidth, ignoreComments, ignoreTrailingComments }: Options,
 ) {
   const wrappingStyle = {
     ignoreComments: ignoreComments || ignoreTrailingComments,
@@ -44,6 +44,6 @@ function process(
       a === 'prettier' || b === 'prettier' ? 'prettier' : { ...a, ...b },
     ),
   };
-  const c = mergeConfigWithMerger(merger, config, { maxLineLength, tabSize, wrappingStyle });
-  return { config: c };
+  const c = mergeConfigWithMerger(merger, config, { maxLineLength, wrappingStyle });
+  return { config: c, processed: { tabWidth } };
 }

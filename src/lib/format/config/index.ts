@@ -25,6 +25,6 @@ export function enhanceConfig(config: Configuration, fileName: string, options?:
   const { config: newConfig, processed } = options?.skipEslintConfig
     ? { config, processed: undefined }
     : enhanceWithEslint(config, fileName, options?.eslintConfigPath);
-  const composeConfig = configForCompose(newConfig);
+  const composeConfig = configForCompose(newConfig, processed);
   return { config: newConfig, tsCompilerOptions, processed, composeConfig };
 }

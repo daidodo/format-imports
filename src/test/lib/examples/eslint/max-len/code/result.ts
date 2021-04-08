@@ -1,13 +1,13 @@
 import {
-    C,
+  C,
 } from 'aaaaaaaaaa';
 import A from 'aaaaaaaaaaaaa';
 import B
-    from 'aaaaaaaaaaaaaa';
+  from 'aaaaaaaaaaaaaa';
 
 const a = A & B & C;
 
 export { D } from 'ccccccccc';
 export {
-    E,
+  E,
 } from 'cccccccccc';

@@ -1,11 +1,11 @@
 import {
-   C,
+  C,
 } from 'aaaaaaaaaa';
 import B
-   from 'aaaaaaaaaaaaaa';
+  from 'aaaaaaaaaaaaaa';
 
 const a = B & C;
 
 export {
-   E,
+  E,
 } from 'cccccccccc';
