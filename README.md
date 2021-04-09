@@ -270,10 +270,11 @@ All config fields you can set in `import-sorter.json` or `package.json` under `"
 
 If installed, [ESLint](https://eslint.org) and plugins rules will be detected and consulted, so that the result code will comply to the lint rules.
 
-Currently supported rules are:
+Currently, the supported rules are:
 
 - [sort-imports](../../wiki/ESLint-Compatibility#sort-imports)
 - [max-len](../../wiki/ESLint-Compatibility#max-len)
+- [indent](../../wiki/ESLint-Compatibility#indent)
 - [import/newline-after-import](../../wiki/ESLint-Compatibility#importnewline-after-import)
 - [import/no-useless-path-segments](../../wiki/ESLint-Compatibility#importno-useless-path-segments)
 
