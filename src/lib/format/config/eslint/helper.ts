@@ -18,7 +18,11 @@ export function extractOptions<Key extends keyof Rules, Options>(
   if (Array.isArray(rule)) {
     const [level, options] = rule;
     if (level === 0 || level === 'off') return undefined;
-    return { ...defaultOptions, ...(options ?? {}) };
+    return options === undefined
+      ? defaultOptions
+      : typeof options === 'object' && typeof defaultOptions === 'object'
+      ? { ...defaultOptions, ...options }
+      : options;
   }
   return defaultOptions;
 }

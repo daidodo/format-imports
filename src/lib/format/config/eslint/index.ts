@@ -8,6 +8,7 @@ import { Configuration } from '../../../config';
 import { apply } from './helper';
 import { translateNewlineAfterImportRule } from './rules/import/newline-after-import';
 import { translateNoUselessPathSegmentsRule } from './rules/import/no-useless-path-segments';
+import { translateIndentRule } from './rules/indent';
 import { translateMaxLenRule } from './rules/max-len';
 import { translateSortImportsRule } from './rules/sort-imports';
 
@@ -23,6 +24,7 @@ export function enhanceWithEslint(config: Configuration, fileName: string, confi
     translateNewlineAfterImportRule,
     translateNoUselessPathSegmentsRule,
     translateMaxLenRule,
+    translateIndentRule,
   );
 }
 

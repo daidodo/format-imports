@@ -6,6 +6,8 @@
     "import/newline-after-import": "off",
     "no-duplicate-imports": "off",
     "sort-imports": "off",
-    "max-len": "off"
+    "max-len": "off",
+    "indent": "off",
+    "@typescript-eslint/indent": "off"
   }
 }

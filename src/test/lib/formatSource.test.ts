@@ -44,7 +44,7 @@ describe('lib/formatSource', () => {
   // Run all tests
   return runTestSuite(examples);
   // Or, run specific test case(s)
-  // return runTestSuite(examples, 'group/level_0/null');
+  // return runTestSuite(examples, 'eslint/indent');
 });
 
 function getTestSuite(dir: string, name: string): TestSuite | undefined {
