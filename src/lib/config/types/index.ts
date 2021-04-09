@@ -63,7 +63,8 @@ export interface Configuration {
    *   "maxBindingNamesPerLine": 1,
    *   "maxDefaultAndBindingNamesPerLine": 2,
    *   "maxExportNamesPerLine": 0,
-   *   "maxNamesPerWrappedLine": 1
+   *   "maxNamesPerWrappedLine": 1,
+   *   "ignoreComments": false
    * }
    * ```
    *
