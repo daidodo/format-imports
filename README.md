@@ -15,11 +15,17 @@ This package contains CLI and APIs to format **imports** and **exports** for **J
 
 It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](https://marketplace.visualstudio.com/items?itemName=dozerg.tsimportsorter), then extracted to standalone CLI and lib for more use cases (e.g. CI/CD) and editors (hopefully).
 
-## [2.3.1] Release Notes
+## [2.3.3] Release Notes
 
 ### Added
 
-- Support ESLint [max-len](https://eslint.org/docs/rules/max-len) rule.
+- Support ESLint [indent](https://eslint.org/docs/rules/indent) and
+  [@typescript-eslint/indent](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/indent.md)
+  rules.
+
+### Changed
+
+- `tabWidth` from ESLint [max-len](https://eslint.org/docs/rules/max-len) doesn't impact `tabSize` config.
 
 # Table of contents <!-- omit in toc -->
 
