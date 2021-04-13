@@ -69,6 +69,7 @@ export interface Configuration {
    * ```
    *
    * If it's set to _prettier_, then wrap lines in compatible with [Prettier](https://prettier.io/).
+   * @see [Line Wrapping Style](../../../../wiki/Line-Wrapping-Style)
    */
   readonly wrappingStyle?: WrappingRule | 'prettier';
   /**
