@@ -416,7 +416,13 @@ The above `["_", "aA"]` means:
 
 A sorted array might be `['_', 'a', 'A', 'b', 'B']`.
 
-You can also disable sorting by specifying `"none"` in `sortRules`, e.g.:
+You can also disable sorting by assigning `"none"` to `sortRules` or its members, e.g.:
+
+```json
+"sortRules": "none"
+```
+
+or
 
 ```json
 "sortRules": {
@@ -431,7 +437,7 @@ If you set `names` to `"none"`, names will not be sorted within an import or exp
 
 _Note:_
 
-- _Setting `paths` or `names` to `null` doesn't disable sorting but uses the fall-back sorting rules, i.e. `["AZ", "_", "az"]`.\_
+- _Setting `paths` or `names` to `null` doesn't disable sorting but uses the fall-back sorting rules, i.e. `["AZ", "_", "az"]`._
 
 For more details and how to construct your own rules, please read [the Wiki](../../wiki/Sorting-Rules).
 
