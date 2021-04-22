@@ -11,8 +11,8 @@ export interface Params {
 }
 
 export default class Segment {
-  private rank_: number;
-  private compare_: Comparator;
+  private readonly rank_: number;
+  private readonly compare_: Comparator;
 
   constructor(id: SegSymbol, rank: number, p: Params) {
     this.rank_ = rank;
