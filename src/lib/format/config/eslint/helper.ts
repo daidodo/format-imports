@@ -8,23 +8,38 @@ import { Configuration } from '../../../config';
 
 export type Rules = Required<Linter.Config>['rules'];
 
-export function extractOptions<Key extends keyof Rules, Options>(
+export function extractOptions<Options>(
+  config: Configuration,
   rules: Rules,
-  key: Key,
+  key: string,
   defaultOptions: Options,
-): Options | undefined {
+): { options?: Options; ignored?: boolean } {
+  if (isRuleIgnored(config, key)) return { ignored: true };
   const rule = rules[key];
-  if (rule === undefined || rule === 0 || rule === 'off') return undefined;
+  if (rule === undefined || rule === 0 || rule === 'off') return {};
   if (Array.isArray(rule)) {
-    const [level, options] = rule;
-    if (level === 0 || level === 'off') return undefined;
-    return options === undefined
-      ? defaultOptions
-      : typeof options === 'object' && typeof defaultOptions === 'object'
-      ? { ...defaultOptions, ...options }
-      : options;
+    const level = rule[0];
+    if (level === 0 || level === 'off') return {};
+    const opt: Options | undefined = rule[1];
+    return {
+      options:
+        opt === undefined
+          ? defaultOptions
+          : typeof opt === 'object' && typeof defaultOptions === 'object'
+          ? { ...defaultOptions, ...opt }
+          : opt,
+    };
   }
-  return defaultOptions;
+  return { options: defaultOptions };
+}
+
+function isRuleIgnored({ ignoreESLintRules: patterns }: Configuration, key: string) {
+  if (!patterns) return false;
+  for (const p of typeof patterns === 'string' ? [patterns] : patterns) {
+    const r = new RegExp(p);
+    if (r.test(key)) return true;
+  }
+  return false;
 }
 
 /**

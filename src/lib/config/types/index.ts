@@ -22,11 +22,11 @@ export interface Configuration {
    */
   readonly formatExports?: boolean;
   /**
-   * Disable formatting for files matching regular expressions. Default to _["node_modules"]_
+   * Disable formatting for files matching regular expressions. Default to _["node_modules"]_.
    */
   readonly exclude?: string[];
   /**
-   * Disable formatting for files matching glob patterns.
+   * Disable formatting for files matching glob patterns. Default to _[]_.
    */
   readonly excludeGlob?: string[];
   /**
@@ -126,6 +126,10 @@ export interface Configuration {
    * _true_.
    */
   readonly bracketSpacing?: boolean;
+  /**
+   * Ignore ESLint rules matching regular expressions. Default to _[]_.
+   */
+  readonly ignoreESLintRules?: string | string[]
   /**
    * Whether to disregard [exclude](#exclude)/[excludeGlob](#excludeGlob) patterns and file-disable
    * comments. Default to _false_.

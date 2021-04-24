@@ -1,0 +1,4 @@
+{
+  "maxLineLength": 10,
+  "ignoreESLintRules": ["indent", "import/no-useless-path-segments"]
+}

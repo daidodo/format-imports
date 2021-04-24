@@ -1,0 +1,10 @@
+{
+  "root": true,
+  "rules": {
+    "no-unused-vars": "off",
+    "indent": ["error", 5],
+    "@typescript-eslint/indent": ["error", "tab"],
+    "import/no-useless-path-segments": "warn",
+    "import/newline-after-import": ["warn", {"count": 2}]
+  }
+}

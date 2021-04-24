@@ -22,7 +22,7 @@ type Options = typeof DEFAULT_OPTIONS;
 
 export function translateSortImportsRule(config: Configuration, rules: Rules) {
   const log = logger('format-imports.translateSortImportsRule');
-  const options = extractOptions(rules, 'sort-imports', DEFAULT_OPTIONS);
+  const { options } = extractOptions(config, rules, 'sort-imports', DEFAULT_OPTIONS);
   if (!options) return { config };
   log.info('Found ESLint rule sort-imports:', options);
   return process(config, options);

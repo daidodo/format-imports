@@ -31,6 +31,7 @@ export const DEFAULT_MERGER: Merger<Configuration> = {
     const bb = b === 'none' ? { paths: 'none' as const, names: 'none' as const } : b;
     return { ...aa, ...bb };
   }),
+  ignoreESLintRules: concatArrayEx(),
 };
 
 /**
@@ -69,8 +70,8 @@ export function mergeConfig<T extends Configuration = Configuration>(...configs:
  * };
  * ```
  *
- * Each field in a merger defines how that field is merged between configs. If _undefined_, the field
- * will use the default policy which is replacement by the latter.
+ * Each field in a merger defines how that field is merged between configs. If _undefined_, the
+ * field will use the default policy which is replacement by the latter.
  *
  * @typeparam T - A type extended from Configuration
  *
@@ -105,5 +106,12 @@ export function customize<T>(m: (a: T, b: T) => T) {
 }
 
 function concatArray<T>() {
-  return customize((a: T[], b: T[]) => [...a, ...b]);
+  return customize<T[]>((a, b) => [...a, ...b]);
+}
+
+function concatArrayEx<T>() {
+  return customize<T | T[]>((a, b) => [
+    ...(Array.isArray(a) ? a : [a]),
+    ...(Array.isArray(b) ? b : [b]),
+  ]);
 }
