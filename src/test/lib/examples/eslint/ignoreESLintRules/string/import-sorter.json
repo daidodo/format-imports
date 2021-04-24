@@ -1,4 +1,3 @@
 {
-  "maxLineLength": 10,
   "ignoreESLintRules": "indent"
 }

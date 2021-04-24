@@ -1,0 +1,7 @@
+{
+  "formatExports": true,
+  "maxLineLength": 10,
+  "wrappingStyle": {
+    "maxNamesPerWrappedLine": 1
+  }
+}
