@@ -15,7 +15,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- [Stacked changes]
 
+
 -->
+
+## [2.4.0] - 2021-04-29
+
+### Added
+
+- Add `ignoreESLintRules` config to ignore specific ESLint rules.
+
+### Changed
+
+- Update default `GroupRules` to group "node:" imports separately.
 
 ## [2.3.3] - 2021-04-09
 
