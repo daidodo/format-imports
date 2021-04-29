@@ -129,7 +129,7 @@ export interface Configuration {
   /**
    * Ignore ESLint rules matching regular expressions. Default to _[]_.
    */
-  readonly ignoreESLintRules?: string | string[]
+  readonly ignoreESLintRules?: string | string[];
   /**
    * Whether to disregard [exclude](#exclude)/[excludeGlob](#excludeGlob) patterns and file-disable
    * comments. Default to _false_.
@@ -150,6 +150,7 @@ export const GROUP_RULES_DEFAULT: Configuration['groupRules'] = [
   '^react(-dom)?$',
   '^@angular/',
   '^vue$',
+  '^node:',
   {},
   '^[@]',
   '^[.]',
