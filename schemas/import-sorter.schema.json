@@ -122,6 +122,17 @@
       "default": true,
       "description": "Whether to add spaces between brackets. true for '{ id }' and false for '{id}'."
     },
+    "ignoreESLintRules": {
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      ],
+      "default": [],
+      "description": "Ignore ESLint rules matching regular expressions."
+    },
     "force": {
       "type": "boolean",
       "default": false,

@@ -111,6 +111,33 @@ describe('config/merge', () => {
           expect(mergeConfig(C1, C2)).toEqual(C);
         });
       });
+      describe('ignoreESLintRules', () => {
+        describe('string', () => {
+          const C1: Configuration = { ignoreESLintRules: 'aa' };
+          test('string', () => {
+            const C2: Configuration = { ignoreESLintRules: 'bb' };
+            const C12: Configuration = { ignoreESLintRules: ['aa', 'bb'] };
+            const C21: Configuration = { ignoreESLintRules: ['bb', 'aa'] };
+            expect(mergeConfig(C1, C2)).toEqual(C12);
+            expect(mergeConfig(C2, C1)).toEqual(C21);
+          });
+          describe('array', () => {
+            test('empty', () => {
+              const C2: Configuration = { ignoreESLintRules: [] };
+              const C: Configuration = { ignoreESLintRules: ['aa'] };
+              expect(mergeConfig(C1, C2)).toEqual(C);
+              expect(mergeConfig(C2, C1)).toEqual(C);
+            });
+            test('non-empty', () => {
+              const C2: Configuration = { ignoreESLintRules: ['bb', 'cc'] };
+              const C12: Configuration = { ignoreESLintRules: ['aa', 'bb', 'cc'] };
+              const C21: Configuration = { ignoreESLintRules: ['bb', 'cc', 'aa'] };
+              expect(mergeConfig(C1, C2)).toEqual(C12);
+              expect(mergeConfig(C2, C1)).toEqual(C21);
+            });
+          });
+        });
+      });
     });
   });
 });

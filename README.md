@@ -286,6 +286,8 @@ Currently, the supported rules are:
 
 If there are conflicts between user config and ESLint rules, the ESLint rules will win to avoid any lint errors.
 
+_Note: You can ignore some or all ESLint rules via [ignoreESLintRules](docs/interfaces/configuration.md#ignoreESLintRules)._
+
 For more info about how the conflicts are resolved, please check the [ESLint Compatibility](../../wiki/ESLint-Compatibility) wiki.
 
 # Ignoring Files or Declarations
