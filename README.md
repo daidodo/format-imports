@@ -23,7 +23,7 @@ It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](htt
 
 ### Changed
 
-- Update default `GroupRules` to group "node:" imports separately.
+- Update default `GroupRules` to group [`node:` imports](https://nodejs.org/api/esm.html#esm_node_imports) separately.
 
 # Table of contents <!-- omit in toc -->
 
