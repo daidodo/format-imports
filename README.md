@@ -279,6 +279,7 @@ Currently, the supported rules are:
 - [sort-imports](../../wiki/ESLint-Compatibility#sort-imports)
 - [max-len](../../wiki/ESLint-Compatibility#max-len)
 - [indent](../../wiki/ESLint-Compatibility#indent)
+- [eol-last](../../wiki/ESLint-Compatibility#eol-last)
 - [import/newline-after-import](../../wiki/ESLint-Compatibility#importnewline-after-import)
 - [import/no-useless-path-segments](../../wiki/ESLint-Compatibility#importno-useless-path-segments)
 

@@ -8,6 +8,7 @@
     "sort-imports": "off",
     "max-len": "off",
     "indent": "off",
-    "@typescript-eslint/indent": "off"
+    "@typescript-eslint/indent": "off",
+    "eol-last": "off"
   }
 }

@@ -6,6 +6,7 @@ import {
 import { logger } from '../../../common';
 import { Configuration } from '../../../config';
 import { apply } from './helper';
+import { translateEolLastRule } from './rules/eol-last';
 import { translateNewlineAfterImportRule } from './rules/import/newline-after-import';
 import { translateNoUselessPathSegmentsRule } from './rules/import/no-useless-path-segments';
 import { translateIndentRule } from './rules/indent';
@@ -25,6 +26,7 @@ export function enhanceWithEslint(config: Configuration, fileName: string, confi
     translateNoUselessPathSegmentsRule,
     translateMaxLenRule,
     translateIndentRule,
+    translateEolLastRule,
   );
 }
 

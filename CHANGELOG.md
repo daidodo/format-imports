@@ -15,6 +15,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- [Stacked changes]
 
+### Added
+
+- Support ESLint [eol-last](https://eslint.org/docs/rules/eol-last) rule.
 
 -->
 
