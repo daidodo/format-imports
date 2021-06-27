@@ -28,7 +28,7 @@ export function loadPretConfig(fileName: string): Configuration {
       tabSize: tabWidth ?? 2,
       hasSemicolon: semi ?? true,
       quoteMark: singleQuote ? 'single' : 'double',
-      trailingComma: trailingComma === 'all' ? 'multiLine' : 'none',
+      trailingComma: trailingComma === 'none' ? 'none' : 'multiLine',
       bracketSpacing: bracketSpacing ?? true,
       // eol: endOfLine === 'lf' ? 'LF' : endOfLine === 'crlf' ? 'CRLF' : undefined,
       insertFinalNewline: true, // Prettier always enables it.
