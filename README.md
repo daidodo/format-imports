@@ -15,15 +15,15 @@ This package contains CLI and APIs to format **imports** and **exports** for **J
 
 It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](https://marketplace.visualstudio.com/items?itemName=dozerg.tsimportsorter), then extracted to standalone CLI and lib for more use cases (e.g. CI/CD) and IDEs (e.g. [IntelliJ](https://plugins.jetbrains.com/plugin/16195-js-ts-import-export-sorter)).
 
-## [2.4.0] Release Notes
+## [2.4.1] Release Notes
 
 ### Added
 
-- Add `ignoreESLintRules` config to ignore specific ESLint rules.
+- Support ESLint [eol-last](https://eslint.org/docs/rules/eol-last) rule.
 
 ### Changed
 
-- Update default `GroupRules` to group [`node:` imports](https://nodejs.org/api/esm.html#esm_node_imports) separately.
+- Fix Prettier option `"trailingComma": "es5"`.
 
 # Table of contents <!-- omit in toc -->
 
@@ -438,7 +438,7 @@ If you set `names` to `"none"`, names will not be sorted within an import or exp
 
 _Note:_
 
-- _Setting `paths` or `names` to `null` doesn't disable sorting but uses the fall-back sorting rules, i.e. `["AZ", "_", "az"]`._
+- _Setting `paths` or `names` to `null` doesn't disable sorting but uses the fall-back sorting rules, i.e. `["AZ", "_", "az"]`.\_
 
 For more details and how to construct your own rules, please read [the Wiki](../../wiki/Sorting-Rules).
 
