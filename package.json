@@ -123,8 +123,8 @@
     "jest": "^26.6.3",
     "ts-jest": "^26.5.0",
     "ts-node": "^9.1.1",
-    "typedoc": "^0.20.21",
-    "typedoc-plugin-markdown": "^3.4.5"
+    "typedoc": "^0.22.9",
+    "typedoc-plugin-markdown": "^3.11.7"
   },
   "dependencies": {
     "@dozerg/end-of-line": "^1.0.8",
