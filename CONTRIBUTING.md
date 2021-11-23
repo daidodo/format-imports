@@ -20,6 +20,8 @@ Please use the following links to:
 # Table of Content <!-- omit in toc -->
 
 - [Contribute to code](#contribute-to-code)
+  - [Setup Environment](#setup-environment)
+  - [File Structure](#file-structure)
 - [Integration Tests and Examples](#integration-tests-and-examples)
   - [Integration Tests for CLI](#integration-tests-for-cli)
     - [`cmd.txt`](#cmdtxt)
@@ -33,6 +35,19 @@ Please use the following links to:
     - [More Tips](#more-tips)
 
 # Contribute to code
+
+## Setup Environment
+
+```sh
+cd your/workspace
+git clone https://github.com/daidodo/format-imports.git
+cd format-imports
+npm i
+npm run compile
+npm run test
+```
+
+## File Structure
 
 All source files are in `src/` and split into several modules:
 
@@ -49,6 +64,10 @@ All source files are in `src/` and split into several modules:
 After you've made some code changes, you should always add integration tests and examples to make sure it's working.
 
 ## Integration Tests for CLI
+
+```sh
+npm run cli-test
+```
 
 The main test entry point is in `src/test/cli/main.test.ts`.
 
@@ -145,6 +164,10 @@ Object {
 Please note the `win32` tag in the 2nd snapshot.
 
 ## Integration Tests for library
+
+```sh
+npm run lib-test
+```
 
 All tests start from `src/test/lib/formatSource.test.ts`
 
