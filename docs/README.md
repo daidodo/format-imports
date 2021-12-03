@@ -2,22 +2,24 @@
 
 ## Interfaces
 
-- [Configuration](interfaces/configuration.md)
-- [GroupRule](interfaces/grouprule.md)
-- [SortRules](interfaces/sortrules.md)
-- [WrappingRule](interfaces/wrappingrule.md)
+- [Configuration](interfaces/Configuration.md)
+- [GroupRule](interfaces/GroupRule.md)
+- [SortRules](interfaces/SortRules.md)
+- [WrappingRule](interfaces/WrappingRule.md)
 
 ## Type aliases
 
 ### CompareRule
 
-Ƭ **CompareRule**: [*SegSymbol*](README.md#segsymbol)[] \| ``"none"``
+Ƭ **CompareRule**: [`SegSymbol`](README.md#segsymbol)[] \| ``"none"``
 
 String comparison rule.
 
 If it's _none_, then there is no sorting at all.
 
-Defined in: [config/types/sorting.ts:18](https://github.com/daidodo/format-imports/blob/632d67d/src/lib/config/types/sorting.ts#L18)
+#### Defined in
+
+[config/types/sorting.ts:18](https://github.com/daidodo/format-imports/blob/75d48ae/src/lib/config/types/sorting.ts#L18)
 
 ___
 
@@ -27,7 +29,9 @@ ___
 
 A type representing file extensions supported.
 
-Defined in: [format/main/index.ts:15](https://github.com/daidodo/format-imports/blob/632d67d/src/lib/format/main/index.ts#L15)
+#### Defined in
+
+[format/main/index.ts:15](https://github.com/daidodo/format-imports/blob/75d48ae/src/lib/format/main/index.ts#L15)
 
 ___
 
@@ -54,19 +58,23 @@ Symbols for different types of imports:
 - _named_: All _multiple_, _single_ and _namespace_ combined.
 - _all_: All _scripts_ and _named_ combined.
 
-Defined in: [config/types/grouping.ts:23](https://github.com/daidodo/format-imports/blob/632d67d/src/lib/config/types/grouping.ts#L23)
+#### Defined in
+
+[config/types/grouping.ts:23](https://github.com/daidodo/format-imports/blob/75d48ae/src/lib/config/types/grouping.ts#L23)
 
 ___
 
 ### KeepUnusedRule
 
-Ƭ **KeepUnusedRule**: *string* \| { `names?`: *string*[] ; `path`: *string*  }
+Ƭ **KeepUnusedRule**: `string` \| { `names?`: `string`[] ; `path`: `string`  }
 
 This is for keeping unused names.
 
 `string` elements will be expanded to `{ path: element }`.
 
-Defined in: [config/types/unused.ts:6](https://github.com/daidodo/format-imports/blob/632d67d/src/lib/config/types/unused.ts#L6)
+#### Defined in
+
+[config/types/unused.ts:6](https://github.com/daidodo/format-imports/blob/75d48ae/src/lib/config/types/unused.ts#L6)
 
 ___
 
@@ -81,25 +89,29 @@ Symbols for char segments:
 - _Aa_ - Both case letters and upper case first, i.e. [a-zA-Z] and `'A' < 'a' < 'B' < 'b' < ...`
 - _\__ - Chars with ASCII from 91 to 96, i.e. `[`, `\`, `]`, `^`, `_`, `` ` ``(backtick).
 
-Defined in: [config/types/sorting.ts:11](https://github.com/daidodo/format-imports/blob/632d67d/src/lib/config/types/sorting.ts#L11)
+#### Defined in
+
+[config/types/sorting.ts:11](https://github.com/daidodo/format-imports/blob/75d48ae/src/lib/config/types/sorting.ts#L11)
 
 ## Variables
 
 ### COMPARE\_RULE\_DEFAULT
 
-• `Const` **COMPARE\_RULE\_DEFAULT**: [*CompareRule*](README.md#comparerule)
+• **COMPARE\_RULE\_DEFAULT**: [`CompareRule`](README.md#comparerule)
 
 Default comparison rule for paths and names, which is:
 - Comparing letters case-insensitively, and
 - `'_'` is in front of `[a-zA-Z]`.
 
-Defined in: [config/types/index.ts:164](https://github.com/daidodo/format-imports/blob/632d67d/src/lib/config/types/index.ts#L164)
+#### Defined in
+
+[config/types/index.ts:164](https://github.com/daidodo/format-imports/blob/75d48ae/src/lib/config/types/index.ts#L164)
 
 ___
 
 ### DEFAULT\_MERGER
 
-• `Const` **DEFAULT\_MERGER**: *Merger*<[*Configuration*](interfaces/configuration.md)\>
+• **DEFAULT\_MERGER**: `Merger`<[`Configuration`](interfaces/Configuration.md)\>
 
 Default merge policy for [mergeConfig](#mergeConfig), which is:
 
@@ -113,33 +125,39 @@ replaced;
 When creating your own merge policy, make sure to inherit the default merger and just override
 the ones different.
 
-Defined in: [config/merge.ts:25](https://github.com/daidodo/format-imports/blob/632d67d/src/lib/config/merge.ts#L25)
+#### Defined in
+
+[config/merge.ts:25](https://github.com/daidodo/format-imports/blob/75d48ae/src/lib/config/merge.ts#L25)
 
 ___
 
 ### GROUP\_RULES\_DEFAULT
 
-• `Const` **GROUP\_RULES\_DEFAULT**: [*Configuration*](interfaces/configuration.md)[``"groupRules"``]
+• **GROUP\_RULES\_DEFAULT**: [`Configuration`](interfaces/Configuration.md)[``"groupRules"``]
 
 Default grouping rules.
 
-Defined in: [config/types/index.ts:149](https://github.com/daidodo/format-imports/blob/632d67d/src/lib/config/types/index.ts#L149)
+#### Defined in
+
+[config/types/index.ts:149](https://github.com/daidodo/format-imports/blob/75d48ae/src/lib/config/types/index.ts#L149)
 
 ___
 
 ### SUPPORTED\_EXTENSIONS
 
-• `Const` **SUPPORTED\_EXTENSIONS**: [*Extension*](README.md#extension)[]
+• **SUPPORTED\_EXTENSIONS**: [`Extension`](README.md#extension)[]
 
 File extensions supported.
 
-Defined in: [format/main/index.ts:20](https://github.com/daidodo/format-imports/blob/632d67d/src/lib/format/main/index.ts#L20)
+#### Defined in
+
+[format/main/index.ts:20](https://github.com/daidodo/format-imports/blob/75d48ae/src/lib/format/main/index.ts#L20)
 
 ## Functions
 
 ### customize
 
-▸ **customize**<T\>(`m`: (`a`: T, `b`: T) => T): *function*
+▸ **customize**<`T`\>(`m`): (`a`: `undefined` \| `T`, `b`: `undefined` \| `T`) => `undefined` \| `T`
 
 #### Type parameters
 
@@ -151,17 +169,34 @@ Defined in: [format/main/index.ts:20](https://github.com/daidodo/format-imports/
 
 | Name | Type |
 | :------ | :------ |
-| `m` | (`a`: T, `b`: T) => T |
+| `m` | (`a`: `T`, `b`: `T`) => `T` |
 
-**Returns:** (`a`: *undefined* \| T, `b`: *undefined* \| T) => *undefined* \| T
+#### Returns
 
-Defined in: [config/merge.ts:104](https://github.com/daidodo/format-imports/blob/632d67d/src/lib/config/merge.ts#L104)
+`fn`
+
+▸ (`a`, `b`): `undefined` \| `T`
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `a` | `undefined` \| `T` |
+| `b` | `undefined` \| `T` |
+
+##### Returns
+
+`undefined` \| `T`
+
+#### Defined in
+
+[config/merge.ts:104](https://github.com/daidodo/format-imports/blob/75d48ae/src/lib/config/merge.ts#L104)
 
 ___
 
 ### formatSourceFromFile
 
-▸ **formatSourceFromFile**(`text`: *string*, `fileName`: *string*, `config`: [*Configuration*](interfaces/configuration.md), `options?`: FormatOptions): *undefined* \| *string*
+▸ **formatSourceFromFile**(`text`, `fileName`, `config`, `options?`): `undefined` \| `string`
 
 Format given source text from a file.
 
@@ -175,22 +210,26 @@ purpose.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `text` | *string* | Source text |
-| `fileName` | *string* | Source file name |
-| `config` | [*Configuration*](interfaces/configuration.md) | Base config |
-| `options?` | FormatOptions | Internal/testing options |
+| `text` | `string` | Source text |
+| `fileName` | `string` | Source file name |
+| `config` | [`Configuration`](interfaces/Configuration.md) | Base config |
+| `options?` | `FormatOptions` | Internal/testing options |
 
-**Returns:** *undefined* \| *string*
+#### Returns
+
+`undefined` \| `string`
 
 Result text or `undefined` if nothing changes.
 
-Defined in: [format/main/index.ts:38](https://github.com/daidodo/format-imports/blob/632d67d/src/lib/format/main/index.ts#L38)
+#### Defined in
+
+[format/main/index.ts:38](https://github.com/daidodo/format-imports/blob/75d48ae/src/lib/format/main/index.ts#L38)
 
 ___
 
 ### formatSourceWithoutFile
 
-▸ **formatSourceWithoutFile**(`text`: *string*, `extension`: [*Extension*](README.md#extension), `config`: [*Configuration*](interfaces/configuration.md), `options?`: FormatOptions): *undefined* \| *string*
+▸ **formatSourceWithoutFile**(`text`, `extension`, `config`, `options?`): `undefined` \| `string`
 
 Format given source text without knowing the source file.
 
@@ -204,22 +243,26 @@ purpose.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `text` | *string* | Source text |
-| `extension` | [*Extension*](README.md#extension) | File extension to reveal the source language |
-| `config` | [*Configuration*](interfaces/configuration.md) | Base config |
-| `options?` | FormatOptions | Internal/testing options |
+| `text` | `string` | Source text |
+| `extension` | [`Extension`](README.md#extension) | File extension to reveal the source language |
+| `config` | [`Configuration`](interfaces/Configuration.md) | Base config |
+| `options?` | `FormatOptions` | Internal/testing options |
 
-**Returns:** *undefined* \| *string*
+#### Returns
+
+`undefined` \| `string`
 
 Result text or `undefined` if nothing changes.
 
-Defined in: [format/main/index.ts:67](https://github.com/daidodo/format-imports/blob/632d67d/src/lib/format/main/index.ts#L67)
+#### Defined in
+
+[format/main/index.ts:67](https://github.com/daidodo/format-imports/blob/75d48ae/src/lib/format/main/index.ts#L67)
 
 ___
 
 ### isFileExcludedByConfig
 
-▸ **isFileExcludedByConfig**(`fileName`: *string*, `config`: [*Configuration*](interfaces/configuration.md)): *boolean*
+▸ **isFileExcludedByConfig**(`fileName`, `config`): `boolean`
 
 Test if a file is excluded by the given config, taking `config.force` flag into account.
 
@@ -229,18 +272,22 @@ The file name will be normalized to use `/` as path separator before matching.
 
 | Name | Type |
 | :------ | :------ |
-| `fileName` | *string* |
-| `config` | [*Configuration*](interfaces/configuration.md) |
+| `fileName` | `string` |
+| `config` | [`Configuration`](interfaces/Configuration.md) |
 
-**Returns:** *boolean*
+#### Returns
 
-Defined in: [config/index.ts:39](https://github.com/daidodo/format-imports/blob/632d67d/src/lib/config/index.ts#L39)
+`boolean`
+
+#### Defined in
+
+[config/index.ts:39](https://github.com/daidodo/format-imports/blob/75d48ae/src/lib/config/index.ts#L39)
 
 ___
 
 ### loadConfigFromJsonFile
 
-▸ **loadConfigFromJsonFile**(`fileName`: *string*): [*Configuration*](interfaces/configuration.md)
+▸ **loadConfigFromJsonFile**(`fileName`): [`Configuration`](interfaces/Configuration.md)
 
 Load config from given file, e.g. _path/to/import-sorter.json_.
 
@@ -250,17 +297,21 @@ Will throw an error if file is unreadable or content is not a valid JSON object.
 
 | Name | Type |
 | :------ | :------ |
-| `fileName` | *string* |
+| `fileName` | `string` |
 
-**Returns:** [*Configuration*](interfaces/configuration.md)
+#### Returns
 
-Defined in: [config/importSorter.ts:80](https://github.com/daidodo/format-imports/blob/632d67d/src/lib/config/importSorter.ts#L80)
+[`Configuration`](interfaces/Configuration.md)
+
+#### Defined in
+
+[config/importSorter.ts:80](https://github.com/daidodo/format-imports/blob/75d48ae/src/lib/config/importSorter.ts#L80)
 
 ___
 
 ### mergeConfig
 
-▸ **mergeConfig**<T\>(...`configs`: T[]): T
+▸ **mergeConfig**<`T`\>(...`configs`): `T`
 
 Merge multiple configs together. The latter takes precedence if values have conflicts.
 
@@ -279,25 +330,29 @@ const config = mergeConfig(config1, config2);  // { maxLineLength: 100, tabSize:
 
 #### Type parameters
 
-| Name | Type | Default | Description |
-| :------ | :------ | :------ | :------ |
-| `T` | [*Configuration*](interfaces/configuration.md) | [*Configuration*](interfaces/configuration.md) | A type extended from Configuration |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `T` | extends [`Configuration`](interfaces/Configuration.md) = [`Configuration`](interfaces/Configuration.md) | A type extended from Configuration |
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `...configs` | T[] | An array of config objects |
+| `...configs` | `T`[] | An array of config objects |
 
-**Returns:** T
+#### Returns
 
-Defined in: [config/merge.ts:56](https://github.com/daidodo/format-imports/blob/632d67d/src/lib/config/merge.ts#L56)
+`T`
+
+#### Defined in
+
+[config/merge.ts:56](https://github.com/daidodo/format-imports/blob/75d48ae/src/lib/config/merge.ts#L56)
 
 ___
 
 ### mergeConfigWithMerger
 
-▸ **mergeConfigWithMerger**<T\>(`merger`: *Merger*<T\>, ...`configs`: T[]): T
+▸ **mergeConfigWithMerger**<`T`\>(`merger`, ...`configs`): `T`
 
 Merge multiple configs with custom merger.
 
@@ -316,26 +371,30 @@ field will use the default policy which is replacement by the latter.
 
 #### Type parameters
 
-| Name | Type | Default | Description |
-| :------ | :------ | :------ | :------ |
-| `T` | [*Configuration*](interfaces/configuration.md) | [*Configuration*](interfaces/configuration.md) | A type extended from Configuration |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `T` | extends [`Configuration`](interfaces/Configuration.md) = [`Configuration`](interfaces/Configuration.md) | A type extended from Configuration |
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `merger` | *Merger*<T\> | A custom object with merge functions for all fields in a config |
-| `...configs` | T[] | An array of config objects |
+| `merger` | `Merger`<`T`\> | A custom object with merge functions for all fields in a config |
+| `...configs` | `T`[] | An array of config objects |
 
-**Returns:** T
+#### Returns
 
-Defined in: [config/merge.ts:81](https://github.com/daidodo/format-imports/blob/632d67d/src/lib/config/merge.ts#L81)
+`T`
+
+#### Defined in
+
+[config/merge.ts:81](https://github.com/daidodo/format-imports/blob/75d48ae/src/lib/config/merge.ts#L81)
 
 ___
 
 ### resolveConfigForFile
 
-▸ **resolveConfigForFile**<T\>(`fileName`: *string*, `config?`: T): T
+▸ **resolveConfigForFile**<`T`\>(`fileName`, `config?`): `T`
 
 Resolve config for a source file.
 
@@ -349,26 +408,30 @@ The following sources will be considered if found (in precedence from high to lo
 
 #### Type parameters
 
-| Name | Type | Default | Description |
-| :------ | :------ | :------ | :------ |
-| `T` | [*Configuration*](interfaces/configuration.md) | [*Configuration*](interfaces/configuration.md) | A type extended from Configuration |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `T` | extends [`Configuration`](interfaces/Configuration.md) = [`Configuration`](interfaces/Configuration.md) | A type extended from Configuration |
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `fileName` | *string* | Source file name |
-| `config?` | T | Base config |
+| `fileName` | `string` | Source file name |
+| `config?` | `T` | Base config |
 
-**Returns:** T
+#### Returns
 
-Defined in: [config/importSorter.ts:30](https://github.com/daidodo/format-imports/blob/632d67d/src/lib/config/importSorter.ts#L30)
+`T`
+
+#### Defined in
+
+[config/importSorter.ts:30](https://github.com/daidodo/format-imports/blob/75d48ae/src/lib/config/importSorter.ts#L30)
 
 ___
 
 ### resolveConfigForSource
 
-▸ **resolveConfigForSource**<T\>(`text`: *string*, `config?`: T): T
+▸ **resolveConfigForSource**<`T`\>(`text`, `config?`): `T`
 
 Resolve config for given source text.
 
@@ -376,17 +439,21 @@ This function will detect EOL for the text and update the base config provided.
 
 #### Type parameters
 
-| Name | Type | Default | Description |
-| :------ | :------ | :------ | :------ |
-| `T` | [*Configuration*](interfaces/configuration.md) | [*Configuration*](interfaces/configuration.md) | A type extended from Configuration |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `T` | extends [`Configuration`](interfaces/Configuration.md) = [`Configuration`](interfaces/Configuration.md) | A type extended from Configuration |
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `text` | *string* | Source text |
-| `config?` | T | Base config |
+| `text` | `string` | Source text |
+| `config?` | `T` | Base config |
 
-**Returns:** T
+#### Returns
 
-Defined in: [config/index.ts:27](https://github.com/daidodo/format-imports/blob/632d67d/src/lib/config/index.ts#L27)
+`T`
+
+#### Defined in
+
+[config/index.ts:27](https://github.com/daidodo/format-imports/blob/75d48ae/src/lib/config/index.ts#L27)
