@@ -16,6 +16,7 @@ export interface NodeComment extends LineRange {
 export interface NameBinding {
   propertyName: string;
   aliasName?: string;
+  isTypeOnly?: boolean;
 }
 
 export type Binding =

@@ -311,7 +311,7 @@ function isNameUsed(
 function getDefaultAndBinding(importClause: ImportClause | undefined) {
   if (!importClause) return { isScript: true };
   const { name, namedBindings, isTypeOnly } = importClause;
-  const defaultName = name && name.text;
+  const defaultName = name?.text;
   const binding = getBinding(namedBindings);
   return { defaultName, binding, isScript: false, isTypeOnly };
 }

@@ -100,8 +100,12 @@ function composeNames(
 
 function composeName(name: NameBinding | undefined) {
   if (!name) return;
-  const { propertyName, aliasName } = name;
-  if (propertyName) return aliasName ? `${propertyName} as ${aliasName}` : propertyName;
+  const { propertyName, aliasName, isTypeOnly } = name;
+  const type = isTypeOnly ? 'type ' : '';
+  if (propertyName) {
+    const name = aliasName ? `${propertyName} as ${aliasName}` : propertyName;
+    return type + name;
+  }
   assertNonNull(aliasName);
   return `* as ${aliasName}`;
 }
