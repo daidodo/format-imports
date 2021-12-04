@@ -60,7 +60,7 @@ It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](htt
 - Respect configs from [Prettier](https://prettier.io) and [EditorConfig](https://editorconfig.org).
 - Preserve `'use strict'`, `///` directives, shebang (`#!`) and comments.
 - Support [Type-Only imports/exports](https://devblogs.microsoft.com/typescript/announcing-typescript-3-8/#type-only-imports-exports) and [Type Modifier on names](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#type-on-import-names).
-- Cross-platform consistency: Windows, MacOS and Linux (Ubuntu).
+- Cross-platform consistency: Windows, macOS and Linux (Ubuntu).
 
 # Install
 
