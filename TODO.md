@@ -37,6 +37,7 @@
 
 ### DONE
 
+- ~~Ignore [import assertions](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#import-assertions).~~
 - ~~Support `"none"` in top level `sortRules`.~~
 - ~~Standalone npm package, CLI version. ([Link](https://github.com/znikola/vscode-es6-typescript-import-sorter/issues/20), [Link](https://github.com/SoominHan/import-sorter/issues/57), [Example](https://github.com/znikola/vscode-es6-typescript-import-sorter))~~
 - ~~Support `\r` and `\n\r` as newlines.~~
