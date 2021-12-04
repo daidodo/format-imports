@@ -34,8 +34,9 @@ export default class ImportNode extends Statement {
   private binding_?: Binding;
 
   static fromDecl(node: ImportDeclaration, args: StatementArgs) {
-    const { importClause, moduleSpecifier } = node;
-    if (!moduleSpecifier || moduleSpecifier.kind !== SyntaxKind.StringLiteral) return undefined;
+    const { importClause, moduleSpecifier, assertClause } = node;
+    if (!moduleSpecifier || moduleSpecifier.kind !== SyntaxKind.StringLiteral || assertClause)
+      return undefined;
     const moduleIdentifier = (moduleSpecifier as StringLiteral).text;
     if (!moduleIdentifier.trim()) return undefined;
     const { defaultName, binding, isScript, isTypeOnly } = getDefaultAndBinding(importClause);

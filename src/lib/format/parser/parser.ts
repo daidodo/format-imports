@@ -33,6 +33,9 @@ export function parseSource(
   return p;
 }
 
+/**
+ * @returns true to continue processing the next node; Or false to stop processing the whole source
+ */
 function process(node: Node, p: ParseParams, config: Configuration, options?: CompilerOptions) {
   const { force, formatExports } = config;
   const {
