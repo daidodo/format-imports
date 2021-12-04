@@ -15,7 +15,7 @@ This package contains CLI and APIs to format **imports** and **exports** for **J
 
 It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](https://marketplace.visualstudio.com/items?itemName=dozerg.tsimportsorter), then extracted to standalone CLI and lib for more use cases (e.g. CI/CD) and IDEs (e.g. [IntelliJ](https://plugins.jetbrains.com/plugin/16195-js-ts-import-export-sorter)).
 
-## [2.4.x] - 2021-12-04
+## [2.4.x]
 
 ### Added
 
