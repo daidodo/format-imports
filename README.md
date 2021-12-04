@@ -15,11 +15,18 @@ This package contains CLI and APIs to format **imports** and **exports** for **J
 
 It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](https://marketplace.visualstudio.com/items?itemName=dozerg.tsimportsorter), then extracted to standalone CLI and lib for more use cases (e.g. CI/CD) and IDEs (e.g. [IntelliJ](https://plugins.jetbrains.com/plugin/16195-js-ts-import-export-sorter)).
 
-## [2.4.x] - 2021-12-03
+## [2.4.x] - 2021-12-04
 
 ### Added
 
+- Add `ignoreESLintRules` config to ignore specific ESLint rules.
+- Support ESLint [eol-last](https://eslint.org/docs/rules/eol-last) rule.
 - Support `type` [modifiers](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#type-on-import-names) on import names
+
+### Changed
+
+- Update default `GroupRules` to group [`node:` imports](https://nodejs.org/api/esm.html#esm_node_imports) separately.
+- Fix Prettier option `"trailingComma": "es5"`.
 
 # Table of contents <!-- omit in toc -->
 
