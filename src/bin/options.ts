@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 const { name: EXE, version: VERSION } = require('../../package.json');
 
 const optionator: (options: any) => Results = require('optionator');
