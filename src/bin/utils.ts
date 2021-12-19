@@ -7,7 +7,7 @@ interface FileEntry {
 }
 
 /**
- * @link https://stackoverflow.com/a/45130990/1736817
+ * {@link https://stackoverflow.com/a/45130990/1736817}
  */
 export async function* getFiles(
   dir: string | FileEntry,

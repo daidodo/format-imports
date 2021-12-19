@@ -3,6 +3,11 @@
   "title": "Format-Imports (https://github.com/daidodo/format-imports) configuration",
   "type": "object",
   "properties": {
+    "root": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to stop looking in parent folders for configuration files."
+    },
     "formatExports": {
       "type": "boolean",
       "default": true,

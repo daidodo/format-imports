@@ -9,13 +9,13 @@ type Results = {
 
 const { parseArgv, generateHelp } = optionator({
   prepend: [
-    EXE + ' [options] [FILE ...]',
+    `${EXE} [options] [FILE ...]`,
     '        Format given file(s). If no files provided, read from STDIN.',
     '',
-    EXE + ' [options] DIR',
+    `${EXE} [options] DIR`,
     '        Format supported files under given directory.',
     '',
-    EXE + ' -c [options] FILE/DIR [FILE/DIR ...]',
+    `${EXE} -c [options] FILE/DIR [FILE/DIR ...]`,
     '        Check if files (under directories) are formatted.',
   ].join('\n'),
   options: [

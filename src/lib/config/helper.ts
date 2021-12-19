@@ -35,5 +35,5 @@ export function parentFolder(fileName: string | undefined | null) {
   const i = p.search(/[\\/][^\\/]*$/);
   if (i < 0) return '';
   if (i === 0) return /[\\/]$/.test(p) ? '' : p.substr(0, 1);
-  return p.substr(0, i);
+  return p.substring(0, i);
 }

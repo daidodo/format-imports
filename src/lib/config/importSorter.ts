@@ -40,26 +40,40 @@ export function loadImportSorterConfig<T extends Configuration = Configuration>(
   return mergeConfig(c, pretConfig, fConfig, pkgConfig);
 }
 
-// Exported for testing purpose.
+// Exported for testing in formatSource.test.ts
 export function fileConfig(fileName: string, path?: string) {
   const log = logger('format-imports.fileConfig');
   log.debug('Loading JSON config from', fileName);
-  const [configFile] = findFileFromPathAndParents(fileName, path);
-  log.debug('Found JSON config file', configFile);
-  return loadConfigFromJsonFile(configFile);
+  const files = findFileFromPathAndParents(fileName, path);
+  return readConfigTilRoot(files, file => {
+    const config = loadConfigFromJsonFile(file);
+    log.debug('Found JSON file', file, 'and config:', config);
+    return config;
+  });
 }
 
 function packageConfig(fileName: string) {
   const log = logger('format-imports.packageConfig');
   log.debug('Loading package.json config for fileName:', fileName);
-  const [packageFile] = findFileFromPathAndParents('package.json', fileName);
-  if (!packageFile) return {};
-  log.debug('Found package.json in', packageFile);
-  const { importSorter: config } = JSON.parse(fs.readFileSync(packageFile, 'utf8'));
-  log.debug('Package.json config:', config);
-  if (!config) return {};
-  assert(isObject(config), `Bad "importSorter" config in "${packageFile}"`);
-  return config as Configuration;
+  const files = findFileFromPathAndParents('package.json', fileName);
+  return readConfigTilRoot(files, file => {
+    log.debug('Found package.json in', file);
+    const { importSorter: config } = JSON.parse(fs.readFileSync(file, 'utf8'));
+    log.debug('Found package.json ', file, 'and config:', config);
+    if (!config) return {};
+    assert(isObject(config), `Bad "importSorter" config in "${file}"`);
+    return config as Configuration;
+  });
+}
+
+function readConfigTilRoot(fileNames: string[], readConfig: (fileName: string) => Configuration) {
+  let config: Configuration = {};
+  for (const file of fileNames) {
+    const c = readConfig(file);
+    config = mergeConfig(c, config);
+    if (config.root) break;
+  }
+  return config;
 }
 
 export function enhanceEol<T extends Configuration>(config: T, detectEol: () => string) {

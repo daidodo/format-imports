@@ -14,6 +14,10 @@ export { CompareRule, FlagSymbol, GroupRule, KeepUnusedRule, SegSymbol, SortRule
 
 export interface Configuration {
   /**
+   * Whether to stop looking in parent folders for configuration files. Default to _false_.
+   */
+  readonly root?: boolean;
+  /**
    * JSON configuration file name. Default to _import-sorter.json_.
    */
   readonly configurationFileName?: string;
