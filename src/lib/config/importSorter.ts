@@ -40,8 +40,7 @@ export function loadImportSorterConfig<T extends Configuration = Configuration>(
   return mergeConfig(c, pretConfig, fConfig, pkgConfig);
 }
 
-// Exported for testing in formatSource.test.ts
-export function fileConfig(fileName: string, path?: string) {
+function fileConfig(fileName: string, path?: string) {
   const log = logger('format-imports.fileConfig');
   log.debug('Loading JSON config from', fileName);
   const files = findFileFromPathAndParents(fileName, path);
