@@ -17,16 +17,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -->
 
-## [2.4.3] - 2021-12-22
+## [2.4.4] - 2021-12-22
 
 ### Added
 
 - Add `root` config to support monorepo projects.
 - Add `preserve` option for `insertFinalNewline` config.
-
-### Changed
-
-- Ignore [imports with assertion](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#import-assertions).
 
 ## [2.4.2] - 2021-12-03
 

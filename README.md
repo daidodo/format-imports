@@ -491,6 +491,10 @@ For details please refer to [the Wiki](../../wiki/Line-Wrapping-Style).
 
 # Monorepo Support
 
+When reading config from `import-sorter.json` or `package.json`, Format-Imports will automatically look for them in the directory of the file to be formatted, and in successive parent directories all the way up to the root directory of the filesystem (unless `"root": true` is specified).
+
+Multiple `import-sorter.json` or `package.json` files can be useful when you want different configurations for different sub projects of your monorepo, while common settings are kept in the root `import-sorter.json` or `package.json`. When there is a conflict, the sub project (more localized) config will take precedence.
+
 # Contribution
 
 This is an open source project so your contribution will be well appreciated. Please refer to [CONTRIBUTING.md](CONTRIBUTING.md) for more information.
