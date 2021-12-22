@@ -52,7 +52,12 @@ export function configForCompose(config: Configuration, processed?: ESLintConfig
     comma: trailingComma?.toLowerCase() === 'none' ? '' : ',',
     semi: hasSemicolon === false ? '' : ';',
     bracket: bracketSpacing === false ? (s: string) => `{${s}}` : (s: string) => `{ ${s} }`,
-    lastNewLine: insertFinalNewline !== false,
+    /**
+     * - true: Always insert a final newline
+     * - false: Always delete the final newline
+     * - _undefined_: Do not insert or delete the final newline
+     */
+    lastNewLine: insertFinalNewline === 'preserve' ? undefined : insertFinalNewline !== false,
     nl,
   };
 }

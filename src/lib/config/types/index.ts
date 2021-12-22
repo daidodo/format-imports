@@ -122,9 +122,9 @@ export interface Configuration {
    */
   readonly hasSemicolon?: boolean;
   /**
-   * Whether to end files with a new line. Default to _true_.
+   * Whether to end files with a new line, or keep it as is if _preserve_ is set. Default to _true_.
    */
-  readonly insertFinalNewline?: boolean;
+  readonly insertFinalNewline?: boolean | 'preserve';
   /**
    * Whether to add spaces between brackets. _true_ for '{ id }' and _false_ for '{id}'. Default to
    * _true_.

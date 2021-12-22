@@ -73,10 +73,11 @@ export default class EditManager {
   generateEdits(config: ComposeConfig) {
     return this.ranges_.map(r => {
       const { keep, inserts } = r;
-      const { text, minLeadingNewLines: ln, minTrailingNewLines: tn } = joinInserts(
-        inserts,
-        config,
-      );
+      const {
+        text,
+        minLeadingNewLines: ln,
+        minTrailingNewLines: tn,
+      } = joinInserts(inserts, config);
       return text
         ? keep
           ? decideInsert(text, r, config, ln, tn)
@@ -145,6 +146,13 @@ function normalize(n: number | undefined, max = Number.MAX_SAFE_INTEGER) {
 }
 
 /**
+ * Normalize a number to be within [0, max].
+ */
+function normalize0(n: number | undefined, max = Number.MAX_SAFE_INTEGER) {
+  return Math.min(Math.max(n ?? 0, 0), max);
+}
+
+/**
  * Generate an `Edit` to insert `text` before `range`.
  * Any leading blank text (space/tab/newline) within `range` will be removed.
  *
@@ -185,7 +193,13 @@ function decideReplace(
     eof,
   } = range;
   const ln = !start.pos ? 0 : decideNewLines([lnl], [minLeadingNewLines]);
-  const tn = eof ? (lastNewLine ? 1 : 0) : decideNewLines([tnl], [minTrailingNewLines]);
+  const tn = eof
+    ? lastNewLine === undefined // preserve
+      ? normalize0(tnl, 1)
+      : lastNewLine
+      ? 1
+      : 0
+    : decideNewLines([tnl], [minTrailingNewLines]);
   return { range: { start, end }, newText: nl.repeat(ln) + text + nl.repeat(tn) };
 }
 
@@ -196,6 +210,14 @@ function decideReplace(
  */
 function decideDelete(range: RangeAndEmptyLines, { nl, lastNewLine }: ComposeConfig): Edit {
   const { fullStart: start, fullEnd: end, leadingNewLines: ln, trailingNewLines: tn, eof } = range;
-  const n = !start.pos ? 0 : eof ? (lastNewLine ? 1 : 0) : normalize(ln + tn, 2);
+  const n = !start.pos
+    ? 0
+    : eof
+    ? lastNewLine === undefined // preserve
+      ? normalize0(Math.max(ln - 1, 0) + tn, 1)
+      : lastNewLine
+      ? 1
+      : 0
+    : normalize(ln + tn, 2);
   return { range: { start, end }, newText: nl.repeat(n) };
 }

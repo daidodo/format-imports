@@ -118,7 +118,7 @@
       "description": "Whether to add semicolons at the end of statements."
     },
     "insertFinalNewline": {
-      "type": "boolean",
+      "oneOf": [{ "type": "boolean" }, { "type": "string", "enum": ["preserve"] }],
       "default": true,
       "description": " Whether to end files with a new line."
     },
