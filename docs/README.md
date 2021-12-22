@@ -19,7 +19,7 @@ If it's _none_, then there is no sorting at all.
 
 #### Defined in
 
-[config/types/sorting.ts:18](https://github.com/daidodo/format-imports/blob/3578e13/src/lib/config/types/sorting.ts#L18)
+[config/types/sorting.ts:18](https://github.com/daidodo/format-imports/blob/979d945/src/lib/config/types/sorting.ts#L18)
 
 ___
 
@@ -31,7 +31,7 @@ A type representing file extensions supported.
 
 #### Defined in
 
-[format/main/index.ts:15](https://github.com/daidodo/format-imports/blob/3578e13/src/lib/format/main/index.ts#L15)
+[format/main/index.ts:15](https://github.com/daidodo/format-imports/blob/979d945/src/lib/format/main/index.ts#L15)
 
 ___
 
@@ -60,7 +60,7 @@ Symbols for different types of imports:
 
 #### Defined in
 
-[config/types/grouping.ts:23](https://github.com/daidodo/format-imports/blob/3578e13/src/lib/config/types/grouping.ts#L23)
+[config/types/grouping.ts:23](https://github.com/daidodo/format-imports/blob/979d945/src/lib/config/types/grouping.ts#L23)
 
 ___
 
@@ -74,7 +74,7 @@ This is for keeping unused names.
 
 #### Defined in
 
-[config/types/unused.ts:6](https://github.com/daidodo/format-imports/blob/3578e13/src/lib/config/types/unused.ts#L6)
+[config/types/unused.ts:6](https://github.com/daidodo/format-imports/blob/979d945/src/lib/config/types/unused.ts#L6)
 
 ___
 
@@ -91,7 +91,7 @@ Symbols for char segments:
 
 #### Defined in
 
-[config/types/sorting.ts:11](https://github.com/daidodo/format-imports/blob/3578e13/src/lib/config/types/sorting.ts#L11)
+[config/types/sorting.ts:11](https://github.com/daidodo/format-imports/blob/979d945/src/lib/config/types/sorting.ts#L11)
 
 ## Variables
 
@@ -105,7 +105,7 @@ Default comparison rule for paths and names, which is:
 
 #### Defined in
 
-[config/types/index.ts:168](https://github.com/daidodo/format-imports/blob/3578e13/src/lib/config/types/index.ts#L168)
+[config/types/index.ts:168](https://github.com/daidodo/format-imports/blob/979d945/src/lib/config/types/index.ts#L168)
 
 ___
 
@@ -127,7 +127,7 @@ the ones different.
 
 #### Defined in
 
-[config/merge.ts:25](https://github.com/daidodo/format-imports/blob/3578e13/src/lib/config/merge.ts#L25)
+[config/merge.ts:25](https://github.com/daidodo/format-imports/blob/979d945/src/lib/config/merge.ts#L25)
 
 ___
 
@@ -139,7 +139,7 @@ Default grouping rules.
 
 #### Defined in
 
-[config/types/index.ts:153](https://github.com/daidodo/format-imports/blob/3578e13/src/lib/config/types/index.ts#L153)
+[config/types/index.ts:153](https://github.com/daidodo/format-imports/blob/979d945/src/lib/config/types/index.ts#L153)
 
 ___
 
@@ -151,7 +151,7 @@ File extensions supported.
 
 #### Defined in
 
-[format/main/index.ts:20](https://github.com/daidodo/format-imports/blob/3578e13/src/lib/format/main/index.ts#L20)
+[format/main/index.ts:20](https://github.com/daidodo/format-imports/blob/979d945/src/lib/format/main/index.ts#L20)
 
 ## Functions
 
@@ -190,7 +190,7 @@ File extensions supported.
 
 #### Defined in
 
-[config/merge.ts:105](https://github.com/daidodo/format-imports/blob/3578e13/src/lib/config/merge.ts#L105)
+[config/merge.ts:105](https://github.com/daidodo/format-imports/blob/979d945/src/lib/config/merge.ts#L105)
 
 ___
 
@@ -223,7 +223,7 @@ Result text or `undefined` if nothing changes.
 
 #### Defined in
 
-[format/main/index.ts:38](https://github.com/daidodo/format-imports/blob/3578e13/src/lib/format/main/index.ts#L38)
+[format/main/index.ts:38](https://github.com/daidodo/format-imports/blob/979d945/src/lib/format/main/index.ts#L38)
 
 ___
 
@@ -256,7 +256,7 @@ Result text or `undefined` if nothing changes.
 
 #### Defined in
 
-[format/main/index.ts:67](https://github.com/daidodo/format-imports/blob/3578e13/src/lib/format/main/index.ts#L67)
+[format/main/index.ts:67](https://github.com/daidodo/format-imports/blob/979d945/src/lib/format/main/index.ts#L67)
 
 ___
 
@@ -281,7 +281,7 @@ The file name will be normalized to use `/` as path separator before matching.
 
 #### Defined in
 
-[config/index.ts:39](https://github.com/daidodo/format-imports/blob/3578e13/src/lib/config/index.ts#L39)
+[config/index.ts:39](https://github.com/daidodo/format-imports/blob/979d945/src/lib/config/index.ts#L39)
 
 ___
 
@@ -305,7 +305,7 @@ Will throw an error if file is unreadable or content is not a valid JSON object.
 
 #### Defined in
 
-[config/importSorter.ts:93](https://github.com/daidodo/format-imports/blob/3578e13/src/lib/config/importSorter.ts#L93)
+[config/importSorter.ts:93](https://github.com/daidodo/format-imports/blob/979d945/src/lib/config/importSorter.ts#L93)
 
 ___
 
@@ -346,7 +346,7 @@ const config = mergeConfig(config1, config2);  // { maxLineLength: 100, tabSize:
 
 #### Defined in
 
-[config/merge.ts:57](https://github.com/daidodo/format-imports/blob/3578e13/src/lib/config/merge.ts#L57)
+[config/merge.ts:57](https://github.com/daidodo/format-imports/blob/979d945/src/lib/config/merge.ts#L57)
 
 ___
 
@@ -388,7 +388,7 @@ field will use the default policy which is replacement by the latter.
 
 #### Defined in
 
-[config/merge.ts:82](https://github.com/daidodo/format-imports/blob/3578e13/src/lib/config/merge.ts#L82)
+[config/merge.ts:82](https://github.com/daidodo/format-imports/blob/979d945/src/lib/config/merge.ts#L82)
 
 ___
 
@@ -425,7 +425,7 @@ The following sources will be considered if found (in precedence from high to lo
 
 #### Defined in
 
-[config/importSorter.ts:30](https://github.com/daidodo/format-imports/blob/3578e13/src/lib/config/importSorter.ts#L30)
+[config/importSorter.ts:30](https://github.com/daidodo/format-imports/blob/979d945/src/lib/config/importSorter.ts#L30)
 
 ___
 
@@ -456,4 +456,4 @@ This function will detect EOL for the text and update the base config provided.
 
 #### Defined in
 
-[config/index.ts:27](https://github.com/daidodo/format-imports/blob/3578e13/src/lib/config/index.ts#L27)
+[config/index.ts:27](https://github.com/daidodo/format-imports/blob/979d945/src/lib/config/index.ts#L27)
