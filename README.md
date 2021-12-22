@@ -19,6 +19,7 @@ It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](htt
 
 ### Added
 
+- Add `root` config to support monorepo projects.
 - Add `ignoreESLintRules` config to ignore specific ESLint rules.
 - Support ESLint [eol-last](https://eslint.org/docs/rules/eol-last) rule.
 - Support `type` [modifiers](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#type-on-import-names) on import names
@@ -26,7 +27,6 @@ It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](htt
 ### Changed
 
 - Update default `GroupRules` to group [`node:` imports](https://nodejs.org/api/esm.html#esm_node_imports) separately.
-- Fix Prettier option `"trailingComma": "es5"`.
 
 # Table of contents <!-- omit in toc -->
 
@@ -46,8 +46,9 @@ It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](htt
   - [Ignore Declarations](#ignore-declarations)
 - [Grouping Rules](#grouping-rules)
 - [Sorting Rules](#sorting-rules)
-- [Unused Imports Removal](#unused-imports-removal)
+- [Keeping Unused Imports](#keeping-unused-imports)
 - [Line Wrapping Style](#line-wrapping-style)
+- [Monorepo Support](#monorepo-support)
 - [Contribution](#contribution)
 - [License](#license)
 
@@ -61,6 +62,7 @@ It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](htt
 - Preserve `'use strict'`, `///` directives, shebang (`#!`) and comments.
 - Support [Type-Only imports/exports](https://devblogs.microsoft.com/typescript/announcing-typescript-3-8/#type-only-imports-exports) and [Type Modifier on names](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#type-on-import-names).
 - Cross-platform consistency: Windows, macOS and Linux (Ubuntu).
+- Monorepo friendly.
 
 # Install
 
@@ -445,7 +447,7 @@ _Note:_
 
 For more details and how to construct your own rules, please read [the Wiki](../../wiki/Sorting-Rules).
 
-# Unused Imports Removal
+# Keeping Unused Imports
 
 By default all unused imports are removed. In some cases you might want to keep the import even if it's unused. For example to keep `import tw from 'twin.macro'` you can do the following:
 
@@ -486,6 +488,8 @@ You can determine when and how an import/export declaration is wrapped, e.g. how
 There is also a preset style compatible with [Prettier](https://prettier.io), that could be useful when, e.g., you are using `prettier --check` in your CI/CD process.
 
 For details please refer to [the Wiki](../../wiki/Line-Wrapping-Style).
+
+# Monorepo Support
 
 # Contribution
 
