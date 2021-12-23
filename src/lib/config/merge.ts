@@ -23,7 +23,6 @@ export type Merger<T extends object> = {
  * the ones different.
  */
 export const DEFAULT_MERGER: Merger<Configuration> = {
-  root: customize((a, b) => a || b),
   exclude: concatArray(),
   excludeGlob: concatArray(),
   keepUnused: concatArray(),
