@@ -13,8 +13,7 @@
 
 This package contains CLI and APIs to format **imports** and **exports** for **JavaScript** and **TypeScript** code.
 
-[![npm](https://img.shields.io/npm/v/format-imports.svg)](https://www.npmjs.com/package/format-imports)
-
+[![npm](https://img.shields.io/npm/v/format-imports.svg)](https://www.npmjs.com/package/format-imports) ![Downloads](https://img.shields.io/npm/dm/format-imports.svg)
 
 It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](https://marketplace.visualstudio.com/items?itemName=dozerg.tsimportsorter), then extracted to standalone CLI and lib for more use cases (e.g. CI/CD) and IDEs (e.g. [IntelliJ](https://plugins.jetbrains.com/plugin/16195-js-ts-import-export-sorter)).
 
