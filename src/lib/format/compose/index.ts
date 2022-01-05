@@ -81,10 +81,10 @@ function composeNames(
   forceWrap: boolean,
 ) {
   const { wrap, bracket, nl } = config;
-  const maxWords = hasDefault
-    ? wrap.withDefault - 1
-    : verb.startsWith('export')
+  const maxWords = verb.startsWith('export')
     ? wrap.exported
+    : hasDefault
+    ? wrap.withDefault - 1
     : wrap.withoutDefault;
   const words = names?.map(composeName).filter((w): w is string => !!w);
   if (!words || !words.length) return {};
@@ -116,15 +116,16 @@ function composeOneLineNames(
 ) {
   assert(words.length > 0);
   const maxWords = wrap.perLine;
-  const append = (n: string, s: boolean, e: boolean) => (s ? '' : ' ') + n + (e ? comma : ',');
-  const [first, ...rest] = words;
-  let text = append(first, true, !rest.length);
-  for (let i = 0; i < rest.length; ++i) {
-    const n = rest[i];
-    const t = text + append(n, false, i + 1 >= rest.length);
-    if (i + 2 > maxWords || t.length + tabw > maxLength)
-      return { text: tab + text, left: rest.slice(i) };
-    text = t;
+  const cl = comma.length;
+  let i = 1;
+  for (let len = tabw + words[0].length; i < words.length && i < maxWords; ++i) {
+    const n = len + 2 + words[i].length;
+    const c = i + 1 < words.length ? 1 : cl;
+    if (n + c > maxLength) break;
+    len = n;
   }
-  return { text: tab + text, left: [] };
+  return {
+    text: tab + words.slice(0, i).join(', ') + (i < words.length ? ',' : comma),
+    left: words.slice(i),
+  };
 }
