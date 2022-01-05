@@ -114,18 +114,16 @@ function composeOneLineNames(
   words: string[],
   { tab, tabw, wrap, maxLength, comma }: ComposeConfig,
 ) {
-  assert(words.length > 0);
-  const maxWords = wrap.perLine;
-  const cl = comma.length;
+  const { length: len } = words;
+  assert(len > 0);
   let i = 1;
-  for (let len = tabw + words[0].length; i < words.length && i < maxWords; ++i) {
-    const n = len + 2 + words[i].length;
-    const c = i + 1 < words.length ? 1 : cl;
-    if (n + c > maxLength) break;
-    len = n;
+  for (let sz = tabw + words[0].length; i < len && i < wrap.perLine; ++i) {
+    const n = sz + 2 + words[i].length;
+    if (n + (i + 1 < len ? 1 : comma.length) > maxLength) break;
+    sz = n;
   }
   return {
-    text: tab + words.slice(0, i).join(', ') + (i < words.length ? ',' : comma),
+    text: tab + words.slice(0, i).join(', ') + (i < len ? ',' : comma),
     left: words.slice(i),
   };
 }
