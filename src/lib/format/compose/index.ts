@@ -1,12 +1,13 @@
-import {
-  assert,
-  assertNonNull,
-} from '../../common';
+import { assert } from '../../common';
 import { ComposeConfig } from '../config';
 import {
   NameBinding,
   NodeComment,
 } from '../types';
+import {
+  composeName,
+  composeNames,
+} from './name';
 
 export function composeNodeAsParts(
   verb: string,
@@ -44,15 +45,23 @@ export function composeComments(comments: NodeComment[] | undefined, { nl }: Com
 export function composeNodeAsNames(
   verb: string,
   defaultName: string | undefined,
-  names: NameBinding[],
+  bindingNames: NameBinding[],
   from: string | undefined,
   extraLength: number,
   config: ComposeConfig,
 ) {
   const { wrap, maxLength } = config;
-  const { text, wrapped } = composeNodeAsNamesImpl(verb, defaultName, names, from, config, false);
+  const names = bindingNames.map(composeName).filter((w): w is string => !!w);
+  const { text, wrapped } = composeNodeAsNamesImpl(
+    verb,
+    defaultName,
+    names,
+    from,
+    config,
+    false,
+  );
   const inLen = maxLength >= text.length + (wrap.skipCmt ? 0 : extraLength);
-  const noMoreWrap = wrapped || inLen || (!wrap.parts && !defaultName && names.length < 2);
+  const noMoreWrap = wrapped || inLen || (!wrap.parts && !defaultName && bindingNames.length < 2);
   return noMoreWrap
     ? text
     : composeNodeAsNamesImpl(verb, defaultName, names, from, config, true).text;
@@ -61,69 +70,20 @@ export function composeNodeAsNames(
 function composeNodeAsNamesImpl(
   verb: string,
   defaultName: string | undefined,
-  names: NameBinding[],
+  names: string[],
   from: string | undefined,
   config: ComposeConfig,
   forceWrap: boolean,
 ) {
   const { semi } = config;
-  const { text: t, wrapped } = composeNames(verb, !!defaultName, names, config, forceWrap);
+  const { text: t, wrapped } = composeNames(
+    verb.startsWith('export'),
+    !!defaultName,
+    names,
+    config,
+    forceWrap,
+  );
   const all = [defaultName, t].filter(s => !!s).join(', ') || '{}';
   const text = [verb, all, from].filter(s => !!s).join(' ') + semi;
   return { text, wrapped };
-}
-
-function composeNames(
-  verb: string,
-  hasDefault: boolean,
-  names: NameBinding[] | undefined,
-  config: ComposeConfig,
-  forceWrap: boolean,
-) {
-  const { wrap, bracket, nl } = config;
-  const maxWords = verb.startsWith('export')
-    ? wrap.exported
-    : hasDefault
-    ? wrap.withDefault - 1
-    : wrap.withoutDefault;
-  const words = names?.map(composeName).filter((w): w is string => !!w);
-  if (!words || !words.length) return {};
-  if (!forceWrap && words.length <= maxWords) return { text: bracket(words.join(', ')) };
-  const lines = [];
-  for (let n = words; n.length; ) {
-    const { text, left } = composeOneLineNames(n, config);
-    lines.push(text);
-    n = left;
-  }
-  return { text: `{${nl}${lines.join(nl)}${nl}}`, wrapped: true };
-}
-
-function composeName(name: NameBinding | undefined) {
-  if (!name) return;
-  const { propertyName, aliasName, isTypeOnly } = name;
-  const type = isTypeOnly ? 'type ' : '';
-  if (propertyName) {
-    const name = aliasName ? `${propertyName} as ${aliasName}` : propertyName;
-    return type + name;
-  }
-  assertNonNull(aliasName);
-  return `* as ${aliasName}`;
-}
-
-function composeOneLineNames(
-  words: string[],
-  { tab, tabw, wrap, maxLength, comma }: ComposeConfig,
-) {
-  const { length: len } = words;
-  assert(len > 0);
-  let i = 1;
-  for (let sz = tabw + words[0].length; i < len && i < wrap.perLine; ++i) {
-    const n = sz + 2 + words[i].length;
-    if (n + (i + 1 < len ? 1 : comma.length) > maxLength) break;
-    sz = n;
-  }
-  return {
-    text: tab + words.slice(0, i).join(', ') + (i < len ? ',' : comma),
-    left: words.slice(i),
-  };
 }
