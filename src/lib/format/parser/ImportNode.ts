@@ -15,7 +15,7 @@ import {
   composeNodeAsNames,
   composeNodeAsParts,
   composeParts,
-  stringPart,
+  StringPart,
 } from '../compose';
 import { ComposeConfig } from '../config';
 import {
@@ -239,14 +239,14 @@ export default class ImportNode extends Statement {
 
   // import A = require('B');
   private composeEqDecl(extraLength: number, config: ComposeConfig) {
-    const { quote, semi } = config;
+    const { quote, semi, wrap } = config;
     const path = this.moduleIdentifier;
     const name = this.defaultName_;
     assertNonNull(name);
     return composeParts(
       [
-        stringPart(`import ${name} =`),
-        stringPart(`require(${quote(path)})${semi}`, extraLength),
+        StringPart(`import ${name} =`),
+        StringPart(`require(${quote(path)})${semi}`, extraLength, !wrap.parts),
       ],
       config,
     );

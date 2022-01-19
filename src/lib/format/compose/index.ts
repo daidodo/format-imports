@@ -7,13 +7,15 @@ import {
   NameBinding,
   NodeComment,
 } from '../types';
-import ComposeLine from './ComposeLine';
 import ComposeResult from './ComposeResult';
 import {
   composeName,
   composeNames,
 } from './name';
+import StringPart from './StringPart';
 import { ComposePart } from './types';
+
+export { StringPart };
 
 export function composeParts(parts: ComposePart[], config: ComposeConfig) {
   const result = composePartsImpl(parts, config);
@@ -41,23 +43,6 @@ function composePartsImpl(
     else if (!result.wrapped) return undefined;
   }
   return composePartsImpl(rest, config, newResult) ?? composePartsImpl(parts, config, result, true);
-}
-
-export function stringPart(text: string, trailing = 0): ComposePart {
-  const compose = (level: number) => {
-    const line = new ComposeLine(level, text);
-    return new ComposeResult([line], false, trailing);
-  };
-  const composeWrap = (level: number) => {
-    const nl = new ComposeLine(level);
-    const line = new ComposeLine(Math.max(level, 1), text);
-    return new ComposeResult([nl, line], true, trailing);
-  };
-  const composeWrapFirst = (level: number) => {
-    const line = new ComposeLine(level, text);
-    return new ComposeResult([line], true, trailing);
-  };
-  return { compose, composeWrap, composeWrapFirst };
 }
 
 // -----OLD-------
