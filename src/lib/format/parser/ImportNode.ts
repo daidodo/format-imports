@@ -1,4 +1,6 @@
+import { Map } from 'immutable';
 import {
+  AssertClause,
   ImportClause,
   ImportDeclaration,
   ImportEqualsDeclaration,
@@ -12,6 +14,8 @@ import { FlagSymbol } from '../../config';
 import {
   composeNodeAsNames,
   composeNodeAsParts,
+  composeParts,
+  stringPart,
 } from '../compose';
 import { ComposeConfig } from '../config';
 import {
@@ -32,15 +36,25 @@ export default class ImportNode extends Statement {
   readonly isTypeOnly: boolean;
   private defaultName_?: string;
   private binding_?: Binding;
+  private readonly assertEntries?: Map<string, string>;
 
   static fromDecl(node: ImportDeclaration, args: StatementArgs) {
     const { importClause, moduleSpecifier, assertClause } = node;
-    if (!moduleSpecifier || moduleSpecifier.kind !== SyntaxKind.StringLiteral || assertClause)
-      return undefined;
+    if (!moduleSpecifier || moduleSpecifier.kind !== SyntaxKind.StringLiteral) return undefined;
     const moduleIdentifier = (moduleSpecifier as StringLiteral).text;
     if (!moduleIdentifier.trim()) return undefined;
     const { defaultName, binding, isScript, isTypeOnly } = getDefaultAndBinding(importClause);
-    return new ImportNode(node, moduleIdentifier, args, defaultName, binding, isScript, isTypeOnly);
+    const assertEntries = getAssertEntries(assertClause);
+    return new ImportNode(
+      node,
+      moduleIdentifier,
+      args,
+      defaultName,
+      binding,
+      isScript,
+      isTypeOnly,
+      assertEntries,
+    );
   }
 
   static fromEqDecl(node: ImportEqualsDeclaration, args: StatementArgs) {
@@ -62,6 +76,7 @@ export default class ImportNode extends Statement {
     binding?: Binding,
     isScript = false,
     isTypeOnly = false,
+    assertEntries?: Map<string, string>,
   ) {
     super(args);
     this.node_ = node;
@@ -70,6 +85,7 @@ export default class ImportNode extends Statement {
     this.binding_ = binding;
     this.isScript = isScript;
     this.isTypeOnly = isTypeOnly;
+    this.assertEntries = assertEntries;
   }
 
   get defaultName() {
@@ -134,7 +150,8 @@ export default class ImportNode extends Statement {
       this.node_.kind !== node.node_.kind ||
       this.isScript !== node.isScript ||
       isTypeOnly !== node.isTypeOnly ||
-      !this.canMergeComments(node)
+      !this.canMergeComments(node) ||
+      0 !== compareAssertEntries(this.assertEntries, node.assertEntries)
     )
       return false;
     this.removeBindingDefault(node.defaultName_);
@@ -222,13 +239,17 @@ export default class ImportNode extends Statement {
 
   // import A = require('B');
   private composeEqDecl(extraLength: number, config: ComposeConfig) {
-    const { quote } = config;
+    const { quote, semi } = config;
     const path = this.moduleIdentifier;
     const name = this.defaultName_;
     assertNonNull(name);
-    const parts = [`${name} =`];
-    const from = `require(${quote(path)})`;
-    return composeNodeAsParts('import', parts, from, extraLength, config);
+    return composeParts(
+      [
+        stringPart(`import ${name} =`),
+        stringPart(`require(${quote(path)})${semi}`, extraLength),
+      ],
+      config,
+    );
   }
 
   /**
@@ -315,6 +336,38 @@ function getDefaultAndBinding(importClause: ImportClause | undefined) {
   const defaultName = name?.text;
   const binding = getBinding(namedBindings);
   return { defaultName, binding, isScript: false, isTypeOnly };
+}
+
+function getAssertEntries(assertClause: AssertClause | undefined) {
+  if (!assertClause) return undefined;
+  const { kind, elements } = assertClause;
+  if (kind !== SyntaxKind.AssertClause) return undefined;
+  const entries = Map(elements.map(({ name, value }) => [name.text, value.text]));
+  return entries.isEmpty() ? undefined : entries;
+}
+
+function compareAssertEntries(
+  assert1: Map<string, string> | undefined,
+  assert2: Map<string, string> | undefined,
+) {
+  if (assert1 === assert2) return 0;
+  else if (assert1 === undefined) return -1;
+  else if (assert2 === undefined) return 1;
+  const it1 = assert1.sort().entries();
+  const it2 = assert2.sort().entries();
+  let v1 = it1.next();
+  let v2 = it2.next();
+  for (; !v1.done && !v2.done; v1 = it1.next(), v2 = it2.next()) {
+    const r = compareKeyValue(v1.value, v2.value);
+    if (r !== 0) return r;
+  }
+  return v1.done === v2.done ? 0 : v1.done ? -1 : 1;
+}
+
+function compareKeyValue([k1, v1]: [string, string], [k2, v2]: [string, string]) {
+  const r = k1.localeCompare(k2);
+  if (r !== 0) return r;
+  return v1.localeCompare(v2);
 }
 
 function getBinding(nb: NamedImportBindings | undefined): Binding | undefined {
