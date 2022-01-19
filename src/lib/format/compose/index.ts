@@ -1,13 +1,66 @@
-import { assert } from '../../common';
+import {
+  assert,
+  assertNonNull,
+} from '../../common';
 import { ComposeConfig } from '../config';
 import {
   NameBinding,
   NodeComment,
 } from '../types';
+import ComposeLine from './ComposeLine';
+import ComposeResult from './ComposeResult';
 import {
   composeName,
   composeNames,
 } from './name';
+import { ComposePart } from './types';
+
+export function composeParts(parts: ComposePart[], config: ComposeConfig) {
+  const result = composePartsImpl(parts, config);
+  assertNonNull(result);
+  return result.text(config);
+}
+
+function composePartsImpl(
+  parts: ComposePart[],
+  config: ComposeConfig,
+  result: ComposeResult = new ComposeResult(),
+  forceWrap?: boolean,
+): ComposeResult | undefined {
+  if (parts.length < 1) return result;
+  const [part, ...rest] = parts;
+  const level = result.level;
+  const cur = !forceWrap
+    ? part.compose(level, config)
+    : !result.empty
+    ? part.composeWrap(level, config)
+    : part.composeWrapFirst(level, config);
+  const { result: newResult, needWrap } = result.merge(cur, config);
+  if (needWrap) {
+    if (!cur.wrapped) return composePartsImpl(parts, config, result, true);
+    else if (!result.wrapped) return undefined;
+  }
+  return composePartsImpl(rest, config, newResult) ?? composePartsImpl(parts, config, result, true);
+}
+
+export function stringPart(text: string, trailing = 0): ComposePart {
+  const compose = (level: number) => {
+    const line = new ComposeLine(level, text);
+    return new ComposeResult([line], false, trailing);
+  };
+  const composeWrap = (level: number) => {
+    const nl = new ComposeLine(level);
+    const line = new ComposeLine(Math.max(level, 1), text);
+    return new ComposeResult([nl, line], true, trailing);
+  };
+  const composeWrapFirst = (level: number) => {
+    const line = new ComposeLine(level, text);
+    return new ComposeResult([line], true, trailing);
+  };
+  return { compose, composeWrap, composeWrapFirst };
+}
+
+// -----OLD-------
 
 export function composeNodeAsParts(
   verb: string,
@@ -52,14 +105,7 @@ export function composeNodeAsNames(
 ) {
   const { wrap, maxLength } = config;
   const names = bindingNames.map(composeName).filter((w): w is string => !!w);
-  const { text, wrapped } = composeNodeAsNamesImpl(
-    verb,
-    defaultName,
-    names,
-    from,
-    config,
-    false,
-  );
+  const { text, wrapped } = composeNodeAsNamesImpl(verb, defaultName, names, from, config, false);
   const inLen = maxLength >= text.length + (wrap.skipCmt ? 0 : extraLength);
   const noMoreWrap = wrapped || inLen || (!wrap.parts && !defaultName && bindingNames.length < 2);
   return noMoreWrap
