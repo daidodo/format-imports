@@ -4,7 +4,7 @@ export default class ComposeLine {
   constructor(
     readonly level: number,
     private readonly text_?: string,
-    private readonly noSpace?: boolean,
+    private readonly sep = ' ',
   ) {}
 
   text({ tab }: ComposeConfig) {
@@ -14,12 +14,8 @@ export default class ComposeLine {
 
   merge(other: ComposeLine) {
     if (!this.text_) return other;
-    const text = !other.text_
-      ? this.text_
-      : other.noSpace
-      ? this.text_ + other.text_
-      : `${this.text_} ${other.text_}`;
-    return new ComposeLine(other.level, text);
+    if (!other.text_) return this;
+    return new ComposeLine(other.level, [this.text_, other.text_].join(other.sep));
   }
 
   length(tabSz: number) {

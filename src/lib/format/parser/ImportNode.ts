@@ -240,14 +240,15 @@ export default class ImportNode extends Statement {
 
   // import A = require('B');
   private composeEqDecl(extraLength: number, config: ComposeConfig) {
-    const { quote, semi, wrap } = config;
+    const { quote, wrap } = config;
     const path = this.moduleIdentifier;
     const name = this.defaultName_;
     assertNonNull(name);
     return composeParts(
       [
         StringPart(`import ${name} =`),
-        StringPart(`require(${quote(path)})${semi}`, extraLength, !wrap.parts),
+        StringPart(`require(${quote(path)})`, !wrap.parts),
+        SemiPart(extraLength),
       ],
       config,
     );
@@ -308,7 +309,7 @@ export default class ImportNode extends Statement {
       return composeParts(
         [
           StringPart(`${verb} ${this.defaultName_}`),
-          StringPart(from, 0, noWrap),
+          StringPart(from, noWrap),
           AssertPart(this.assertEntries, noWrap),
           SemiPart(extraLength),
         ],
@@ -321,9 +322,9 @@ export default class ImportNode extends Statement {
       return composeParts(
         [
           ...(this.defaultName_
-            ? [StringPart(`${verb} ${this.defaultName_},`), StringPart(alias, 0, noWrap)]
+            ? [StringPart(`${verb} ${this.defaultName_},`), StringPart(alias, noWrap)]
             : [StringPart(`${verb} ${alias}`)]),
-          StringPart(from, 0, noWrap),
+          StringPart(from, noWrap),
           AssertPart(this.assertEntries, noWrap),
           SemiPart(extraLength),
         ],
