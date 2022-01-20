@@ -12,9 +12,10 @@ import {
 import { assertNonNull } from '../../common';
 import { FlagSymbol } from '../../config';
 import {
-  composeNodeAsNames,
-  composeNodeAsParts,
+  AssertPart,
   composeParts,
+  NamedPart,
+  SemiPart,
   StringPart,
 } from '../compose';
 import { ComposeConfig } from '../config';
@@ -288,28 +289,60 @@ export default class ImportNode extends Statement {
    *    import A, * as B from 'C';
    *    import A, { default as B, C, D } from 'E';
    * ```
+   *
+   * With assert clause
+   * ```
+   *    import A from 'a' assert { type: 'json' };
+   * ```
    */
   private composeDecl(extraLength: number, config: ComposeConfig) {
-    const { quote, semi } = config;
+    const { quote, semi, wrap } = config;
     const path = this.moduleIdentifier;
     const ending = quote(path);
     if (this.isScript) return `import ${ending}${semi}`;
     const verb = 'import' + (this.isTypeOnly ? ' type' : '');
     const from = `from ${ending}`;
-    if (this.binding_?.type === 'named')
-      return composeNodeAsNames(
-        verb,
-        this.defaultName_,
-        this.binding_.names,
-        from,
-        extraLength,
+    const noWrap = !wrap.parts;
+    if (!this.binding_) {
+      // import A from 'a' assert { x: 'y' }
+      return composeParts(
+        [
+          StringPart(`${verb} ${this.defaultName_}`),
+          StringPart(from, 0, noWrap),
+          AssertPart(this.assertEntries, noWrap),
+          SemiPart(extraLength),
+        ],
         config,
       );
-    const parts = [];
-    if (this.defaultName_) parts.push(this.defaultName_);
-    if (this.binding_?.type === 'namespace') parts.push(`* as ${this.binding_.alias}`);
-    if (parts.length < 1) parts.push('{}');
-    return composeNodeAsParts(verb, parts, from, extraLength, config);
+    } else if (this.binding_.type === 'namespace') {
+      // import * as A from 'a' assert { x: 'y' }, or
+      // import A, * as B from 'a' assert { x: 'y' }
+      const alias = `* as ${this.binding_.alias}`;
+      return composeParts(
+        [
+          ...(this.defaultName_
+            ? [StringPart(`${verb} ${this.defaultName_},`), StringPart(alias, 0, noWrap)]
+            : [StringPart(`${verb} ${alias}`)]),
+          StringPart(from, 0, noWrap),
+          AssertPart(this.assertEntries, noWrap),
+          SemiPart(extraLength),
+        ],
+        config,
+      );
+    }
+    // import { A, B } from 'a' assert { x: 'y' }, or
+    // import A, { B, C } from 'a' assert { x: 'y' }
+    const { withDefault, withoutDefault } = wrap;
+    const maxWords = this.defaultName_ ? withDefault - 1 : withoutDefault;
+    return composeParts(
+      [
+        StringPart(this.defaultName_ ? `${verb} ${this.defaultName_},` : verb),
+        NamedPart(this.binding_.names, from, maxWords, !this.defaultName_ && noWrap),
+        AssertPart(this.assertEntries, noWrap),
+        SemiPart(extraLength),
+      ],
+      config,
+    );
   }
 }
 

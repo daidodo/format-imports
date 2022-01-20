@@ -4,7 +4,12 @@ import {
   SyntaxKind,
 } from 'typescript';
 
-import { composeNodeAsNames } from '../compose';
+import {
+  composeParts,
+  NamedPart,
+  SemiPart,
+  StringPart,
+} from '../compose';
 import { ComposeConfig } from '../config';
 import { NameBinding } from '../types';
 import { getNameBinding } from './helper';
@@ -67,10 +72,18 @@ export default class ExportNode extends Statement {
   }
 
   private composeExport(commentLength: number, config: ComposeConfig) {
-    const { quote } = config;
+    const { quote, wrap } = config;
     const verb = 'export' + (this.isTypeOnly_ ? ' type' : '');
     const path = this.moduleIdentifier_;
     const from = path ? 'from ' + quote(path) : undefined;
-    return composeNodeAsNames(verb, undefined, this.names, from, commentLength, config);
+    const maxWords = wrap.exported;
+    return composeParts(
+      [
+        StringPart(verb),
+        NamedPart(this.names, from, maxWords, !wrap.parts),
+        SemiPart(commentLength),
+      ],
+      config,
+    );
   }
 }
