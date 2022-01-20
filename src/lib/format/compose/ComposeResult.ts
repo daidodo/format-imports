@@ -6,13 +6,13 @@ import ComposeLine from './ComposeLine';
 export default class ComposeResult {
   constructor(
     private readonly lines: ComposeLine[] = [],
-    readonly wrapped: boolean = true,
+    readonly wrapped = true,
     private readonly trailing = 0,
   ) {}
 
   get level() {
     if (this.lines.length < 1) return 0;
-    return this.lines[0].level;
+    return this.lines[this.lines.length - 1].level;
   }
 
   get empty() {
@@ -26,25 +26,26 @@ export default class ComposeResult {
   merge(
     other: ComposeResult,
     { tabw, maxLength }: ComposeConfig,
+    last: boolean,
   ): { result: ComposeResult; needWrap?: boolean } {
     if (other.lines.length < 1) return { result: this };
-    const { lines: newLines, line, last } = this.mergeLines(other.lines);
-    const trailing = this.trailing + other.trailing;
-    const needWrap = line.length(tabw) + (last ? trailing : 0) > maxLength;
+    const { lines: newLines, line, only } = this.mergeLines(other.lines);
+    const trailing = last && only ? this.trailing + other.trailing : 0;
+    const needWrap = line.length(tabw) + trailing > maxLength;
     const result = new ComposeResult(newLines, other.wrapped, trailing);
     return { result, needWrap };
   }
 
   private mergeLines(other: ComposeLine[]) {
     assert(other.length > 0);
-    if (this.lines.length < 1) return { lines: other, line: other[0], last: other.length < 2 };
+    if (this.lines.length < 1) return { lines: other, line: other[0], only: other.length < 2 };
     const last = this.lines[this.lines.length - 1];
     const [next, ...rest] = other;
     const line = last.merge(next);
     return {
       lines: [...this.lines.slice(0, this.lines.length - 1), line, ...rest],
       line,
-      last: rest.length < 1,
+      only: rest.length < 1,
     };
   }
 }

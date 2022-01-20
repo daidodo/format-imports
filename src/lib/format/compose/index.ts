@@ -17,8 +17,9 @@ import { ComposePart } from './types';
 
 export { StringPart };
 
-export function composeParts(parts: ComposePart[], config: ComposeConfig) {
-  const result = composePartsImpl(parts, config);
+export function composeParts(parts: (ComposePart | undefined)[], config: ComposeConfig) {
+  const ps = parts.filter((p): p is ComposePart => !!p);
+  const result = composePartsImpl(ps, config);
   assertNonNull(result);
   return result.text(config);
 }
@@ -26,18 +27,16 @@ export function composeParts(parts: ComposePart[], config: ComposeConfig) {
 function composePartsImpl(
   parts: ComposePart[],
   config: ComposeConfig,
-  result: ComposeResult = new ComposeResult(),
+  result = new ComposeResult(),
   forceWrap?: boolean,
 ): ComposeResult | undefined {
   if (parts.length < 1) return result;
   const [part, ...rest] = parts;
+  const { compose: c1, composeWrap: c2, composeWrapFirst: c3 } = part;
   const level = result.level;
-  const cur = !forceWrap
-    ? part.compose(level, config)
-    : !result.empty
-    ? part.composeWrap(level, config)
-    : part.composeWrapFirst(level, config);
-  const { result: newResult, needWrap } = result.merge(cur, config);
+  const compose = !forceWrap ? c1 : !result.empty ? c2 ?? c1 : c3 ?? c2 ?? c1;
+  const cur = compose.apply(part, [level, config]);
+  const { result: newResult, needWrap } = result.merge(cur, config, rest.length < 1);
   if (needWrap) {
     if (!cur.wrapped) return composePartsImpl(parts, config, result, true);
     else if (!result.wrapped) return undefined;

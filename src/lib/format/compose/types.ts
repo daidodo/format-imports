@@ -8,10 +8,12 @@ export interface ComposePart {
   compose: (level: number, config: ComposeConfig) => ComposeResult;
   /**
    * Compose and force-wrap the part, as if it is NOT the first part.
+   * If undefined, `compose` will be used.
    */
-  composeWrap: (level: number, config: ComposeConfig) => ComposeResult;
+  composeWrap?: (level: number, config: ComposeConfig) => ComposeResult;
   /**
    * Compose and force-wrap the part, as if it IS the first part.
+   * If undefined, `composeWrap` will be used.
    */
-  composeWrapFirst: (level: number, config: ComposeConfig) => ComposeResult;
+  composeWrapFirst?: (level: number, config: ComposeConfig) => ComposeResult;
 }

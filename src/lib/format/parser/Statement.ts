@@ -45,7 +45,7 @@ export default class Statement {
   protected composeComments(config: ComposeConfig) {
     const leadingText = composeComments(this.leadingComments_, config) ?? '';
     const trailingText = this.trailingCommentsText_;
-    const tailingLength = trailingText.split(/\r?\n/)?.[0]?.length ?? 0;
+    const tailingLength = config.wrap.skipCmt ? 0 : trailingText.split(/\r?\n/)?.[0]?.length ?? 0;
     return { leadingText, trailingText, tailingLength };
   }
 
