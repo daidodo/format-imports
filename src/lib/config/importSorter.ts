@@ -58,7 +58,7 @@ function packageConfig(fileName: string) {
   return readConfigTilRoot(files, file => {
     log.debug('Found package.json in', file);
     const { importSorter: config } = JSON.parse(fs.readFileSync(file, 'utf8'));
-    log.debug('Found package.json ', file, 'and config:', config);
+    log.debug('Found package.json', file, 'and config:', config);
     if (!config) return {};
     assert(isObject(config), `Bad "importSorter" config in "${file}"`);
     return config as Configuration;
@@ -91,10 +91,8 @@ export function enhanceEol<T extends Configuration>(config: T, detectEol: () => 
  * Will throw an error if file is unreadable or content is not a valid JSON object.
  */
 export function loadConfigFromJsonFile(fileName: string): Configuration {
-  const log = logger('format-imports.loadConfigFromJsonFile');
   if (!fileName) return {};
   const config: Configuration = JSON.parse(fs.readFileSync(fileName, 'utf8'));
-  log.debug('JSON config:', config);
   assert(isObject(config), `Bad config in "${fileName}"`);
   return config;
 }
