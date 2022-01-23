@@ -72,3 +72,9 @@ export {
   D, E,
 } from 'aaa'
 export { A, B, } from 'a'; // long comment
+
+// assert
+import A from 'aaaaa' assert { a: 'a', b: 'b' }
+import * as A from 'aaaaa' assert { a: 'a', b: 'e' }
+import {A} from 'aaaaa' assert { a: 'a', b: 'c' }
+import {A,B} from 'aaaaa' assert { a: 'a', b: 'd' }

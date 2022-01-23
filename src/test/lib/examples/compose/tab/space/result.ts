@@ -1,7 +1,10 @@
 import {
    A,
    B,
-} from 'a';
+} from 'a' assert {
+   a: 'a',
+   b: 'b',
+};
 
 export {
    A,

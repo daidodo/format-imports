@@ -3,6 +3,14 @@
 // 0 names
 import 'a-veeeeeeery-looooooooooong-veeeeeeery-looooooooooong-script';
 
+// assert
+import A from 'aaaaa' assert { a: 'a', b: 'b' };
+import * as A from 'aaaaa' assert { a: 'a', b: 'e' };
+import { A } from 'aaaaa' assert { a: 'a', b: 'c' };
+import {
+  A,
+  B,
+} from 'aaaaa' assert { a: 'a', b: 'd' };
 import {
   A,
   B,

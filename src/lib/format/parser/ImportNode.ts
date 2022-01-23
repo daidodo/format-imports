@@ -246,7 +246,7 @@ export default class ImportNode extends Statement {
     assertNonNull(name);
     return composeParts(
       [
-        StringPart(`import ${name} =`),
+        StringPart(`import ${name} =`, true),
         StringPart(`require(${quote(path)})`, !wrap.parts),
         SemiPart(extraLength),
       ],
@@ -308,7 +308,7 @@ export default class ImportNode extends Statement {
       // import A from 'a' assert { x: 'y' }
       return composeParts(
         [
-          StringPart(`${verb} ${this.defaultName_}`),
+          StringPart(`${verb} ${this.defaultName_}`, true),
           StringPart(from, noWrap),
           AssertPart(this.assertEntries, noWrap),
           SemiPart(extraLength),
@@ -322,8 +322,8 @@ export default class ImportNode extends Statement {
       return composeParts(
         [
           ...(this.defaultName_
-            ? [StringPart(`${verb} ${this.defaultName_},`), StringPart(alias, noWrap)]
-            : [StringPart(`${verb} ${alias}`)]),
+            ? [StringPart(`${verb} ${this.defaultName_},`, true), StringPart(alias, noWrap)]
+            : [StringPart(`${verb} ${alias}`, true)]),
           StringPart(from, noWrap),
           AssertPart(this.assertEntries, noWrap),
           SemiPart(extraLength),
@@ -337,7 +337,7 @@ export default class ImportNode extends Statement {
     const maxWords = this.defaultName_ ? withDefault - 1 : withoutDefault;
     return composeParts(
       [
-        StringPart(this.defaultName_ ? `${verb} ${this.defaultName_},` : verb),
+        StringPart(this.defaultName_ ? `${verb} ${this.defaultName_},` : verb, true),
         NamedPart(this.binding_.names, from, maxWords, !this.defaultName_ && noWrap),
         AssertPart(this.assertEntries, noWrap),
         SemiPart(extraLength),
