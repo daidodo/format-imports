@@ -1,0 +1,6 @@
+{
+  "maxLineLength": 43,
+  "wrappingStyle": {
+    "maxBindingNamesPerLine": 0
+  }
+}
