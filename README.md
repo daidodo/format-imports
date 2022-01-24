@@ -24,7 +24,7 @@ It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](htt
 - Support formatting [Import Assertions](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#import-assertions).
 - Add `root` config to support monorepo projects.
 - Add `ignoreESLintRules` config to ignore specific ESLint rules.
-- Support ESLint [eol-last](https://eslint.org/docs/rules/eol-last) rule.
+- Support ESLint [eol-last](https://eslint.org/docs/rules/eol-last) and [semi](https://eslint.org/docs/rules/semi) rules.
 - Support `type` [modifiers](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#type-on-import-names) on import names.
 
 ### Changed
@@ -288,6 +288,7 @@ Currently, the supported rules are:
 - [max-len](../../wiki/ESLint-Compatibility#max-len)
 - [indent](../../wiki/ESLint-Compatibility#indent)
 - [eol-last](../../wiki/ESLint-Compatibility#eol-last)
+- [semi](https://eslint.org/docs/rules/semi)
 - [import/newline-after-import](../../wiki/ESLint-Compatibility#importnewline-after-import)
 - [import/no-useless-path-segments](../../wiki/ESLint-Compatibility#importno-useless-path-segments)
 
