@@ -21,10 +21,11 @@ It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](htt
 
 ### Added
 
+- Support formatting [Import Assertions](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#import-assertions).
 - Add `root` config to support monorepo projects.
 - Add `ignoreESLintRules` config to ignore specific ESLint rules.
 - Support ESLint [eol-last](https://eslint.org/docs/rules/eol-last) rule.
-- Support `type` [modifiers](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#type-on-import-names) on import names
+- Support `type` [modifiers](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#type-on-import-names) on import names.
 
 ### Changed
 
@@ -62,7 +63,7 @@ It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](htt
 - Respect [ESLint](https://eslint.org) and [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import) rules.
 - Respect configs from [Prettier](https://prettier.io) and [EditorConfig](https://editorconfig.org).
 - Preserve `'use strict'`, `///` directives, shebang (`#!`) and comments.
-- Support [Type-Only imports/exports](https://devblogs.microsoft.com/typescript/announcing-typescript-3-8/#type-only-imports-exports) and [Type Modifier on names](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#type-on-import-names).
+- Support [Type-Only imports/exports](https://devblogs.microsoft.com/typescript/announcing-typescript-3-8/#type-only-imports-exports), [Type Modifier on names](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#type-on-import-names) and [Import Assertions](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#import-assertions).
 - Cross-platform consistency: Windows, macOS and Linux (Ubuntu).
 - Monorepo friendly.
 
