@@ -11,6 +11,7 @@ import { translateNewlineAfterImportRule } from './rules/import/newline-after-im
 import { translateNoUselessPathSegmentsRule } from './rules/import/no-useless-path-segments';
 import { translateIndentRule } from './rules/indent';
 import { translateMaxLenRule } from './rules/max-len';
+import { translateSemiRule } from './rules/semi';
 import { translateSortImportsRule } from './rules/sort-imports';
 
 export type ESLintConfigProcessed = NonNullable<ReturnType<typeof enhanceWithEslint>['processed']>;
@@ -27,6 +28,7 @@ export function enhanceWithEslint(config: Configuration, fileName: string, confi
     translateMaxLenRule,
     translateIndentRule,
     translateEolLastRule,
+    translateSemiRule,
   );
 }
 

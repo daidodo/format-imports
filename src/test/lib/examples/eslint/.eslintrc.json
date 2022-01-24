@@ -9,6 +9,7 @@
     "max-len": "off",
     "indent": "off",
     "@typescript-eslint/indent": "off",
-    "eol-last": "off"
+    "eol-last": "off",
+    "semi": "off"
   }
 }
