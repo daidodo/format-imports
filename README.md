@@ -212,7 +212,7 @@ Please refer to [APIs Documentation](docs/README.md) for more details.
 
 ## Extending Configuration
 
-You might want to extend [Configuration](docs/interfaces/configuration.md) and add your own options when integrating the APIs. It's already supported and actually working in [JS/TS Imports/Exports Sorter](https://marketplace.visualstudio.com/items?itemName=dozerg.tsimportsorter) extension.
+You might want to extend [Configuration](docs/interfaces/Configuration.md) and add your own options when integrating the APIs. It's already supported and actually working in [JS/TS Imports/Exports Sorter](https://marketplace.visualstudio.com/items?itemName=dozerg.tsimportsorter) extension.
 
 All you need to do is defining your extended config type and using it as normal:
 
@@ -276,7 +276,7 @@ The following configuration sources will be checked and merged when formatting a
 
 It's ok if any or all of them are not found, in which case default values will be used in config.
 
-All config fields you can set in `import-sorter.json` or `package.json` under `"importSorter"` section can be found in [Configuration](docs/interfaces/configuration.md).
+All config fields you can set in `import-sorter.json` or `package.json` under `"importSorter"` section can be found in [Configuration](docs/interfaces/Configuration.md).
 
 ## ESLint Compatibility
 
@@ -294,7 +294,7 @@ Currently, the supported rules are:
 
 If there are conflicts between user config and ESLint rules, the ESLint rules will win to avoid any lint errors.
 
-_Note: You can ignore some or all ESLint rules via [ignoreESLintRules](docs/interfaces/configuration.md#ignoreESLintRules)._
+_Note: You can ignore some or all ESLint rules via [ignoreESLintRules](docs/interfaces/Configuration.md#ignoreESLintRules)._
 
 For more info about how the conflicts are resolved, please check the [ESLint Compatibility](../../wiki/ESLint-Compatibility) wiki.
 
@@ -304,7 +304,7 @@ For more info about how the conflicts are resolved, please check the [ESLint Com
 
 There are a few ways to exclude files from inspection:
 
-1. Add [exclude](docs/interfaces/configuration.md#exclude) or [excludeGlob](docs/interfaces/configuration.md#excludeGlob) patterns to [Configuration](docs/interfaces/configuration.md), or via `package.json` or `import-sorter.json`. E.g.:
+1. Add [exclude](docs/interfaces/Configuration.md#exclude) or [excludeGlob](docs/interfaces/Configuration.md#excludeGlob) patterns to [Configuration](docs/interfaces/Configuration.md), or via `package.json` or `import-sorter.json`. E.g.:
 
    ```json
    "exclude": ["regexPattern"],
@@ -332,7 +332,7 @@ or
 
 _Note:_
 
-- _Excluded paths and file-disable comments are **ignored** if [force](docs/interfaces/configuration.md#force) flag is set._
+- _Excluded paths and file-disable comments are **ignored** if [force](docs/interfaces/Configuration.md#force) flag is set._
 
 ## Ignore Declarations
 
@@ -349,11 +349,11 @@ or
 export { Excluded } from 'import/sorter'; /* ts-import-sorter: disable */
 ```
 
-To disable formatting for all exports, just set [formatExports](docs/interfaces/configuration.md#formatExports) to `false`.
+To disable formatting for all exports, just set [formatExports](docs/interfaces/Configuration.md#formatExports) to `false`.
 
 # Grouping Rules
 
-You can sorts imports into different groups separated by empty lines (configurable), based on the rules defined in [groupRules](docs/interfaces/configuration.md#groupRules).
+You can sorts imports into different groups separated by empty lines (configurable), based on the rules defined in [groupRules](docs/interfaces/Configuration.md#groupRules).
 
 A grouping rule defines:
 
@@ -366,7 +366,7 @@ A grouping rule defines:
 _Notes:_
 
 - _There are NO blank lines between sub-groups._
-- _Use [emptyLinesBetweenGroups](docs/interfaces/configuration.md#emptyLinesBetweenGroups) to change empty lines between groups._
+- _Use [emptyLinesBetweenGroups](docs/interfaces/Configuration.md#emptyLinesBetweenGroups) to change empty lines between groups._
 - _A group can have its own [sortImportsBy](docs/interfaces/grouprule.md#sortImportsBy) regardless of the global option, and sub groups will respect it._
 
 For example, `"groupRules": ["^react$", {}, "^[.]"]` defines 3 groups (and their order):
@@ -478,7 +478,7 @@ Both `path` and `names` are converted to regular expressions so you can get real
 _Note:_
 
 - _You DON'T need to add `React` ([React](https://reactjs.org)) and `h` ([Stencil](https://stenciljs.com/)) to `keepUnused` as they are handled already._
-- _By default, [keepUnused](docs/interfaces/configuration.md#keepUnused) array is empty, i.e. DON'T keep any unused imports._
+- _By default, [keepUnused](docs/interfaces/Configuration.md#keepUnused) array is empty, i.e. DON'T keep any unused imports._
 - _To keep ALL unused imports you can simply set:_
 
 ```json

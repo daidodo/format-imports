@@ -12,11 +12,8 @@ export type Merger<T extends object> = {
 /**
  * Default merge policy for [mergeConfig](#mergeConfig), which is:
  *
- * - [exclude](interfaces/configuration.md#exclude),
- * [excludeGlob](interfaces/configuration.md#excludeGlob) and
- * [keepUnused](interfaces/configuration.md#keepUnused) arrays will be concatenated instead of
- * replaced;
- * - [sortRules](interfaces/configuration.md#sortRules) object will be merged instead of replaced;
+ * - {@link exclude}, {@link excludeGlob} and {@link keepUnused} arrays will be concatenated instead of replaced;
+ * - {@link sortRules} object will be merged instead of replaced;
  * - All other fields will be replaced and the latter config takes precedence.
  *
  * When creating your own merge policy, make sure to inherit the default merger and just override
