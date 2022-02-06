@@ -108,7 +108,7 @@
     },
     "trailingComma": {
       "type": "string",
-      "enum": ["none", "multiLine"],
+      "enum": ["none", "always", "multiLine"],
       "default": "multiLine",
       "description": "When to add trailing commas for the last name."
     },

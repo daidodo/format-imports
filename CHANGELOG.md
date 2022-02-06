@@ -15,11 +15,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- [Stacked changes]
 
+-->
+
+## [2.4.8] - 2022-02-06
+
 ### Added
 
 - Add `always` option for `trailingComma` config.
-
--->
+- Support ESLint [comma-dangle](https://eslint.org/docs/rules/comma-dangle) rule.
 
 ## [2.4.7] - 2022-01-24
 

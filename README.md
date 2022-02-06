@@ -288,7 +288,8 @@ Currently, the supported rules are:
 - [max-len](../../wiki/ESLint-Compatibility#max-len)
 - [indent](../../wiki/ESLint-Compatibility#indent)
 - [eol-last](../../wiki/ESLint-Compatibility#eol-last)
-- [semi](https://eslint.org/docs/rules/semi)
+- [semi](../../wiki/ESLint-Compatibility#semi)
+- [comma-dangle](../../wiki/ESLint-Compatibility#comma-dangle)
 - [import/newline-after-import](../../wiki/ESLint-Compatibility#importnewline-after-import)
 - [import/no-useless-path-segments](../../wiki/ESLint-Compatibility#importno-useless-path-segments)
 
