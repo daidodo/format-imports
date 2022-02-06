@@ -22,7 +22,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add `always` option for `trailingComma` config.
-- Support ESLint [comma-dangle](https://eslint.org/docs/rules/comma-dangle) and [@typescript-eslint/comma-dangle](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/comma-dangle.md) rules.
+- Support ESLint rules:
+  - [comma-dangle](https://eslint.org/docs/rules/comma-dangle)
+  - [@typescript-eslint/comma-dangle](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/comma-dangle.md)
+  - [@typescript-eslint/semi](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/semi.md)
 
 ## [2.4.7] - 2022-01-24
 
