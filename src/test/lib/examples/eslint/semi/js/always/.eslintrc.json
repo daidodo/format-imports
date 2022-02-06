@@ -1,7 +1,6 @@
 {
-  "root": true,
   "rules": {
-    "no-unused-vars": "off",
+    "@typescript-eslint/semi": "off",
     "semi": ["error", "always"]
   }
 }

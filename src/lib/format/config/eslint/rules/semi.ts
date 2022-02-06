@@ -12,7 +12,7 @@ type Options = 'always' | 'never';
 const DEFAULT_OPTIONS: Options = 'always';
 
 export function translateSemiRule(config: Configuration, rules: Rules) {
-  const options = extractOptions(config, rules, DEFAULT_OPTIONS, 'semi');
+  const options = extractOptions(config, rules, DEFAULT_OPTIONS, 'semi', '@typescript-eslint/semi');
   return options === undefined ? { config } : process(config, options);
 }
 
