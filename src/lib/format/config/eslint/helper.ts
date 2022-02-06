@@ -4,11 +4,37 @@
 import { Linter } from 'eslint';
 import { UnionToIntersection } from 'utility-types';
 
+import { logger } from '../../../common';
 import { Configuration } from '../../../config';
 
 export type Rules = Required<Linter.Config>['rules'];
 
+/**
+ * Extract options for ESLint rule(s).
+ * All rules should have the same option structure, e.g. indent and \@typescript-eslint/indent
+ * @returns The resolved options of the rules specified by _keys_.
+ */
 export function extractOptions<Options>(
+  config: Configuration,
+  rules: Rules,
+  defaultOptions: Options,
+  ...keys: string[]
+) {
+  const log = logger(`format-imports.extractOptions`);
+  const results = keys.map(key => ({
+    key,
+    ...extractRuleOptions(config, rules, key, defaultOptions),
+  }));
+  // If multiple opitons are found, the last one takes precedence.
+  const options = results.reduce<Options | undefined>((r, a) => a.options ?? r, undefined);
+  if (options !== undefined)
+    results.forEach(r =>
+      log.info(r.ignored ? 'Ignore' : 'Found', `ESLint rule ${r.key}:`, r.options),
+    );
+  return options;
+}
+
+function extractRuleOptions<Options>(
   config: Configuration,
   rules: Rules,
   key: string,

@@ -1,0 +1,8 @@
+{
+  "wrappingStyle": {
+    "maxBindingNamesPerLine": 2
+  },
+  "maxLineLength": 40,
+  "formatExports": true,
+  "groupRules": [{}]
+}

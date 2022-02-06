@@ -1,4 +1,3 @@
-import { logger } from '../../../../common';
 import {
   Configuration,
   mergeConfig,
@@ -12,13 +11,15 @@ type Options = string | { imports?: string };
 
 const DEFAULT_OPTIONS: Options = 'never';
 
-export function translateCommaDangleRule(config: Configuration, rules: Rules, fn: string) {
-  const log = logger(`format-imports.${fn}`);
-  const ruleName = 'comma-dangle';
-  const { options } = extractOptions(config, rules, ruleName, DEFAULT_OPTIONS);
-  if (!options) return { config };
-  log.info(`Found ESLint rule ${ruleName}:`, options);
-  return process(config, options);
+export function translateCommaDangleRule(config: Configuration, rules: Rules) {
+  const options = extractOptions(
+    config,
+    rules,
+    DEFAULT_OPTIONS,
+    'comma-dangle',
+    '@typescript-eslint/comma-dangle',
+  );
+  return options === undefined ? { config } : process(config, options);
 }
 
 function process(config: Configuration, options: Options) {

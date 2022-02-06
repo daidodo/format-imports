@@ -1,4 +1,3 @@
-import { logger } from '../../../../common';
 import {
   Configuration,
   mergeConfig,
@@ -12,13 +11,9 @@ type Options = 'always' | 'never';
 
 const DEFAULT_OPTIONS: Options = 'always';
 
-export function translateEolLastRule(config: Configuration, rules: Rules, fn: string) {
-  const log = logger(`format-imports.${fn}`);
-  const ruleName = 'eol-last';
-  const { options } = extractOptions(config, rules, ruleName, DEFAULT_OPTIONS);
-  if (!options) return { config };
-  log.info(`Found ESLint rule ${ruleName}:`, options);
-  return process(config, options);
+export function translateEolLastRule(config: Configuration, rules: Rules) {
+  const options = extractOptions(config, rules, DEFAULT_OPTIONS, 'eol-last');
+  return options === undefined ? { config } : process(config, options);
 }
 
 function process(config: Configuration, option: Options) {

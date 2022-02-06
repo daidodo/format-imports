@@ -1,4 +1,3 @@
-import { logger } from '../../../../common';
 import {
   Configuration,
   customize,
@@ -23,13 +22,9 @@ type Options = typeof DEFAULT_OPTIONS;
 /**
  * @see https://github.com/daidodo/format-imports-vscode/issues/44#issuecomment-812725174
  */
-export function translateMaxLenRule(config: Configuration, rules: Rules, fn: string) {
-  const log = logger(`format-imports.${fn}`);
-  const ruleName = 'max-len';
-  const { options } = extractOptions(config, rules, ruleName, DEFAULT_OPTIONS);
-  if (!options) return { config };
-  log.info(`Found ESLint rule ${ruleName}:`, options);
-  return process(config, options);
+export function translateMaxLenRule(config: Configuration, rules: Rules) {
+  const options = extractOptions(config, rules, DEFAULT_OPTIONS, 'max-len');
+  return options === undefined ? { config } : process(config, options);
 }
 
 function process(

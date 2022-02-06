@@ -1,0 +1,6 @@
+{
+  "rules": {
+    "comma-dangle": ["warn", { "imports": "only-multiline", "arrays": "always" }],
+    "@typescript-eslint/comma-dangle": "off"
+  }
+}

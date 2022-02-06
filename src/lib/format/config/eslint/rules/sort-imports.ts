@@ -1,4 +1,3 @@
-import { logger } from '../../../../common';
 import {
   CompareRule,
   Configuration,
@@ -10,23 +9,21 @@ import {
   Rules,
 } from '../helper';
 
+type Syntax = 'none' | 'all' | 'multiple' | 'single';
+
 const DEFAULT_OPTIONS = {
   ignoreCase: false,
   ignoreDeclarationSort: false,
   ignoreMemberSort: false,
-  memberSyntaxSortOrder: ['none' as const, 'all' as const, 'multiple' as const, 'single' as const],
+  memberSyntaxSortOrder: Array<Syntax>('none', 'all', 'multiple', 'single'),
   allowSeparatedGroups: false,
 };
 
 type Options = typeof DEFAULT_OPTIONS;
 
-export function translateSortImportsRule(config: Configuration, rules: Rules, fn: string) {
-  const log = logger(`format-imports.${fn}`);
-  const ruleName = 'sort-imports';
-  const { options } = extractOptions(config, rules, ruleName, DEFAULT_OPTIONS);
-  if (!options) return { config };
-  log.info(`Found ESLint rule ${ruleName}:`, options);
-  return process(config, options);
+export function translateSortImportsRule(config: Configuration, rules: Rules) {
+  const options = extractOptions(config, rules, DEFAULT_OPTIONS, 'sort-imports');
+  return options === undefined ? { config } : process(config, options);
 }
 
 function process(config: Configuration, options: Options) {

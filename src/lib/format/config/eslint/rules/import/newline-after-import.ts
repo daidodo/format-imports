@@ -1,4 +1,3 @@
-import { logger } from '../../../../../common';
 import {
   Configuration,
   mergeConfig,
@@ -12,13 +11,9 @@ const DEFAULT_OPTIONS = { count: 1 };
 
 type Options = typeof DEFAULT_OPTIONS;
 
-export function translateNewlineAfterImportRule(config: Configuration, rules: Rules, fn: string) {
-  const log = logger(`format-imports.${fn}`);
-  const ruleName = 'import/newline-after-import';
-  const { options } = extractOptions(config, rules, ruleName, DEFAULT_OPTIONS);
-  if (!options) return { config };
-  log.info(`Found ESLint rule ${ruleName}:`, options);
-  return process(config, options);
+export function translateNewlineAfterImportRule(config: Configuration, rules: Rules) {
+  const options = extractOptions(config, rules, DEFAULT_OPTIONS, 'import/newline-after-import');
+  return options === undefined ? { config } : process(config, options);
 }
 
 function process(config: Configuration, { count }: Options) {

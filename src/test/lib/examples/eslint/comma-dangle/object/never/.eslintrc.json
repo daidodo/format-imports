@@ -1,5 +1,0 @@
-{
-  "rules": {
-    "comma-dangle": ["warn", { "imports": "never" }]
-  }
-}

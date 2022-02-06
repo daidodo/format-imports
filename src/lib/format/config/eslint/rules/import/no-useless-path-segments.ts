@@ -1,4 +1,3 @@
-import { logger } from '../../../../../common';
 import {
   Configuration,
   mergeConfig,
@@ -12,17 +11,9 @@ const DEFAULT_OPTIONS = { noUselessIndex: false };
 
 type Options = typeof DEFAULT_OPTIONS;
 
-export function translateNoUselessPathSegmentsRule(
-  config: Configuration,
-  rules: Rules,
-  fn: string,
-) {
-  const log = logger(`format-imports.${fn}`);
-  const ruleName = 'import/no-useless-path-segments';
-  const { options } = extractOptions(config, rules, ruleName, DEFAULT_OPTIONS);
-  if (!options) return { config };
-  log.info(`Found ESLint rule ${ruleName}:`, options);
-  return process(config, options);
+export function translateNoUselessPathSegmentsRule(config: Configuration, rules: Rules) {
+  const options = extractOptions(config, rules, DEFAULT_OPTIONS, 'import/no-useless-path-segments');
+  return options === undefined ? { config } : process(config, options);
 }
 
 function process(config: Configuration, { noUselessIndex }: Options) {
