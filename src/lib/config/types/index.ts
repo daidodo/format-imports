@@ -115,8 +115,37 @@ export interface Configuration {
   readonly quoteMark?: 'single' | 'double';
   /**
    * When to add a trailing comma for the last name. Default to _multiLine_.
+   * - `none`: Disallow trailing commas.
+   *
+   * ```
+   *   import { A, B } from 'a';
+   *   import {
+   *     C,
+   *     D
+   *   } from 'b';
+   * ```
+   *
+   * - `always`: Require trailing commas.
+   *
+   * ```
+   *   import { A, B, } from 'a';
+   *   import {
+   *     C,
+   *     D,
+   *   } from 'b';
+   * ```
+   *
+   * - `multiLine`: Require trailing commas for multiline and disallow trailing commas when in the same line.
+   *
+   * ```
+   *   import { A, B } from 'a';
+   *   import {
+   *     C,
+   *     D,
+   *   } from 'b';
+   * ```
    */
-  readonly trailingComma?: 'none' | 'multiLine';
+  readonly trailingComma?: 'none' | 'always' | 'multiLine';
   /**
    * Whether to add semicolons at the end of declarations. Default to _true_.
    */

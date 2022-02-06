@@ -23,8 +23,9 @@ class NamedPart implements ComposePart {
 
   compose(level: number, config: ComposeConfig): ComposeResult {
     assert(this.maxWords >= 1);
+    const { bracket, sComma } = config;
     if (0 < this.names.length && this.names.length <= this.maxWords) {
-      const n = config.bracket(this.names.join(', '));
+      const n = bracket(this.names.join(', ') + sComma);
       const line = new ComposeLine(level, join(n, this.from));
       return new ComposeResult([line], this.noWrapSingle && this.names.length === 1);
     }
@@ -62,18 +63,18 @@ function composeName(name: NameBinding) {
 function composeLine(
   level: number,
   names: string[],
-  { wrap, tabw, comma, maxLength }: ComposeConfig,
+  { wrap, tabw, mComma, maxLength }: ComposeConfig,
 ) {
   const { length: len } = names;
   assert(len > 0);
   let i = 1;
   for (let sz = tabw * level + names[0].length; i < len && i < wrap.perLine; ++i) {
     const n = sz + 2 + names[i].length;
-    if (n + (i + 1 < len ? 1 : comma.length) > maxLength) break;
+    if (n + (i + 1 < len ? 1 : mComma.length) > maxLength) break;
     sz = n;
   }
   return {
-    line: new ComposeLine(level, names.slice(0, i).join(', ') + (i < len ? ',' : comma)),
+    line: new ComposeLine(level, names.slice(0, i).join(', ') + (i < len ? ',' : mComma)),
     left: names.slice(i),
   };
 }

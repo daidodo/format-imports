@@ -1,5 +1,6 @@
 {
-  "trailingComma": "none",
-  "maxLineLength": 1,
+  "wrappingStyle": {
+    "maxBindingNamesPerLine": 2
+  },
   "formatExports": true
 }
