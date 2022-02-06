@@ -14,9 +14,10 @@ const DEFAULT_OPTIONS: Options = 'always';
 
 export function translateSemiRule(config: Configuration, rules: Rules) {
   const log = logger('format-imports.translateSemiRule');
-  const { options } = extractOptions(config, rules, 'semi', DEFAULT_OPTIONS);
+  const ruleName = 'semi';
+  const { options } = extractOptions(config, rules, ruleName, DEFAULT_OPTIONS);
   if (!options) return { config };
-  log.info('Found ESLint rule semi:', options);
+  log.info(`Found ESLint rule ${ruleName}:`, options);
   return process(config, options);
 }
 

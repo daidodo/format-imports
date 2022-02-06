@@ -6,7 +6,10 @@ import {
   mergeConfigWithMerger,
   Merger,
 } from '../../../../config';
-import { extractOptions, Rules } from '../helper';
+import {
+  extractOptions,
+  Rules,
+} from '../helper';
 
 const DEFAULT_OPTIONS = {
   code: 80,
@@ -22,9 +25,10 @@ type Options = typeof DEFAULT_OPTIONS;
  */
 export function translateMaxLenRule(config: Configuration, rules: Rules) {
   const log = logger('format-imports.translateMaxLenRule');
-  const { options } = extractOptions(config, rules, 'max-len', DEFAULT_OPTIONS);
+  const ruleName = 'max-len';
+  const { options } = extractOptions(config, rules, ruleName, DEFAULT_OPTIONS);
   if (!options) return { config };
-  log.info('Found ESLint rule max-len:', options);
+  log.info(`Found ESLint rule ${ruleName}:`, options);
   return process(config, options);
 }
 

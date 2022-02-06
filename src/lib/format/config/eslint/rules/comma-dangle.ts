@@ -14,9 +14,10 @@ const DEFAULT_OPTIONS: Options = 'never';
 
 export function translateCommaDangleRule(config: Configuration, rules: Rules) {
   const log = logger('format-imports.translateCommaDangleRule');
-  const { options } = extractOptions(config, rules, 'comma-dangle', DEFAULT_OPTIONS);
+  const ruleName = 'comma-dangle';
+  const { options } = extractOptions(config, rules, ruleName, DEFAULT_OPTIONS);
   if (!options) return { config };
-  log.info('Found ESLint rule max-len:', options);
+  log.info(`Found ESLint rule ${ruleName}:`, options);
   return process(config, options);
 }
 

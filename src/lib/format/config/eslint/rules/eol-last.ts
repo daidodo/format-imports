@@ -14,9 +14,10 @@ const DEFAULT_OPTIONS: Options = 'always';
 
 export function translateEolLastRule(config: Configuration, rules: Rules) {
   const log = logger('format-imports.translateEolLastRule');
-  const { options } = extractOptions(config, rules, 'eol-last', DEFAULT_OPTIONS);
+  const ruleName = 'eol-last';
+  const { options } = extractOptions(config, rules, ruleName, DEFAULT_OPTIONS);
   if (!options) return { config };
-  log.info('Found ESLint rule eol-last:', options);
+  log.info(`Found ESLint rule ${ruleName}:`, options);
   return process(config, options);
 }
 
