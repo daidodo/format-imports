@@ -10,8 +10,8 @@ import { Configuration } from '../../../config';
 export type Rules = Required<Linter.Config>['rules'];
 
 /**
- * Extract options for ESLint rule(s).
- * All rules should have the same option structure, e.g. indent and \@typescript-eslint/indent
+ * Extract options for ESLint rules.
+ * All rules should have the same options structure, e.g. indent and \@typescript-eslint/indent
  * @returns The resolved options of the rules specified by _keys_.
  */
 export function extractOptions<Options>(
@@ -21,42 +21,33 @@ export function extractOptions<Options>(
   ...keys: string[]
 ) {
   const log = logger(`format-imports.extractOptions`);
-  const results = keys.map(key => ({
-    key,
-    ...extractRuleOptions(config, rules, key, defaultOptions),
-  }));
+  const results = keys
+    .map(key => {
+      const o = extractRuleOptions(rules, key, defaultOptions);
+      if (o === undefined) return undefined;
+      const ignored = isRuleIgnored(config, key);
+      log.info(ignored ? 'Ignored' : 'Found', `ESLint rule ${key}:`, o);
+      return ignored ? undefined : o;
+    })
+    .filter((o): o is Options => o !== undefined);
   // If multiple opitons are found, the last one takes precedence.
-  const options = results.reduce<Options | undefined>((r, a) => a.options ?? r, undefined);
-  if (options !== undefined)
-    results.forEach(r =>
-      log.info(r.ignored ? 'Ignore' : 'Found', `ESLint rule ${r.key}:`, r.options),
-    );
-  return options;
+  return results.length < 1 ? undefined : results[results.length - 1];
 }
 
-function extractRuleOptions<Options>(
-  config: Configuration,
-  rules: Rules,
-  key: string,
-  defaultOptions: Options,
-): { options?: Options; ignored?: boolean } {
-  if (isRuleIgnored(config, key)) return { ignored: true };
+function extractRuleOptions<Options>(rules: Rules, key: string, defaultOptions: Options) {
   const rule = rules[key];
-  if (rule === undefined || rule === 0 || rule === 'off') return {};
+  if (rule === undefined || rule === 0 || rule === 'off') return undefined;
   if (Array.isArray(rule)) {
     const level = rule[0];
-    if (level === 0 || level === 'off') return {};
+    if (level === 0 || level === 'off') return undefined;
     const opt: Options | undefined = rule[1];
-    return {
-      options:
-        opt === undefined
-          ? defaultOptions
-          : typeof opt === 'object' && typeof defaultOptions === 'object'
-          ? { ...defaultOptions, ...opt }
-          : opt,
-    };
+    return opt === undefined
+      ? defaultOptions
+      : typeof opt === 'object' && typeof defaultOptions === 'object'
+      ? { ...defaultOptions, ...opt }
+      : opt;
   }
-  return { options: defaultOptions };
+  return defaultOptions;
 }
 
 function isRuleIgnored({ ignoreESLintRules: patterns }: Configuration, key: string) {
