@@ -3,5 +3,6 @@
     "maxBindingNamesPerLine": 2
   },
   "maxLineLength": 40,
-  "formatExports": true
+  "formatExports": true,
+  "groupRules": [{}]
 }
