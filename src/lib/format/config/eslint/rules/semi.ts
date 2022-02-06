@@ -12,8 +12,8 @@ type Options = 'always' | 'never';
 
 const DEFAULT_OPTIONS: Options = 'always';
 
-export function translateSemiRule(config: Configuration, rules: Rules) {
-  const log = logger('format-imports.translateSemiRule');
+export function translateSemiRule(config: Configuration, rules: Rules, fn: string) {
+  const log = logger(`format-imports.${fn}`);
   const ruleName = 'semi';
   const { options } = extractOptions(config, rules, ruleName, DEFAULT_OPTIONS);
   if (!options) return { config };

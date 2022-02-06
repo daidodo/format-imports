@@ -23,8 +23,8 @@ type Options = typeof DEFAULT_OPTIONS;
 /**
  * @see https://github.com/daidodo/format-imports-vscode/issues/44#issuecomment-812725174
  */
-export function translateMaxLenRule(config: Configuration, rules: Rules) {
-  const log = logger('format-imports.translateMaxLenRule');
+export function translateMaxLenRule(config: Configuration, rules: Rules, fn: string) {
+  const log = logger(`format-imports.${fn}`);
   const ruleName = 'max-len';
   const { options } = extractOptions(config, rules, ruleName, DEFAULT_OPTIONS);
   if (!options) return { config };

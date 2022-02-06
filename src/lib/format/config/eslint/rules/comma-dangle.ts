@@ -12,8 +12,8 @@ type Options = string | { imports?: string };
 
 const DEFAULT_OPTIONS: Options = 'never';
 
-export function translateCommaDangleRule(config: Configuration, rules: Rules) {
-  const log = logger('format-imports.translateCommaDangleRule');
+export function translateCommaDangleRule(config: Configuration, rules: Rules, fn: string) {
+  const log = logger(`format-imports.${fn}`);
   const ruleName = 'comma-dangle';
   const { options } = extractOptions(config, rules, ruleName, DEFAULT_OPTIONS);
   if (!options) return { config };

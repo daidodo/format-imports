@@ -12,8 +12,12 @@ const DEFAULT_OPTIONS = { noUselessIndex: false };
 
 type Options = typeof DEFAULT_OPTIONS;
 
-export function translateNoUselessPathSegmentsRule(config: Configuration, rules: Rules) {
-  const log = logger('format-imports.translateNoUselessPathSegmentsRule');
+export function translateNoUselessPathSegmentsRule(
+  config: Configuration,
+  rules: Rules,
+  fn: string,
+) {
+  const log = logger(`format-imports.${fn}`);
   const ruleName = 'import/no-useless-path-segments';
   const { options } = extractOptions(config, rules, ruleName, DEFAULT_OPTIONS);
   if (!options) return { config };

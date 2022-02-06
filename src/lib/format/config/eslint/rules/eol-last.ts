@@ -12,8 +12,8 @@ type Options = 'always' | 'never';
 
 const DEFAULT_OPTIONS: Options = 'always';
 
-export function translateEolLastRule(config: Configuration, rules: Rules) {
-  const log = logger('format-imports.translateEolLastRule');
+export function translateEolLastRule(config: Configuration, rules: Rules, fn: string) {
+  const log = logger(`format-imports.${fn}`);
   const ruleName = 'eol-last';
   const { options } = extractOptions(config, rules, ruleName, DEFAULT_OPTIONS);
   if (!options) return { config };

@@ -20,8 +20,8 @@ const DEFAULT_OPTIONS = {
 
 type Options = typeof DEFAULT_OPTIONS;
 
-export function translateSortImportsRule(config: Configuration, rules: Rules) {
-  const log = logger('format-imports.translateSortImportsRule');
+export function translateSortImportsRule(config: Configuration, rules: Rules, fn: string) {
+  const log = logger(`format-imports.${fn}`);
   const ruleName = 'sort-imports';
   const { options } = extractOptions(config, rules, ruleName, DEFAULT_OPTIONS);
   if (!options) return { config };

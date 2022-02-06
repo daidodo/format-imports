@@ -12,8 +12,8 @@ const DEFAULT_OPTIONS = 4;
 
 type Options = number | 'tab';
 
-export function translateIndentRule(config: Configuration, rules: Rules) {
-  const log = logger('format-imports.translateIndentRule');
+export function translateIndentRule(config: Configuration, rules: Rules, fn: string) {
+  const log = logger(`format-imports.${fn}`);
   const ruleName1 = 'indent';
   const ruleName2 = '@typescript-eslint/indent';
   const { options: opt1, ignored: ign1 } = extractOptions(

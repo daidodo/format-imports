@@ -12,8 +12,8 @@ const DEFAULT_OPTIONS = { count: 1 };
 
 type Options = typeof DEFAULT_OPTIONS;
 
-export function translateNewlineAfterImportRule(config: Configuration, rules: Rules) {
-  const log = logger('format-imports.translateNewlineAfterImportRule');
+export function translateNewlineAfterImportRule(config: Configuration, rules: Rules, fn: string) {
+  const log = logger(`format-imports.${fn}`);
   const ruleName = 'import/newline-after-import';
   const { options } = extractOptions(config, rules, ruleName, DEFAULT_OPTIONS);
   if (!options) return { config };

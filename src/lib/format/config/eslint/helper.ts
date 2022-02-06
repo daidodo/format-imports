@@ -49,6 +49,7 @@ function isRuleIgnored({ ignoreESLintRules: patterns }: Configuration, key: stri
 type Translator<P extends object> = (
   config: Configuration,
   rules: Rules,
+  funcName: string,
 ) => { config: Configuration; processed?: P };
 /**
  * Infer processed data type from translators.
@@ -84,7 +85,7 @@ function applyOne<P extends object, PP extends object>(
   translator: Translator<P>,
   processed?: PP,
 ) {
-  const { config: c, processed: p } = translator(config, rules);
+  const { config: c, processed: p } = translator(config, rules, translator.name);
   return { config: c, processed: merge(processed, p) };
 }
 
