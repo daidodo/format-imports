@@ -452,7 +452,7 @@ If you set `names` to `"none"`, names will not be sorted within an import or exp
 
 _Note:_
 
-- _Setting `paths` or `names` to `null` doesn't disable sorting but uses the fall-back sorting rules, i.e. `["AZ", "_", "az"]`.\_
+- Setting `paths` or `names` to `null` doesn't disable sorting but uses the fall-back sorting rules, i.e. `["AZ", "_", "az"]`.
 
 For more details and how to construct your own rules, please read [the Wiki](../../wiki/Sorting-Rules).
 
