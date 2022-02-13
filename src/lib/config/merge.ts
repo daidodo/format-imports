@@ -98,6 +98,9 @@ function purify<T extends object>(a: T): T {
   return r;
 }
 
+/**
+ * @internal
+ */
 export function customize<T>(m: (a: T, b: T) => T) {
   return (a: T | undefined, b: T | undefined) => (a ? (b ? m(a, b) : a) : b);
 }
