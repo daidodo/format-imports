@@ -34,6 +34,12 @@ const { parseArgv, generateHelp } = optionator({
       description: 'Show version number.',
     },
     {
+      option: 'log',
+      alias: 'l',
+      type: 'Boolean',
+      description: 'Show debug logs in the output.',
+    },
+    {
       option: 'check',
       alias: 'c',
       type: 'Boolean',
@@ -85,6 +91,7 @@ const { parseArgv, generateHelp } = optionator({
 export interface Options {
   help?: boolean;
   version?: boolean;
+  log?: boolean;
   check?: boolean;
   output?: string;
   config?: string;

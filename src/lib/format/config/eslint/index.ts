@@ -37,7 +37,7 @@ export function enhanceWithEslint(config: Configuration, fileName: string, confi
 function loadESLintConfig(fileName: string, configFile?: string) {
   const log = logger('format-imports.loadESLintConfig');
   log.debug('Loading ESLint config for fileName:', fileName, 'from', configFile ?? 'default');
-  log.info('ESLint API version:', ESLint.version);
+  log.debug('ESLint API version:', ESLint.version);
   try {
     const eslint = new CLIEngine({ configFile });
     if (eslint.isPathIgnored(fileName)) {

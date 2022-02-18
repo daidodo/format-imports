@@ -35,18 +35,19 @@ export function formatSource(
   { config, tsCompilerOptions, processed, composeConfig }: AllConfig,
 ) {
   const log = logger('format-imports.formatSource');
-  log.debug('Enhanced config:', config);
+  log.info('Formatting', fileName, 'with enhanced config:', config);
   log.debug('tsCompilerOptions:', tsCompilerOptions);
   log.debug('ESLint config processed:', processed);
   log.debug('composeConfig:', composeConfig);
   const sourceFile = ts.createSourceFile(fileName, text, ScriptTarget.Latest);
   // 34%
-  const { importNodes, importsInsertPoint: point, exportNodes, allIds, unhandled } = parseSource(
-    sourceFile,
-    text,
-    config,
-    tsCompilerOptions,
-  );
+  const {
+    importNodes,
+    importsInsertPoint: point,
+    exportNodes,
+    allIds,
+    unhandled,
+  } = parseSource(sourceFile, text, config, tsCompilerOptions);
   // 39%
   const editManager = new EditManager([...importNodes, ...exportNodes]);
   if (editManager.empty()) return undefined;
@@ -66,7 +67,6 @@ export function formatSource(
   if (result && point)
     editManager.insert({ range: point, text: result, minTrailingNewLines: composeConfig.groupEnd });
   const isModule = unhandled > 0 || !!result; // If there are import/export declarations, it is a module.
-  log.debug('isModule:', isModule);
   const edits = formatExports(exportNodes, composeConfig, sorter, isModule);
   edits.forEach(e => editManager.insert(e));
   return apply(text, sourceFile, editManager.generateEdits(composeConfig));

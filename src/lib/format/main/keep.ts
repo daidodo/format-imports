@@ -5,7 +5,7 @@ import { ExportNode } from '../parser';
  *
  * Scenarios:
  * 1. If there are both `export {} from 'a'` and `export {}`, keep only `export {}`.
- * 1. If there are `export {} from 'a'` and `export {} from 'b'`, keep the first of them.
+ * 2. If there are `export {} from 'a'` and `export {} from 'b'`, keep the first of them.
  */
 export function decideKeep(emptyNodes: ExportNode[]) {
   const noPaths = emptyNodes.filter(n => !n.hasModuleIdentifier());

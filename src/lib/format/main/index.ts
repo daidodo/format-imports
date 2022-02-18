@@ -42,7 +42,8 @@ export function formatSourceFromFile(
   options?: FormatOptions,
 ) {
   const log = logger('format-imports.formatSourceFromFile');
-  log.info('Formatting fileName:', fileName, 'with config:', config);
+  log.debug('Config:', config);
+  log.debug('Options:', options);
   const allConfig = enhanceConfig(config, fileName, options);
   // 25%
   return formatSource(text, fileName, allConfig);
