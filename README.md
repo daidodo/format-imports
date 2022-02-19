@@ -123,7 +123,7 @@ If no files provided, it'll read the source from `STDIN` and format it.
 
   - `-l, --log`
 
-    Show debug logs in the output.
+    Show debug logs in STDOUT.
 
 ## Format a Directory
 
