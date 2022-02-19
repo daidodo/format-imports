@@ -2,10 +2,8 @@
 
 ### Features
 
-- Support [import assertions](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#import-assertions).
-- Add debug mode to CLI. ([Link](https://github.com/daidodo/format-imports/issues/3))
 - Support more IDEs. ([Link](https://github.com/SoominHan/import-sorter/issues/63))
-  - ~~IDEA Ultimate and WebStorm ([Link](https://youtrack.jetbrains.com/issue/WEB-21182?_ga=2.153460280.1892322594.1614289013-2059845846.1614289013))~~
+  - IDEA Ultimate and WebStorm ([Link](https://youtrack.jetbrains.com/issue/WEB-21182?_ga=2.153460280.1892322594.1614289013-2059845846.1614289013))
   - Atom
   - Prettier plugin.
 - Test CLI in CI/CD pipelines.
@@ -37,6 +35,9 @@
 
 ### DONE
 
+- ~~Add debug mode to CLI. ([Link](https://github.com/daidodo/format-imports/issues/3))~~
+- ~~Support ESLint rule [comma-dangle](https://eslint.org/docs/rules/comma-dangle).~~
+- ~~Support [import assertions](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#import-assertions).~~
 - ~~Ignore [import assertions](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#import-assertions).~~
 - ~~Support `"none"` in top level `sortRules`.~~
 - ~~Standalone npm package, CLI version. ([Link](https://github.com/znikola/vscode-es6-typescript-import-sorter/issues/20), [Link](https://github.com/SoominHan/import-sorter/issues/57), [Example](https://github.com/znikola/vscode-es6-typescript-import-sorter))~~

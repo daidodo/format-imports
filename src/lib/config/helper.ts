@@ -7,6 +7,7 @@ import { sep } from 'path';
 export function findFileFromPathAndParents(filename: string | undefined | null, path?: string) {
   if (!filename) return [];
   // Absolute path: /path/to/file or C:\path\to\file
+  // TODO: use path.isAbsolute()
   if (/^(\/|[a-zA-Z]:\\)/.test(filename)) return [filename];
   if (!path) return [];
   const comp = path.split(/[\\/]+/);
