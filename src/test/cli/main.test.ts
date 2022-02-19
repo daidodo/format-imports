@@ -20,18 +20,35 @@ const TMP_PREFIX = 'format-imports';
 
 describe('CLI', () => {
   describe('version', () => {
-    const VER_PATTERN = /^v\d+\.\d+\.\d+\n$/;
+    const PATTERN = /^v\d+\.\d+\.\d+\n$/;
     test('--version', () => {
       const { stdout, stderr, status } = run('--version');
-      expect(status).toBe(0);
-      expect(stdout).toMatch(VER_PATTERN);
       expect(stderr).toBe('');
+      expect(status).toBe(0);
+      expect(stdout).toMatch(PATTERN);
     });
     test('-v', () => {
       const { stdout, stderr, status } = run('-v');
-      expect(status).toBe(0);
-      expect(stdout).toMatch(VER_PATTERN);
       expect(stderr).toBe('');
+      expect(status).toBe(0);
+      expect(stdout).toMatch(PATTERN);
+    });
+  });
+
+  describe('log', () => {
+    const PATTERN = /\[(DEBUG|INFO)\]/;
+    const env = { baseDir: __dirname };
+    test('--log', () => {
+      const { stdout, stderr, status } = run('-c ./main.test.ts --log', env);
+      expect(stderr).toBe('');
+      expect(status).toBe(0);
+      expect(stdout).toMatch(PATTERN);
+    });
+    test('-l', () => {
+      const { stdout, stderr, status } = run('-c ./main.test.ts -l', env);
+      expect(stderr).toBe('');
+      expect(status).toBe(0);
+      expect(stdout).toMatch(PATTERN);
     });
   });
 
@@ -108,7 +125,7 @@ function runCmd(options: string, resolved: string) {
 // check execution results
 function runAndCheck(options: string, env?: { stdin?: string; baseDir: string }) {
   const { stdout, stderr, status } = run(options, env);
-  expect({ stdout, stderr, status }).toMatchSnapshot();
+  expect({ stderr, status, stdout }).toMatchSnapshot();
 }
 
 function run(options: string, env?: { stdin?: string; baseDir: string }) {
