@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- [Stacked changes]
 
+### Added
+
+- Add `--log, -l` option to CLI.
+
 -->
 
 ## [2.4.10] - 2022-02-06

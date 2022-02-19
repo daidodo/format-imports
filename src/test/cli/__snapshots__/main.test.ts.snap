@@ -1199,6 +1199,7 @@ format-imports -c [options] FILE/DIR [FILE/DIR ...]
 
   -h, --help                 Show help.
   -v, --version              Show version number.
+  -l, --log                  Show debug logs.
   -c, --check                Check if files/directories are formatted.
   --config path::String      Path to base config file, e.g. import-sorter.json. The formatted file's config will be merged into this base config.
   -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
@@ -1227,6 +1228,7 @@ format-imports -c [options] FILE/DIR [FILE/DIR ...]
 
   -h, --help                 Show help.
   -v, --version              Show version number.
+  -l, --log                  Show debug logs.
   -c, --check                Check if files/directories are formatted.
   --config path::String      Path to base config file, e.g. import-sorter.json. The formatted file's config will be merged into this base config.
   -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
@@ -1508,6 +1510,7 @@ format-imports -c [options] FILE/DIR [FILE/DIR ...]
 
   -h, --help                 Show help.
   -v, --version              Show version number.
+  -l, --log                  Show debug logs.
   -c, --check                Check if files/directories are formatted.
   --config path::String      Path to base config file, e.g. import-sorter.json. The formatted file's config will be merged into this base config.
   -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
@@ -1534,6 +1537,7 @@ format-imports -c [options] FILE/DIR [FILE/DIR ...]
 
   -h, --help                 Show help.
   -v, --version              Show version number.
+  -l, --log                  Show debug logs.
   -c, --check                Check if files/directories are formatted.
   --config path::String      Path to base config file, e.g. import-sorter.json. The formatted file's config will be merged into this base config.
   -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.

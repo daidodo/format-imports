@@ -121,6 +121,10 @@ If no files provided, it'll read the source from `STDIN` and format it.
 
     If it's not set but `--output` is provided, `format-imports` will try to infer code type from the output file extension.
 
+  - `-l, --log`
+
+    Show debug logs in the output.
+
 ## Format a Directory
 
 ```sh
@@ -157,6 +161,10 @@ This command formats all [supported files](docs/README.md#supported_extensions) 
 
     See above.
 
+  - `-l, --log`
+
+    See above.
+
 ## Check Files and Directories
 
 ```sh
@@ -182,6 +190,10 @@ format-imports --check [options] FILE1/DIR1 [FILE2/DIR2 ...]
   - `-f, --force`
 
     Check all [supported files](docs/README.md#supported_extensions), and ignore exclude patterns/globs and file-disable comments from no matter `--config` option or source file specific configurations.
+
+  - `-l, --log`
+
+    See above.
 
 # APIs
 

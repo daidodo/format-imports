@@ -37,7 +37,7 @@ const { parseArgv, generateHelp } = optionator({
       option: 'log',
       alias: 'l',
       type: 'Boolean',
-      description: 'Show debug logs in the output.',
+      description: 'Show debug logs.',
     },
     {
       option: 'check',
