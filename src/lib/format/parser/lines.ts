@@ -19,18 +19,13 @@ export function parseLineRanges(node: Node, p: ParseParams) {
     { pos: node.getStart(sourceFile), end: declEnd },
     sourceFile,
   );
-  const {
-    fileComments,
-    fullStart,
-    leadingNewLines,
-    commentsStart,
-    leadingComments,
-  } = parseLeadingComments(node, declLineRange, p);
+  const { fileComments, fullStart, leadingNewLines, commentsStart, leadingComments } =
+    parseLeadingComments(node, declLineRange, p);
   const trailingComments = ts
     .getTrailingCommentRanges(sourceText, declEnd)
     ?.map(transformComment.bind(undefined, sourceFile, sourceText));
   // All tailing comments text should keep unchanged including the leading spaces
-  const commentsEnd = (trailingComments ?? []).reduce((e, c) => Math.max(e, c.end.pos), declEnd);
+  const commentsEnd = trailingComments?.slice(-1)[0]?.end.pos ?? declEnd;
   const trailingCommentsText = sourceText.slice(declEnd, commentsEnd);
 
   const declAndCommentsLineRange = transformRange(
@@ -38,10 +33,11 @@ export function parseLineRanges(node: Node, p: ParseParams) {
     sourceFile,
   );
   p.prevCommentEnd = declAndCommentsLineRange.end; // Save comment end pos for the next statement.
-  const { trailingNewLines, fullEnd: fullEndPos, eof } = getTrailingNewLines(
-    sourceText,
-    commentsEnd,
-  );
+  const {
+    trailingNewLines,
+    fullEnd: fullEndPos,
+    eof,
+  } = getTrailingNewLines(sourceText, commentsEnd);
   return {
     fileComments,
     fullStart,
@@ -87,7 +83,7 @@ function parseLeadingComments(node: Node, declLineRange: LineRange, p: ParsePara
   const comments = ts
     .getLeadingCommentRanges(sourceText, fullStart.pos)
     ?.map(transformComment.bind(undefined, sourceFile, sourceText));
-  if (checkFileComments && comments && comments.length > 0) {
+  if (comments && comments.length > 0) {
     // Skip global comments that separated by empty line(s) or triple-slash comment(s)
     const results = [];
     let nextStartLine = declLineRange.start.line;
@@ -95,7 +91,8 @@ function parseLeadingComments(node: Node, declLineRange: LineRange, p: ParsePara
       const comment = comments[i];
       const { start, end, text } = comment;
       const leadingNewLines = nextStartLine - end.line;
-      if (1 < leadingNewLines || isTripleSlashComment(text)) {
+      comment.trailingNewLines = leadingNewLines;
+      if (checkFileComments && (1 < leadingNewLines || isTripleSlashComment(text))) {
         const leadingComments = results.reverse();
         const commentsStart = results[0]?.start.pos ?? declLineRange.start.pos;
         const fileComments = comments.slice(0, i + 1);

@@ -44,9 +44,10 @@ export default class Statement {
 
   protected composeComments(config: ComposeConfig) {
     const leadingText = composeComments(this.leadingComments_, config) ?? '';
+    const followingNewLines = this.leadingComments_?.slice(-1)[0]?.trailingNewLines;
     const trailingText = this.trailingCommentsText_;
     const tailingLength = config.wrap.skipCmt ? 0 : trailingText.split(/\r?\n/)?.[0]?.length ?? 0;
-    return { leadingText, trailingText, tailingLength };
+    return { leadingText, followingNewLines, trailingText, tailingLength };
   }
 
   protected canMergeComments(node: Statement) {

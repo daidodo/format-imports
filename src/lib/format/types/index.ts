@@ -11,6 +11,7 @@ export interface LineRange {
 
 export interface NodeComment extends LineRange {
   text: string;
+  trailingNewLines?: number;
 }
 
 export interface NameBinding {
