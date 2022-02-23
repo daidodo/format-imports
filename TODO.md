@@ -7,7 +7,6 @@
   - Atom
   - Prettier plugin.
 - Test CLI in CI/CD pipelines.
-- Use client node_modules/ ESLint. ([Link](https://github.com/eslint/eslint/issues/13974))
 - Webpack. ([Link](https://github.com/eslint/eslint/issues/13974), ESLint PRs ([PR](https://github.com/eslint/eslintrc/pull/71), [PR](https://github.com/eslint/eslint/pull/15616)))
 - Type `optionator`.
 - Add `skipTsConfig` and `skipEslintConfig` to in config/development. ([Link](https://github.com/daidodo/format-imports-vscode/issues/27#issuecomment-747553733))
@@ -82,5 +81,6 @@
 
 ### CANCELLED
 
+- ~~Use client node_modules/ ESLint. ([Link](https://github.com/eslint/eslint/issues/13974))~~
 - ~~Option to not normalize `"."` and `".."`. ([Link](https://github.com/SoominHan/import-sorter/issues/48))~~
 - ~~Folding imports. ([Link](https://github.com/SoominHan/import-sorter/pull/38))~~
