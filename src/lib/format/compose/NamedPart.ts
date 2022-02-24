@@ -25,7 +25,7 @@ class NamedPart implements ComposePart {
     assert(this.maxWords >= 1);
     const { bracket, sComma } = config;
     if (0 < this.names.length && this.names.length <= this.maxWords) {
-      const n = bracket(this.names.join(', ') + sComma);
+      const n = bracket(`${this.names.join(', ')}${sComma}`);
       const line = new ComposeLine(level, join(n, this.from));
       return new ComposeResult([line], this.noWrapSingle && this.names.length === 1);
     }

@@ -4,19 +4,19 @@ import { SortRules } from './sorting';
  * Symbols for different types of imports:
  * - _scripts_: Script imports, e.g. `import 'some_scripts'`.
  * - _multiple_: Import multiple members, e.g.:
- *   ```ts
+ * ```ts
  *   import A, {B, C} from 'a';
  *   import A, * as B from 'a';
- *   ```
+ * ```
  * - _single_: Import single member, e.g.:
- *   ```ts
+ * ```ts
  *   import A from 'a';
  *   import { A } from 'a';
- *   ```
+ * ```
  * - _namespace_: Import a namespace, e.g.:
- *   ```ts
+ * ```ts
  *   import * as A from 'a';
- *   ```
+ * ```
  * - _named_: All _multiple_, _single_ and _namespace_ combined.
  * - _all_: All _scripts_ and _named_ combined.
  */

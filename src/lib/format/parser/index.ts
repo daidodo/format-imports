@@ -1,10 +1,6 @@
-import ExportNode from './ExportNode';
-import ImportNode from './ImportNode';
-
-export { ExportNode, ImportNode };
-
-export { getUnusedIds, NameUsage } from './unused';
-
+export { default as ExportNode } from './ExportNode';
+export { default as ImportNode } from './ImportNode';
 export { default as KeepUnused } from './KeepUnused';
 
+export { getUnusedIds, NameUsage } from './unused';
 export { parseSource } from './parser';

@@ -84,3 +84,12 @@
 - ~~Use client node_modules/ ESLint. ([Link](https://github.com/eslint/eslint/issues/13974))~~
 - ~~Option to not normalize `"."` and `".."`. ([Link](https://github.com/SoominHan/import-sorter/issues/48))~~
 - ~~Folding imports. ([Link](https://github.com/SoominHan/import-sorter/pull/38))~~
+
+### Externalise
+
+- (precondition) assert, assertNonNull
+- isObject, merge(Object)
+- noNew
+- findFileFromPathAndParents, parentFolder, normalizePath, removeLastSlash, removeLastIndex
+- concatArray, concatArrayEx, dedupFlags, join, compareKeyValue
+- getTrailingNewLines
