@@ -18,13 +18,17 @@ export interface FormatOptions {
 
 export { ComposeConfig, ESLintConfigProcessed };
 
-export function enhanceConfig(config: Configuration, fileName: string, options?: FormatOptions) {
+export async function enhanceConfig(
+  config: Configuration,
+  fileName: string,
+  options?: FormatOptions,
+) {
   const tsCompilerOptions = options?.skipTsConfig
     ? undefined
     : loadTsConfig(fileName, options?.tsConfigPath);
   const { config: newConfig, processed } = options?.skipEslintConfig
     ? { config, processed: undefined }
-    : enhanceWithEslint(config, fileName, options?.eslintConfigPath);
+    : await enhanceWithEslint(config, fileName, options?.eslintConfigPath);
   const composeConfig = configForCompose(newConfig, processed);
   return { config: newConfig, tsCompilerOptions, processed, composeConfig };
 }

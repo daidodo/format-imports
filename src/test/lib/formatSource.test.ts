@@ -109,7 +109,7 @@ function runTestCase(
     const skipTsConfig = !tsConfigPath;
     const skipEslintConfig = !eslintConfigPath;
     const options = { skipTsConfig, tsConfigPath, skipEslintConfig, eslintConfigPath };
-    const actual = formatSourceFromFile(source, origin, config, options) ?? source;
+    const actual = (await formatSourceFromFile(source, origin, config, options)) ?? source;
     const expected = res ? fs.readFileSync(res).toString() : source;
     if (UPDATE_RESULT && actual !== expected && result) fs.writeFileSync(result, actual);
     assert.strictEqual(actual, expected);

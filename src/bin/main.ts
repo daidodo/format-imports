@@ -25,4 +25,4 @@ async function main(argv: string[]) {
   }
 }
 
-void main(process.argv);
+main(process.argv);

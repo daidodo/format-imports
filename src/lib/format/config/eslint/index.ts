@@ -1,7 +1,8 @@
 import {
-  CLIEngine,
   ESLint,
+  Linter,
 } from 'eslint';
+import { PromiseType } from 'utility-types';
 
 import { logger } from '../../../common';
 import { Configuration } from '../../../config';
@@ -15,10 +16,16 @@ import { translateMaxLenRule } from './rules/max-len';
 import { translateSemiRule } from './rules/semi';
 import { translateSortImportsRule } from './rules/sort-imports';
 
-export type ESLintConfigProcessed = NonNullable<ReturnType<typeof enhanceWithEslint>['processed']>;
+export type ESLintConfigProcessed = NonNullable<
+  PromiseType<ReturnType<typeof enhanceWithEslint>>['processed']
+>;
 
-export function enhanceWithEslint(config: Configuration, fileName: string, configPath?: string) {
-  const rules = loadESLintConfig(fileName, configPath)?.rules;
+export async function enhanceWithEslint(
+  config: Configuration,
+  fileName: string,
+  configPath?: string,
+) {
+  const rules = (await loadESLintConfig(fileName, configPath))?.rules;
   if (!rules) return { config };
   return apply(
     config,
@@ -34,17 +41,17 @@ export function enhanceWithEslint(config: Configuration, fileName: string, confi
   );
 }
 
-function loadESLintConfig(fileName: string, configFile?: string) {
+async function loadESLintConfig(fileName: string, configFile?: string) {
   const log = logger('format-imports.loadESLintConfig');
   log.debug('Loading ESLint config for fileName:', fileName, 'from', configFile ?? 'default');
   log.debug('ESLint API version:', ESLint.version);
   try {
-    const eslint = new CLIEngine({ configFile });
-    if (eslint.isPathIgnored(fileName)) {
+    const eslint = new ESLint({ overrideConfigFile: configFile });
+    if (await eslint.isPathIgnored(fileName)) {
       log.debug('Ignored by ESLint for fileName:', fileName);
       return undefined;
     }
-    return eslint.getConfigForFile(fileName);
+    return (await eslint.calculateConfigForFile(fileName)) as Linter.Config;
   } catch (e: unknown) {
     const msg = e instanceof Error ? e.message : `${e}`;
     log.warn('Failed to load ESLint config for fileName:', fileName, 'with error:', msg);

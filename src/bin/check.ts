@@ -34,7 +34,7 @@ export async function check(options: Options) {
       continue;
     }
     const stat = fs.statSync(filePath);
-    if (stat.isFile()) processFile(config, filePath);
+    if (stat.isFile()) await processFile(config, filePath);
     else if (stat.isDirectory()) await processDirectory(options, config, filePath);
     else {
       STATS.otherIssues++;
@@ -44,7 +44,7 @@ export async function check(options: Options) {
   summary();
 }
 
-function processFile(baseConfig: Configuration, filePath: string, realPath?: string) {
+async function processFile(baseConfig: Configuration, filePath: string, realPath?: string) {
   if (!isSupported(filePath)) return;
   STATS.processed++;
   const resolvedPath = realPath ?? path.resolve(filePath);
@@ -54,7 +54,7 @@ function processFile(baseConfig: Configuration, filePath: string, realPath?: str
     return;
   }
   const source = fs.readFileSync(resolvedPath).toString();
-  const result = formatSourceFromFile(source, resolvedPath, config);
+  const result = await formatSourceFromFile(source, resolvedPath, config);
   if (result !== undefined) {
     STATS.styleIssues++;
     process.stderr.write(`'${filePath}' is different after formatting.\n`);
@@ -65,7 +65,7 @@ async function processDirectory(options: Options, config: Configuration, dirPath
   const { recursive } = options;
   for await (const { relativePath, resolvedPath } of getFiles(dirPath, !recursive)) {
     const filePath = path.join(dirPath, relativePath);
-    processFile(config, filePath, resolvedPath);
+    await processFile(config, filePath, resolvedPath);
   }
 }
 

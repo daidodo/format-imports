@@ -1,4 +1,5 @@
 import ts, { ScriptTarget } from 'typescript';
+import { PromiseType } from 'utility-types';
 
 import { logger } from '../../common';
 import { Configuration } from '../../config';
@@ -27,7 +28,7 @@ import {
 import { RangeAndEmptyLines } from '../types';
 import { decideKeep } from './keep';
 
-type AllConfig = ReturnType<typeof enhanceConfig>;
+type AllConfig = PromiseType<ReturnType<typeof enhanceConfig>>;
 
 export function formatSource(
   text: string,

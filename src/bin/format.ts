@@ -91,12 +91,12 @@ function processStdin(options: Options) {
   const baseConfig = loadBaseConfig(options);
   const chunks: string[] = [];
   process.stdin.on('data', data => chunks.push(data.toString()));
-  process.stdin.on('end', () => {
+  process.stdin.on('end', async () => {
     const source = chunks.join();
     if (!source) return;
     const config = resolveConfigForSource(source, baseConfig);
     const ext = decideExtension(options);
-    const result = formatSourceWithoutFile(source, ext, config, {
+    const result = await formatSourceWithoutFile(source, ext, config, {
       skipEslintConfig: true,
       skipTsConfig: true,
     });
@@ -121,15 +121,13 @@ async function processDirectory(dirPath: string, options: Options) {
     const config = resolveConfigForFile(inputFile, baseConfig);
     if (isFileExcludedByConfig(inputFile, config)) continue;
     const source = fs.readFileSync(inputFile).toString();
-    const result = formatSourceFromFile(source, inputFile, config);
+    const result = await formatSourceFromFile(source, inputFile, config);
     const outputFile = output ? path.join(output, relativePath) : output;
-    const { error, modified: m, created: c } = outputResult(
-      mode,
-      result,
-      outputFile,
-      source,
-      filePath,
-    );
+    const {
+      error,
+      modified: m,
+      created: c,
+    } = outputResult(mode, result, outputFile, source, filePath);
     if (error) process.exit(1);
     if (m) modified += m;
     if (c) created += c;
@@ -137,7 +135,7 @@ async function processDirectory(dirPath: string, options: Options) {
   summary(mode, modified, created);
 }
 
-function processFiles(filePaths: string[], options: Options) {
+async function processFiles(filePaths: string[], options: Options) {
   const { output, dryRun } = options;
   const single = filePaths.length === 1;
   if (!single && output) {
@@ -168,18 +166,16 @@ function processFiles(filePaths: string[], options: Options) {
       process.stdout.write(`'${filePath}' is excluded by config.\n`);
     } else {
       const source = fs.readFileSync(inputFile).toString();
-      const result = formatSourceFromFile(source, inputFile, config);
+      const result = await formatSourceFromFile(source, inputFile, config);
       const outputFile =
         output && fs.existsSync(output) && fs.statSync(output).isDirectory()
           ? path.resolve(output, path.basename(inputFile))
           : output;
-      const { error, modified: m, created: c } = outputResult(
-        mode,
-        result,
-        outputFile,
-        source,
-        filePath,
-      );
+      const {
+        error,
+        modified: m,
+        created: c,
+      } = outputResult(mode, result, outputFile, source, filePath);
       if (error) process.exit(1);
       if (m) modified += m;
       if (c) created += c;
@@ -202,12 +198,12 @@ function sumResult(num: number, action: string) {
 export async function format(options: Options) {
   switch (options._.length) {
     case 0:
-      processStdin(options);
+      await processStdin(options);
       break;
     case 1:
       await processDirectory(options._[0], options);
       break;
     default:
-      processFiles(options._, options);
+      await processFiles(options._, options);
   }
 }
