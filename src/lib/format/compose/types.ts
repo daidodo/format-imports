@@ -1,5 +1,5 @@
-import { ComposeConfig } from '../config';
-import ComposeResult from './ComposeResult';
+import { type ComposeConfig } from '../config';
+import type ComposeResult from './ComposeResult';
 
 export interface ComposePart {
   /**

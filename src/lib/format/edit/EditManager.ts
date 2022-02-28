@@ -1,8 +1,8 @@
 import { isNonNull } from '@dozerg/condition';
 
-import { ComposeConfig } from '../config';
-import { RangeAndEmptyLines } from '../types';
-import { Edit } from './types';
+import { type ComposeConfig } from '../config';
+import { type RangeAndEmptyLines } from '../types';
+import { type Edit } from './types';
 
 interface InsertText {
   text?: string;

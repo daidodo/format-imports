@@ -2,7 +2,7 @@ import fs from 'fs-extra';
 import path from 'path';
 
 import {
-  Configuration,
+  type Configuration,
   formatSourceFromFile,
   isFileExcludedByConfig,
   resolveConfigForFile,
@@ -11,7 +11,7 @@ import {
   isSupported,
   loadBaseConfig,
 } from './config';
-import { Options } from './options';
+import { type Options } from './options';
 import { getFiles } from './utils';
 
 const STATS = {

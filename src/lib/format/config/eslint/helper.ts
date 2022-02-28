@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/ban-types */
 
-import { Linter } from 'eslint';
-import { UnionToIntersection } from 'utility-types';
+import { type Linter } from 'eslint';
+import { type UnionToIntersection } from 'utility-types';
 
 import { isNonNull } from '@dozerg/condition';
 
 import { logger } from '../../../common';
-import { Configuration } from '../../../config';
+import { type Configuration } from '../../../config';
 
 export type Rules = Required<Linter.Config>['rules'];
 

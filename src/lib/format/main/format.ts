@@ -2,10 +2,10 @@ import ts, { ScriptTarget } from 'typescript';
 
 import { logger } from '../../common';
 import { type Configuration } from '../../config';
-import {
+import type {
   ComposeConfig,
-  type EnhancedConfig,
-  type ESLintConfigProcessed,
+  EnhancedConfig,
+  ESLintConfigProcessed,
 } from '../config';
 import {
   apply,
@@ -24,7 +24,7 @@ import {
   sortExports,
   sortImports,
 } from '../sort';
-import { type RangeAndEmptyLines } from '../types';
+import type { RangeAndEmptyLines } from '../types';
 import { decideKeep } from './keep';
 
 export function formatSource(

@@ -1,4 +1,4 @@
-import { LineAndCharacter } from 'typescript';
+import { type LineAndCharacter } from 'typescript';
 
 export interface Pos extends LineAndCharacter {
   pos: number;

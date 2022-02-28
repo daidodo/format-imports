@@ -4,11 +4,11 @@ import {
 } from '@dozerg/condition';
 
 import { noNew } from '../../common';
-import { ComposeConfig } from '../config';
-import { NameBinding } from '../types';
+import { type ComposeConfig } from '../config';
+import { type NameBinding } from '../types';
 import ComposeLine from './ComposeLine';
 import ComposeResult from './ComposeResult';
-import { ComposePart } from './types';
+import { type ComposePart } from './types';
 
 class NamedPart implements ComposePart {
   private readonly names: string[];

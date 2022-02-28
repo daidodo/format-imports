@@ -1,6 +1,6 @@
 import {
-  ExportDeclaration,
-  StringLiteral,
+  type ExportDeclaration,
+  type StringLiteral,
   SyntaxKind,
 } from 'typescript';
 
@@ -10,11 +10,11 @@ import {
   SemiPart,
   StringPart,
 } from '../compose';
-import { ComposeConfig } from '../config';
-import { NameBinding } from '../types';
+import { type ComposeConfig } from '../config';
+import type { NameBinding } from '../types';
 import { getNameBinding } from './helper';
 import { normalizePath } from './path';
-import Statement, { StatementArgs } from './Statement';
+import Statement, { type StatementArgs } from './Statement';
 
 export default class ExportNode extends Statement {
   private readonly moduleIdentifier_?: string;

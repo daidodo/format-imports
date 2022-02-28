@@ -1,16 +1,16 @@
 import ts, {
-  CommentRange,
-  Node,
-  SourceFile,
-  TextRange,
+  type CommentRange,
+  type Node,
+  type SourceFile,
+  type TextRange,
 } from 'typescript';
 
-import {
+import type {
   LineRange,
   NodeComment,
   Pos,
 } from '../types';
-import ParseParams from './ParseParams';
+import type ParseParams from './ParseParams';
 
 export function parseLineRanges(node: Node, p: ParseParams) {
   const { sourceFile, sourceText } = p;

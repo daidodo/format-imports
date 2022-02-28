@@ -1,8 +1,8 @@
 import { noNew } from '../../common';
-import { ComposeConfig } from '../config';
+import { type ComposeConfig } from '../config';
 import ComposeLine from './ComposeLine';
 import ComposeResult from './ComposeResult';
-import { ComposePart } from './types';
+import { type ComposePart } from './types';
 
 class SemiPart implements ComposePart {
   constructor(private readonly trailing = 0) {}

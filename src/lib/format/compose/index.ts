@@ -3,14 +3,14 @@ import {
   isNonNull,
 } from '@dozerg/condition';
 
-import { ComposeConfig } from '../config';
-import { NodeComment } from '../types';
+import { type ComposeConfig } from '../config';
+import { type NodeComment } from '../types';
 import AssertPart from './AssertPart';
 import ComposeResult from './ComposeResult';
 import NamedPart from './NamedPart';
 import SemiPart from './SemiPart';
 import StringPart from './StringPart';
-import { ComposePart } from './types';
+import { type ComposePart } from './types';
 
 export { AssertPart, NamedPart, SemiPart, StringPart };
 

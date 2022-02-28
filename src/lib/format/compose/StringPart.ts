@@ -1,7 +1,7 @@
 import { noNew } from '../../common';
 import ComposeLine from './ComposeLine';
 import ComposeResult from './ComposeResult';
-import { ComposePart } from './types';
+import { type ComposePart } from './types';
 
 class StringPart implements ComposePart {
   constructor(private readonly text: string, private readonly noWrap = false) {}

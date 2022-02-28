@@ -1,4 +1,4 @@
-import { ComposeConfig } from '../config';
+import { type ComposeConfig } from '../config';
 
 export default class ComposeLine {
   constructor(

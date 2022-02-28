@@ -13,7 +13,7 @@ import {
   isSupported,
   loadBaseConfig,
 } from './config';
-import { Options } from './options';
+import { type Options } from './options';
 import { getFiles } from './utils';
 
 enum OutputMode {

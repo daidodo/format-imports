@@ -1,10 +1,10 @@
 import {
-  Configuration,
+  type Configuration,
   mergeConfig,
 } from '../../../../config';
 import {
   extractOptions,
-  Rules,
+  type Rules,
 } from '../helper';
 
 const DEFAULT_OPTIONS = 4;

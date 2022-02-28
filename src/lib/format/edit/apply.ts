@@ -1,6 +1,6 @@
-import { SourceFile } from 'typescript';
+import { type SourceFile } from 'typescript';
 
-import { Edit } from './types';
+import { type Edit } from './types';
 
 /**
  * Apply `edits`(insert/replace/delete) to `sourceText` from `sourceFile`.

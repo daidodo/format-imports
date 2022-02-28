@@ -1,13 +1,13 @@
-import { PromiseType } from 'utility-types';
+import { type PromiseType } from 'utility-types';
 
-import { Configuration } from '../../config';
+import { type Configuration } from '../../config';
 import {
-  ComposeConfig,
+  type ComposeConfig,
   configForCompose,
 } from './compose';
 import {
   enhanceWithEslint,
-  ESLintConfigProcessed,
+  type ESLintConfigProcessed,
 } from './eslint';
 import { loadTsConfig } from './tsconfig';
 
@@ -18,7 +18,7 @@ export interface FormatOptions {
   eslintConfigPath?: string;
 }
 
-export { ComposeConfig, ESLintConfigProcessed };
+export { type ComposeConfig, type ESLintConfigProcessed };
 
 export type EnhancedConfig = PromiseType<ReturnType<typeof enhanceConfig>>;
 

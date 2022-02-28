@@ -1,14 +1,14 @@
 import {
   COMPARE_RULE_DEFAULT,
-  CompareRule,
-  SortRules,
+  type CompareRule,
+  type SortRules,
 } from '../../config';
-import { ImportNode } from '../parser';
-import {
+import { type ImportNode } from '../parser';
+import type {
   Binding,
   NameBinding,
 } from '../types';
-import Segment, { Params } from './Segment';
+import Segment, { type Params } from './Segment';
 
 export type Comparator = (a: string | undefined, b: string | undefined) => number;
 type InnerComparator = (a: string | undefined, b: string | undefined, c: boolean) => number;

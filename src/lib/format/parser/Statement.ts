@@ -1,9 +1,9 @@
 import { assertTrue } from '@dozerg/condition';
 
-import { Configuration } from '../../config';
+import { type Configuration } from '../../config';
 import { composeComments } from '../compose';
-import { ComposeConfig } from '../config';
-import {
+import { type ComposeConfig } from '../config';
+import type {
   NodeComment,
   RangeAndEmptyLines,
 } from '../types';

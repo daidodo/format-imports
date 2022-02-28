@@ -1,18 +1,18 @@
 import {
-  CompilerOptions,
-  ExportDeclaration,
-  ExpressionStatement,
-  ImportDeclaration,
-  ImportEqualsDeclaration,
-  Node,
-  SourceFile,
-  StringLiteral,
+  type CompilerOptions,
+  type ExportDeclaration,
+  type ExpressionStatement,
+  type ImportDeclaration,
+  type ImportEqualsDeclaration,
+  type Node,
+  type SourceFile,
+  type StringLiteral,
   SyntaxKind,
 } from 'typescript';
 
 import { logger } from '../../common';
-import { Configuration } from '../../config';
-import { RangeAndEmptyLines } from '../types';
+import { type Configuration } from '../../config';
+import type { RangeAndEmptyLines } from '../types';
 import ExportNode from './ExportNode';
 import ImportNode from './ImportNode';
 import {
@@ -20,7 +20,7 @@ import {
   parseLineRanges,
 } from './lines';
 import ParseParams from './ParseParams';
-import { StatementArgs } from './Statement';
+import { type StatementArgs } from './Statement';
 
 export function parseSource(
   sourceFile: SourceFile,

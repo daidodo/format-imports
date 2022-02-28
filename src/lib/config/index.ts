@@ -3,7 +3,7 @@ import minimatch from 'minimatch';
 import { endOfLine } from '@dozerg/end-of-line';
 
 import { enhanceEol } from './importSorter';
-import { Configuration } from './types';
+import { type Configuration } from './types';
 
 export * from './types';
 

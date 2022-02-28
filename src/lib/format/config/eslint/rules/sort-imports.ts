@@ -1,12 +1,12 @@
 import {
-  CompareRule,
-  Configuration,
-  FlagSymbol,
+  type CompareRule,
+  type Configuration,
+  type FlagSymbol,
   mergeConfig,
 } from '../../../../config';
 import {
   extractOptions,
-  Rules,
+  type Rules,
 } from '../helper';
 
 type Syntax = 'none' | 'all' | 'multiple' | 'single';

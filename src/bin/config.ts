@@ -4,7 +4,7 @@ import {
   loadConfigFromJsonFile,
   SUPPORTED_EXTENSIONS,
 } from '../lib';
-import { Options } from './options';
+import { type Options } from './options';
 
 export function loadBaseConfig({ config, force }: Options) {
   const cfg = config ? loadConfigFromJsonFile(config) : {};
@@ -13,12 +13,12 @@ export function loadBaseConfig({ config, force }: Options) {
 
 export function decideExtension({ extension, output }: Options) {
   // `path.extname` returns '.xxx' so need to skip '.'.
-  const ext = extension || (output && path.extname(output).substr(1));
+  const ext = extension || (output && path.extname(output).substring(1));
   return (ext ? SUPPORTED_EXTENSIONS.find(e => e === ext) : 'ts') || 'ts';
 }
 
 export function isSupported(fileName: string) {
   // `path.extname` returns '.xxx' so need to skip '.'.
-  const ext = path.extname(fileName).substr(1);
+  const ext = path.extname(fileName).substring(1);
   return SUPPORTED_EXTENSIONS.some(e => e === ext);
 }

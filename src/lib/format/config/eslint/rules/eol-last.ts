@@ -1,10 +1,10 @@
 import {
-  Configuration,
+  type Configuration,
   mergeConfig,
 } from '../../../../config';
 import {
   extractOptions,
-  Rules,
+  type Rules,
 } from '../helper';
 
 type Options = 'always' | 'never';

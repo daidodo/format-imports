@@ -1,14 +1,14 @@
 import ts, {
-  CompilerHost,
-  CompilerOptions,
-  Diagnostic,
-  SourceFile,
+  type CompilerHost,
+  type CompilerOptions,
+  type Diagnostic,
+  type SourceFile,
 } from 'typescript';
 
 import { isNumber } from '@dozerg/condition';
 
 import { logger } from '../../common';
-import ImportNode from './ImportNode';
+import type ImportNode from './ImportNode';
 import { normalizePath } from './path';
 
 export interface NameUsage {

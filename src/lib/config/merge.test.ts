@@ -1,5 +1,5 @@
 import { mergeConfig } from './merge';
-import { Configuration } from './types';
+import { type Configuration } from './types';
 
 describe('config/merge', () => {
   describe('mergeConfig', () => {

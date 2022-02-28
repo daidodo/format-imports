@@ -1,11 +1,11 @@
 import {
   ESLint,
-  Linter,
+  type Linter,
 } from 'eslint';
-import { PromiseType } from 'utility-types';
+import { type PromiseType } from 'utility-types';
 
 import { logger } from '../../../common';
-import { Configuration } from '../../../config';
+import { type Configuration } from '../../../config';
 import { apply } from './helper';
 import { translateCommaDangleRule } from './rules/comma-dangle';
 import { translateEolLastRule } from './rules/eol-last';

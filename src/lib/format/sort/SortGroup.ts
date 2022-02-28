@@ -1,14 +1,14 @@
 import {
-  FlagSymbol,
-  GroupRule,
+  type FlagSymbol,
+  type GroupRule,
 } from '../../config';
 import {
-  ComposeConfig,
-  ESLintConfigProcessed,
+  type ComposeConfig,
+  type ESLintConfigProcessed,
 } from '../config';
-import { ImportNode } from '../parser';
+import { type ImportNode } from '../parser';
 import {
-  Sorter,
+  type Sorter,
   sorterFromRules,
   updateSorterWithRules,
 } from './compare';
@@ -152,10 +152,10 @@ export default class SortGroup {
   }
 
   private get allNodes_(): ImportNode[] {
-    return (this.subGroups_ ?? []).reduce((r, g) => [...r, ...g.allNodes_], [
-      ...this.scripts_,
-      ...this.nodes_,
-    ]);
+    return (this.subGroups_ ?? []).reduce(
+      (r, g) => [...r, ...g.allNodes_],
+      [...this.scripts_, ...this.nodes_],
+    );
   }
 
   /**

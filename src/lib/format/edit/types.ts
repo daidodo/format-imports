@@ -1,4 +1,4 @@
-import { Pos } from '../types';
+import { type Pos } from '../types';
 
 export interface Edit {
   range: {

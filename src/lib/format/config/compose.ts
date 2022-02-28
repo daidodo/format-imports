@@ -1,7 +1,7 @@
-import { DeepReadonly } from 'utility-types';
+import { type DeepReadonly } from 'utility-types';
 
-import { Configuration } from '../../config';
-import { ESLintConfigProcessed } from './eslint';
+import { type Configuration } from '../../config';
+import { type ESLintConfigProcessed } from './eslint';
 
 export type ComposeConfig = DeepReadonly<ReturnType<typeof configForCompose>>;
 

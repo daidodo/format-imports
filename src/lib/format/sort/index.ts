@@ -1,15 +1,15 @@
 import {
-  Configuration,
+  type Configuration,
   GROUP_RULES_DEFAULT,
 } from '../../config';
-import { ESLintConfigProcessed } from '../config';
+import { type ESLintConfigProcessed } from '../config';
 import {
-  ImportNode,
+  type ImportNode,
   KeepUnused,
-  NameUsage,
+  type NameUsage,
 } from '../parser';
 import {
-  Sorter,
+  type Sorter,
   sorterFromRules,
 } from './compare';
 import { mergeImportNodes } from './merge';

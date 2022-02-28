@@ -1,7 +1,7 @@
 import { assert } from 'console';
 
-import { ComposeConfig } from '../config';
-import ComposeLine from './ComposeLine';
+import { type ComposeConfig } from '../config';
+import type ComposeLine from './ComposeLine';
 
 export default class ComposeResult {
   constructor(

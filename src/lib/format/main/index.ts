@@ -2,10 +2,10 @@ import fs from 'fs';
 import tmp from 'tmp';
 
 import { logger } from '../../common';
-import { Configuration } from '../../config';
+import { type Configuration } from '../../config';
 import {
   enhanceConfig,
-  FormatOptions,
+  type FormatOptions,
 } from '../config';
 import { formatSource } from './format';
 

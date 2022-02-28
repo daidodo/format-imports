@@ -1,9 +1,9 @@
 import { Map } from 'immutable';
 
-import { ComposeConfig } from '../config';
+import { type ComposeConfig } from '../config';
 import ComposeLine from './ComposeLine';
 import ComposeResult from './ComposeResult';
-import { ComposePart } from './types';
+import { type ComposePart } from './types';
 
 class AssertPart implements ComposePart {
   constructor(private readonly asserts: Map<string, string>, private readonly noWrap = false) {}

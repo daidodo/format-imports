@@ -1,17 +1,17 @@
 import { Map } from 'immutable';
 import {
-  AssertClause,
-  ImportClause,
-  ImportDeclaration,
-  ImportEqualsDeclaration,
-  NamedImportBindings,
-  StringLiteral,
+  type AssertClause,
+  type ImportClause,
+  type ImportDeclaration,
+  type ImportEqualsDeclaration,
+  type NamedImportBindings,
+  type StringLiteral,
   SyntaxKind,
 } from 'typescript';
 
 import { assertNonNull } from '@dozerg/condition';
 
-import { FlagSymbol } from '../../config';
+import { type FlagSymbol } from '../../config';
 import {
   AssertPart,
   composeParts,
@@ -19,16 +19,16 @@ import {
   SemiPart,
   StringPart,
 } from '../compose';
-import { ComposeConfig } from '../config';
-import {
+import { type ComposeConfig } from '../config';
+import type {
   Binding,
   NameBinding,
 } from '../types';
 import { getNameBinding } from './helper';
-import KeepUnused from './KeepUnused';
+import type KeepUnused from './KeepUnused';
 import { normalizePath } from './path';
-import Statement, { StatementArgs } from './Statement';
-import { NameUsage } from './unused';
+import Statement, { type StatementArgs } from './Statement';
+import { type NameUsage } from './unused';
 
 export default class ImportNode extends Statement {
   private readonly node_: ImportDeclaration | ImportEqualsDeclaration;

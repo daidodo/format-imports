@@ -1,6 +1,6 @@
 import {
   spawnSync,
-  SpawnSyncOptions,
+  type SpawnSyncOptions,
 } from 'child_process';
 import { compareSync } from 'dir-compare';
 import fs from 'fs-extra';

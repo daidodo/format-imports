@@ -1,11 +1,11 @@
-import ts, { SourceFile } from 'typescript';
+import ts, { type SourceFile } from 'typescript';
 
-import {
+import type {
   Pos,
   RangeAndEmptyLines,
 } from '../types';
-import ExportNode from './ExportNode';
-import ImportNode from './ImportNode';
+import type ExportNode from './ExportNode';
+import type ImportNode from './ImportNode';
 
 export default class ParseParams {
   readonly sourceFile: SourceFile;

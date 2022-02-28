@@ -1,4 +1,4 @@
-import { ExportNode } from '../parser';
+import { type ExportNode } from '../parser';
 
 /**
  * Decide which export to keep if there are multiple empty exports and no imports.

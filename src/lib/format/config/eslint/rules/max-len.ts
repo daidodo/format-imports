@@ -1,13 +1,13 @@
 import {
-  Configuration,
+  type Configuration,
   customize,
   DEFAULT_MERGER,
   mergeConfigWithMerger,
-  Merger,
+  type Merger,
 } from '../../../../config';
 import {
   extractOptions,
-  Rules,
+  type Rules,
 } from '../helper';
 
 const DEFAULT_OPTIONS = {

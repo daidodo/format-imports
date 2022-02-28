@@ -1,6 +1,6 @@
-import { Identifier } from 'typescript';
+import { type Identifier } from 'typescript';
 
-import { NameBinding } from '../types';
+import type { NameBinding } from '../types';
 
 export function getNameBinding(specifier: {
   propertyName?: Identifier;

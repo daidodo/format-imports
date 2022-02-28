@@ -1,14 +1,14 @@
 import {
-  ExportNode,
-  ImportNode,
+  type ExportNode,
+  type ImportNode,
 } from '../parser';
-import { NameBinding } from '../types';
+import type { NameBinding } from '../types';
 import {
-  Comparator,
+  type Comparator,
   compareBindingName,
   compareImportNodesByNames,
   compareImportNodesByPaths,
-  Sorter,
+  type Sorter,
 } from './compare';
 
 export function mergeImportNodes(nodes: ImportNode[]) {

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
-import { SegSymbol } from '../../config';
+import { type SegSymbol } from '../../config';
 
 type Comparator = (a: number, b: number, c: boolean) => number;
 
