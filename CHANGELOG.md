@@ -17,14 +17,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+
+-->
+
+## [3.0.0] - 2022-02-28
+
+### Added
+
 - Add `--log, -l` option to CLI.
-- Add `formatSourceFromFile.sync` and `formatSourceWithoutFile.sync` as sync version but not support ESLint config.
+- Add `formatSourceFromFile.sync` and `formatSourceWithoutFile.sync` as sync version without support to ESLint config.
 
 ### Changes
 
 - `formatSourceFromFile` and `formatSourceWithoutFile` are changed to async functions.
-
--->
 
 ## [2.4.10] - 2022-02-06
 

@@ -7,7 +7,6 @@
   - Atom
   - Prettier plugin.
 - Test CLI in CI/CD pipelines.
-- Webpack. ([Link](https://github.com/eslint/eslint/issues/13974), ESLint PRs ([PR](https://github.com/eslint/eslintrc/pull/71), [PR](https://github.com/eslint/eslint/pull/15616)))
 - Type `optionator`.
 - Add `skipTsConfig` and `skipEslintConfig` to in config/development. ([Link](https://github.com/daidodo/format-imports-vscode/issues/27#issuecomment-747553733))
 - Support for .vue files. ([Link](https://github.com/daidodo/format-imports-vscode/issues/37), [Link](https://github.com/MLoughry/sort-typescript-imports/issues/31))
@@ -34,6 +33,7 @@
 
 ### DONE
 
+- ~~Webpack. ([Link](https://github.com/eslint/eslint/issues/13974), ESLint PRs ([PR](https://github.com/eslint/eslintrc/pull/71), [PR](https://github.com/eslint/eslint/pull/15616)))~~
 - ~~Add debug mode to CLI. ([Link](https://github.com/daidodo/format-imports/issues/3))~~
 - ~~Support ESLint rule [comma-dangle](https://eslint.org/docs/rules/comma-dangle).~~
 - ~~Support [import assertions](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#import-assertions).~~
