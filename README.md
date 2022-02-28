@@ -216,7 +216,8 @@ if (isFileExcludedByConfig(fileName, config))
   return;
 
 const text = fs.readFileSync(fileName).toString();
-const newText = formatSourceFromFile(text, fileName, config);
+// Use sync version of formatSourceFromFile()
+const newText = formatSourceFromFile.sync(text, fileName, config);
 
 if (newText === undefined)
   console.log("Everything is sorted!");
@@ -224,7 +225,11 @@ else
   console.log(newText);
 ```
 
-Please refer to [APIs Documentation](docs/README.md) for more details.
+_Caveat:_
+
+- _Sync version of `formatSourceFromFile` and `formatSourceWithoutFile` don't support ESLint config._
+
+Please refer to [APIs Documentation](docs/README.md) for full details.
 
 ## Extending Configuration
 

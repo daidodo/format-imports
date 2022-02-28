@@ -1,39 +1,36 @@
 import ts, { ScriptTarget } from 'typescript';
-import { PromiseType } from 'utility-types';
 
 import { logger } from '../../common';
-import { Configuration } from '../../config';
+import { type Configuration } from '../../config';
 import {
   ComposeConfig,
-  enhanceConfig,
-  ESLintConfigProcessed,
+  type EnhancedConfig,
+  type ESLintConfigProcessed,
 } from '../config';
 import {
   apply,
   EditManager,
 } from '../edit';
 import {
-  ExportNode,
+  type ExportNode,
   getUnusedIds,
-  ImportNode,
-  NameUsage,
+  type ImportNode,
+  type NameUsage,
   parseSource,
 } from '../parser';
 import {
-  Sorter,
+  type Sorter,
   sorterFromRules,
   sortExports,
   sortImports,
 } from '../sort';
-import { RangeAndEmptyLines } from '../types';
+import { type RangeAndEmptyLines } from '../types';
 import { decideKeep } from './keep';
-
-type AllConfig = PromiseType<ReturnType<typeof enhanceConfig>>;
 
 export function formatSource(
   text: string,
   fileName: string,
-  { config, tsCompilerOptions, processed, composeConfig }: AllConfig,
+  { config, tsCompilerOptions, processed, composeConfig }: EnhancedConfig,
 ) {
   const log = logger('format-imports.formatSource');
   log.info('Formatting', fileName, 'with enhanced config:', config);

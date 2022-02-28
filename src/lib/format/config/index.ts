@@ -1,3 +1,5 @@
+import { PromiseType } from 'utility-types';
+
 import { Configuration } from '../../config';
 import {
   ComposeConfig,
@@ -18,6 +20,8 @@ export interface FormatOptions {
 
 export { ComposeConfig, ESLintConfigProcessed };
 
+export type EnhancedConfig = PromiseType<ReturnType<typeof enhanceConfig>>;
+
 export async function enhanceConfig(
   config: Configuration,
   fileName: string,
@@ -32,3 +36,12 @@ export async function enhanceConfig(
   const composeConfig = configForCompose(newConfig, processed);
   return { config: newConfig, tsCompilerOptions, processed, composeConfig };
 }
+
+// Will NOT read ESLint config.
+enhanceConfig.sync = (config: Configuration, fileName: string, options?: FormatOptions) => {
+  const tsCompilerOptions = options?.skipTsConfig
+    ? undefined
+    : loadTsConfig(fileName, options?.tsConfigPath);
+  const composeConfig = configForCompose(config);
+  return { config, tsCompilerOptions, processed: undefined, composeConfig };
+};
