@@ -1,4 +1,5 @@
-import { assert } from '../../common';
+import { assertTrue } from '@dozerg/condition';
+
 import { Configuration } from '../../config';
 import { composeComments } from '../compose';
 import { ComposeConfig } from '../config';
@@ -58,7 +59,7 @@ export default class Statement {
   }
 
   protected mergeComments(node: Statement) {
-    assert(this.canMergeComments(node));
+    assertTrue(this.canMergeComments(node));
     if (!this.leadingComments_) this.leadingComments_ = node.leadingComments_;
     if (!this.trailingCommentsText_) this.trailingCommentsText_ = node.trailingCommentsText_;
     node.leadingComments_ = undefined;

@@ -4,6 +4,8 @@
 import { Linter } from 'eslint';
 import { UnionToIntersection } from 'utility-types';
 
+import { isNonNull } from '@dozerg/condition';
+
 import { logger } from '../../../common';
 import { Configuration } from '../../../config';
 
@@ -29,7 +31,7 @@ export function extractOptions<Options>(
       log.info(ignored ? 'Ignored' : 'Found', `ESLint rule ${key}:`, o);
       return ignored ? undefined : o;
     })
-    .filter((o): o is Options => o !== undefined);
+    .filter(isNonNull);
   // If multiple opitons are found, the last one takes precedence.
   return results.length < 1 ? undefined : results[results.length - 1];
 }

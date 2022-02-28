@@ -3,10 +3,14 @@ import fs from 'fs';
 import path, { sep } from 'path';
 
 import {
+  assertNonNull,
+  isNonNull,
+} from '@dozerg/condition';
+
+import {
   formatSourceFromFile,
   resolveConfigForFile,
 } from '../../lib';
-import { assertNonNull } from '../../lib/common';
 
 interface TestSuite {
   name: string;
@@ -53,7 +57,7 @@ function getTestSuite(dir: string, name: string): TestSuite | undefined {
   const suites = entries
     .filter(e => e.isDirectory())
     .map(({ name }) => getTestSuite(path, name))
-    .filter((s): s is TestSuite => !!s);
+    .filter(isNonNull);
   const map = new Map<string, TestCase>();
   entries
     .filter(e => e.isFile())

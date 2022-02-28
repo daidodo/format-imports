@@ -1,4 +1,8 @@
-import { assertNonNull } from '../../common';
+import {
+  assertNonNull,
+  isNonNull,
+} from '@dozerg/condition';
+
 import { ComposeConfig } from '../config';
 import { NodeComment } from '../types';
 import AssertPart from './AssertPart';
@@ -11,7 +15,7 @@ import { ComposePart } from './types';
 export { AssertPart, NamedPart, SemiPart, StringPart };
 
 export function composeParts(parts: (ComposePart | undefined)[], config: ComposeConfig) {
-  const ps = parts.filter((p): p is ComposePart => !!p);
+  const ps = parts.filter(isNonNull);
   const result = composePartsImpl(ps, config);
   assertNonNull(result);
   return result.text(config);

@@ -5,6 +5,8 @@ import ts, {
   SourceFile,
 } from 'typescript';
 
+import { isNumber } from '@dozerg/condition';
+
 import { logger } from '../../common';
 import ImportNode from './ImportNode';
 import { normalizePath } from './path';
@@ -28,9 +30,7 @@ export function getUnusedIds(
   sourceFile: SourceFile,
   tsCompilerOptions?: CompilerOptions,
 ): NameUsage {
-  const UNUSED_CODE = new Set(
-    Object.values(UnusedCode).filter((v): v is number => typeof v === 'number'),
-  );
+  const UNUSED_CODE = new Set(Object.values(UnusedCode).filter(isNumber));
   const unusedNames = new Set<string>();
   const unusedNodes = Array<ImportNode>();
   const options = prepareOptions(tsCompilerOptions);

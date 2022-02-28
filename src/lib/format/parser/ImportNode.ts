@@ -9,7 +9,8 @@ import {
   SyntaxKind,
 } from 'typescript';
 
-import { assertNonNull } from '../../common';
+import { assertNonNull } from '@dozerg/condition';
+
 import { FlagSymbol } from '../../config';
 import {
   AssertPart,

@@ -1,8 +1,9 @@
 import {
-  assert,
   assertNonNull,
-  noNew,
-} from '../../common';
+  assertTrue,
+} from '@dozerg/condition';
+
+import { noNew } from '../../common';
 import { ComposeConfig } from '../config';
 import { NameBinding } from '../types';
 import ComposeLine from './ComposeLine';
@@ -22,7 +23,7 @@ class NamedPart implements ComposePart {
   }
 
   compose(level: number, config: ComposeConfig): ComposeResult {
-    assert(this.maxWords >= 1);
+    assertTrue(this.maxWords >= 1);
     const { bracket, sComma } = config;
     if (0 < this.names.length && this.names.length <= this.maxWords) {
       const n = bracket(`${this.names.join(', ')}${sComma}`);
@@ -66,7 +67,7 @@ function composeLine(
   { wrap, tabw, mComma, maxLength }: ComposeConfig,
 ) {
   const { length: len } = names;
-  assert(len > 0);
+  assertTrue(len > 0);
   let i = 1;
   for (let sz = tabw * level + names[0].length; i < len && i < wrap.perLine; ++i) {
     const n = sz + 2 + names[i].length;

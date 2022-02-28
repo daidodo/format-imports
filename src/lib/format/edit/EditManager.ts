@@ -1,3 +1,5 @@
+import { isNonNull } from '@dozerg/condition';
+
 import { ComposeConfig } from '../config';
 import { RangeAndEmptyLines } from '../types';
 import { Edit } from './types';
@@ -134,7 +136,7 @@ function joinInserts(inserts: EditBlock[], { nl }: ComposeConfig): EditBlock {
  * Given existing and required minimum newlines, returns number of newlines after formatting.
  */
 function decideNewLines(nl: number[], min: (number | undefined)[]) {
-  const m = min.filter((n): n is number => n !== undefined);
+  const m = min.filter(isNonNull);
   return m.length < 1 ? normalize(Math.max(...nl), 2) : normalize(Math.max(...m));
 }
 

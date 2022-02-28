@@ -127,6 +127,7 @@
     "typedoc-plugin-markdown": "^3.11.12"
   },
   "dependencies": {
+    "@dozerg/condition": "^1.0.1",
     "@dozerg/end-of-line": "^1.0.8",
     "eslint": "^7.32.0",
     "fs-extra": "^9.1.0",

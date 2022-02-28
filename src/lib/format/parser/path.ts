@@ -1,6 +1,6 @@
 import path from 'path';
 
-import { assert } from '../../common';
+import { assertTrue } from '@dozerg/condition';
 
 interface Options {
   removeLastSlashInPath?: boolean;
@@ -47,7 +47,7 @@ export function removeLastSlash(str: string) {
    * ```
    */
   const parts = str.split('/');
-  assert(parts.length > 1);
+  assertTrue(parts.length > 1);
   const prev = parts[parts.length - 2];
   if (parts.length > 2 && PATTERNS.includes(prev)) return str;
   return str.substr(0, str.length - 1);
