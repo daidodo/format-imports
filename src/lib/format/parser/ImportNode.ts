@@ -377,7 +377,9 @@ function getAssertEntries(assertClause: AssertClause | undefined) {
   if (!assertClause) return undefined;
   const { kind, elements } = assertClause;
   if (kind !== SyntaxKind.AssertClause) return undefined;
-  const entries = Map(elements.map(({ name, value }) => [name.text, value.text]));
+  const entries = Map(
+    elements.map(({ name, value }) => [name.text, (value as StringLiteral).text]),
+  );
   return entries.isEmpty() ? undefined : entries;
 }
 
