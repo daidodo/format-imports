@@ -34,7 +34,7 @@
 
 ### DONE
 
-- ~~Webpack. ([Link](https://github.com/eslint/eslint/issues/13974), ESLint PRs ([PR](https://github.com/eslint/eslintrc/pull/71), [PR](https://github.com/eslint/eslint/pull/15616)))~~
+- ~~Remove `dirname` in ESLint. ([Link](https://github.com/eslint/eslint/issues/13974), ESLint PRs ([PR](https://github.com/eslint/eslintrc/pull/71), [PR](https://github.com/eslint/eslint/pull/15616)))~~
 - ~~Add debug mode to CLI. ([Link](https://github.com/daidodo/format-imports/issues/3))~~
 - ~~Support ESLint rule [comma-dangle](https://eslint.org/docs/rules/comma-dangle).~~
 - ~~Support [import assertions](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#import-assertions).~~
