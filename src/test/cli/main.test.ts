@@ -1,3 +1,7 @@
+/* eslint jest/no-focused-tests: "off" */
+/* eslint jest/no-disabled-tests: "off" */
+/* eslint jest/expect-expect: "off" */
+
 import {
   spawnSync,
   type SpawnSyncOptions,
@@ -73,9 +77,18 @@ function runTestSuite(resolved: string, relative?: string | string[]): void {
     .forEach(e => {
       const rp = path.resolve(resolved, e.name);
       if (e.name === name) {
-        if (rest && rest.length > 0) describe(e.name, () => runTestSuite(rp, rest));
-        else describe.only(e.name, () => runTestSuite(rp));
-      } else describe(e.name, () => runTestSuite(rp));
+        if (rest && rest.length > 0)
+          describe(e.name, () => {
+            runTestSuite(rp, rest);
+          });
+        else
+          describe.only(e.name, () => {
+            runTestSuite(rp);
+          });
+      } else
+        describe(e.name, () => {
+          runTestSuite(rp);
+        });
     });
 }
 

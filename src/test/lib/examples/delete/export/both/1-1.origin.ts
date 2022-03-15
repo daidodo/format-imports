@@ -1,5 +1,5 @@
 export { A } from 'a';
 
 'use';
-      export {}';  
+      export {};  
 'str'

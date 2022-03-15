@@ -40,10 +40,9 @@ describe('lib/formatSource', () => {
   const dir = path.resolve(__dirname);
   const examples = getTestSuite(dir, 'examples');
   if (!examples) return;
-  // Run all tests
-  return runTestSuite(examples);
-  // Or, run specific test case(s)
-  // return runTestSuite(examples, 'compose/comma');
+  // Run all tests or specific test case(s)
+  runTestSuite(examples);
+  // runTestSuite(examples, 'compose/comma');
 });
 
 function getTestSuite(dir: string, name: string): TestSuite | undefined {

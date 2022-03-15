@@ -1,6 +1,6 @@
 {
   "rules": {
-    "comma-dangle": ["warn", "ignore"],
+    "comma-dangle": ["warn", { "imports": "ignore", "exports": "ignore" }],
     "@typescript-eslint/comma-dangle": "off"
   }
 }

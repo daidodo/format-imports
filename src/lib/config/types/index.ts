@@ -155,7 +155,7 @@ export interface Configuration {
    */
   readonly insertFinalNewline?: boolean | 'preserve';
   /**
-   * Whether to add spaces between brackets. _true_ for '{ id }' and _false_ for '{id}'. Default to
+   * Whether to add spaces between brackets. _true_ for '\{ id \}' and _false_ for '\{id\}'. Default to
    * _true_.
    */
   readonly bracketSpacing?: boolean;
