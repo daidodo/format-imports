@@ -20,6 +20,7 @@
     "cli-test": "jest src/test/cli",
     "cli-test:update": "jest -u src/test/cli",
     "prepublishOnly": "npm run clean && npm i && npm run compile",
+    "build": "npm run compile",
     "docs": "rm -rf docs && typedoc"
   },
   "repository": {
