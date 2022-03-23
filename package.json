@@ -12,7 +12,7 @@
     "compile": "tsc",
     "compile:watch": "tsc --watch",
     "eslint": "eslint src/ *.ts",
-    "test": "jest",
+    "test": "npm run eslint && jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage src/lib src/test/lib",
     "unit-test": "jest src/lib",
