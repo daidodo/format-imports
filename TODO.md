@@ -88,7 +88,7 @@
 
 ### Externalise
 
-- (precondition) assert, assertNonNull
+- ~~(precondition) assert, assertNonNull~~
 - isObject, merge(Object)
 - noNew
 - findFileFromPathAndParents, parentFolder, normalizePath, removeLastSlash, removeLastIndex
