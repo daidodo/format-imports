@@ -2,9 +2,9 @@ import fs from 'fs';
 
 import { assertTrue } from '@dozerg/condition';
 import { endOfLineForFile } from '@dozerg/end-of-line';
+import findUp from '@dozerg/find-up';
 
 import { logger } from '../common';
-import { findFileFromPathAndParents } from './helper';
 import { mergeConfig } from './merge';
 import { loadPretConfig } from './prettier';
 import { Configuration } from './types';
@@ -41,7 +41,7 @@ export function loadImportSorterConfig<T extends Configuration = Configuration>(
 function fileConfig(fileName: string, path?: string) {
   const log = logger('format-imports.fileConfig');
   log.debug('Loading JSON config from', fileName);
-  const files = findFileFromPathAndParents(fileName, path);
+  const files = findUp.sync(fileName, { type: 'file', cwd: path });
   return readConfigTilRoot(files, file => {
     const config = loadConfigFromJsonFile(file);
     log.debug('Found JSON file', file, 'and config:', config);
@@ -52,7 +52,7 @@ function fileConfig(fileName: string, path?: string) {
 function packageConfig(fileName: string) {
   const log = logger('format-imports.packageConfig');
   log.debug('Loading package.json config for fileName:', fileName);
-  const files = findFileFromPathAndParents('package.json', fileName);
+  const files = findUp.sync('package.json', { cwd: fileName });
   return readConfigTilRoot(files, file => {
     log.debug('Found package.json in', file);
     const { importSorter: config } = JSON.parse(fs.readFileSync(file, 'utf8'));

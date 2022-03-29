@@ -1,38 +1,8 @@
 import assert from 'assert';
-import { sep } from 'path';
 
-import {
-  findFileFromPathAndParents,
-  parentFolder,
-} from './helper';
+import { parentFolder } from './helper';
 
 describe('config/helper', () => {
-  describe('findFileFromPathAndParents', () => {
-    test('all', () => {
-      assert.deepStrictEqual(findFileFromPathAndParents(undefined), []);
-      assert.deepStrictEqual(findFileFromPathAndParents(null), []);
-      assert.deepStrictEqual(findFileFromPathAndParents(''), []);
-      assert.deepStrictEqual(findFileFromPathAndParents('/a/b/c'), ['/a/b/c']);
-      assert.deepStrictEqual(findFileFromPathAndParents('C:\\a\\b'), ['C:\\a\\b']);
-      assert.deepStrictEqual(findFileFromPathAndParents('some.file'), []);
-      assert.deepStrictEqual(findFileFromPathAndParents('some.file', ''), []);
-      assert.deepStrictEqual(findFileFromPathAndParents('non.existing.file', __dirname), []);
-      assert.deepStrictEqual(findFileFromPathAndParents('non.existing.file', __filename), []);
-      assert.ok(
-        findFileFromPathAndParents('index.ts', __dirname).includes(__dirname + sep + 'index.ts'),
-      );
-      assert.ok(
-        findFileFromPathAndParents('index.ts', __filename).includes(__dirname + sep + 'index.ts'),
-      );
-      assert.deepStrictEqual(findFileFromPathAndParents('package.json', __dirname).length, 1);
-      assert.deepStrictEqual(findFileFromPathAndParents('package.json', __filename).length, 1);
-      assert.deepStrictEqual(
-        findFileFromPathAndParents('package.json', __dirname.replace(/\//g, '//')).length,
-        1,
-      );
-    });
-  });
-
   describe('parentFolder', () => {
     test('forward-slash', () => {
       assert.deepStrictEqual(parentFolder(undefined), '');
