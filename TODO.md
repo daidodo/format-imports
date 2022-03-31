@@ -91,6 +91,6 @@
 - ~~(precondition) assert, assertNonNull~~
 - isObject, merge(Object)
 - noNew
-- findFileFromPathAndParents, parentFolder, normalizePath, removeLastSlash, removeLastIndex
+- ~~findFileFromPathAndParents~~, parentFolder, normalizePath, removeLastSlash, removeLastIndex
 - concatArray, concatArrayEx, dedupFlags, join, compareKeyValue
 - getTrailingNewLines
