@@ -4,6 +4,8 @@ import {
 } from 'eslint';
 import { type PromiseType } from 'utility-types';
 
+import findUp from '@dozerg/find-up';
+
 import { logger } from '../../../common';
 import { type Configuration } from '../../../config';
 import { apply } from './helper';
@@ -44,6 +46,7 @@ export async function enhanceWithEslint(
 async function loadESLintConfig(fileName: string, configFile?: string) {
   const log = logger('format-imports.loadESLintConfig');
   log.debug('Loading ESLint config for fileName:', fileName, 'from', configFile ?? 'default');
+  const ESLint = findESLint(fileName);
   log.debug('ESLint API version:', ESLint.version);
   try {
     const eslint = new ESLint({ overrideConfigFile: configFile });
@@ -57,4 +60,28 @@ async function loadESLintConfig(fileName: string, configFile?: string) {
     log.warn('Failed to load ESLint config for fileName:', fileName, 'with error:', msg);
     return undefined;
   }
+}
+
+declare const __webpack_require__: typeof require;
+declare const __non_webpack_require__: typeof require;
+const req = typeof __webpack_require__ === 'function' ? __non_webpack_require__ : require;
+
+function findESLint(fromPath: string) {
+  const log = logger('format-imports.findESLint');
+  const userESLint = findUserESLint(fromPath);
+  if (userESLint) return userESLint;
+  log.warn('Cannot find eslint module from path:', fromPath, ', use pre-packed');
+  return ESLint;
+}
+
+function findUserESLint(fromPath: string) {
+  const log = logger('format-imports.findUserESLint');
+  const [eslintPath] = findUp.sync('node_modules/eslint', {
+    cwd: fromPath,
+    stopAtLimit: 1,
+    type: 'directory',
+  });
+  if (!eslintPath) return undefined;
+  log.debug('Found eslint in', eslintPath);
+  return req(eslintPath).ESLint;
 }
