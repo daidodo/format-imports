@@ -11,10 +11,15 @@ import { type Configuration } from '../../../config';
 import { apply } from './helper';
 import { translateCommaDangleRule } from './rules/comma-dangle';
 import { translateEolLastRule } from './rules/eol-last';
-import { translateNewlineAfterImportRule } from './rules/import/newline-after-import';
-import { translateNoUselessPathSegmentsRule } from './rules/import/no-useless-path-segments';
+import {
+  translateNewlineAfterImportRule,
+} from './rules/import/newline-after-import';
+import {
+  translateNoUselessPathSegmentsRule,
+} from './rules/import/no-useless-path-segments';
 import { translateIndentRule } from './rules/indent';
 import { translateMaxLenRule } from './rules/max-len';
+import { translateObjectCurlySpacingRule } from './rules/object-curly-spacing';
 import { translateSemiRule } from './rules/semi';
 import { translateSortImportsRule } from './rules/sort-imports';
 
@@ -40,6 +45,7 @@ export async function enhanceWithEslint(
     translateEolLastRule,
     translateSemiRule,
     translateCommaDangleRule,
+    translateObjectCurlySpacingRule,
   );
 }
 
