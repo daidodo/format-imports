@@ -1,6 +1,9 @@
 {
   "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "import"],
   "rules": {
+    "@typescript-eslint/no-unused-vars": "off",
     "no-unused-vars": "off",
     "import/no-useless-path-segments": "off",
     "import/newline-after-import": "off",
@@ -10,6 +13,7 @@
     "indent": "off",
     "@typescript-eslint/indent": "off",
     "eol-last": "off",
-    "semi": "off"
+    "semi": "off",
+    "object-curly-spacing": "off"
   }
 }
