@@ -10,7 +10,15 @@ import {
 import { KeepUnusedRule } from './unused';
 import { WrappingRule } from './wrapping';
 
-export { CompareRule, FlagSymbol, GroupRule, KeepUnusedRule, SegSymbol, SortRules, WrappingRule };
+export {
+  CompareRule,
+  FlagSymbol,
+  GroupRule,
+  KeepUnusedRule,
+  SegSymbol,
+  SortRules,
+  WrappingRule,
+};
 
 export interface Configuration {
   /**
@@ -155,7 +163,7 @@ export interface Configuration {
    */
   readonly insertFinalNewline?: boolean | 'preserve';
   /**
-   * Whether to add spaces between brackets. _true_ for '\{ id \}' and _false_ for '\{id\}'. Default to
+   * Whether to add spaces between brackets. _true_ for `{ id }` and _false_ for `{id}`. Default to
    * _true_.
    */
   readonly bracketSpacing?: boolean;
