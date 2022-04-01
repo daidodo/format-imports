@@ -25,10 +25,14 @@ It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](htt
 
 - Add `--log, -l` option to CLI.
 - Add `formatSourceFromFile.sync` and `formatSourceWithoutFile.sync` as sync version without support to ESLint config.
+- Add support for ESLint rules:
+  - [object-curly-spacing](https://eslint.org/docs/rules/object-curly-spacing)
+  - [@typescript-eslint/object-curly-spacing](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/object-curly-spacing.md)
 
 ### Changes
 
 - `formatSourceFromFile` and `formatSourceWithoutFile` are changed to async functions.
+- Enable webpack.
 
 # Table of contents <!-- omit in toc -->
 
@@ -306,6 +310,7 @@ Currently, the supported rules are:
 - [eol-last](../../wiki/ESLint-Compatibility#eol-last)
 - [semi](../../wiki/ESLint-Compatibility#semi)
 - [comma-dangle](../../wiki/ESLint-Compatibility#comma-dangle)
+- [object-curly-spacing](../../wiki/ESLint-Compatibility#object-curly-spacing)
 - [import/newline-after-import](../../wiki/ESLint-Compatibility#importnewline-after-import)
 - [import/no-useless-path-segments](../../wiki/ESLint-Compatibility#importno-useless-path-segments)
 

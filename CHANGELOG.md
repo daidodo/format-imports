@@ -20,6 +20,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -->
 
+## [3.0.5] - 2022-04-01
+
+### Added
+
+- Support ESLint rule [object-curly-spacing](https://eslint.org/docs/rules/object-curly-spacing) and [@typescript-eslint/object-curly-spacing](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/object-curly-spacing.md).
+
+## [3.0.4] - 2022-03-31
+
+### Changes
+
+- Enable webpack.
+- Prefer ESLint from user workspace.
+
 ## [3.0.0] - 2022-02-28
 
 ### Added
