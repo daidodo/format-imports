@@ -1,8 +1,6 @@
 {
-  "root": true,
   "rules": {
-    "no-unused-vars": "off",
     "@typescript-eslint/indent": ["error", 1],
-    "indent": ["error", 3]
+    "indent": ["error", 1]
   }
 }

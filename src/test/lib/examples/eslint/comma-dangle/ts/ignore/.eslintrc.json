@@ -1,6 +1,15 @@
 {
   "rules": {
-    "@typescript-eslint/comma-dangle": ["warn", "ignore"],
+    "@typescript-eslint/comma-dangle": [
+      "warn",
+      {
+        "arrays": "ignore",
+        "objects": "ignore",
+        "imports": "ignore",
+        "exports": "ignore",
+        "functions": "ignore"
+      }
+    ],
     "comma-dangle": "off"
   }
 }

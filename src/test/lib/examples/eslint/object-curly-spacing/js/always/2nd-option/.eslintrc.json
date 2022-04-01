@@ -1,0 +1,10 @@
+{
+  "rules": {
+    "object-curly-spacing": [
+      "error",
+      "always",
+      { "arraysInObjects": false, "objectsInObjects": false }
+    ],
+    "@typescript-eslint/object-curly-spacing": "off"
+  }
+}

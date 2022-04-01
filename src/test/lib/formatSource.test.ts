@@ -1,5 +1,6 @@
 import assert from 'assert';
 import fs from 'fs';
+import log4js from 'log4js';
 import path, { sep } from 'path';
 
 import {
@@ -36,13 +37,16 @@ const ESLINT_CONF = '.eslintrc.json';
  */
 const UPDATE_RESULT = false;
 
+const ENABLE_LOGS = false;
+
 describe('lib/formatSource', () => {
   const dir = path.resolve(__dirname);
   const examples = getTestSuite(dir, 'examples');
   if (!examples) return;
   // Run all tests or specific test case(s)
   runTestSuite(examples);
-  // runTestSuite(examples, 'compose/comma');
+  if (ENABLE_LOGS) log4js.getLogger().level = 'debug';
+  // runTestSuite(examples, 'eslint/semi/ts/never/default');
 });
 
 function getTestSuite(dir: string, name: string): TestSuite | undefined {

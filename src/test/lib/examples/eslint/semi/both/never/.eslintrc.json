@@ -1,6 +1,6 @@
 {
   "rules": {
-    "semi": ["error", "always"],
+    "semi": ["error", "never"],
     "@typescript-eslint/semi": ["error", "never"]
   }
 }

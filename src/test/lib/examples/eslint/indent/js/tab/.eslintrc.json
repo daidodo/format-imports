@@ -1,7 +1,5 @@
 {
-  "root": true,
   "rules": {
-    "no-unused-vars": "off",
     "indent": ["error", "tab"]
   }
 }

@@ -1,14 +1,13 @@
 {
-  "root": true,
   "rules": {
-    "no-unused-vars": "off",
-    "import/no-useless-path-segments": "off",
-    "no-duplicate-imports": "off",
-    "sort-imports": ["warn", {
-      "ignoreMemberSort": true,
-      "ignoreDeclarationSort": true,
-      "allowSeparatedGroups": true,
-      "memberSyntaxSortOrder": ["multiple", "single",  "none", "all"]
-    }]
+    "sort-imports": [
+      "warn",
+      {
+        "ignoreMemberSort": true,
+        "ignoreDeclarationSort": true,
+        "allowSeparatedGroups": true,
+        "memberSyntaxSortOrder": ["multiple", "single", "none", "all"]
+      }
+    ]
   }
 }
