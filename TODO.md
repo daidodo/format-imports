@@ -11,6 +11,7 @@
 - Type `optionator`.
 - Add `skipTsConfig` and `skipEslintConfig` to in config/development. ([Link](https://github.com/daidodo/format-imports-vscode/issues/27#issuecomment-747553733))
 - Support for .vue files. ([Link](https://github.com/daidodo/format-imports-vscode/issues/37), [Link](https://github.com/MLoughry/sort-typescript-imports/issues/31))
+- Support for Svelte files. ([Link](https://github.com/amatiasq/vsc-sort-imports/issues/89))
 - Sort numbers naturally. ([Example](https://github.com/lydell/eslint-plugin-simple-import-sort#sorting))
 - Support rules from [awesome-eslint](https://github.com/dustinspecker/awesome-eslint).
 - Support [benmosher/eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import) rules. ([Link](https://github.com/SoominHan/import-sorter/issues/43), [exports-last](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/exports-last.md), [import/order](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/order.md))
