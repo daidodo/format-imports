@@ -68,7 +68,7 @@ export default class ExportNode extends Statement {
   compose(config: ComposeConfig) {
     const { leadingText, followingNewLines, trailingText, tailingLength } =
       this.composeComments(config);
-    const nl = (followingNewLines ?? 0) > 1 ? '\n' : '';
+    const nl = (followingNewLines ?? 0) > 1 ? config.nl : '';
     const importText = this.composeExport(tailingLength, config);
     return leadingText + nl + importText + trailingText;
   }
