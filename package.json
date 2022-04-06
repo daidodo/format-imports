@@ -112,6 +112,7 @@
   },
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.1",
+    "@types/babel__core": "^7.1.19",
     "@types/eslint": "^8.4.1",
     "@types/fs-extra": "^9.0.13",
     "@types/jest": "^27.4.1",
