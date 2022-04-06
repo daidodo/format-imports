@@ -68,17 +68,17 @@ async function loadESLintConfig(fileName: string, configFile?: string) {
   }
 }
 
-declare const __webpack_require__: typeof require;
-declare const __non_webpack_require__: typeof require;
-const req = typeof __webpack_require__ === 'function' ? __non_webpack_require__ : require;
-
 function findESLint(fromPath: string) {
   const log = logger('format-imports.findESLint');
   const userESLint = findUserESLint(fromPath);
   if (userESLint) return userESLint;
-  log.warn('Cannot find eslint module from path:', fromPath, ', use pre-packed');
+  log.warn('Cannot find eslint module from path:', fromPath, 'so use pre-packed');
   return ESLint;
 }
+
+declare const __webpack_require__: typeof require;
+declare const __non_webpack_require__: typeof require;
+const req = typeof __webpack_require__ === 'function' ? __non_webpack_require__ : require;
 
 function findUserESLint(fromPath: string) {
   const log = logger('format-imports.findUserESLint');
