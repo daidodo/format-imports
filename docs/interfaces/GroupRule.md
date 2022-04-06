@@ -12,7 +12,7 @@ If _undefined_, infer the flags from its parent and sub groups.
 
 #### Defined in
 
-[config/types/grouping.ts:31](https://github.com/daidodo/format-imports/blob/f0bbd7e/src/lib/config/types/grouping.ts#L31)
+[config/types/grouping.ts:31](https://github.com/daidodo/format-imports/blob/6331930/src/lib/config/types/grouping.ts#L31)
 
 ___
 
@@ -30,7 +30,7 @@ Default to _undefined_.
 
 #### Defined in
 
-[config/types/grouping.ts:54](https://github.com/daidodo/format-imports/blob/f0bbd7e/src/lib/config/types/grouping.ts#L54)
+[config/types/grouping.ts:54](https://github.com/daidodo/format-imports/blob/6331930/src/lib/config/types/grouping.ts#L54)
 
 ___
 
@@ -49,7 +49,7 @@ i.e. any paths don't match any other groups will fall into this group.
 
 #### Defined in
 
-[config/types/grouping.ts:43](https://github.com/daidodo/format-imports/blob/f0bbd7e/src/lib/config/types/grouping.ts#L43)
+[config/types/grouping.ts:43](https://github.com/daidodo/format-imports/blob/6331930/src/lib/config/types/grouping.ts#L43)
 
 ___
 
@@ -67,7 +67,7 @@ _none_, then don't sort either/both of them.
 
 #### Defined in
 
-[config/types/grouping.ts:86](https://github.com/daidodo/format-imports/blob/f0bbd7e/src/lib/config/types/grouping.ts#L86)
+[config/types/grouping.ts:86](https://github.com/daidodo/format-imports/blob/6331930/src/lib/config/types/grouping.ts#L86)
 
 ___
 
@@ -95,7 +95,7 @@ import B from 'a';
 
 #### Defined in
 
-[config/types/grouping.ts:75](https://github.com/daidodo/format-imports/blob/f0bbd7e/src/lib/config/types/grouping.ts#L75)
+[config/types/grouping.ts:75](https://github.com/daidodo/format-imports/blob/6331930/src/lib/config/types/grouping.ts#L75)
 
 ___
 
@@ -109,4 +109,4 @@ Sub-groups and rules. Imports will be sorted as the same order as sub groups def
 
 #### Defined in
 
-[config/types/grouping.ts:93](https://github.com/daidodo/format-imports/blob/f0bbd7e/src/lib/config/types/grouping.ts#L93)
+[config/types/grouping.ts:93](https://github.com/daidodo/format-imports/blob/6331930/src/lib/config/types/grouping.ts#L93)
