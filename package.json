@@ -1,6 +1,6 @@
 {
   "name": "format-imports",
-  "version": "3.0.6",
+  "version": "3.0.7",
   "description": "JavaScript and TypeScript Import/Export Formatter.",
   "main": "dist/lib/index.js",
   "bin": "dist/bin/main.js",
@@ -29,14 +29,23 @@
     "url": "git+https://github.com/daidodo/format-imports.git"
   },
   "keywords": [
+    "sort import",
     "sort imports",
+    "format import",
     "format imports",
+    "format export",
     "format exports",
+    "sort",
+    "format",
+    "import",
     "imports",
+    "export",
     "exports",
     "import formatter",
     "import sorter",
-    "export formatter"
+    "export formatter",
+    "formatter",
+    "sorter"
   ],
   "author": "Zhao DAI <daidodo@gmail.com>",
   "license": "MIT",
