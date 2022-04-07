@@ -1,22 +1,16 @@
-import {
-  ESLint,
-  type Linter,
-} from 'eslint';
+import eslint, { type Linter } from 'eslint';
 import { type PromiseType } from 'utility-types';
 
-import findUp from '@dozerg/find-up';
-
-import { logger } from '../../../common';
+import {
+  logger,
+  requireModule,
+} from '../../../common';
 import { type Configuration } from '../../../config';
 import { apply } from './helper';
 import { translateCommaDangleRule } from './rules/comma-dangle';
 import { translateEolLastRule } from './rules/eol-last';
-import {
-  translateNewlineAfterImportRule,
-} from './rules/import/newline-after-import';
-import {
-  translateNoUselessPathSegmentsRule,
-} from './rules/import/no-useless-path-segments';
+import { translateNewlineAfterImportRule } from './rules/import/newline-after-import';
+import { translateNoUselessPathSegmentsRule } from './rules/import/no-useless-path-segments';
 import { translateIndentRule } from './rules/indent';
 import { translateMaxLenRule } from './rules/max-len';
 import { translateObjectCurlySpacingRule } from './rules/object-curly-spacing';
@@ -52,7 +46,7 @@ export async function enhanceWithEslint(
 async function loadESLintConfig(fileName: string, configFile?: string) {
   const log = logger('format-imports.loadESLintConfig');
   log.debug('Loading ESLint config for fileName:', fileName, 'from', configFile ?? 'default');
-  const ESLint = findESLint(fileName);
+  const { ESLint } = requireModule('eslint', fileName, eslint);
   log.debug('ESLint API version:', ESLint.version);
   try {
     const eslint = new ESLint({ overrideConfigFile: configFile });
@@ -66,28 +60,4 @@ async function loadESLintConfig(fileName: string, configFile?: string) {
     log.warn('Failed to load ESLint config for fileName:', fileName, 'with error:', msg);
     return undefined;
   }
-}
-
-function findESLint(fromPath: string) {
-  const log = logger('format-imports.findESLint');
-  const userESLint = findUserESLint(fromPath);
-  if (userESLint) return userESLint;
-  log.warn('Cannot find eslint module from path:', fromPath, 'so use pre-packed');
-  return ESLint;
-}
-
-declare const __webpack_require__: typeof require;
-declare const __non_webpack_require__: typeof require;
-const req = typeof __webpack_require__ === 'function' ? __non_webpack_require__ : require;
-
-function findUserESLint(fromPath: string) {
-  const log = logger('format-imports.findUserESLint');
-  const [eslintPath] = findUp.sync('node_modules/eslint', {
-    cwd: fromPath,
-    stopAtLimit: 1,
-    type: 'directory',
-  });
-  if (!eslintPath) return undefined;
-  log.debug('Found eslint in', eslintPath);
-  return req(eslintPath).ESLint;
 }
