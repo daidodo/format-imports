@@ -1,9 +1,8 @@
 import prettier from 'prettier';
 
-import {
-  logger,
-  requireModule,
-} from '../common';
+import requireModule from '@dozerg/require-module';
+
+import { logger } from '../common';
 import { type Configuration } from './types';
 
 // https://prettier.io/docs/en/options.html

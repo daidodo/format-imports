@@ -148,7 +148,7 @@
   "dependencies": {
     "@dozerg/condition": "^1.0.1",
     "@dozerg/end-of-line": "^1.0.10",
-    "@dozerg/find-up": "^1.0.1",
+    "@dozerg/require-module": "^0.0.2",
     "eslint": "^8.12.0",
     "fs-extra": "^10.0.1",
     "immutable": "^4.0.0",

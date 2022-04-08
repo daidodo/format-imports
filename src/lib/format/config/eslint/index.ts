@@ -1,10 +1,9 @@
 import eslint, { type Linter } from 'eslint';
 import { type PromiseType } from 'utility-types';
 
-import {
-  logger,
-  requireModule,
-} from '../../../common';
+import requireModule from '@dozerg/require-module';
+
+import { logger } from '../../../common';
 import { type Configuration } from '../../../config';
 import { apply } from './helper';
 import { translateCommaDangleRule } from './rules/comma-dangle';
