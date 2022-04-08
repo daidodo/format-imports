@@ -7,4 +7,4 @@ export * from './format/main';
 /**
  * API version.
  */
-export const version: string = require('../../package.json').version;
+export const VERSION: string = require('../../package.json').version;
