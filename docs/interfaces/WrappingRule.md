@@ -10,7 +10,7 @@ Whether to ignore trailing comments when counting line length. Default to _false
 
 #### Defined in
 
-[config/types/wrapping.ts:22](https://github.com/daidodo/format-imports/blob/45e9439/src/lib/config/types/wrapping.ts#L22)
+[config/types/wrapping.ts:22](https://github.com/daidodo/format-imports/blob/e1114d9/src/lib/config/types/wrapping.ts#L22)
 
 ___
 
@@ -22,7 +22,7 @@ Max binding names per line before wrapping for imports. 0 for no limit. Default 
 
 #### Defined in
 
-[config/types/wrapping.ts:5](https://github.com/daidodo/format-imports/blob/45e9439/src/lib/config/types/wrapping.ts#L5)
+[config/types/wrapping.ts:5](https://github.com/daidodo/format-imports/blob/e1114d9/src/lib/config/types/wrapping.ts#L5)
 
 ___
 
@@ -35,7 +35,7 @@ to _2_.
 
 #### Defined in
 
-[config/types/wrapping.ts:10](https://github.com/daidodo/format-imports/blob/45e9439/src/lib/config/types/wrapping.ts#L10)
+[config/types/wrapping.ts:10](https://github.com/daidodo/format-imports/blob/e1114d9/src/lib/config/types/wrapping.ts#L10)
 
 ___
 
@@ -47,7 +47,7 @@ Max binding names per line before wrapping for exports. 0 for no limit. Default 
 
 #### Defined in
 
-[config/types/wrapping.ts:14](https://github.com/daidodo/format-imports/blob/45e9439/src/lib/config/types/wrapping.ts#L14)
+[config/types/wrapping.ts:14](https://github.com/daidodo/format-imports/blob/e1114d9/src/lib/config/types/wrapping.ts#L14)
 
 ___
 
@@ -59,4 +59,4 @@ Max names on wrapped lines for imports/exports. 0 for no limit. Default to _1_.
 
 #### Defined in
 
-[config/types/wrapping.ts:18](https://github.com/daidodo/format-imports/blob/45e9439/src/lib/config/types/wrapping.ts#L18)
+[config/types/wrapping.ts:18](https://github.com/daidodo/format-imports/blob/e1114d9/src/lib/config/types/wrapping.ts#L18)

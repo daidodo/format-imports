@@ -35,4 +35,4 @@ The result text or `undefined` if nothing changes.
 
 #### Defined in
 
-[format/main/index.ts:73](https://github.com/daidodo/format-imports/blob/45e9439/src/lib/format/main/index.ts#L73)
+[format/main/index.ts:73](https://github.com/daidodo/format-imports/blob/e1114d9/src/lib/format/main/index.ts#L73)
