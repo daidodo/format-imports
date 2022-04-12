@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
-const { name: EXE, version: VERSION } = require('../../package.json');
+import {
+  CLI_NAME,
+  VERSION,
+} from '../lib';
 
 const optionator: (options: any) => Results = require('optionator');
 
@@ -11,13 +14,13 @@ type Results = {
 
 const { parseArgv, generateHelp } = optionator({
   prepend: [
-    `${EXE} [options] [FILE ...]`,
+    `${CLI_NAME} [options] [FILE ...]`,
     '        Format given file(s). If no files provided, read from STDIN.',
     '',
-    `${EXE} [options] DIR`,
+    `${CLI_NAME} [options] DIR`,
     '        Format supported files under given directory.',
     '',
-    `${EXE} -c [options] FILE/DIR [FILE/DIR ...]`,
+    `${CLI_NAME} -c [options] FILE/DIR [FILE/DIR ...]`,
     '        Check if files (under directories) are formatted.',
   ].join('\n'),
   options: [
