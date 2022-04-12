@@ -10,8 +10,8 @@ export function loadPretConfig(fileName: string): Configuration {
   const log = logger('format-imports.loadPretConfig');
   log.debug('Loading Prettier/EditorConfig config for fileName:', fileName);
   const pt = requireModule('prettier', fileName, prettier);
-  log.debug('Prettier API version:', pt.version);
   try {
+    log.debug('Prettier API version:', pt.version);
     const config = pt.resolveConfig.sync(fileName, { useCache: false, editorconfig: true });
     log.debug('Prettier config:', config);
     if (!config) return {};

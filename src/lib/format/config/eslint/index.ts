@@ -46,8 +46,8 @@ async function loadESLintConfig(fileName: string, configFile?: string) {
   const log = logger('format-imports.loadESLintConfig');
   log.debug('Loading ESLint config for fileName:', fileName, 'from', configFile ?? 'default');
   const { ESLint } = requireModule('eslint', fileName, eslint);
-  log.debug('ESLint API version:', ESLint.version);
   try {
+    log.debug('ESLint API version:', ESLint.version);
     const eslint = new ESLint({ overrideConfigFile: configFile });
     if (await eslint.isPathIgnored(fileName)) {
       log.debug('Ignored by ESLint for fileName:', fileName);
