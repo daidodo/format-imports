@@ -48,12 +48,12 @@ async function loadESLintConfig(fileName: string, configFile?: string) {
   const { ESLint } = requireModule('eslint', fileName, eslint);
   try {
     log.debug('ESLint API version:', ESLint.version);
-    const eslint = new ESLint({ overrideConfigFile: configFile });
-    if (await eslint.isPathIgnored(fileName)) {
+    const esl = new ESLint({ overrideConfigFile: configFile });
+    if (await esl.isPathIgnored(fileName)) {
       log.debug('Ignored by ESLint for fileName:', fileName);
       return undefined;
     }
-    return (await eslint.calculateConfigForFile(fileName)) as Linter.Config;
+    return (await esl.calculateConfigForFile(fileName)) as Linter.Config;
   } catch (e: unknown) {
     const msg = e instanceof Error ? e.message : `${e}`;
     log.warn('Failed to load ESLint config for fileName:', fileName, 'with error:', msg);
