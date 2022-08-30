@@ -55,12 +55,22 @@ function packageConfig(fileName: string) {
   const files = findUp.sync('package.json', { cwd: fileName });
   return readConfigTilRoot(files, file => {
     log.debug('Found package.json in', file);
-    const { importSorter: config } = JSON.parse(fs.readFileSync(file, 'utf8'));
+    const { importSorter: config } = jsonParseNoThrow(fs.readFileSync(file, 'utf8'));
     log.debug('Found package.json', file, 'and config:', config);
     if (!config) return {};
     assertTrue(isObject(config), `Bad "importSorter" config in "${file}"`);
     return config as Configuration;
   });
+}
+
+function jsonParseNoThrow(content: string) {
+  try {
+    return JSON.parse(content);
+  } catch (e) {
+    const log = logger('format-imports.jsonParseNoThrow');
+    log.warn('Parse JSON content failed with exception:', e);
+    return {};
+  }
 }
 
 function readConfigTilRoot(fileNames: string[], readConfig: (fileName: string) => Configuration) {
