@@ -68,7 +68,8 @@ function jsonParseNoThrow(content: string) {
     return JSON.parse(content);
   } catch (e) {
     const log = logger('format-imports.jsonParseNoThrow');
-    log.warn('Parse JSON content failed with exception:', e);
+    const msg = e instanceof Error ? e.message : `${e}`;
+    log.warn('Failed to parse JSON content and found error:', msg);
     return {};
   }
 }
