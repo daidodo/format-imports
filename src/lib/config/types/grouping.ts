@@ -1,14 +1,14 @@
 import { SortRules } from './sorting';
 
 /**
- * Symbols for different types of imports:
+ * Different types of imports:
  * - _scripts_: Script imports, e.g. `import 'some_scripts'`.
- * - _multiple_: Import multiple members, e.g.:
+ * - _multiple_: Import multiple names, e.g.:
  * ```ts
  *   import A, {B, C} from 'a';
  *   import A, * as B from 'a';
  * ```
- * - _single_: Import single member, e.g.:
+ * - _single_: Import single name, e.g.:
  * ```ts
  *   import A from 'a';
  *   import { A } from 'a';
@@ -43,7 +43,7 @@ export interface GroupRule {
   regex?: string;
 
   /**
-   * Whether to accepts `import` or `import type`:
+   * Whether to accept `import` or `import type`:
    *
    * - If it's _true_, the group accepts only `import type`;
    * - If it's _false_, the group accepts only `import`;
@@ -52,6 +52,24 @@ export interface GroupRule {
    * Default to _undefined_.
    */
   importType?: boolean;
+
+  /**
+   * Whether to accept NodeJS builtin modules:
+   *
+   * - If it's _true_, the group accepts only builtin module imports, e.g.:
+   * ```ts
+   *   import fs from 'fs'`;
+   *   import { sep } from 'node:path';
+   * ```
+   * - If it's _false_, the group accepts only non-builtin module imports, e.g.:
+   * ```ts
+   *   import React from 'react';
+   *   import A from '@my_module';
+   *   import { B } from './some/path';
+   * ```
+   * - If it's _undefined_, the group accepts both.
+   */
+  builtin?: boolean;
 
   /**
    * Sort import statements by paths or first names.
@@ -91,4 +109,15 @@ export interface GroupRule {
    * - `string[]` items will be expanded to `{ subGroups: elem }`.
    */
   subGroups?: (string | string[] | GroupRule)[];
+}
+
+export function breakFlag(flag: FlagSymbol): FlagSymbol[] {
+  switch (flag) {
+    case 'all':
+      return ['scripts', ...breakFlag('named')];
+    case 'named':
+      return ['multiple', 'single', 'namespace'];
+    default:
+      return [flag];
+  }
 }

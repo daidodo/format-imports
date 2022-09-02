@@ -1,0 +1,6 @@
+{
+  "groupRules": [
+    { "regex": "^a", "builtin": false },
+    { "regex": "^a", "builtin": true }
+  ]
+}

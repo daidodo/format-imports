@@ -1,4 +1,5 @@
 import {
+  breakFlag,
   FlagSymbol,
   GroupRule,
 } from './grouping';
@@ -11,6 +12,7 @@ import { KeepUnusedRule } from './unused';
 import { WrappingRule } from './wrapping';
 
 export {
+  breakFlag,
   CompareRule,
   FlagSymbol,
   GroupRule,

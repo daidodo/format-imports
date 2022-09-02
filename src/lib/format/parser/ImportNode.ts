@@ -1,4 +1,5 @@
 import { Map } from 'immutable';
+import isBuiltinModule from 'is-builtin-module';
 import {
   type AssertClause,
   type ImportClause,
@@ -29,6 +30,8 @@ import type KeepUnused from './KeepUnused';
 import { normalizePath } from './path';
 import Statement, { type StatementArgs } from './Statement';
 import { type NameUsage } from './unused';
+
+const NODE_PROTOCOL = 'node:';
 
 export default class ImportNode extends Statement {
   private readonly node_: ImportDeclaration | ImportEqualsDeclaration;
@@ -104,6 +107,19 @@ export default class ImportNode extends Statement {
     if (!this.binding_) return 'multiple';
     if (this.binding_.type === 'namespace') return 'namespace';
     return this.binding_.names.length === 1 ? 'single' : 'multiple';
+  }
+
+  get isBuiltIn() {
+    return isBuiltinModule(this.moduleIdentifier);
+  }
+
+  matches(regex: RegExp) {
+    if (regex.test(this.moduleIdentifier)) return true;
+    if (this.isBuiltIn && this.moduleIdentifier.startsWith(NODE_PROTOCOL)) {
+      const realId = this.moduleIdentifier.slice(NODE_PROTOCOL.length);
+      return regex.test(realId);
+    }
+    return false;
   }
 
   allNames() {

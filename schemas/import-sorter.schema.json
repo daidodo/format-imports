@@ -206,6 +206,10 @@
               "type": "boolean",
               "description": "Whether to accept 'import' (true) or 'import type' (false), or both (undefined)."
             },
+            "builtin": {
+              "type": "boolean",
+              "description": "Whether to accept NodeJS builtin modules only (true) or non-builtin only (false), or both (undefined)."
+            },
             "sortImportsBy": { "$ref": "#/$def/sortImportsBy" },
             "sort": { "$ref": "#/$def/sortRules", "description": "Sorting rules for this group." },
             "subGroups": { "$ref": "#/$def/groupRules", "description": "Sub-groups and rules." }

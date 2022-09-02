@@ -152,6 +152,7 @@
     "eslint": "^8.23.0",
     "fs-extra": "^10.1.0",
     "immutable": "^4.1.0",
+    "is-builtin-module": "^3.2.0",
     "log4js": "^6.6.1",
     "minimatch": "^5.1.0",
     "node-cache": "^5.1.2",

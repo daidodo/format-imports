@@ -1,0 +1,9 @@
+{
+  "groupRules": [
+    { "flags": "scripts", "builtin": false },
+    { "builtin": true },
+    { "builtin": false },
+    { "flags": "scripts", "builtin": true }
+  ],
+  "keepUnused": [".*"]
+}

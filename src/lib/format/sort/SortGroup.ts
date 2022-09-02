@@ -1,4 +1,7 @@
+import isBuiltinModule from 'is-builtin-module';
+
 import {
+  breakFlag,
   type FlagSymbol,
   type GroupRule,
 } from '../../config';
@@ -22,6 +25,7 @@ export default class SortGroup {
   private readonly flags_: FlagSymbol[];
   private readonly regex_: RegExp | undefined;
   private readonly importType_: boolean | undefined;
+  private readonly builtin_: boolean | undefined;
   private readonly sortImportsBy_: SortImportsBy;
   private readonly sorter_: Sorter;
   private readonly subGroups_?: SortGroup[];
@@ -32,7 +36,7 @@ export default class SortGroup {
   private ignoreSubGroups_ = false;
 
   constructor(
-    { flags: originFlags, regex, importType, sortImportsBy, sort, subGroups }: GroupRule,
+    { flags: originFlags, regex, importType, builtin, sortImportsBy, sort, subGroups }: GroupRule,
     parent: { sorter: Sorter; flags?: FlagSymbol[]; sortImportsBy?: SortImportsBy },
     eslint?: ESLintConfigProcessed,
   ) {
@@ -40,6 +44,7 @@ export default class SortGroup {
     const flags1 = SortGroup.inferFlags1(flags, parent.flags);
     this.regex_ = regex || regex === '' ? RegExp(regex) : undefined;
     this.importType_ = importType;
+    this.builtin_ = builtin;
     if (eslint?.ignoreSorting) {
       this.sortImportsBy_ = parent.sortImportsBy ?? 'paths';
       this.sorter_ = parent.sorter;
@@ -62,11 +67,13 @@ export default class SortGroup {
    */
   add(node: ImportNode, fallBack = false) {
     const { flagType, moduleIdentifier, isTypeOnly } = node;
+    const isBuiltIn = isBuiltinModule(moduleIdentifier);
     if ((this.importType_ ?? isTypeOnly) !== isTypeOnly) return false;
+    if ((this.builtin_ ?? isBuiltIn) !== isBuiltIn) return false;
     if (!isFlagIncluded(flagType, this.flags_)) return false;
     const isScript = flagType === 'scripts';
     if (this.regex_) {
-      if (!this.regex_.test(moduleIdentifier)) return false;
+      if (!node.matches(this.regex_)) return false;
       if (this.addToSubGroup(node, fallBack)) return true;
       if (!fallBack && this.addToSubGroup(node, true)) return true;
       isScript ? this.scripts_.push(node) : this.nodes_.push(node);
@@ -90,13 +97,13 @@ export default class SortGroup {
    * 1. If `eslintGroupOrder_` is undefined, then sort `nodes_` and `subGroups_`
    *    based on user config.
    * 2. Otherwise:
-   *   * If this is the top group (`level === 0`), then:
-   *     * Sort `nodes_` (fallback group) based on ESLint and user config.
-   *     * Sort `subGroups_` (user config groups) based on their rules.
-   *   * If this is the user config group (`level === 1`), then:
-   *     * Disregard `subGroups_`.
-   *     * Merge all imports together and sort them based on ESLint and user config.
-   *   * Else, no sort is needed.
+   *   - If this is the top group (`level === 0`), then:
+   *     - Sort `nodes_` (fallback group) based on ESLint and user config.
+   *     - Sort `subGroups_` (user config groups) based on their rules.
+   *   - If this is the user config group (`level === 1`), then:
+   *     - Disregard `subGroups_`.
+   *     - Merge all imports together and sort them based on ESLint and user config.
+   *   - Else, no sort is needed.
    */
   sort(level = 0) {
     const { nodes_, sorter_, sortImportsBy_, eslintGroupOrder_: flags, aliasFirst_ } = this;
@@ -162,7 +169,7 @@ export default class SortGroup {
    * Infer flags (step 1) from current config (flags) and parent's flags.
    */
   private static inferFlags1(flags: FlagSymbol[], parentFlags: FlagSymbol[] | undefined) {
-    const bp = parentFlags ? breakFlags(parentFlags) : [];
+    const bp = breakFlags(parentFlags);
     return flags.length > 0 ? flags : removeScriptsIfCombined(bp);
   }
 
@@ -184,17 +191,6 @@ function breakFlags(flags: FlagsConfig | undefined) {
   if (!flags) return [];
   const f = typeof flags === 'string' ? [flags] : flags;
   return dedupFlags(f.reduce<FlagSymbol[]>((r, f) => [...r, ...breakFlag(f)], []));
-}
-
-function breakFlag(flag: FlagSymbol): FlagSymbol[] {
-  switch (flag) {
-    case 'all':
-      return ['scripts', ...breakFlag('named')];
-    case 'named':
-      return ['multiple', 'single', 'namespace'];
-    default:
-      return [flag];
-  }
 }
 
 function removeScriptsIfCombined(flags: FlagSymbol[]) {
