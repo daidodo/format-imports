@@ -20,6 +20,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -->
 
+## [3.1.0] - 2022-09-02
+
+### Added
+
+- Add `builtin` to `GroupRule` to support NodeJS builtin module imports.
+
 ## [3.0.5] - 2022-04-01
 
 ### Added
