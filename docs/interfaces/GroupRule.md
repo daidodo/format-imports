@@ -2,6 +2,31 @@
 
 ## Properties
 
+### builtin
+
+• `Optional` **builtin**: `boolean`
+
+Whether to accept NodeJS builtin modules:
+
+- If it's _true_, the group accepts only builtin module imports, e.g.:
+```ts
+  import fs from 'fs'`;
+  import { sep } from 'node:path';
+```
+- If it's _false_, the group accepts only non-builtin module imports, e.g.:
+```ts
+  import React from 'react';
+  import A from '@my_module';
+  import { B } from './some/path';
+```
+- If it's _undefined_, the group accepts both.
+
+#### Defined in
+
+[config/types/grouping.ts:72](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/grouping.ts#L72)
+
+___
+
 ### flags
 
 • `Optional` **flags**: [`FlagSymbol`](../README.md#flagsymbol) \| [`FlagSymbol`](../README.md#flagsymbol)[]
@@ -12,7 +37,7 @@ If _undefined_, infer the flags from its parent and sub groups.
 
 #### Defined in
 
-[config/types/grouping.ts:31](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/grouping.ts#L31)
+[config/types/grouping.ts:31](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/grouping.ts#L31)
 
 ___
 
@@ -20,7 +45,7 @@ ___
 
 • `Optional` **importType**: `boolean`
 
-Whether to accepts `import` or `import type`:
+Whether to accept `import` or `import type`:
 
 - If it's _true_, the group accepts only `import type`;
 - If it's _false_, the group accepts only `import`;
@@ -30,7 +55,7 @@ Default to _undefined_.
 
 #### Defined in
 
-[config/types/grouping.ts:54](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/grouping.ts#L54)
+[config/types/grouping.ts:54](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/grouping.ts#L54)
 
 ___
 
@@ -49,7 +74,7 @@ i.e. any paths don't match any other groups will fall into this group.
 
 #### Defined in
 
-[config/types/grouping.ts:43](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/grouping.ts#L43)
+[config/types/grouping.ts:43](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/grouping.ts#L43)
 
 ___
 
@@ -67,7 +92,7 @@ _none_, then don't sort either/both of them.
 
 #### Defined in
 
-[config/types/grouping.ts:86](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/grouping.ts#L86)
+[config/types/grouping.ts:104](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/grouping.ts#L104)
 
 ___
 
@@ -95,13 +120,13 @@ import B from 'a';
 
 #### Defined in
 
-[config/types/grouping.ts:75](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/grouping.ts#L75)
+[config/types/grouping.ts:93](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/grouping.ts#L93)
 
 ___
 
 ### subGroups
 
-• `Optional` **subGroups**: (`string` \| `string`[] \| [`GroupRule`](GroupRule.md))[]
+• `Optional` **subGroups**: (`string` \| [`GroupRule`](GroupRule.md) \| `string`[])[]
 
 Sub-groups and rules. Imports will be sorted as the same order as sub groups defined.
 - `string` items will be expanded to `{ regex: elem }`.
@@ -109,4 +134,4 @@ Sub-groups and rules. Imports will be sorted as the same order as sub groups def
 
 #### Defined in
 
-[config/types/grouping.ts:93](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/grouping.ts#L93)
+[config/types/grouping.ts:111](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/grouping.ts#L111)

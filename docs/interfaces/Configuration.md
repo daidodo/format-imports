@@ -11,7 +11,7 @@ _true_.
 
 #### Defined in
 
-[config/types/index.ts:169](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/index.ts#L169)
+[config/types/index.ts:171](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/index.ts#L171)
 
 ___
 
@@ -23,7 +23,7 @@ JSON configuration file name. Default to _import-sorter.json_.
 
 #### Defined in
 
-[config/types/index.ts:31](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/index.ts#L31)
+[config/types/index.ts:33](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/index.ts#L33)
 
 ___
 
@@ -35,7 +35,7 @@ Number of empty lines after the last import declaration. Default to _1_.
 
 #### Defined in
 
-[config/types/index.ts:99](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/index.ts#L99)
+[config/types/index.ts:101](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/index.ts#L101)
 
 ___
 
@@ -47,7 +47,7 @@ Number of empty lines between groups (NOT sub-groups). Default to _1_.
 
 #### Defined in
 
-[config/types/index.ts:95](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/index.ts#L95)
+[config/types/index.ts:97](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/index.ts#L97)
 
 ___
 
@@ -59,7 +59,7 @@ Disable formatting for files matching regular expressions. Default to _["node_mo
 
 #### Defined in
 
-[config/types/index.ts:39](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/index.ts#L39)
+[config/types/index.ts:41](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/index.ts#L41)
 
 ___
 
@@ -71,7 +71,7 @@ Disable formatting for files matching glob patterns. Default to _[]_.
 
 #### Defined in
 
-[config/types/index.ts:43](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/index.ts#L43)
+[config/types/index.ts:45](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/index.ts#L45)
 
 ___
 
@@ -84,7 +84,7 @@ comments. Default to _false_.
 
 #### Defined in
 
-[config/types/index.ts:178](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/index.ts#L178)
+[config/types/index.ts:187](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/index.ts#L187)
 
 ___
 
@@ -96,22 +96,24 @@ Whether to format exports as well as imports. Default to _true_.
 
 #### Defined in
 
-[config/types/index.ts:35](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/index.ts#L35)
+[config/types/index.ts:37](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/index.ts#L37)
 
 ___
 
 ### groupRules
 
-• `Optional` `Readonly` **groupRules**: (`string` \| `string`[] \| [`GroupRule`](GroupRule.md))[]
+• `Optional` `Readonly` **groupRules**: (`string` \| [`GroupRule`](GroupRule.md) \| `string`[])[]
 
 Grouping rules for path patterns for imports. Default to
 [GROUP_RULES_DEFAULT](../README.md#GROUP_RULES_DEFAULT)
 
-**`see`** [Grouping Rules](../../../../wiki/Grouping-Rules)
+**`See`**
+
+[Grouping Rules](../../../../wiki/Grouping-Rules)
 
 #### Defined in
 
-[config/types/index.ts:53](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/index.ts#L53)
+[config/types/index.ts:55](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/index.ts#L55)
 
 ___
 
@@ -123,7 +125,7 @@ Whether to add semicolons at the end of declarations. Default to _true_.
 
 #### Defined in
 
-[config/types/index.ts:160](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/index.ts#L160)
+[config/types/index.ts:162](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/index.ts#L162)
 
 ___
 
@@ -135,7 +137,7 @@ Ignore ESLint rules matching regular expressions. Default to _[]_.
 
 #### Defined in
 
-[config/types/index.ts:173](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/index.ts#L173)
+[config/types/index.ts:182](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/index.ts#L182)
 
 ___
 
@@ -147,7 +149,7 @@ Whether to end files with a new line, or keep it as is if _preserve_ is set. Def
 
 #### Defined in
 
-[config/types/index.ts:164](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/index.ts#L164)
+[config/types/index.ts:166](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/index.ts#L166)
 
 ___
 
@@ -160,7 +162,7 @@ if you need.
 
 #### Defined in
 
-[config/types/index.ts:91](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/index.ts#L91)
+[config/types/index.ts:93](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/index.ts#L93)
 
 ___
 
@@ -172,7 +174,22 @@ Max line length before wrapping. 0 for no limit. Default to _80_.
 
 #### Defined in
 
-[config/types/index.ts:111](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/index.ts#L111)
+[config/types/index.ts:113](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/index.ts#L113)
+
+___
+
+### nodeProtocol
+
+• `Optional` `Readonly` **nodeProtocol**: ``"none"`` \| ``"always"`` \| ``"preserve"``
+
+Whether to add node protocol ("node:") to builtin module paths. Default to _preserve_.
+- `always`: Always add `"node:"` to NodeJS builtin modules.
+- `none`: Always remove `"node:"` for NodeJS builtin modules.
+- `preserve`: Keep it as is.
+
+#### Defined in
+
+[config/types/index.ts:178](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/index.ts#L178)
 
 ___
 
@@ -184,7 +201,7 @@ Use single or double quotes. Default to _single_.
 
 #### Defined in
 
-[config/types/index.ts:123](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/index.ts#L123)
+[config/types/index.ts:125](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/index.ts#L125)
 
 ___
 
@@ -196,7 +213,7 @@ Whether to remove the last 'index' when normalizing paths. Default to _false_.
 
 #### Defined in
 
-[config/types/index.ts:107](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/index.ts#L107)
+[config/types/index.ts:109](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/index.ts#L109)
 
 ___
 
@@ -208,7 +225,7 @@ Whether to remove the last slash when normalizing paths. Default to _false_.
 
 #### Defined in
 
-[config/types/index.ts:103](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/index.ts#L103)
+[config/types/index.ts:105](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/index.ts#L105)
 
 ___
 
@@ -220,7 +237,7 @@ Whether to stop looking in parent folders for configuration files. Default to _f
 
 #### Defined in
 
-[config/types/index.ts:27](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/index.ts#L27)
+[config/types/index.ts:29](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/index.ts#L29)
 
 ___
 
@@ -232,7 +249,7 @@ Sort import declarations by paths or first names. Default to _paths_.
 
 #### Defined in
 
-[config/types/index.ts:47](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/index.ts#L47)
+[config/types/index.ts:49](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/index.ts#L49)
 
 ___
 
@@ -252,11 +269,13 @@ Sorting rules for paths and names. Default to:
 If it's _none_, then there is no sorting in all groups, unless they have their own
 [sort](grouprule.md#sort) defined.
 
-**`see`** [Sorting rules](../../../../wiki/Sorting-Rules)
+**`See`**
+
+[Sorting rules](../../../../wiki/Sorting-Rules)
 
 #### Defined in
 
-[config/types/index.ts:69](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/index.ts#L69)
+[config/types/index.ts:71](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/index.ts#L71)
 
 ___
 
@@ -268,7 +287,7 @@ Number of spaces to replace a TAB. Default to _2_.
 
 #### Defined in
 
-[config/types/index.ts:119](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/index.ts#L119)
+[config/types/index.ts:121](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/index.ts#L121)
 
 ___
 
@@ -280,7 +299,7 @@ Indent lines with tabs or spaces. Default to _space_.
 
 #### Defined in
 
-[config/types/index.ts:115](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/index.ts#L115)
+[config/types/index.ts:117](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/index.ts#L117)
 
 ___
 
@@ -321,7 +340,7 @@ When to add a trailing comma for the last name. Default to _multiLine_.
 
 #### Defined in
 
-[config/types/index.ts:156](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/index.ts#L156)
+[config/types/index.ts:158](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/index.ts#L158)
 
 ___
 
@@ -343,8 +362,10 @@ When and how to wrap a line. Default to:
 
 If it's set to _prettier_, then wrap lines in compatible with [Prettier](https://prettier.io/).
 
-**`see`** [Line Wrapping Style](../../../../wiki/Line-Wrapping-Style)
+**`See`**
+
+[Line Wrapping Style](../../../../wiki/Line-Wrapping-Style)
 
 #### Defined in
 
-[config/types/index.ts:86](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/index.ts#L86)
+[config/types/index.ts:88](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/index.ts#L88)

@@ -11,12 +11,14 @@ Format given source text without knowing the source file, synchronously.
 This function will try to find _tsconfig.json_ relating to the source file,
 and merge them to the base config provided.
 
-ESLint config will NOT be read because it's supported only by [formatSourceWithoutFile](../README.md#formatsourcewithoutfile).
+ESLint config will NOT be read because it's supported only by [formatSourceWithoutFile](formatSourceWithoutFile.md).
 
 `options` can be used to change _tsconfig.json_ loading behavior for testing
 purpose.
 
-**`see`** [formatSourceWithoutFile](../README.md#formatsourcewithoutfile)
+**`See`**
+
+[formatSourceWithoutFile](formatSourceWithoutFile.md)
 
 #### Parameters
 
@@ -35,4 +37,4 @@ The result text or `undefined` if nothing changes.
 
 #### Defined in
 
-[format/main/index.ts:139](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/format/main/index.ts#L139)
+[format/main/index.ts:139](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/format/main/index.ts#L139)

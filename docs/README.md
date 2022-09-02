@@ -12,7 +12,7 @@
 - [SortRules](interfaces/SortRules.md)
 - [WrappingRule](interfaces/WrappingRule.md)
 
-## Type aliases
+## Type Aliases
 
 ### CompareRule
 
@@ -24,7 +24,7 @@ If it's _none_, then there is no sorting at all.
 
 #### Defined in
 
-[config/types/sorting.ts:18](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/sorting.ts#L18)
+[config/types/sorting.ts:18](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/sorting.ts#L18)
 
 ___
 
@@ -36,7 +36,7 @@ A type representing file extensions supported.
 
 #### Defined in
 
-[format/main/index.ts:15](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/format/main/index.ts#L15)
+[format/main/index.ts:15](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/format/main/index.ts#L15)
 
 ___
 
@@ -44,14 +44,14 @@ ___
 
 Ƭ **FlagSymbol**: ``"scripts"`` \| ``"multiple"`` \| ``"single"`` \| ``"namespace"`` \| ``"named"`` \| ``"all"``
 
-Symbols for different types of imports:
+Different types of imports:
 - _scripts_: Script imports, e.g. `import 'some_scripts'`.
-- _multiple_: Import multiple members, e.g.:
+- _multiple_: Import multiple names, e.g.:
 ```ts
   import A, {B, C} from 'a';
   import A, * as B from 'a';
 ```
-- _single_: Import single member, e.g.:
+- _single_: Import single name, e.g.:
 ```ts
   import A from 'a';
   import { A } from 'a';
@@ -65,7 +65,7 @@ Symbols for different types of imports:
 
 #### Defined in
 
-[config/types/grouping.ts:23](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/grouping.ts#L23)
+[config/types/grouping.ts:23](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/grouping.ts#L23)
 
 ___
 
@@ -79,7 +79,7 @@ This is for keeping unused names.
 
 #### Defined in
 
-[config/types/unused.ts:6](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/unused.ts#L6)
+[config/types/unused.ts:6](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/unused.ts#L6)
 
 ___
 
@@ -96,9 +96,21 @@ Symbols for char segments:
 
 #### Defined in
 
-[config/types/sorting.ts:11](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/sorting.ts#L11)
+[config/types/sorting.ts:11](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/sorting.ts#L11)
 
 ## Variables
+
+### CLI\_NAME
+
+• `Const` **CLI\_NAME**: `string` = `pkg.name`
+
+Executable name.
+
+#### Defined in
+
+[index.ts:16](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/index.ts#L16)
+
+___
 
 ### COMPARE\_RULE\_DEFAULT
 
@@ -110,7 +122,7 @@ Default comparison rule for paths and names, which is:
 
 #### Defined in
 
-[config/types/index.ts:205](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/index.ts#L205)
+[config/types/index.ts:214](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/index.ts#L214)
 
 ___
 
@@ -120,8 +132,8 @@ ___
 
 Default merge policy for [mergeConfig](#mergeConfig), which is:
 
-- [exclude](interfaces/Configuration.md#exclude), [excludeGlob](interfaces/Configuration.md#excludeglob) and [keepUnused](interfaces/Configuration.md#keepunused) arrays will be concatenated instead of replaced;
-- [sortRules](interfaces/Configuration.md#sortrules) object will be merged instead of replaced;
+- exclude, excludeGlob and keepUnused arrays will be concatenated instead of replaced;
+- sortRules object will be merged instead of replaced;
 - All other fields will be replaced and the latter config takes precedence.
 
 When creating your own merge policy, make sure to inherit the default merger and just override
@@ -129,7 +141,7 @@ the ones different.
 
 #### Defined in
 
-[config/merge.ts:22](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/merge.ts#L22)
+[config/merge.ts:22](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/merge.ts#L22)
 
 ___
 
@@ -141,7 +153,7 @@ Default grouping rules.
 
 #### Defined in
 
-[config/types/index.ts:190](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/types/index.ts#L190)
+[config/types/index.ts:199](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/index.ts#L199)
 
 ___
 
@@ -153,21 +165,41 @@ File extensions supported.
 
 #### Defined in
 
-[format/main/index.ts:20](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/format/main/index.ts#L20)
+[format/main/index.ts:20](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/format/main/index.ts#L20)
 
 ___
 
 ### VERSION
 
-• `Const` **VERSION**: `string`
+• `Const` **VERSION**: `string` = `pkg.version`
 
 API version.
 
 #### Defined in
 
-[index.ts:10](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/index.ts#L10)
+[index.ts:11](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/index.ts#L11)
 
 ## Functions
+
+### breakFlag
+
+▸ **breakFlag**(`flag`): [`FlagSymbol`](README.md#flagsymbol)[]
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `flag` | [`FlagSymbol`](README.md#flagsymbol) |
+
+#### Returns
+
+[`FlagSymbol`](README.md#flagsymbol)[]
+
+#### Defined in
+
+[config/types/grouping.ts:114](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/types/grouping.ts#L114)
+
+___
 
 ### formatSourceFromFile
 
@@ -181,7 +213,9 @@ and merge them to the base config provided.
 `options` can be used to change _tsconfig.json_ and ESLint config loading behavior for testing
 purpose.
 
-**`see`** [formatSourceFromFile.sync](modules/formatSourceFromFile.md#sync)
+**`See`**
+
+[sync](modules/formatSourceFromFile.md#sync)
 
 #### Parameters
 
@@ -200,7 +234,7 @@ Promise of the result text or `undefined` if nothing changes.
 
 #### Defined in
 
-[format/main/index.ts:40](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/format/main/index.ts#L40)
+[format/main/index.ts:40](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/format/main/index.ts#L40)
 
 ___
 
@@ -216,7 +250,9 @@ and merge them to the base config provided.
 `options` can be used to change _tsconfig.json_ and ESLint config loading behavior for testing
 purpose.
 
-**`see`** [formatSourceWithoutFile.sync](modules/formatSourceWithoutFile.md#sync)
+**`See`**
+
+[sync](modules/formatSourceWithoutFile.md#sync)
 
 #### Parameters
 
@@ -235,7 +271,7 @@ Promise of the result text or `undefined` if nothing changes.
 
 #### Defined in
 
-[format/main/index.ts:104](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/format/main/index.ts#L104)
+[format/main/index.ts:104](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/format/main/index.ts#L104)
 
 ___
 
@@ -260,7 +296,7 @@ The file name will be normalized to use `/` as path separator before matching.
 
 #### Defined in
 
-[config/index.ts:39](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/index.ts#L39)
+[config/index.ts:39](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/index.ts#L39)
 
 ___
 
@@ -284,7 +320,7 @@ Will throw an error if file is unreadable or content is not a valid JSON object.
 
 #### Defined in
 
-[config/importSorter.ts:91](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/importSorter.ts#L91)
+[config/importSorter.ts:102](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/importSorter.ts#L102)
 
 ___
 
@@ -307,11 +343,15 @@ const config2 = { maxLineLength: 100 };
 const config = mergeConfig(config1, config2);  // { maxLineLength: 100, tabSize: 2 }
 ```
 
+**`Typeparam`**
+
+T - A type extended from Configuration
+
 #### Type parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `T` | extends [`Configuration`](interfaces/Configuration.md) = [`Configuration`](interfaces/Configuration.md) | A type extended from Configuration |
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`Configuration`](interfaces/Configuration.md) = [`Configuration`](interfaces/Configuration.md) |
 
 #### Parameters
 
@@ -325,7 +365,7 @@ const config = mergeConfig(config1, config2);  // { maxLineLength: 100, tabSize:
 
 #### Defined in
 
-[config/merge.ts:53](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/merge.ts#L53)
+[config/merge.ts:53](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/merge.ts#L53)
 
 ___
 
@@ -348,11 +388,15 @@ interface Merger {
 Each field in a merger defines how that field is merged between configs. If _undefined_, the
 field will use the default policy which is replacement by the latter.
 
+**`Typeparam`**
+
+T - A type extended from Configuration
+
 #### Type parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `T` | extends [`Configuration`](interfaces/Configuration.md) = [`Configuration`](interfaces/Configuration.md) | A type extended from Configuration |
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`Configuration`](interfaces/Configuration.md) = [`Configuration`](interfaces/Configuration.md) |
 
 #### Parameters
 
@@ -367,7 +411,7 @@ field will use the default policy which is replacement by the latter.
 
 #### Defined in
 
-[config/merge.ts:78](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/merge.ts#L78)
+[config/merge.ts:78](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/merge.ts#L78)
 
 ___
 
@@ -385,11 +429,15 @@ The following sources will be considered if found (in precedence from high to lo
 - `.editorconfig`
 - The base config provided as parameter
 
+**`Typeparam`**
+
+T - A type extended from Configuration
+
 #### Type parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `T` | extends [`Configuration`](interfaces/Configuration.md) = [`Configuration`](interfaces/Configuration.md) | A type extended from Configuration |
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`Configuration`](interfaces/Configuration.md) = [`Configuration`](interfaces/Configuration.md) |
 
 #### Parameters
 
@@ -404,7 +452,7 @@ The following sources will be considered if found (in precedence from high to lo
 
 #### Defined in
 
-[config/importSorter.ts:28](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/importSorter.ts#L28)
+[config/importSorter.ts:28](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/importSorter.ts#L28)
 
 ___
 
@@ -416,11 +464,15 @@ Resolve config for given source text.
 
 This function will detect EOL for the text and update the base config provided.
 
+**`Typeparam`**
+
+T - A type extended from Configuration
+
 #### Type parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `T` | extends [`Configuration`](interfaces/Configuration.md) = [`Configuration`](interfaces/Configuration.md) | A type extended from Configuration |
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`Configuration`](interfaces/Configuration.md) = [`Configuration`](interfaces/Configuration.md) |
 
 #### Parameters
 
@@ -435,4 +487,4 @@ This function will detect EOL for the text and update the base config provided.
 
 #### Defined in
 
-[config/index.ts:27](https://github.com/daidodo/format-imports/blob/cc4283e/src/lib/config/index.ts#L27)
+[config/index.ts:27](https://github.com/daidodo/format-imports/blob/c7fea1c/src/lib/config/index.ts#L27)
