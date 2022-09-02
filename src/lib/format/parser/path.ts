@@ -1,19 +1,26 @@
+import isBuiltinModule from 'is-builtin-module';
 import path from 'path';
 
 import { assertTrue } from '@dozerg/condition';
 
-interface Options {
-  removeLastSlashInPath?: boolean;
-  removeLastIndexInPath?: boolean;
-}
+import { Configuration } from '../../config';
 
-export function normalizePath(path: string, options?: Options) {
-  const { removeLastSlashInPath, removeLastIndexInPath } = options ?? {};
+const NODE_PROTOCOL = 'node:';
+
+export function normalizePath(path: string, options?: Configuration) {
+  const { removeLastSlashInPath, removeLastIndexInPath, nodeProtocol } = options ?? {};
+  const npFn =
+    nodeProtocol === 'always'
+      ? addNodeProtocol
+      : nodeProtocol === 'none'
+      ? removeNodeProtocol
+      : undefined;
   return apply(
     path,
     normalize,
     [removeLastIndex, removeLastIndexInPath],
     [removeLastSlash, removeLastSlashInPath],
+    [npFn, isBuiltinModule(path)],
   );
 }
 
@@ -75,8 +82,20 @@ export function removeLastIndex(str: string) {
   return parts.join('/') || '/';
 }
 
-type Fn = (s: string) => string;
+export function removeNodeProtocol(str: string) {
+  return str.startsWith(NODE_PROTOCOL) ? str.slice(NODE_PROTOCOL.length) : str;
+}
+
+function addNodeProtocol(str: string) {
+  return str.startsWith(NODE_PROTOCOL) ? str : NODE_PROTOCOL + str;
+}
+
+type Fn = ((s: string) => string) | undefined;
 
 function apply(str: string, ...norms: (Fn | [Fn, boolean | undefined])[]) {
-  return norms.reduce((r, n) => (Array.isArray(n) ? (n[1] ? n[0](r) : r) : n(r)), str);
+  return norms.reduce((r, n) => (Array.isArray(n) ? (n[1] ? fn(n[0], r) : r) : fn(n, r)), str);
+}
+
+function fn(f: Fn, s: string) {
+  return f ? f(s) : s;
 }

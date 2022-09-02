@@ -170,6 +170,13 @@ export interface Configuration {
    */
   readonly bracketSpacing?: boolean;
   /**
+   * Whether to add node protocol ("node:") to builtin module paths. Default to _preserve_.
+   * - `always`: Always add `"node:"` to NodeJS builtin modules.
+   * - `none`: Always remove `"node:"` for NodeJS builtin modules.
+   * - `preserve`: Keep it as is.
+   */
+  readonly nodeProtocol?: 'always' | 'none' | 'preserve';
+  /**
    * Ignore ESLint rules matching regular expressions. Default to _[]_.
    */
   readonly ignoreESLintRules?: string | string[];

@@ -27,11 +27,12 @@ import type {
 } from '../types';
 import { getNameBinding } from './helper';
 import type KeepUnused from './KeepUnused';
-import { normalizePath } from './path';
+import {
+  normalizePath,
+  removeNodeProtocol,
+} from './path';
 import Statement, { type StatementArgs } from './Statement';
 import { type NameUsage } from './unused';
-
-const NODE_PROTOCOL = 'node:';
 
 export default class ImportNode extends Statement {
   private readonly node_: ImportDeclaration | ImportEqualsDeclaration;
@@ -113,10 +114,10 @@ export default class ImportNode extends Statement {
     return isBuiltinModule(this.moduleIdentifier);
   }
 
-  matches(regex: RegExp) {
+  matchPath(regex: RegExp) {
     if (regex.test(this.moduleIdentifier)) return true;
-    if (this.isBuiltIn && this.moduleIdentifier.startsWith(NODE_PROTOCOL)) {
-      const realId = this.moduleIdentifier.slice(NODE_PROTOCOL.length);
+    if (this.isBuiltIn) {
+      const realId = removeNodeProtocol(this.moduleIdentifier);
       return regex.test(realId);
     }
     return false;

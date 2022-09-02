@@ -73,7 +73,7 @@ export default class SortGroup {
     if (!isFlagIncluded(flagType, this.flags_)) return false;
     const isScript = flagType === 'scripts';
     if (this.regex_) {
-      if (!node.matches(this.regex_)) return false;
+      if (!node.matchPath(this.regex_)) return false;
       if (this.addToSubGroup(node, fallBack)) return true;
       if (!fallBack && this.addToSubGroup(node, true)) return true;
       isScript ? this.scripts_.push(node) : this.nodes_.push(node);

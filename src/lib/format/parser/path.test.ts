@@ -3,6 +3,7 @@
 
 import assert from 'assert';
 
+import { Configuration } from '../../config';
 import {
   normalize,
   normalizePath,
@@ -77,6 +78,30 @@ describe('path', () => {
       assert.deepStrictEqual(normalizePath('../index/', opt), '../index/');
       assert.deepStrictEqual(normalizePath('../index/index', opt), '../index/');
       assert.deepStrictEqual(normalizePath('../a/index', opt), '../a');
+    });
+    test('nodeProtocol: always', () => {
+      const opt: Configuration = { nodeProtocol: 'always' };
+      assert.deepStrictEqual(normalizePath('', opt), '');
+      assert.deepStrictEqual(normalizePath('aaa', opt), 'aaa');
+      assert.deepStrictEqual(normalizePath('assert', opt), 'node:assert');
+      assert.deepStrictEqual(normalizePath('node:aaa', opt), 'node:aaa');
+      assert.deepStrictEqual(normalizePath('node:assert', opt), 'node:assert');
+    });
+    test('nodeProtocol: none', () => {
+      const opt: Configuration = { nodeProtocol: 'none' };
+      assert.deepStrictEqual(normalizePath('', opt), '');
+      assert.deepStrictEqual(normalizePath('aaa', opt), 'aaa');
+      assert.deepStrictEqual(normalizePath('assert', opt), 'assert');
+      assert.deepStrictEqual(normalizePath('node:aaa', opt), 'node:aaa');
+      assert.deepStrictEqual(normalizePath('node:assert', opt), 'assert');
+    });
+    test('nodeProtocol: preserve', () => {
+      const opt: Configuration = { nodeProtocol: 'preserve' };
+      assert.deepStrictEqual(normalizePath('', opt), '');
+      assert.deepStrictEqual(normalizePath('aaa', opt), 'aaa');
+      assert.deepStrictEqual(normalizePath('assert', opt), 'assert');
+      assert.deepStrictEqual(normalizePath('node:aaa', opt), 'node:aaa');
+      assert.deepStrictEqual(normalizePath('node:assert', opt), 'node:assert');
     });
   });
   describe('normalize', () => {

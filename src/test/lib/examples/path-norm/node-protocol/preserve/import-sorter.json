@@ -1,0 +1,4 @@
+{
+  "nodeProtocol": "preserve",
+  "keepUnused": [".*"]
+}

@@ -127,6 +127,12 @@
       "default": true,
       "description": "Whether to add spaces between brackets. true for '{ id }' and false for '{id}'."
     },
+    "nodeProtocol": {
+      "type": "string",
+      "enum": ["none", "always", "preserve"],
+      "default": "preserve",
+      "description": "Whether to add node protocol (\"node:\") to builtin module paths."
+    },
     "ignoreESLintRules": {
       "oneOf": [
         { "type": "string" },

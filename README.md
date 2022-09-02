@@ -19,20 +19,12 @@ This package contains CLI and APIs to format **imports** and **exports** for **J
 
 It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](https://marketplace.visualstudio.com/items?itemName=dozerg.tsimportsorter), then extracted to standalone CLI and lib for more use cases (e.g. CI/CD) and IDEs (e.g. [IntelliJ](https://plugins.jetbrains.com/plugin/16195-js-ts-import-export-sorter)).
 
-## [3.0.x] - 2022-02-28
+## [3.1.x] - 2022-09-02
 
 ### Added
 
-- Add `--log, -l` option to CLI.
-- Add `formatSourceFromFile.sync` and `formatSourceWithoutFile.sync` as sync version without support to ESLint config.
-- Add support for ESLint rules:
-  - [object-curly-spacing](https://eslint.org/docs/rules/object-curly-spacing)
-  - [@typescript-eslint/object-curly-spacing](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/object-curly-spacing.md)
-
-### Changes
-
-- `formatSourceFromFile` and `formatSourceWithoutFile` are changed to async functions.
-- Enable webpack.
+- Add `builtin` to `GroupRule` to support NodeJS builtin module imports.
+- Add `nodeProtocol` to support adding or removing `"node:"` to builtin module paths.
 
 # Table of contents <!-- omit in toc -->
 
@@ -67,6 +59,7 @@ It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](htt
 - Respect configs from [Prettier](https://prettier.io) and [EditorConfig](https://editorconfig.org).
 - Preserve `'use strict'`, `///` directives, shebang (`#!`) and comments.
 - Support [Type-Only imports/exports](https://devblogs.microsoft.com/typescript/announcing-typescript-3-8/#type-only-imports-exports), [Type Modifier on names](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#type-on-import-names) and [Import Assertions](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#import-assertions).
+- Support NodeJS builtin modules.
 - Cross-platform consistency: Windows, macOS and Linux (Ubuntu).
 - Monorepo friendly.
 
