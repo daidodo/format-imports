@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 
-import assert from 'assert';
+import assert from 'node:assert';
 
 import { Configuration } from '../../config';
 import {

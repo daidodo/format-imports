@@ -1,5 +1,6 @@
+import path, { sep } from 'node:path';
+
 import fs from 'fs-extra';
-import path, { sep } from 'path';
 
 interface FileEntry {
   relativePath: string;

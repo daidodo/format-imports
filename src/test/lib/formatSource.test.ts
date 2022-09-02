@@ -1,7 +1,8 @@
-import assert from 'assert';
-import fs from 'fs';
+import assert from 'node:assert';
+import fs from 'node:fs';
+import path, { sep } from 'node:path';
+
 import log4js from 'log4js';
-import path, { sep } from 'path';
 
 import {
   assertNonNull,

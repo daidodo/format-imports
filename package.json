@@ -114,10 +114,7 @@
     "preset": "ts-jest"
   },
   "importSorter": {
-    "excludeGlob": [
-      "**/test/**/examples/**/*.ts?(x)",
-      "**/test/**/examples/**/*.js?(x)"
-    ]
+    "nodeProtocol": "always"
   },
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.1",

@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'node:fs';
 
 import { assertTrue } from '@dozerg/condition';
 import { endOfLineForFile } from '@dozerg/end-of-line';

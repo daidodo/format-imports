@@ -1,5 +1,6 @@
+import path from 'node:path';
+
 import isBuiltinModule from 'is-builtin-module';
-import path from 'path';
 
 import { assertTrue } from '@dozerg/condition';
 

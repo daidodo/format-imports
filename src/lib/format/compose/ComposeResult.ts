@@ -1,4 +1,4 @@
-import { assert } from 'console';
+import { assertTrue } from '@dozerg/condition';
 
 import { type ComposeConfig } from '../config';
 import type ComposeLine from './ComposeLine';
@@ -37,7 +37,7 @@ export default class ComposeResult {
   }
 
   private mergeLines(other: ComposeLine[]) {
-    assert(other.length > 0);
+    assertTrue(other.length > 0);
     if (this.lines.length < 1) return { lines: other, line: other[0], only: other.length < 2 };
     const last = this.lines[this.lines.length - 1];
     const [next, ...rest] = other;

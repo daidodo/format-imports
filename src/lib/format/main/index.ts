@@ -1,4 +1,5 @@
-import fs from 'fs';
+import fs from 'node:fs';
+
 import tmp from 'tmp';
 
 import { logger } from '../../common';
