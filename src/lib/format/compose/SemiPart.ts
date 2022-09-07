@@ -1,4 +1,5 @@
-import { noNew } from '../../common';
+import noNew from '@dozerg/no-new';
+
 import { type ComposeConfig } from '../config';
 import ComposeLine from './ComposeLine';
 import ComposeResult from './ComposeResult';

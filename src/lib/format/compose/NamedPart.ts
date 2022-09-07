@@ -2,8 +2,8 @@ import {
   assertNonNull,
   assertTrue,
 } from '@dozerg/condition';
+import noNew from '@dozerg/no-new';
 
-import { noNew } from '../../common';
 import { type ComposeConfig } from '../config';
 import { type NameBinding } from '../types';
 import ComposeLine from './ComposeLine';
