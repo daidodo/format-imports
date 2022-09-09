@@ -2,7 +2,7 @@ import NodeCache from 'node-cache';
 import ts, { sys } from 'typescript';
 
 import { logger } from '../../common';
-import { parentFolder } from '../../config/helper';
+import { parentFolder } from './helper';
 
 const CACHE = new NodeCache({ stdTTL: 5 });
 
