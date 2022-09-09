@@ -267,7 +267,7 @@ _import-sorter.json:_
 }
 ```
 
-You can even customize how options are merged between configs. Please refer to [mergeConfig](docs/README.md#mergeConfig) and [mergeConfigWithMerger](docs/README.md#mergeConfigWithMerger) for more details.
+You can even customize how options are merged between configs. Please refer to [mergeConfig](docs/README.md#mergeConfig) and [DEFAULT_MERGER](docs/README.md#DEFAULT_MERGER) for more details.
 
 ## Extending JSON schemas
 
