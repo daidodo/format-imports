@@ -1,9 +1,12 @@
 import {
-  type Configuration,
   customize,
+  mergeOptions,
+  Merger,
+} from '@dozerg/merge-options';
+
+import {
+  type Configuration,
   DEFAULT_MERGER,
-  mergeConfigWithMerger,
-  type Merger,
 } from '../../../../config';
 import {
   extractOptions,
@@ -40,6 +43,6 @@ function process(
       a === 'prettier' || b === 'prettier' ? 'prettier' : { ...a, ...b },
     ),
   };
-  const c = mergeConfigWithMerger(merger, config, { maxLineLength, wrappingStyle });
+  const c = mergeOptions(merger, config, { maxLineLength, wrappingStyle });
   return { config: c, processed: { tabWidth } };
 }

@@ -145,6 +145,7 @@
   "dependencies": {
     "@dozerg/condition": "^1.0.1",
     "@dozerg/end-of-line": "^1.0.10",
+    "@dozerg/merge-options": "^1.0.1",
     "@dozerg/no-new": "^0.0.1",
     "@dozerg/require-module": "^0.0.2",
     "eslint": "^8.23.0",
