@@ -17,6 +17,7 @@ import SortGroup from './SortGroup';
 import { removeUnusedNames } from './unused';
 
 export { Sorter, sorterFromRules, SortGroup };
+
 export function sortImports(
   nodes: ImportNode[],
   usage: NameUsage,
