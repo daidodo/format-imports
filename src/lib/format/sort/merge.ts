@@ -1,10 +1,11 @@
+import { type Comparator } from 'segment-sort';
+
 import {
   type ExportNode,
   type ImportNode,
 } from '../parser';
 import type { NameBinding } from '../types';
 import {
-  type Comparator,
   compareBindingName,
   compareImportNodesByNames,
   compareImportNodesByPaths,

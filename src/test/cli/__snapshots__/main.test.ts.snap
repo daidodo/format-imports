@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CLI check [--check 1.ts a] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "'a/2.ts' is different after formatting.
 'a/b/3.ts' is different after formatting.
@@ -15,7 +15,7 @@ Object {
 `;
 
 exports[`CLI check [-c 1.ts a] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "'a/2.ts' is different after formatting.
 'a/b/3.ts' is different after formatting.
@@ -29,7 +29,7 @@ Object {
 `;
 
 exports[`CLI check 0-processed [--check a] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "Checked 0 files.
@@ -38,7 +38,7 @@ Object {
 `;
 
 exports[`CLI check 0-processed [-c a] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "Checked 0 files.
@@ -47,7 +47,7 @@ Object {
 `;
 
 exports[`CLI check 1-processed excluded [--check 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "Checked 1 file, of which:
@@ -57,7 +57,7 @@ Object {
 `;
 
 exports[`CLI check 1-processed excluded [-c 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "Checked 1 file, of which:
@@ -67,7 +67,7 @@ Object {
 `;
 
 exports[`CLI check 1-processed passed [--check 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "Checked 1 file, of which:
@@ -77,7 +77,7 @@ Object {
 `;
 
 exports[`CLI check 1-processed passed [-c 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "Checked 1 file, of which:
@@ -87,7 +87,7 @@ Object {
 `;
 
 exports[`CLI check 1-processed rejected [--check a] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "'a/1.ts' is different after formatting.
 ",
@@ -98,7 +98,7 @@ Object {
 `;
 
 exports[`CLI check 1-processed rejected [-c a] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "'a/1.ts' is different after formatting.
 ",
@@ -131,7 +131,7 @@ Object {
 `;
 
 exports[`CLI check 2-processed excluded [--check 1.ts a] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "Checked 2 files, of which:
@@ -141,7 +141,7 @@ Object {
 `;
 
 exports[`CLI check 2-processed excluded [-c 1.ts a] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "Checked 2 files, of which:
@@ -151,7 +151,7 @@ Object {
 `;
 
 exports[`CLI check 2-processed passed [--check 1.ts a] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "Checked 2 files, of which:
@@ -161,7 +161,7 @@ Object {
 `;
 
 exports[`CLI check 2-processed passed [-c 1.ts a] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "Checked 2 files, of which:
@@ -171,7 +171,7 @@ Object {
 `;
 
 exports[`CLI check 2-processed rejected [--check a] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "'a/1.ts' is different after formatting.
 'a/b/2.ts' is different after formatting.
@@ -183,7 +183,7 @@ Object {
 `;
 
 exports[`CLI check 2-processed rejected [-c a] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "'a/1.ts' is different after formatting.
 'a/b/2.ts' is different after formatting.
@@ -219,7 +219,7 @@ Object {
 `;
 
 exports[`CLI check config [--check --config c/import-sorter.json 1.ts a] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "'a/2.ts' is different after formatting.
 'a/b/3.ts' is different after formatting.
@@ -233,7 +233,7 @@ Object {
 `;
 
 exports[`CLI check config fileconfig [--check --config c/import-sorter.json 1.ts a] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "'a/2.ts' is different after formatting.
 'a/b/3.ts' is different after formatting.
@@ -261,7 +261,7 @@ Object {
 `;
 
 exports[`CLI check config force [--check --force --config c/import-sorter.json 1.ts a] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "'a/2.ts' is different after formatting.
 'a/b/3.ts' is different after formatting.
@@ -276,7 +276,7 @@ Object {
 `;
 
 exports[`CLI check config force [--check -f --config c/import-sorter.json 1.ts a] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "'a/2.ts' is different after formatting.
 'a/b/3.ts' is different after formatting.
@@ -321,7 +321,7 @@ Object {
 `;
 
 exports[`CLI check config nonexist [--check --config c/import-sorter.json a] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "ENOENT: no such file or directory, open 'c/import-sorter.json'
 ",
@@ -344,7 +344,7 @@ Object {
 `;
 
 exports[`CLI check empty [--check] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "Expect at least 1 file or directory.
 ",
@@ -353,7 +353,7 @@ Object {
 `;
 
 exports[`CLI check empty [-c] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "Expect at least 1 file or directory.
 ",
@@ -362,7 +362,7 @@ Object {
 `;
 
 exports[`CLI check no-recursive [--check --no-recursive 1.ts a] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "'a/2.ts' is different after formatting.
 ",
@@ -388,7 +388,7 @@ Object {
 `;
 
 exports[`CLI check nonexist [--check x.ts 1.ts] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "'x.ts' doesn't exist.
 ",
@@ -399,7 +399,7 @@ Object {
 `;
 
 exports[`CLI check nonexist [-c xyz 1.ts] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "'xyz' doesn't exist.
 ",
@@ -410,7 +410,7 @@ Object {
 `;
 
 exports[`CLI check unknown [--check /dev/null 1.ts] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "'/dev/null' is neither file nor directory.
 ",
@@ -421,7 +421,7 @@ Object {
 `;
 
 exports[`CLI check unknown [-c /dev/null 1.ts] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "'/dev/null' is neither file nor directory.
 ",
@@ -460,7 +460,7 @@ Object {
 `;
 
 exports[`CLI format directory [a] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "2 files modified.
@@ -469,7 +469,7 @@ Object {
 `;
 
 exports[`CLI format directory config [--config c/import-sorter.json a] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "2 files modified.
@@ -478,7 +478,7 @@ Object {
 `;
 
 exports[`CLI format directory config exclude [--config c/import-sorter.json a] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "1 file modified.
@@ -487,7 +487,7 @@ Object {
 `;
 
 exports[`CLI format directory config exclude dry-run [--dry-run --config c/import-sorter.json a] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "1 file will be modified.
@@ -496,7 +496,7 @@ Object {
 `;
 
 exports[`CLI format directory config exclude dry-run [-d --config c/import-sorter.json a] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "1 file will be modified.
@@ -505,7 +505,7 @@ Object {
 `;
 
 exports[`CLI format directory config exclude force [--force --config c/import-sorter.json a] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "2 files modified.
@@ -514,7 +514,7 @@ Object {
 `;
 
 exports[`CLI format directory config exclude force [-f --config c/import-sorter.json a] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "2 files modified.
@@ -523,7 +523,7 @@ Object {
 `;
 
 exports[`CLI format directory config fileconfig [--config c/import-sorter.json a] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "2 files modified.
@@ -532,7 +532,7 @@ Object {
 `;
 
 exports[`CLI format directory config nonexist [--config c/import-sorter.json a] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "ENOENT: no such file or directory, open 'c/import-sorter.json'
 ",
@@ -541,7 +541,7 @@ Object {
 `;
 
 exports[`CLI format directory dry-run [--dry-run a] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "2 files will be modified.
@@ -550,7 +550,7 @@ Object {
 `;
 
 exports[`CLI format directory dry-run [-d a] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "2 files will be modified.
@@ -559,7 +559,7 @@ Object {
 `;
 
 exports[`CLI format directory no-recursive [--no-recursive a] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "1 file modified.
@@ -568,7 +568,7 @@ Object {
 `;
 
 exports[`CLI format directory no-recursive dry-run [--dry-run --no-recursive a] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "1 file will be modified.
@@ -577,7 +577,7 @@ Object {
 `;
 
 exports[`CLI format directory no-recursive dry-run [-d --no-recursive a] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "1 file will be modified.
@@ -586,7 +586,7 @@ Object {
 `;
 
 exports[`CLI format directory nonexist [a] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "ENOENT: no such file or directory, stat 'a'
 ",
@@ -595,7 +595,7 @@ Object {
 `;
 
 exports[`CLI format directory output [--output d a] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "3 files created.
@@ -604,7 +604,7 @@ Object {
 `;
 
 exports[`CLI format directory output [-o d a] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "3 files created.
@@ -613,7 +613,7 @@ Object {
 `;
 
 exports[`CLI format directory output directory [--output d a/] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "1 file modified.
@@ -623,7 +623,7 @@ Object {
 `;
 
 exports[`CLI format directory output directory [-o d a] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "1 file modified.
@@ -633,7 +633,7 @@ Object {
 `;
 
 exports[`CLI format directory output directory dry-run [--dry-run -o d a] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "1 file will be modified.
@@ -643,7 +643,7 @@ Object {
 `;
 
 exports[`CLI format directory output directory dry-run [-d -o d a] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "1 file will be modified.
@@ -653,7 +653,7 @@ Object {
 `;
 
 exports[`CLI format directory output dry-run [--dry-run -o d a] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "3 files will be created.
@@ -662,7 +662,7 @@ Object {
 `;
 
 exports[`CLI format directory output dry-run [-d -o d a] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "3 files will be created.
@@ -671,7 +671,7 @@ Object {
 `;
 
 exports[`CLI format directory output file [--dry-run -o d.txt a] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "Option output: 'd.txt' is not a directory.
 ",
@@ -680,7 +680,7 @@ Object {
 `;
 
 exports[`CLI format directory output file [--output d.txt a] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "Option output: 'd.txt' is not a directory.
 ",
@@ -689,7 +689,7 @@ Object {
 `;
 
 exports[`CLI format directory output file [-d -o d.txt a] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "Option output: 'd.txt' is not a directory.
 ",
@@ -698,7 +698,7 @@ Object {
 `;
 
 exports[`CLI format directory output file [-o d.txt a] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "Option output: 'd.txt' is not a directory.
 ",
@@ -707,7 +707,7 @@ Object {
 `;
 
 exports[`CLI format file [1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "1 file modified.
@@ -716,7 +716,7 @@ Object {
 `;
 
 exports[`CLI format file config [--config a/import-sorter.json 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "1 file modified.
@@ -725,7 +725,7 @@ Object {
 `;
 
 exports[`CLI format file config exclude [--config a/import-sorter.json 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "'1.ts' is excluded by config.
@@ -735,7 +735,7 @@ No files modified.
 `;
 
 exports[`CLI format file config exclude force [--force --config a/import-sorter.json 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "1 file modified.
@@ -744,7 +744,7 @@ Object {
 `;
 
 exports[`CLI format file config exclude force [-f --config a/import-sorter.json 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "1 file modified.
@@ -753,7 +753,7 @@ Object {
 `;
 
 exports[`CLI format file config fileconfig [--config a/import-sorter.json 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "1 file modified.
@@ -762,7 +762,7 @@ Object {
 `;
 
 exports[`CLI format file config nonexist [--config a/import-sorter.json 1.ts] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "ENOENT: no such file or directory, open 'a/import-sorter.json'
 ",
@@ -771,7 +771,7 @@ Object {
 `;
 
 exports[`CLI format file dry-run [--dry-run 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "import B from 'a';
@@ -784,7 +784,7 @@ export { A, B, C };
 `;
 
 exports[`CLI format file dry-run [-d 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "import B from 'a';
@@ -797,7 +797,7 @@ export { A, B, C };
 `;
 
 exports[`CLI format file nonexist [1.ts] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "ENOENT: no such file or directory, stat '1.ts'
 ",
@@ -806,7 +806,7 @@ Object {
 `;
 
 exports[`CLI format file not-supported [1.txt] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "'1.txt' is not a supported file type.
@@ -816,7 +816,7 @@ No files modified.
 `;
 
 exports[`CLI format file output [--output a/2.ts 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "1 file created.
@@ -825,7 +825,7 @@ Object {
 `;
 
 exports[`CLI format file output [-o a/2.ts 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "1 file created.
@@ -834,7 +834,7 @@ Object {
 `;
 
 exports[`CLI format file output directory [--output a/ 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "1 file created.
@@ -843,7 +843,7 @@ Object {
 `;
 
 exports[`CLI format file output directory [-o a 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "1 file created.
@@ -852,7 +852,7 @@ Object {
 `;
 
 exports[`CLI format file output directory dry-run [--dry-run -o a 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "import B from 'a';
@@ -865,7 +865,7 @@ export { A, B, C };
 `;
 
 exports[`CLI format file output directory dry-run [-d -o a 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "import B from 'a';
@@ -878,7 +878,7 @@ export { A, B, C };
 `;
 
 exports[`CLI format file output dry-run [--dry-run -o a/2.ts 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "import B from 'a';
@@ -891,7 +891,7 @@ export { A, B, C };
 `;
 
 exports[`CLI format file output dry-run [-d -o a/2.ts 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "import B from 'a';
@@ -904,7 +904,7 @@ export { A, B, C };
 `;
 
 exports[`CLI format file output file [--output a/2.ts 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "1 file modified.
@@ -913,7 +913,7 @@ Object {
 `;
 
 exports[`CLI format file output file [-o a/2.ts 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "1 file modified.
@@ -922,7 +922,7 @@ Object {
 `;
 
 exports[`CLI format file output file dry-run [--dry-run -o a/2.ts 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "import B from 'a';
@@ -935,7 +935,7 @@ export { A, B, C };
 `;
 
 exports[`CLI format file output file dry-run [-d -o a/2.ts 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "import B from 'a';
@@ -948,7 +948,7 @@ export { A, B, C };
 `;
 
 exports[`CLI format file output file equal [--output a/2.ts 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "No files modified.
@@ -957,7 +957,7 @@ Object {
 `;
 
 exports[`CLI format file output file equal [-o a/2.ts 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "No files modified.
@@ -966,7 +966,7 @@ Object {
 `;
 
 exports[`CLI format file output file equal dry-run [--dry-run -o a/2.ts 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "import B from 'a';
@@ -979,7 +979,7 @@ export { A, B, C };
 `;
 
 exports[`CLI format file output file equal dry-run [-d -o a/2.ts 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "import B from 'a';
@@ -992,7 +992,7 @@ export { A, B, C };
 `;
 
 exports[`CLI format files [1.ts a/2.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "2 files modified.
@@ -1001,7 +1001,7 @@ Object {
 `;
 
 exports[`CLI format files config [--config c/import-sorter.json 1.ts a/2.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "2 files modified.
@@ -1010,7 +1010,7 @@ Object {
 `;
 
 exports[`CLI format files config exclude [--config c/import-sorter.json 1.ts a/2.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "'a/2.ts' is excluded by config.
@@ -1020,7 +1020,7 @@ Object {
 `;
 
 exports[`CLI format files config exclude force [--force --config c/import-sorter.json 1.ts a/2.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "2 files modified.
@@ -1029,7 +1029,7 @@ Object {
 `;
 
 exports[`CLI format files config exclude force [-f --config c/import-sorter.json 1.ts a/2.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "2 files modified.
@@ -1038,7 +1038,7 @@ Object {
 `;
 
 exports[`CLI format files config fileconfig [--config c/import-sorter.json 1.ts a/2.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "2 files modified.
@@ -1047,7 +1047,7 @@ Object {
 `;
 
 exports[`CLI format files config nonexist [--config c/import-sorter.json 1.ts a/2.ts] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "ENOENT: no such file or directory, open 'c/import-sorter.json'
 ",
@@ -1056,7 +1056,7 @@ Object {
 `;
 
 exports[`CLI format files dry-run [--dry-run 1.ts a/2.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "'1.ts' will be modified.
@@ -1065,7 +1065,7 @@ Object {
 `;
 
 exports[`CLI format files dry-run [-d 1.ts a/2.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "'1.ts' will be modified.
@@ -1074,7 +1074,7 @@ Object {
 `;
 
 exports[`CLI format files nonexist [1.ts a/2.ts] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "ENOENT: no such file or directory, stat 'a/2.ts'
 ",
@@ -1083,7 +1083,7 @@ Object {
 `;
 
 exports[`CLI format files nonfile [1.ts a/2.ts] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "Option: 'a/2.ts' is not a file.",
   "stdout": "",
@@ -1091,7 +1091,7 @@ Object {
 `;
 
 exports[`CLI format files output [--dry-run -o abc 1.ts 2.ts] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "Option output: should be empty if multiple files are provided.",
   "stdout": "",
@@ -1099,7 +1099,7 @@ Object {
 `;
 
 exports[`CLI format files output [-d -o abc 1.ts 2.ts] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "Option output: should be empty if multiple files are provided.",
   "stdout": "",
@@ -1107,7 +1107,7 @@ Object {
 `;
 
 exports[`CLI format files output [-o abc 1.ts 2.ts] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "Option output: should be empty if multiple files are provided.",
   "stdout": "",
@@ -1115,7 +1115,7 @@ Object {
 `;
 
 exports[`CLI format stdin [] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "import B from 'a';
@@ -1128,7 +1128,7 @@ export { A, B, C };
 `;
 
 exports[`CLI format stdin config [--config import-sorter.json] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "import B
@@ -1149,7 +1149,7 @@ export {
 `;
 
 exports[`CLI format stdin config nonexist [--config import-sorter.json] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "ENOENT: no such file or directory, open 'import-sorter.json'
 ",
@@ -1158,7 +1158,7 @@ Object {
 `;
 
 exports[`CLI format stdin dry-run [--dry-run] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "import B from 'a';
@@ -1171,7 +1171,7 @@ export { A, B, C };
 `;
 
 exports[`CLI format stdin dry-run [-d] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "import B from 'a';
@@ -1184,7 +1184,7 @@ export { A, B, C };
 `;
 
 exports[`CLI format stdin extension error [--extension xyz] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "Option extension: 'xyz' not one of ts, tsx, js, or jsx.
 
@@ -1213,7 +1213,7 @@ format-imports -c [options] FILE/DIR [FILE/DIR ...]
 `;
 
 exports[`CLI format stdin extension error [-e xyz] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "Option extension: 'xyz' not one of ts, tsx, js, or jsx.
 
@@ -1242,7 +1242,7 @@ format-imports -c [options] FILE/DIR [FILE/DIR ...]
 `;
 
 exports[`CLI format stdin extension js [--extension js] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "import B from 'a';
@@ -1255,7 +1255,7 @@ export { A, B, C };
 `;
 
 exports[`CLI format stdin extension js [-e js] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "import B from 'a';
@@ -1268,7 +1268,7 @@ export { A, B, C };
 `;
 
 exports[`CLI format stdin extension jsx [--extension jsx] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "import B from 'a';
@@ -1281,7 +1281,7 @@ export { A, B, C };
 `;
 
 exports[`CLI format stdin extension jsx [-e jsx] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "import B from 'a';
@@ -1294,7 +1294,7 @@ export { A, B, C };
 `;
 
 exports[`CLI format stdin extension ts [--extension ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "import B from 'a';
@@ -1307,7 +1307,7 @@ export { A, B, C };
 `;
 
 exports[`CLI format stdin extension ts [-e ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "import B from 'a';
@@ -1320,7 +1320,7 @@ export { A, B, C };
 `;
 
 exports[`CLI format stdin extension tsx [--extension tsx] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "import B from 'a';
@@ -1333,7 +1333,7 @@ export { A, B, C };
 `;
 
 exports[`CLI format stdin extension tsx [-e tsx] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "import B from 'a';
@@ -1346,7 +1346,7 @@ export { A, B, C };
 `;
 
 exports[`CLI format stdin output [--output 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "1 file created.
@@ -1355,7 +1355,7 @@ Object {
 `;
 
 exports[`CLI format stdin output [-o 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "1 file created.
@@ -1364,7 +1364,7 @@ Object {
 `;
 
 exports[`CLI format stdin output directory [--output 1] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "Option output: '1' is not a file.
 ",
@@ -1373,7 +1373,7 @@ Object {
 `;
 
 exports[`CLI format stdin output directory [-o 1] 1`] = `
-Object {
+{
   "status": 1,
   "stderr": "Option output: '1' is not a file.
 ",
@@ -1382,7 +1382,7 @@ Object {
 `;
 
 exports[`CLI format stdin output dry-run [--dry-run -o 1.ts ] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "import B from 'a';
@@ -1395,7 +1395,7 @@ export { A, B, C };
 `;
 
 exports[`CLI format stdin output dry-run [-d -o 1.ts ] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "import B from 'a';
@@ -1408,7 +1408,7 @@ export { A, B, C };
 `;
 
 exports[`CLI format stdin output file [--output 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "1 file modified.
@@ -1417,7 +1417,7 @@ Object {
 `;
 
 exports[`CLI format stdin output file [-o 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "1 file modified.
@@ -1426,7 +1426,7 @@ Object {
 `;
 
 exports[`CLI format stdin output file dry-run [--dry-run -o 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "import B from 'a';
@@ -1439,7 +1439,7 @@ export { A, B, C };
 `;
 
 exports[`CLI format stdin output file dry-run [-d -o 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "import B from 'a';
@@ -1452,7 +1452,7 @@ export { A, B, C };
 `;
 
 exports[`CLI format stdin output file equal [--output 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "No files modified.
@@ -1461,7 +1461,7 @@ Object {
 `;
 
 exports[`CLI format stdin output file equal [-o 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "No files modified.
@@ -1470,7 +1470,7 @@ Object {
 `;
 
 exports[`CLI format stdin output file equal dry-run [--dry-run -o 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "import B from 'a';
@@ -1483,7 +1483,7 @@ export { A, B, C };
 `;
 
 exports[`CLI format stdin output file equal dry-run [-d -o 1.ts] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "import B from 'a';
@@ -1496,7 +1496,7 @@ export { A, B, C };
 `;
 
 exports[`CLI help [--help] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "format-imports [options] [FILE ...]
@@ -1523,7 +1523,7 @@ format-imports -c [options] FILE/DIR [FILE/DIR ...]
 `;
 
 exports[`CLI help [-h] 1`] = `
-Object {
+{
   "status": 0,
   "stderr": "",
   "stdout": "format-imports [options] [FILE ...]

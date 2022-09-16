@@ -5,22 +5,12 @@ import {
 } from './grouping';
 import {
   CompareRule,
-  SegSymbol,
   SortRules,
 } from './sorting';
 import { KeepUnusedRule } from './unused';
 import { WrappingRule } from './wrapping';
 
-export {
-  breakFlag,
-  CompareRule,
-  FlagSymbol,
-  GroupRule,
-  KeepUnusedRule,
-  SegSymbol,
-  SortRules,
-  WrappingRule,
-};
+export { breakFlag, CompareRule, FlagSymbol, GroupRule, KeepUnusedRule, SortRules, WrappingRule };
 
 export interface Configuration {
   /**
