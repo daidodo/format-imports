@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 
-import { assertTrue } from '@dozerg/condition';
+import { assertIsObject } from '@dozerg/condition';
 import { endOfLineForFile } from '@dozerg/end-of-line';
 import findUp from '@dozerg/find-up';
 
@@ -58,7 +58,7 @@ function packageConfig(fileName: string) {
     const { importSorter: config } = jsonParseNoThrow(fs.readFileSync(file, 'utf8'));
     log.debug('Found package.json', file, 'and config:', config);
     if (!config) return {};
-    assertTrue(isObject(config), `Bad "importSorter" config in "${file}"`);
+    assertIsObject(config, `Bad "importSorter" config in "${file}"`);
     return config as Configuration;
   });
 }
@@ -102,10 +102,6 @@ export function enhanceEol<T extends Configuration>(config: T, detectEol: () => 
 export function loadConfigFromJsonFile(fileName: string): Configuration {
   if (!fileName) return {};
   const config: Configuration = JSON.parse(fs.readFileSync(fileName, 'utf8'));
-  assertTrue(isObject(config), `Bad config in "${fileName}"`);
+  assertIsObject(config, `Bad config in "${fileName}"`);
   return config;
-}
-
-function isObject(v: any) {
-  return typeof v === 'object' && !Array.isArray(v) && v !== null;
 }

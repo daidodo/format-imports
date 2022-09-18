@@ -137,13 +137,13 @@
     "ts-jest": "^29.0.1",
     "ts-loader": "^9.3.1",
     "ts-node": "^10.9.1",
-    "typedoc": "^0.23.14",
+    "typedoc": "^0.23.15",
     "typedoc-plugin-markdown": "^3.13.6",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"
   },
   "dependencies": {
-    "@dozerg/condition": "^1.0.1",
+    "@dozerg/condition": "^1.0.3",
     "@dozerg/end-of-line": "^1.0.10",
     "@dozerg/merge-options": "^1.0.1",
     "@dozerg/no-new": "^0.0.1",

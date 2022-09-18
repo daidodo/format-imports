@@ -1,8 +1,11 @@
+import path from 'node:path';
+
 import NodeCache from 'node-cache';
 import ts, { sys } from 'typescript';
 
+import { isObject } from '@dozerg/condition';
+
 import { logger } from '../../common';
-import { parentFolder } from './helper';
 
 const CACHE = new NodeCache({ stdTTL: 5 });
 
@@ -13,12 +16,10 @@ export function loadTsConfig(fileName: string, configPath?: string) {
     const configFile = configPath || ts.findConfigFile(fileName, sys.fileExists.bind(sys));
     if (!configFile) return undefined;
     const opt = CACHE.get(configFile);
-    if (opt && typeof opt === 'object') return opt as ts.CompilerOptions;
+    if (isObject(opt)) return opt as ts.CompilerOptions;
     log.debug('Loading TS config from:', configFile);
     const { config } = ts.readConfigFile(configFile, sys.readFile.bind(sys));
-    const path = parentFolder(configFile);
-    log.debug('Parsing TS config for path:', path);
-    const { options } = ts.parseJsonConfigFileContent(config, sys, path);
+    const { options } = ts.parseJsonConfigFileContent(config, sys, path.dirname(configFile));
     CACHE.set(configFile, options);
     return options;
   } catch (e: unknown) {
