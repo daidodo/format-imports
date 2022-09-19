@@ -4,7 +4,10 @@
 import { type Linter } from 'eslint';
 import { type UnionToIntersection } from 'utility-types';
 
-import { isNonNull } from '@dozerg/condition';
+import {
+  isNonNull,
+  isObject,
+} from '@dozerg/condition';
 
 import { logger } from '../../../common';
 import { type Configuration } from '../../../config';
@@ -45,7 +48,7 @@ function extractRuleOptions<Options>(rules: Rules, key: string, defaultOptions: 
     const opt: Options | undefined = rule[1];
     return opt === undefined
       ? defaultOptions
-      : typeof opt === 'object' && typeof defaultOptions === 'object'
+      : isObject(opt) && isObject(defaultOptions)
       ? { ...defaultOptions, ...opt }
       : opt;
   }

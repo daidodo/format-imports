@@ -54,7 +54,7 @@ async function loadESLintConfig(fileName: string, configFile?: string) {
       return undefined;
     }
     return (await esl.calculateConfigForFile(fileName)) as Linter.Config;
-  } catch (e: unknown) {
+  } catch (e) {
     const msg = e instanceof Error ? e.message : `${e}`;
     log.warn('Failed to load ESLint config for fileName:', fileName, 'with error:', msg);
     return undefined;
