@@ -55,7 +55,7 @@ function process(node: Node, p: ParseParams, config: Configuration, options?: Co
     logger('parser.process').info('Disable comment found. Ignoring file.');
     return false;
   }
-  if (isUseStrict(node)) return true; // Skip 'use strict' directive
+  if (isUseDirective(node)) return true; // Skip 'use' directives
   p.checkFileComments = false; // No more checks for global comments after non-'use strict' statement
   const range: RangeAndEmptyLines = {
     ...declAndCommentsLineRange,
@@ -135,9 +135,10 @@ function parseId(node: Node, p: ParseParams, options?: CompilerOptions) {
   node.forEachChild(n => parseId(n, p, options));
 }
 
-function isUseStrict(node: Node) {
+/** Is a node a "use" directive such as "use strict" or "use client" */
+function isUseDirective(node: Node) {
   if (node.kind !== SyntaxKind.ExpressionStatement) return false;
   const { expression } = node as ExpressionStatement;
   if (!expression || expression.kind !== SyntaxKind.StringLiteral) return false;
-  return (expression as StringLiteral).text === 'use strict';
+  return /^use (strict|client)$/.test((expression as StringLiteral).text);
 }
