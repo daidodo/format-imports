@@ -25,6 +25,7 @@ It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](htt
 
 - Add `builtin` to `GroupRule` to support NodeJS builtin module imports.
 - Add `nodeProtocol` to support adding or removing `"node:"` to builtin module paths.
+- Support React 18 [use client](https://github.com/reactjs/rfcs/blob/main/text/0227-server-module-conventions.md) directive.
 
 # Table of contents <!-- omit in toc -->
 
@@ -57,7 +58,7 @@ It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](htt
 - Ignore files or declarations by config or inline comments.
 - Respect [ESLint](https://eslint.org) and [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import) rules.
 - Respect configs from [Prettier](https://prettier.io) and [EditorConfig](https://editorconfig.org).
-- Preserve `'use strict'`, `///` directives, shebang (`#!`) and comments.
+- Preserve `'use strict/client'`, `///` directives, shebang (`#!`) and comments.
 - Support [Type-Only imports/exports](https://devblogs.microsoft.com/typescript/announcing-typescript-3-8/#type-only-imports-exports), [Type Modifier on names](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#type-on-import-names) and [Import Assertions](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#import-assertions).
 - Support NodeJS builtin modules.
 - Cross-platform consistency: Windows, macOS and Linux (Ubuntu).

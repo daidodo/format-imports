@@ -20,6 +20,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -->
 
+## [3.1.1] - 2022-10-28
+
+### Added
+
+- Support React 18 [use client](https://github.com/reactjs/rfcs/blob/main/text/0227-server-module-conventions.md) directive.
+
 ## [3.1.0] - 2022-09-02
 
 ### Added
