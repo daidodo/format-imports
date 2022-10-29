@@ -1,6 +1,6 @@
 {
   "name": "format-imports",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "JavaScript and TypeScript Import/Export Formatter.",
   "main": "dist/lib/index.js",
   "bin": "dist/bin/main.js",
@@ -119,7 +119,7 @@
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.1",
     "@types/babel__core": "^7.1.19",
-    "@types/eslint": "^8.4.8",
+    "@types/eslint": "^8.4.9",
     "@types/fs-extra": "^9.0.13",
     "@types/jest": "^29.2.0",
     "@types/minimatch": "^5.1.2",
@@ -145,7 +145,7 @@
   "dependencies": {
     "@dozerg/condition": "^1.0.3",
     "@dozerg/end-of-line": "^1.0.10",
-    "@dozerg/merge-options": "^1.0.3",
+    "@dozerg/merge-options": "^1.0.4",
     "@dozerg/no-new": "^0.0.1",
     "@dozerg/require-module": "^0.0.2",
     "eslint": "^8.26.0",
