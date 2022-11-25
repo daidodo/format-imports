@@ -13,10 +13,10 @@ const CACHE = new NodeCache({ stdTTL: 5 });
 export function loadTsConfig(fileName: string, configPath?: string) {
   const log = logger('format-imports.loadTsConfig');
   log.debug('Loading TS config for fileName:', fileName, 'from', configPath ?? 'default');
-  const { findConfigFile, readConfigFile, parseJsonConfigFileContent, sys, version } =
-    requireModule('typescript', fileName, ts);
-  log.debug('TypeScript API version:', version);
   try {
+    const { findConfigFile, readConfigFile, parseJsonConfigFileContent, sys, version } =
+      requireModule('typescript', fileName, ts);
+    log.debug('TypeScript API version:', version);
     const configFile = configPath || findConfigFile(fileName, sys.fileExists.bind(sys));
     if (!configFile) return undefined;
     const opt = CACHE.get(configFile);

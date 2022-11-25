@@ -45,9 +45,13 @@ export async function enhanceWithEslint(
 async function loadESLintConfig(fileName: string, configFile?: string) {
   const log = logger('format-imports.loadESLintConfig');
   log.debug('Loading ESLint config for fileName:', fileName, 'from', configFile ?? 'default');
-  const { ESLint } = requireModule('eslint', fileName, eslint);
-  log.debug('ESLint API version:', ESLint.version);
   try {
+    const { ESLint } = requireModule('eslint', fileName, eslint);
+    if (!ESLint) {
+      log.warn('Cannot find class "ESLint". Maybe ESLint is too old.');
+      return undefined;
+    }
+    log.debug('ESLint API version:', ESLint.version);
     const esl = new ESLint({ overrideConfigFile: configFile });
     if (await esl.isPathIgnored(fileName)) {
       log.debug('Ignored by ESLint for fileName:', fileName);
