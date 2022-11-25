@@ -17,8 +17,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-
 -->
+
+## [3.1.2] - 2022-11-24
+
+### Added
+
+- Support TypeScript 4.9 [satisfies](https://devblogs.microsoft.com/typescript/announcing-typescript-4-9/#satisfies) operator.
 
 ## [3.1.1] - 2022-10-28
 
