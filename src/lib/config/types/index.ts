@@ -160,7 +160,7 @@ export interface Configuration {
    */
   readonly bracketSpacing?: boolean;
   /**
-   * Whether to add node protocol ("node:") to builtin module paths. Default to _preserve_.
+   * Whether to add or remove node protocol ("node:") to/from builtin module paths. Default to _preserve_.
    * - `always`: Always add `"node:"` to NodeJS builtin modules.
    * - `none`: Always remove `"node:"` for NodeJS builtin modules.
    * - `preserve`: Keep it as is.
