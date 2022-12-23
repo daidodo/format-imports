@@ -139,11 +139,19 @@ async function processFiles(filePaths: string[], options: Options) {
     process.stderr.write(`Option output: should be empty if multiple files are provided.`);
     process.exit(1);
   }
-  for (const f of filePaths) {
-    if (await isFile(f)) continue;
-    process.stderr.write(`Option: '${f}' is not a file.`);
+
+  const isFileList = await Promise.all(filePaths.map(isFile));
+  const notFilePaths = [];
+  for (const [index, isFile] of isFileList.entries()) {
+    if (!isFile) {
+      notFilePaths.push(filePaths[index]);
+    }
+  }
+  if (notFilePaths.length) {
+    process.stderr.write(`Option: '${notFilePaths.join(', ')}' is not a file.`);
     process.exit(1);
   }
+
   const baseConfig = loadBaseConfig(options);
   const mode = dryRun
     ? single
@@ -152,10 +160,11 @@ async function processFiles(filePaths: string[], options: Options) {
     : OutputMode.NORMAL;
   let modified = 0;
   let created = 0;
-  for (const filePath of filePaths) {
+
+  const processFile = async (filePath: string) => {
     if (!isSupported(filePath)) {
       process.stdout.write(`'${filePath}' is not a supported file type.\n`);
-      continue;
+      return;
     }
     const inputFile = path.resolve(filePath);
     const config = resolveConfigForFile(inputFile, baseConfig);
@@ -177,7 +186,8 @@ async function processFiles(filePaths: string[], options: Options) {
       if (m) modified += m;
       if (c) created += c;
     }
-  }
+  };
+  await Promise.all(filePaths.map(processFile));
   summary(mode, modified, created);
 }
 
