@@ -8,10 +8,7 @@ import {
   isFileExcludedByConfig,
   resolveConfigForFile,
 } from '../lib';
-import {
-  isSupported,
-  loadBaseConfig,
-} from './config';
+import { isSupported, loadBaseConfig } from './config';
 import { type Options } from './options';
 import { getFiles } from './utils';
 
@@ -29,12 +26,12 @@ export async function check(options: Options) {
   }
   const config = loadBaseConfig(options);
   for (const filePath of options._) {
-    if (!fs.existsSync(filePath)) {
+    if (!(await fs.pathExists(filePath))) {
       STATS.otherIssues++;
       process.stderr.write(`'${filePath}' doesn't exist.\n`);
       continue;
     }
-    const stat = fs.statSync(filePath);
+    const stat = await fs.stat(filePath);
     if (stat.isFile()) await processFile(config, filePath);
     else if (stat.isDirectory()) await processDirectory(options, config, filePath);
     else {
@@ -54,7 +51,7 @@ async function processFile(baseConfig: Configuration, filePath: string, realPath
     STATS.excluded++;
     return;
   }
-  const source = fs.readFileSync(resolvedPath).toString();
+  const source = await fs.readFile(resolvedPath, { encoding: 'utf8' });
   const result = await formatSourceFromFile(source, resolvedPath, config);
   if (result !== undefined) {
     STATS.styleIssues++;

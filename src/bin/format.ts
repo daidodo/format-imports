@@ -9,13 +9,9 @@ import {
   resolveConfigForFile,
   resolveConfigForSource,
 } from '../lib';
-import {
-  decideExtension,
-  isSupported,
-  loadBaseConfig,
-} from './config';
+import { decideExtension, isSupported, loadBaseConfig } from './config';
 import { type Options } from './options';
-import { getFiles } from './utils';
+import { getFiles, isDirectory, isFile } from './utils';
 
 enum OutputMode {
   NORMAL,
@@ -36,58 +32,58 @@ function dryRunOutput(
   } else if (mode === OutputMode.DRY_RUN_FILE) process.stdout.write(result ?? source);
 }
 
-function checkFileContent(
+async function checkFileContent(
   filePath: string,
   text: string,
-): { exist: boolean; isFile?: boolean; equal?: boolean } {
-  const exist = fs.existsSync(filePath);
+): Promise<{ exist: boolean; isFile?: boolean; equal?: boolean }> {
+  const exist = await fs.pathExists(filePath);
   if (!exist) return { exist };
-  const stat = fs.statSync(filePath);
+  const stat = await fs.stat(filePath);
   const isFile = stat.isFile();
   if (!isFile) return { exist, isFile };
   if (stat.size !== text.length) return { exist, isFile, equal: false };
-  const content = fs.readFileSync(filePath).toString();
+  const content = await fs.readFile(filePath, { encoding: 'utf8' });
   return { exist, isFile, equal: text === content };
 }
 
-function outputResult(
+async function outputResult(
   mode: OutputMode,
   result: string | undefined,
   outputFile: string | undefined,
   source: string,
   inputFile?: string,
-): { error?: boolean; modified?: number; created?: number } {
+): Promise<{ error?: boolean; modified?: number; created?: number }> {
   if (outputFile) {
     const text = result ?? source;
-    const { exist, isFile, equal } = checkFileContent(outputFile, text);
+    const { exist, isFile, equal } = await checkFileContent(outputFile, text);
     if (exist && !isFile) {
       process.stderr.write(`Option output: '${outputFile}' is not a file.\n`);
       return { error: true };
     }
     if (mode === OutputMode.NORMAL) {
-      if (!equal) fs.outputFileSync(outputFile, text);
+      if (!equal) await fs.outputFile(outputFile, text);
     } else dryRunOutput(mode, result, source);
     return exist ? { modified: equal ? 0 : 1 } : { created: 1 };
   } else if (inputFile) {
     if (mode === OutputMode.NORMAL) {
-      if (result !== undefined) fs.writeFileSync(inputFile, result);
+      if (result !== undefined) await fs.writeFile(inputFile, result);
     } else dryRunOutput(mode, result, source, inputFile);
     return { modified: result !== undefined ? 1 : 0 };
   } else dryRunOutput(OutputMode.DRY_RUN_FILE, result, source);
   return {};
 }
 
-function ensureOutputDir(output: string | undefined, dryRun: boolean | undefined) {
+async function ensureOutputDir(output: string | undefined, dryRun: boolean | undefined) {
   if (!output) return;
-  if (!fs.existsSync(output)) {
-    if (!dryRun) fs.mkdirSync(output, { recursive: true });
-  } else if (!fs.statSync(output).isDirectory()) {
+  if (!(await fs.pathExists(output))) {
+    if (!dryRun) await fs.mkdir(output, { recursive: true });
+  } else if (!(await isDirectory(output))) {
     process.stderr.write(`Option output: '${output}' is not a directory.\n`);
     process.exit(1);
   }
 }
 
-function processStdin(options: Options) {
+async function processStdin(options: Options) {
   const { output, dryRun } = options;
   const baseConfig = loadBaseConfig(options);
   const chunks: string[] = [];
@@ -102,17 +98,17 @@ function processStdin(options: Options) {
       skipTsConfig: true,
     });
     const mode = dryRun ? OutputMode.DRY_RUN_FILE : OutputMode.NORMAL;
-    const { error, modified, created } = outputResult(mode, result, output, source);
+    const { error, modified, created } = await outputResult(mode, result, output, source);
     if (error) process.exit(1);
     if (mode === OutputMode.NORMAL && output) summary(mode, modified ?? 0, created ?? 0);
   });
 }
 
 async function processDirectory(dirPath: string, options: Options) {
-  if (!fs.statSync(dirPath).isDirectory()) return processFiles([dirPath], options);
+  if (!(await isDirectory(dirPath))) return processFiles([dirPath], options);
   const { output, recursive, dryRun } = options;
   const baseConfig = loadBaseConfig(options);
-  ensureOutputDir(output, dryRun);
+  await ensureOutputDir(output, dryRun);
   const mode = dryRun ? OutputMode.DRY_RUN_DIR : OutputMode.NORMAL;
   let modified = 0;
   let created = 0;
@@ -121,14 +117,14 @@ async function processDirectory(dirPath: string, options: Options) {
     const filePath = path.join(dirPath, relativePath);
     const config = resolveConfigForFile(inputFile, baseConfig);
     if (isFileExcludedByConfig(inputFile, config)) continue;
-    const source = fs.readFileSync(inputFile).toString();
+    const source = await fs.readFile(inputFile, { encoding: 'utf8' });
     const result = await formatSourceFromFile(source, inputFile, config);
     const outputFile = output ? path.join(output, relativePath) : output;
     const {
       error,
       modified: m,
       created: c,
-    } = outputResult(mode, result, outputFile, source, filePath);
+    } = await outputResult(mode, result, outputFile, source, filePath);
     if (error) process.exit(1);
     if (m) modified += m;
     if (c) created += c;
@@ -144,7 +140,7 @@ async function processFiles(filePaths: string[], options: Options) {
     process.exit(1);
   }
   for (const f of filePaths) {
-    if (fs.statSync(f).isFile()) continue;
+    if (await isFile(f)) continue;
     process.stderr.write(`Option: '${f}' is not a file.`);
     process.exit(1);
   }
@@ -166,17 +162,17 @@ async function processFiles(filePaths: string[], options: Options) {
     if (isFileExcludedByConfig(inputFile, config)) {
       process.stdout.write(`'${filePath}' is excluded by config.\n`);
     } else {
-      const source = fs.readFileSync(inputFile).toString();
+      const source = await fs.readFile(inputFile, { encoding: 'utf8' });
       const result = await formatSourceFromFile(source, inputFile, config);
       const outputFile =
-        output && fs.existsSync(output) && fs.statSync(output).isDirectory()
+        output && (await fs.pathExists(output)) && (await isDirectory(output))
           ? path.resolve(output, path.basename(inputFile))
           : output;
       const {
         error,
         modified: m,
         created: c,
-      } = outputResult(mode, result, outputFile, source, filePath);
+      } = await outputResult(mode, result, outputFile, source, filePath);
       if (error) process.exit(1);
       if (m) modified += m;
       if (c) created += c;
