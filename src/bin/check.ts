@@ -25,11 +25,11 @@ export async function check(options: Options) {
     process.exit(1);
   }
   const config = loadBaseConfig(options);
-  for (const filePath of options._) {
+  const checkFile = async (filePath: string) => {
     if (!(await fs.pathExists(filePath))) {
       STATS.otherIssues++;
       process.stderr.write(`'${filePath}' doesn't exist.\n`);
-      continue;
+      return;
     }
     const stat = await fs.stat(filePath);
     if (stat.isFile()) await processFile(config, filePath);
@@ -38,7 +38,8 @@ export async function check(options: Options) {
       STATS.otherIssues++;
       process.stderr.write(`'${filePath}' is neither file nor directory.\n`);
     }
-  }
+  };
+  await Promise.all(options._.map(checkFile));
   summary();
 }
 
