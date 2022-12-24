@@ -6,6 +6,9 @@
   "bin": "dist/bin/main.js",
   "types": "dist/lib/index.d.ts",
   "private": false,
+  "engines": {
+    "node": ">=14"
+  },
   "scripts": {
     "clean": "rm -rf dist",
     "cleanall": "rm -rf dist node_modules",
