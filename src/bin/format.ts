@@ -11,7 +11,7 @@ import {
 } from '../lib';
 import { decideExtension, isSupported, loadBaseConfig } from './config';
 import { type Options } from './options';
-import { getFiles, isDirectory, isFile } from './utils';
+import { getFiles, isDirectory } from './utils';
 
 enum OutputMode {
   NORMAL,
@@ -105,7 +105,7 @@ async function processStdin(options: Options) {
 }
 
 async function processDirectory(dirPath: string, options: Options) {
-  if (!(await isDirectory(dirPath))) return processFiles([dirPath], options);
+  if (!fs.statSync(dirPath).isDirectory()) return processFiles([dirPath], options);
   const { output, recursive, dryRun } = options;
   const baseConfig = loadBaseConfig(options);
   await ensureOutputDir(output, dryRun);
@@ -140,15 +140,9 @@ async function processFiles(filePaths: string[], options: Options) {
     process.exit(1);
   }
 
-  const isFileList = await Promise.all(filePaths.map(isFile));
-  const notFilePaths = [];
-  for (const [index, isFile] of isFileList.entries()) {
-    if (!isFile) {
-      notFilePaths.push(filePaths[index]);
-    }
-  }
-  if (notFilePaths.length) {
-    process.stderr.write(`Option: '${notFilePaths.join(', ')}' is not a file.`);
+  for (const f of filePaths) {
+    if (fs.statSync(f).isFile()) continue;
+    process.stderr.write(`Option: '${f}' is not a file.`);
     process.exit(1);
   }
 
