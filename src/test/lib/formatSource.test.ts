@@ -1,18 +1,10 @@
 import assert from 'node:assert';
 import fs from 'node:fs';
 import path, { sep } from 'node:path';
-
+import { assertNonNull, isNonNull } from '@dozerg/condition';
 import log4js from 'log4js';
 
-import {
-  assertNonNull,
-  isNonNull,
-} from '@dozerg/condition';
-
-import {
-  formatSourceFromFile,
-  resolveConfigForFile,
-} from '../../lib';
+import { formatSourceFromFile, resolveConfigForFile } from '../../lib';
 
 interface TestSuite {
   name: string;
@@ -66,7 +58,7 @@ function getTestSuite(dir: string, name: string): TestSuite | undefined {
   entries
     .filter(e => e.isFile())
     .forEach(({ name }) => {
-      const r = /^(.+\.)?(origin|result)\.[jt]sx?$/.exec(name);
+      const r = /^(.+\.)?(origin|result)\.([jt]sx?|vue)$/.exec(name);
       if (!r) return;
       const [, n, t] = r;
       const p = path + sep + name;
