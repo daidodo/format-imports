@@ -1,5 +1,4 @@
 import path from 'node:path';
-
 import fs from 'fs-extra';
 
 import {
@@ -9,9 +8,16 @@ import {
   resolveConfigForFile,
   resolveConfigForSource,
 } from '../lib';
-import { decideExtension, isSupported, loadBaseConfig } from './config';
+import {
+  decideExtension,
+  isSupported,
+  loadBaseConfig,
+} from './config';
 import { type Options } from './options';
-import { getFiles, isDirectory } from './utils';
+import {
+  getFiles,
+  isDirectory,
+} from './utils';
 
 enum OutputMode {
   NORMAL,
