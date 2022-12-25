@@ -20,6 +20,13 @@ export type Extension = 'js' | 'ts' | 'jsx' | 'tsx' | 'vue';
  */
 export const SUPPORTED_EXTENSIONS: Extension[] = ['js', 'ts', 'jsx', 'tsx', 'vue'];
 
+const CRLF = '\r\n';
+const LF = '\n';
+const CR = '\r';
+function getLineEndingAfterVueScriptTag(text: string) {
+  return [CRLF, LF, CR].find((lineEnding) => text.startsWith(lineEnding));
+}
+
 /**
  * Format given source text from a file, asynchronously.
  *
@@ -55,9 +62,14 @@ export async function formatSourceFromFile(
     if (vueScript == null) {
       return text;
     }
-    const sortedScript = await formatSource(vueScript.content, fileName, allConfig);
+    let sortedScript = await formatSource(vueScript.content, fileName, allConfig);
     if (sortedScript) {
-      return (
+      // keep lineEnding after script tag
+      const lineEndingAfterScriptTag = getLineEndingAfterVueScriptTag(vueScript.content);
+      if (lineEndingAfterScriptTag && !sortedScript.startsWith(lineEndingAfterScriptTag)) {
+        sortedScript = lineEndingAfterScriptTag + sortedScript;
+      }
+      return  (
         text.slice(0, vueScript.loc.start.offset) +
         sortedScript +
         text.slice(vueScript.loc.end.offset)
