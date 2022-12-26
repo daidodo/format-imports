@@ -1,4 +1,5 @@
 import path from 'node:path';
+
 import fs from 'fs-extra';
 
 import {
@@ -27,7 +28,7 @@ export async function check(options: Options) {
     process.exit(1);
   }
   const config = loadBaseConfig(options);
-  const processPathName = async (filePath: string) => {
+  async function processPathName(filePath: string) {
     if (!(await fs.pathExists(filePath))) {
       STATS.otherIssues++;
       process.stderr.write(`'${filePath}' doesn't exist.\n`);
@@ -40,7 +41,7 @@ export async function check(options: Options) {
       STATS.otherIssues++;
       process.stderr.write(`'${filePath}' is neither file nor directory.\n`);
     }
-  };
+  }
   await Promise.all(options._.map(processPathName));
   summary();
 }
