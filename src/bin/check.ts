@@ -22,26 +22,32 @@ const STATS = {
   styleIssues: 0,
 };
 
+async function processFilePath(
+  filePath: string,
+  config: ReturnType<typeof loadBaseConfig>,
+  options: Options,
+) {
+  if (!(await fs.pathExists(filePath))) {
+    STATS.otherIssues++;
+    process.stderr.write(`'${filePath}' doesn't exist.\n`);
+    return;
+  }
+  const stat = await fs.stat(filePath);
+  if (stat.isFile()) await processFile(config, filePath);
+  else if (stat.isDirectory()) await processDirectory(options, config, filePath);
+  else {
+    STATS.otherIssues++;
+    process.stderr.write(`'${filePath}' is neither file nor directory.\n`);
+  }
+}
+
 export async function check(options: Options) {
   if (options._.length < 1) {
     process.stderr.write('Expect at least 1 file or directory.\n');
     process.exit(1);
   }
   const config = loadBaseConfig(options);
-  for (const filePath of options._) {
-    if (!fs.existsSync(filePath)) {
-      STATS.otherIssues++;
-      process.stderr.write(`'${filePath}' doesn't exist.\n`);
-      continue;
-    }
-    const stat = fs.statSync(filePath);
-    if (stat.isFile()) await processFile(config, filePath);
-    else if (stat.isDirectory()) await processDirectory(options, config, filePath);
-    else {
-      STATS.otherIssues++;
-      process.stderr.write(`'${filePath}' is neither file nor directory.\n`);
-    }
-  }
+  await Promise.all(options._.map(filePath => processFilePath(filePath, config, options)));
   summary();
 }
 
@@ -54,7 +60,7 @@ async function processFile(baseConfig: Configuration, filePath: string, realPath
     STATS.excluded++;
     return;
   }
-  const source = fs.readFileSync(resolvedPath).toString();
+  const source = await fs.readFile(resolvedPath, { encoding: 'utf8' });
   const result = await formatSourceFromFile(source, resolvedPath, config);
   if (result !== undefined) {
     STATS.styleIssues++;
