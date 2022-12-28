@@ -2,6 +2,8 @@ import fs from 'node:fs';
 
 import tmp from 'tmp';
 
+import { parse as parseVue } from '@vue/compiler-sfc';
+
 import { logger } from '../../common';
 import { type Configuration } from '../../config';
 import {

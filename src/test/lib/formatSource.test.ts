@@ -2,11 +2,12 @@ import assert from 'node:assert';
 import fs from 'node:fs';
 import path, { sep } from 'node:path';
 
+import log4js from 'log4js';
+
 import {
   assertNonNull,
   isNonNull,
 } from '@dozerg/condition';
-import log4js from 'log4js';
 
 import {
   formatSourceFromFile,
