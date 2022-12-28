@@ -1,13 +1,9 @@
 import fs from 'node:fs';
-import { parse as parseVue } from '@vue/compiler-sfc';
 import tmp from 'tmp';
 
 import { logger } from '../../common';
 import { type Configuration } from '../../config';
-import {
-  enhanceConfig,
-  type FormatOptions,
-} from '../config';
+import { enhanceConfig, type FormatOptions } from '../config';
 import { formatSource } from './format';
 
 /**
@@ -24,7 +20,7 @@ const CRLF = '\r\n';
 const LF = '\n';
 const CR = '\r';
 function getLineEndingAfterVueScriptTag(text: string) {
-  return [CRLF, LF, CR].find((lineEnding) => text.startsWith(lineEnding));
+  return [CRLF, LF, CR].find(lineEnding => text.startsWith(lineEnding));
 }
 
 /**
@@ -69,7 +65,7 @@ export async function formatSourceFromFile(
       if (lineEndingAfterScriptTag && !sortedScript.startsWith(lineEndingAfterScriptTag)) {
         sortedScript = lineEndingAfterScriptTag + sortedScript;
       }
-      return  (
+      return (
         text.slice(0, vueScript.loc.start.offset) +
         sortedScript +
         text.slice(vueScript.loc.end.offset)
