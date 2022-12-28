@@ -1,9 +1,13 @@
 import fs from 'node:fs';
+
 import tmp from 'tmp';
 
 import { logger } from '../../common';
 import { type Configuration } from '../../config';
-import { enhanceConfig, type FormatOptions } from '../config';
+import {
+  enhanceConfig,
+  type FormatOptions,
+} from '../config';
 import { formatSource } from './format';
 
 /**
