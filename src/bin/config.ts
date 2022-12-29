@@ -1,12 +1,13 @@
 import path from 'node:path';
 
 import {
+  Configuration,
   loadConfigFromJsonFile,
   SUPPORTED_EXTENSIONS,
 } from '../lib';
 import { type Options } from './options';
 
-export function loadBaseConfig({ config, force }: Options) {
+export function loadBaseConfig({ config, force }: Options): Configuration {
   const cfg = config ? loadConfigFromJsonFile(config) : {};
   return { ...cfg, force };
 }

@@ -22,11 +22,17 @@ const STATS = {
   styleIssues: 0,
 };
 
-async function processFilePath(
-  filePath: string,
-  config: ReturnType<typeof loadBaseConfig>,
-  options: Options,
-) {
+export async function check(options: Options) {
+  if (options._.length < 1) {
+    process.stderr.write('Expect at least 1 file or directory.\n');
+    process.exit(1);
+  }
+  const config = loadBaseConfig(options);
+  await Promise.all(options._.map(filePath => processFilePath(filePath, config, options)));
+  summary();
+}
+
+async function processFilePath(filePath: string, config: Configuration, options: Options) {
   if (!(await fs.pathExists(filePath))) {
     STATS.otherIssues++;
     process.stderr.write(`'${filePath}' doesn't exist.\n`);
@@ -39,16 +45,6 @@ async function processFilePath(
     STATS.otherIssues++;
     process.stderr.write(`'${filePath}' is neither file nor directory.\n`);
   }
-}
-
-export async function check(options: Options) {
-  if (options._.length < 1) {
-    process.stderr.write('Expect at least 1 file or directory.\n');
-    process.exit(1);
-  }
-  const config = loadBaseConfig(options);
-  await Promise.all(options._.map(filePath => processFilePath(filePath, config, options)));
-  summary();
 }
 
 async function processFile(baseConfig: Configuration, filePath: string, realPath?: string) {

@@ -3,6 +3,7 @@ import path from 'node:path';
 import fs from 'fs-extra';
 
 import {
+  Configuration,
   formatSourceFromFile,
   formatSourceWithoutFile,
   isFileExcludedByConfig,
@@ -159,37 +160,46 @@ async function processFiles(filePaths: string[], options: Options) {
       ? OutputMode.DRY_RUN_FILE
       : OutputMode.DRY_RUN_FILES
     : OutputMode.NORMAL;
-  let modified = 0;
-  let created = 0;
+  const stats = { modified: 0, created: 0 };
+  await Promise.all(
+    filePaths.map(filePath => processFile(filePath, baseConfig, output, mode, stats)),
+  );
+  summary(mode, stats.modified, stats.created);
+}
 
-  const processFile = async (filePath: string) => {
-    if (!isSupported(filePath)) {
-      process.stdout.write(`'${filePath}' is not a supported file type.\n`);
-      return;
-    }
-    const inputFile = path.resolve(filePath);
-    const config = resolveConfigForFile(inputFile, baseConfig);
-    if (isFileExcludedByConfig(inputFile, config)) {
-      process.stdout.write(`'${filePath}' is excluded by config.\n`);
-    } else {
-      const source = await fs.readFile(inputFile, { encoding: 'utf8' });
-      const result = await formatSourceFromFile(source, inputFile, config);
-      const outputFile =
-        output && (await fs.pathExists(output)) && (await isDirectory(output))
-          ? path.resolve(output, path.basename(inputFile))
-          : output;
-      const {
-        error,
-        modified: m,
-        created: c,
-      } = await outputResult(mode, result, outputFile, source, filePath);
-      if (error) process.exit(1);
-      if (m) modified += m;
-      if (c) created += c;
-    }
-  };
-  await Promise.all(filePaths.map(processFile));
-  summary(mode, modified, created);
+async function processFile(
+  filePath: string,
+  baseConfig: Configuration,
+  output: string | undefined,
+  mode: OutputMode,
+  stats: { modified: number; created: number },
+) {
+  if (!isSupported(filePath)) {
+    process.stdout.write(`'${filePath}' is not a supported file type.\n`);
+    return;
+  }
+  const inputFile = path.resolve(filePath);
+  const config = resolveConfigForFile(inputFile, baseConfig);
+  if (isFileExcludedByConfig(inputFile, config)) {
+    process.stdout.write(`'${filePath}' is excluded by config.\n`);
+  } else {
+    const source = await fs.readFile(inputFile, { encoding: 'utf8' });
+    const result = await formatSourceFromFile(source, inputFile, config);
+    const outputFile =
+      output && (await fs.pathExists(output)) && (await isDirectory(output))
+        ? path.resolve(output, path.basename(inputFile))
+        : output;
+    const { error, modified, created } = await outputResult(
+      mode,
+      result,
+      outputFile,
+      source,
+      filePath,
+    );
+    if (error) process.exit(1);
+    if (modified) stats.modified += modified;
+    if (created) stats.created += created;
+  }
 }
 
 function summary(mode: OutputMode, modified: number, created: number) {
