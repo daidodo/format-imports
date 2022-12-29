@@ -2,6 +2,7 @@ import fs from 'node:fs';
 
 import tmp from 'tmp';
 
+import { endOfLine } from '@dozerg/end-of-line';
 import { parse as parseVue } from '@vue/compiler-sfc';
 
 import { logger } from '../../common';
@@ -21,13 +22,6 @@ export type Extension = 'js' | 'ts' | 'jsx' | 'tsx' | 'vue';
  * File extensions supported.
  */
 export const SUPPORTED_EXTENSIONS: Extension[] = ['js', 'ts', 'jsx', 'tsx', 'vue'];
-
-const CRLF = '\r\n';
-const LF = '\n';
-const CR = '\r';
-function getLineEndingAfterVueScriptTag(text: string) {
-  return [CRLF, LF, CR].find(lineEnding => text.startsWith(lineEnding));
-}
 
 /**
  * Format given source text from a file, asynchronously.
@@ -64,12 +58,14 @@ export async function formatSourceFromFile(
     if (vueScript == null) {
       return text;
     }
-    let sortedScript = await formatSource(vueScript.content, fileName, allConfig);
+    const originScript = vueScript.content;
+    let sortedScript = await formatSource(originScript, fileName, allConfig);
     if (sortedScript) {
-      // keep lineEnding after script tag
-      const lineEndingAfterScriptTag = getLineEndingAfterVueScriptTag(vueScript.content);
-      if (lineEndingAfterScriptTag && !sortedScript.startsWith(lineEndingAfterScriptTag)) {
-        sortedScript = lineEndingAfterScriptTag + sortedScript;
+      // keep eol after script tag
+      const originScriptEol = endOfLine(originScript);
+      const isOriginScriptStartsWithEol = originScript.startsWith(originScriptEol);
+      if (isOriginScriptStartsWithEol && !sortedScript.startsWith(originScriptEol)) {
+        sortedScript = originScriptEol + sortedScript;
       }
       return (
         text.slice(0, vueScript.loc.start.offset) +
