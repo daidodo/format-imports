@@ -2,6 +2,9 @@ import fs from 'node:fs';
 
 import tmp from 'tmp';
 
+import { endOfLine } from '@dozerg/end-of-line';
+import { parse as parseVue } from '@vue/compiler-sfc';
+
 import { logger } from '../../common';
 import { type Configuration } from '../../config';
 import {
@@ -13,12 +16,12 @@ import { formatSource } from './format';
 /**
  * A type representing file extensions supported.
  */
-export type Extension = 'js' | 'ts' | 'jsx' | 'tsx';
+export type Extension = 'js' | 'ts' | 'jsx' | 'tsx' | 'vue';
 
 /**
  * File extensions supported.
  */
-export const SUPPORTED_EXTENSIONS: Extension[] = ['js', 'ts', 'jsx', 'tsx'];
+export const SUPPORTED_EXTENSIONS: Extension[] = ['js', 'ts', 'jsx', 'tsx', 'vue'];
 
 /**
  * Format given source text from a file, asynchronously.
@@ -48,6 +51,32 @@ export async function formatSourceFromFile(
   log.debug('Config:', config);
   log.debug('Options:', options);
   const allConfig = await enhanceConfig(config, fileName, options);
+
+  if (fileName.endsWith('.vue')) {
+    const { descriptor } = parseVue(text);
+    const vueScript = descriptor.scriptSetup ?? descriptor.script;
+    if (vueScript == null) {
+      return text;
+    }
+    const originScript = vueScript.content;
+    let sortedScript = await formatSource(originScript, fileName, allConfig);
+    if (sortedScript) {
+      // keep eol after script tag
+      const originScriptEol = endOfLine(originScript);
+      const isOriginScriptStartsWithEol = originScript.startsWith(originScriptEol);
+      if (isOriginScriptStartsWithEol && !sortedScript.startsWith(originScriptEol)) {
+        sortedScript = originScriptEol + sortedScript;
+      }
+      return (
+        text.slice(0, vueScript.loc.start.offset) +
+        sortedScript +
+        text.slice(vueScript.loc.end.offset)
+      );
+    } else {
+      return text;
+    }
+  }
+
   return formatSource(text, fileName, allConfig);
 }
 
