@@ -1,0 +1,9 @@
+{
+  "extends": "@vue/tsconfig",
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react-native",
+    "jsxFactory": "h",
+    "moduleResolution": "node"
+  }
+}
