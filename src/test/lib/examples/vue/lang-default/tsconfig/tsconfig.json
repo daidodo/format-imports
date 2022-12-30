@@ -1,3 +1,6 @@
 {
-  "extends": "@vue/tsconfig"
+  "extends": "@vue/tsconfig",
+  "compilerOptions": {
+    "jsx": "react"
+  }
 }

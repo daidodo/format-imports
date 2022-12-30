@@ -1,4 +1,3 @@
-import { isNonNull } from '@dozerg/condition';
 import { parse as parseVue } from '@vue/compiler-sfc';
 
 import {
@@ -10,19 +9,22 @@ import { formatSource } from './format';
 export async function formatVueSource(text: string, fileName: string, allConfig: EnhancedConfig) {
   const { descriptor } = parseVue(text);
   const vueScript = descriptor.scriptSetup ?? descriptor.script;
-  if (!vueScript || !isSupported(vueScript.lang)) return undefined;
+  if (!vueScript) return undefined;
+  const { supported, ext } = checkLang(vueScript.lang);
+  if (!supported) return undefined;
   const head = text.slice(0, vueScript.loc.start.offset);
   const originScript = vueScript.content;
   const tail = text.slice(vueScript.loc.end.offset);
-  const sortedScript = await formatSource(originScript, fileName, allConfig);
+  const sortedScript = await formatSource(originScript, fileName + ext, allConfig);
   if (sortedScript === undefined)
     return wrapScript(head, originScript, tail, allConfig.composeConfig);
   return wrapScript(head, sortedScript, tail, allConfig.composeConfig);
 }
 
-function isSupported(lang: string | undefined) {
+function checkLang(lang: string | undefined) {
   const SUPPORTED_LANG = ['js', 'ts', 'jsx', 'tsx'];
-  return !isNonNull(lang) || SUPPORTED_LANG.includes(lang);
+  if (!lang) return { supported: true, ext: '.js' };
+  return { supported: SUPPORTED_LANG.includes(lang), ext: '.' + lang };
 }
 
 function wrapScript(head: string, script: string, tail: string, { nl }: ComposeConfig) {
