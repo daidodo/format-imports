@@ -3,6 +3,6 @@ import C, { E } from 'b';
 
 import { h } from '@stencil/core';
 
-export { A, C, E };
+export { C, A, E };
 
 export const a = <div />
