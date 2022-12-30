@@ -3,6 +3,9 @@
 </template>
 
 <script>
+
+import A from 'a'
+
 </script>
 
 <style lang="less">

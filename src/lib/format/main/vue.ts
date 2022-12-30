@@ -1,24 +1,37 @@
-import { endOfLine } from '@dozerg/end-of-line';
+import { isNonNull } from '@dozerg/condition';
 import { parse as parseVue } from '@vue/compiler-sfc';
 
-import { EnhancedConfig } from '../config/index';
+import {
+  ComposeConfig,
+  EnhancedConfig,
+} from '../config/index';
 import { formatSource } from './format';
 
 export async function formatVueSource(text: string, fileName: string, allConfig: EnhancedConfig) {
   const { descriptor } = parseVue(text);
   const vueScript = descriptor.scriptSetup ?? descriptor.script;
-  if (!vueScript) return undefined;
-
+  if (!vueScript || !isSupported(vueScript.lang)) return undefined;
+  const head = text.slice(0, vueScript.loc.start.offset);
   const originScript = vueScript.content;
-  let sortedScript = await formatSource(originScript, fileName, allConfig);
-  if (!sortedScript) return undefined;
-  // keep eol after script tag
-  const originScriptEol = endOfLine(originScript);
-  const isOriginScriptStartsWithEol = originScript.startsWith(originScriptEol);
-  if (isOriginScriptStartsWithEol && !sortedScript.startsWith(originScriptEol)) {
-    sortedScript = originScriptEol + sortedScript;
-  }
-  return (
-    text.slice(0, vueScript.loc.start.offset) + sortedScript + text.slice(vueScript.loc.end.offset)
-  );
+  const tail = text.slice(vueScript.loc.end.offset);
+  const sortedScript = await formatSource(originScript, fileName, allConfig);
+  if (sortedScript === undefined)
+    return wrapScript(head, originScript, tail, allConfig.composeConfig);
+  return wrapScript(head, sortedScript, tail, allConfig.composeConfig);
+}
+
+function isSupported(lang: string | undefined) {
+  const SUPPORTED_LANG = ['js', 'ts', 'jsx', 'tsx'];
+  return !isNonNull(lang) || SUPPORTED_LANG.includes(lang);
+}
+
+function wrapScript(head: string, script: string, tail: string, { nl }: ComposeConfig) {
+  if (!script) return head + tail; // <script></script>
+  /**
+   * <script>
+   * xxx
+   * </script>
+   */
+  if (script.endsWith(nl)) return head + nl + script + tail;
+  return head + nl + script + nl + tail;
 }

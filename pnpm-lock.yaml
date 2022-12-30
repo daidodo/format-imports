@@ -19,6 +19,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^5.47.1
   '@typescript-eslint/parser': ^5.47.1
   '@vue/compiler-sfc': ^3.2.45
+  '@vue/tsconfig': ^0.1.3
   dir-compare: ^4.0.0
   eslint: ^8.30.0
   eslint-config-prettier: ^8.5.0
@@ -80,6 +81,7 @@ devDependencies:
   '@typescript-eslint/eslint-plugin': 5.47.1_txmweb6yn7coi7nfrp22gpyqmy
   '@typescript-eslint/parser': 5.47.1_lzzuuodtsqwxnvqeq4g4likcqa
   '@vue/compiler-sfc': 3.2.45
+  '@vue/tsconfig': 0.1.3_@types+node@18.11.18
   dir-compare: 4.0.0
   eslint-config-prettier: 8.5.0_eslint@8.30.0
   eslint-plugin-import: 2.26.0_smw3o7qjeokkcohbvp7rylsoqq
@@ -1231,6 +1233,17 @@ packages:
 
   /@vue/shared/3.2.45:
     resolution: {integrity: sha512-Ewzq5Yhimg7pSztDV+RH1UDKBzmtqieXQlpTVm2AwraoRL/Rks96mvd8Vgi7Lj+h+TH8dv7mXD3FRZR3TUvbSg==}
+    dev: true
+
+  /@vue/tsconfig/0.1.3_@types+node@18.11.18:
+    resolution: {integrity: sha512-kQVsh8yyWPvHpb8gIc9l/HIDiiVUy1amynLNpCy8p+FoCiZXCo6fQos5/097MmnNZc9AtseDsCrfkhqCrJ8Olg==}
+    peerDependencies:
+      '@types/node': '*'
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+    dependencies:
+      '@types/node': 18.11.18
     dev: true
 
   /@webassemblyjs/ast/1.11.1:

@@ -47,7 +47,7 @@ describe('lib/formatSource', () => {
   // Run all tests or specific test case(s)
   runTestSuite(examples);
   if (ENABLE_LOGS) log4js.getLogger().level = 'debug';
-  // runTestSuite(examples, 'eslint/semi/ts/never/default');
+  // runTestSuite(examples, 'vue/lang-default/tsconfig');
 });
 
 function getTestSuite(dir: string, name: string): TestSuite | undefined {
