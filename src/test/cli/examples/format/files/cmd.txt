@@ -1,1 +1,1 @@
-1.ts a/2.ts
+1.ts a/2.ts a/3.vue

@@ -993,11 +993,11 @@ export { A, B, C };
 }
 `;
 
-exports[`CLI format files [1.ts a/2.ts] 1`] = `
+exports[`CLI format files [1.ts a/2.ts a/3.vue] 1`] = `
 {
   "status": 0,
   "stderr": "",
-  "stdout": "2 files modified.
+  "stdout": "3 files modified.
 ",
 }
 `;
