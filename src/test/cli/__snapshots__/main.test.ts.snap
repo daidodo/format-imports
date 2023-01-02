@@ -465,7 +465,7 @@ exports[`CLI format directory [a] 1`] = `
 {
   "status": 0,
   "stderr": "",
-  "stdout": "2 files modified.
+  "stdout": "3 files modified.
 ",
 }
 `;
