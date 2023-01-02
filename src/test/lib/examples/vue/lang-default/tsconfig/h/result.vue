@@ -3,8 +3,17 @@
 </template>
 
 <script>
-import { A } from 'a';
-import C, { E } from 'b';
+import React from 'react';
+
+import {
+  A,
+  B,
+} from 'a';
+import C, {
+  D,
+  E,
+} from 'b';
+import F from 'b';
 
 import { h } from '@stencil/core';
 

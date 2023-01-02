@@ -1,6 +1,6 @@
 <script setup>
-import Bar from './Bar.vue'
-import Foo from './Foo.vue'
+import Bar from './Bar.vue';
+import Foo from './Foo.vue';
 </script>
 
 <template>

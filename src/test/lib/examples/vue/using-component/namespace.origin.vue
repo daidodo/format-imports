@@ -1,5 +1,5 @@
 <script setup>
-import * as Form from './form-components'
+import * as Form from './form-components';
 </script>
 
 <template>

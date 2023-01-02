@@ -3,11 +3,19 @@
 </template>
 
 <script setup lang="ts">
+import React from 'react';
+
 import {
   A,
   B,
 } from 'a';
-import { E } from 'b';
+import C, {
+  D,
+  E,
+} from 'b';
+import F from 'b';
+
+import { h } from '@stencil/core';
 
 export { A, B, E };
 </script>
