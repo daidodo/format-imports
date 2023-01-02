@@ -65,7 +65,7 @@ const { parseArgv, generateHelp } = optionator({
       option: 'extension',
       alias: 'e',
       type: 'String',
-      enum: ['ts', 'tsx', 'js', 'jsx'],
+      enum: ['ts', 'tsx', 'js', 'jsx', 'vue'],
       default: 'ts',
       description:
         'File extension assumed when reading from STDIN and output file extension is unknown.',

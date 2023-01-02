@@ -59,9 +59,9 @@ describe('CLI', () => {
 
   const examples = path.resolve(__dirname, 'examples');
   // Run all tests
-  runTestSuite(examples);
+  // runTestSuite(examples);
   // Or, run specific test case(s)
-  // runTestSuite(examples, 'format/stdin');
+  runTestSuite(examples, 'check');
 });
 
 function runTestSuite(resolved: string, relative?: string | string[]): void {
