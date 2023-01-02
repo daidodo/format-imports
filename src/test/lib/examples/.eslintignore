@@ -1,2 +1,6 @@
 **/examples/nothing/origin.ts
 **/examples/delete/export/empty/import-decl-unhandled.*.ts
+**/examples/tsconfig/h/ts.origin.ts
+**/examples/tsconfig/h/ts.result.ts
+**/examples/tsconfig/jsx-preserve/ts.origin.ts
+**/examples/tsconfig/jsx-preserve/ts.result.ts
