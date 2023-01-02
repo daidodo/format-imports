@@ -1188,7 +1188,7 @@ export { A, B, C };
 exports[`CLI format stdin extension error [--extension xyz] 1`] = `
 {
   "status": 1,
-  "stderr": "Option extension: 'xyz' not one of ts, tsx, js, or jsx.
+  "stderr": "Option extension: 'xyz' not one of ts, tsx, js, jsx, or vue.
 
 format-imports [options] [FILE ...]
         Format given file(s). If no files provided, read from STDIN.
@@ -1205,7 +1205,7 @@ format-imports -c [options] FILE/DIR [FILE/DIR ...]
   -c, --check                Check if files/directories are formatted.
   --config path::String      Path to base config file, e.g. import-sorter.json. The formatted file's config will be merged into this base config.
   -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
-  -e, --extension String     File extension assumed when reading from STDIN and output file extension is unknown. - either: ts, tsx, js, or jsx - default: ts
+  -e, --extension String     File extension assumed when reading from STDIN and output file extension is unknown. - either: ts, tsx, js, jsx, or vue - default: ts
   --no-recursive             Format directory recursively or not.
   -o, --output path::String  Specify the output file or directory.
   -d, --dry-run              Test running without changing any files.
@@ -1217,7 +1217,7 @@ format-imports -c [options] FILE/DIR [FILE/DIR ...]
 exports[`CLI format stdin extension error [-e xyz] 1`] = `
 {
   "status": 1,
-  "stderr": "Option extension: 'xyz' not one of ts, tsx, js, or jsx.
+  "stderr": "Option extension: 'xyz' not one of ts, tsx, js, jsx, or vue.
 
 format-imports [options] [FILE ...]
         Format given file(s). If no files provided, read from STDIN.
@@ -1234,7 +1234,7 @@ format-imports -c [options] FILE/DIR [FILE/DIR ...]
   -c, --check                Check if files/directories are formatted.
   --config path::String      Path to base config file, e.g. import-sorter.json. The formatted file's config will be merged into this base config.
   -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
-  -e, --extension String     File extension assumed when reading from STDIN and output file extension is unknown. - either: ts, tsx, js, or jsx - default: ts
+  -e, --extension String     File extension assumed when reading from STDIN and output file extension is unknown. - either: ts, tsx, js, jsx, or vue - default: ts
   --no-recursive             Format directory recursively or not.
   -o, --output path::String  Specify the output file or directory.
   -d, --dry-run              Test running without changing any files.
@@ -1343,6 +1343,78 @@ import A from 'b';
 import { C } from 'c';
 
 export { A, B, C };
+",
+}
+`;
+
+exports[`CLI format stdin extension vue [--extension vue] 1`] = `
+{
+  "status": 0,
+  "stderr": "",
+  "stdout": "<template>
+  <div>box</div>
+</template>
+
+<script>
+import React from 'react';
+
+import {
+  A,
+  B,
+} from 'a';
+import C, {
+  D,
+  E,
+} from 'b';
+import F from 'b';
+
+import { h } from '@stencil/core';
+
+export { A, B, E };
+</script>
+
+<style lang="less">
+
+.a {
+    .b
+}
+</style>
+",
+}
+`;
+
+exports[`CLI format stdin extension vue [-e vue] 1`] = `
+{
+  "status": 0,
+  "stderr": "",
+  "stdout": "<template>
+  <div>box</div>
+</template>
+
+<script>
+import React from 'react';
+
+import {
+  A,
+  B,
+} from 'a';
+import C, {
+  D,
+  E,
+} from 'b';
+import F from 'b';
+
+import { h } from '@stencil/core';
+
+export { A, B, E };
+</script>
+
+<style lang="less">
+
+.a {
+    .b
+}
+</style>
 ",
 }
 `;
@@ -1516,7 +1588,7 @@ format-imports -c [options] FILE/DIR [FILE/DIR ...]
   -c, --check                Check if files/directories are formatted.
   --config path::String      Path to base config file, e.g. import-sorter.json. The formatted file's config will be merged into this base config.
   -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
-  -e, --extension String     File extension assumed when reading from STDIN and output file extension is unknown. - either: ts, tsx, js, or jsx - default: ts
+  -e, --extension String     File extension assumed when reading from STDIN and output file extension is unknown. - either: ts, tsx, js, jsx, or vue - default: ts
   --no-recursive             Format directory recursively or not.
   -o, --output path::String  Specify the output file or directory.
   -d, --dry-run              Test running without changing any files.
@@ -1543,7 +1615,7 @@ format-imports -c [options] FILE/DIR [FILE/DIR ...]
   -c, --check                Check if files/directories are formatted.
   --config path::String      Path to base config file, e.g. import-sorter.json. The formatted file's config will be merged into this base config.
   -f, --force                Always format file(s) regardless of exclude config and file disable comments. Statement level disable comments will still work.
-  -e, --extension String     File extension assumed when reading from STDIN and output file extension is unknown. - either: ts, tsx, js, or jsx - default: ts
+  -e, --extension String     File extension assumed when reading from STDIN and output file extension is unknown. - either: ts, tsx, js, jsx, or vue - default: ts
   --no-recursive             Format directory recursively or not.
   -o, --output path::String  Specify the output file or directory.
   -d, --dry-run              Test running without changing any files.
