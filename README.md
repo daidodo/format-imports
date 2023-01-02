@@ -19,14 +19,11 @@ This package contains CLI and APIs to format **imports** and **exports** for **J
 
 It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](https://marketplace.visualstudio.com/items?itemName=dozerg.tsimportsorter), then extracted to standalone CLI and lib for more use cases (e.g. CI/CD) and IDEs (e.g. [IntelliJ](https://plugins.jetbrains.com/plugin/16195-js-ts-import-export-sorter)).
 
-## [3.1.x]
+## [3.2.x]
 
 ### Added
 
-- Add `builtin` to `GroupRule` to support NodeJS builtin module imports.
-- Add `nodeProtocol` to support adding or removing `"node:"` to builtin module paths.
-- Support React 18 [use client](https://github.com/reactjs/rfcs/blob/main/text/0227-server-module-conventions.md) directive.
-- Support TypeScript 4.9 [satisfies](https://devblogs.microsoft.com/typescript/announcing-typescript-4-9/#satisfies) operator.
+- Support formatting `<script>` in Vue.
 
 # Table of contents <!-- omit in toc -->
 
@@ -64,6 +61,7 @@ It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](htt
 - Support NodeJS builtin modules.
 - Cross-platform consistency: Windows, macOS and Linux (Ubuntu).
 - Monorepo friendly.
+- Support formatting `<script>` in [Vue.js](https://vuejs.org).
 
 # Install
 

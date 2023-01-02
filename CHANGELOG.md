@@ -19,6 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -->
 
+## [3.2.0] - 2023-01-02
+
+### Added
+
+- Support formatting `<script>` in Vue.
+
 ## [3.1.3] - 2022-11-24
 
 ### Added
