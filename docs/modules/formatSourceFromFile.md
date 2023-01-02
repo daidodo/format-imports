@@ -37,4 +37,4 @@ The result text or `undefined` if nothing changes.
 
 #### Defined in
 
-[format/main/index.ts:74](https://github.com/daidodo/format-imports/blob/4f3f977/src/lib/format/main/index.ts#L74)
+[format/main/index.ts:76](https://github.com/daidodo/format-imports/blob/7cf888f/src/lib/format/main/index.ts#L76)

@@ -11,7 +11,7 @@ Sorting rule for imported/exported names. Default to
 
 #### Defined in
 
-[config/types/sorting.ts:21](https://github.com/daidodo/format-imports/blob/4f3f977/src/lib/config/types/sorting.ts#L21)
+[config/types/sorting.ts:21](https://github.com/daidodo/format-imports/blob/7cf888f/src/lib/config/types/sorting.ts#L21)
 
 ___
 
@@ -24,4 +24,4 @@ Sorting rule for import paths. Default to
 
 #### Defined in
 
-[config/types/sorting.ts:15](https://github.com/daidodo/format-imports/blob/4f3f977/src/lib/config/types/sorting.ts#L15)
+[config/types/sorting.ts:15](https://github.com/daidodo/format-imports/blob/7cf888f/src/lib/config/types/sorting.ts#L15)
