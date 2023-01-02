@@ -438,11 +438,12 @@ exports[`CLI check win32[--check 1.ts a] 1`] = `
   "status": 1,
   "stderr": "'a\\2.ts' is different after formatting.
 'a\\b\\3.ts' is different after formatting.
+'a\\b\\5.vue' is different after formatting.
 ",
-  "stdout": "Checked 5 files, of which:
+  "stdout": "Checked 6 files, of which:
   1 file passed.
   2 files were excluded.
-  2 files have formatting issues.
+  3 files have formatting issues.
 ",
 }
 `;
@@ -452,11 +453,12 @@ exports[`CLI check win32[-c 1.ts a] 1`] = `
   "status": 1,
   "stderr": "'a\\2.ts' is different after formatting.
 'a\\b\\3.ts' is different after formatting.
+'a\\b\\5.vue' is different after formatting.
 ",
-  "stdout": "Checked 5 files, of which:
+  "stdout": "Checked 6 files, of which:
   1 file passed.
   2 files were excluded.
-  2 files have formatting issues.
+  3 files have formatting issues.
 ",
 }
 `;
