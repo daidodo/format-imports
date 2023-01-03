@@ -23,7 +23,7 @@ export async function formatVueSource(text: string, fileName: string, allConfig:
 
   const sortedScript = await formatSource(originScript, fileName + ext, { ...allConfig, config });
   if (sortedScript === undefined)
-    return wrapScript(head, originScript, tail, allConfig.composeConfig);
+    return wrapScript(head, originScript.trim(), tail, allConfig.composeConfig);
   return wrapScript(head, sortedScript, tail, allConfig.composeConfig);
 }
 
@@ -33,13 +33,22 @@ function checkLang(lang: string | undefined) {
   return { supported: SUPPORTED_LANG.includes(lang), ext: '.' + lang };
 }
 
-function wrapScript(head: string, script: string, tail: string, { nl }: ComposeConfig) {
+function wrapScript(head: string, script: string, tail: string, cc?: ComposeConfig) {
   if (!script) return head + tail; // <script></script>
+  if (!cc) return head + script + tail; // No change
   /**
    * <script>
    * xxx
    * </script>
    */
-  if (script.endsWith(nl)) return head + nl + script + tail;
-  return head + nl + script + nl + tail;
+  const { nl } = cc;
+  return head + prefix(nl, suffix(script, nl)) + tail;
+}
+
+function prefix(nl: string, str: string) {
+  return str.startsWith(nl) ? str : nl + str;
+}
+
+function suffix(str: string, nl: string) {
+  return str.endsWith(nl) ? str : str + nl;
 }
