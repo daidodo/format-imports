@@ -38,7 +38,6 @@ export function formatSource(
   log.debug('ESLint config processed:', processed);
   log.debug('composeConfig:', composeConfig);
   const sourceFile = ts.createSourceFile(fileName, text, ScriptTarget.Latest);
-  // 34%
   const {
     importNodes,
     importsInsertPoint: point,
@@ -46,7 +45,6 @@ export function formatSource(
     allIds,
     unhandled,
   } = parseSource(sourceFile, text, config, tsCompilerOptions);
-  // 39%
   const editManager = new EditManager([...importNodes, ...exportNodes]);
   if (editManager.empty()) return undefined;
   const unusedIds = () =>
@@ -61,7 +59,6 @@ export function formatSource(
     sorter,
     processed,
   );
-  // 88%
   if (result && point)
     editManager.insert({ range: point, text: result, minTrailingNewLines: composeConfig.groupEnd });
   const isModule = unhandled > 0 || !!result; // If there are import/export declarations, it is a module.
