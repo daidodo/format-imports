@@ -154,7 +154,7 @@
     "@dozerg/no-new": "^0.0.1",
     "@dozerg/require-module": "^0.0.2",
     "@vue/compiler-sfc": "^3.2.47",
-    "eslint": "^8.36.0",
+    "eslint": "^8.37.0",
     "fs-extra": "^11.1.1",
     "immutable": "^4.3.0",
     "is-builtin-module": "^3.2.1",
