@@ -30,6 +30,8 @@ export default class D { }
 
 export * from './hi'  // defualt export is excluded
 export * as n from './hi'
+export type * from './types1'
+export type * as T from './types2'
 
 const HI = './hi';
 export {HI} from HI;
