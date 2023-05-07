@@ -3,6 +3,7 @@
 
 'use strict'
 'use client'
+'use server'
 
 import 'b';
 

@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-'use client'
-'use strict'
 'use server'
 
 import 'b';

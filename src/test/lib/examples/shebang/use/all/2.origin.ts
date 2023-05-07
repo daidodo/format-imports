@@ -2,6 +2,7 @@
 
 'use client'
 'use strict'
+'use server'
 
 import A from 'a'
 import 'b'

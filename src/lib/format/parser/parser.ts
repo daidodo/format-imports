@@ -135,10 +135,10 @@ function parseId(node: Node, p: ParseParams, options?: CompilerOptions) {
   node.forEachChild(n => parseId(n, p, options));
 }
 
-/** Is a node a "use" directive such as "use strict" or "use client" */
+/** Is a node a "use" directive such as "use strict", "use client" or "use server" */
 function isUseDirective(node: Node) {
   if (node.kind !== SyntaxKind.ExpressionStatement) return false;
   const { expression } = node as ExpressionStatement;
   if (!expression || expression.kind !== SyntaxKind.StringLiteral) return false;
-  return /^use (strict|client)$/.test((expression as StringLiteral).text);
+  return /^use (strict|client|server)$/.test((expression as StringLiteral).text);
 }
