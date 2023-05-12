@@ -56,7 +56,7 @@ It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](htt
 - Ignore files or declarations by config or inline comments.
 - Respect [ESLint](https://eslint.org) and [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import) rules.
 - Respect configs from [Prettier](https://prettier.io) and [EditorConfig](https://editorconfig.org).
-- Preserve `'use strict/client'`, `///` directives, shebang (`#!`) and comments.
+- Preserve `'use strict/client/server'`, `///` directives, shebang (`#!`) and comments.
 - Support [Type-Only imports/exports](https://devblogs.microsoft.com/typescript/announcing-typescript-3-8/#type-only-imports-exports), [Type Modifier on names](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#type-on-import-names), [Import Assertions](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#import-assertions) and [satisfies](https://devblogs.microsoft.com/typescript/announcing-typescript-4-9/#satisfies) operator.
 - Support NodeJS builtin modules.
 - Cross-platform consistency: Windows, macOS and Linux (Ubuntu).

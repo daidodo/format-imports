@@ -19,6 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -->
 
+## [3.2.4] - 2023-05-12
+
+### Added
+
+- Support [use server](https://nextjs.org/blog/next-13-4#server-actions-alpha)
+
 ## [3.2.0] - 2023-01-02
 
 ### Added
