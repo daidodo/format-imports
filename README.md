@@ -24,6 +24,7 @@ It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](htt
 ### Added
 
 - Support formatting `<script>` in Vue.
+- Support [use server](https://nextjs.org/blog/next-13-4#server-actions-alpha)
 
 # Table of contents <!-- omit in toc -->
 
