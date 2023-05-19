@@ -103,6 +103,13 @@ describe('path', () => {
       assert.deepStrictEqual(normalizePath('node:aaa', opt), 'node:aaa');
       assert.deepStrictEqual(normalizePath('node:assert', opt), 'node:assert');
     });
+    test('isURL', () => {
+      assert.deepStrictEqual(normalizePath('http://example.com'), 'http://example.com');
+      assert.deepStrictEqual(
+        normalizePath('https://esm.sh/clsx@1.2.1'),
+        'https://esm.sh/clsx@1.2.1',
+      );
+    });
   });
   describe('normalize', () => {
     test('forward-slash', () => {

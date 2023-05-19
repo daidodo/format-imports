@@ -2,6 +2,7 @@ import { I } from 'a/b/c';
 import { J } from 'a/b/c/';
 import { K } from 'a/c';
 import { L } from 'a/c/';
+import { M } from 'https://esm.sh/clsx@1.2.1';
 
 import { C, D } from '../';
 import { A, B } from './';
@@ -10,4 +11,4 @@ import { H } from './a/b/c/';
 import { E } from './a/c';
 import { F } from './a/c/';
 
-export { A, B, C, D, E, F, G, H, I, J, K, L };
+export { A, B, C, D, E, F, G, H, I, J, K, L, M };

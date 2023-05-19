@@ -1,6 +1,7 @@
 import path from 'node:path';
 
 import isBuiltinModule from 'is-builtin-module';
+import isURL from 'validator/lib/isURL';
 
 import { assertTrue } from '@dozerg/condition';
 
@@ -9,6 +10,7 @@ import { Configuration } from '../../config';
 const NODE_PROTOCOL = 'node:';
 
 export function normalizePath(path: string, options?: Configuration) {
+  if (isURL(path)) return path;
   const { removeLastSlashInPath, removeLastIndexInPath, nodeProtocol } = options ?? {};
   const npFn =
     nodeProtocol === 'always'
