@@ -34,6 +34,12 @@ export interface Configuration {
    */
   readonly excludeGlob?: string[];
   /**
+   * Use different configurations for files matching regular expressions. Default to _[]_.
+   *
+   * If multiple overrides could match a file, the last valid one will be used.
+   */
+  readonly overrides?: OverrideRule[];
+  /**
    * Sort import declarations by paths or first names. Default to _paths_.
    */
   readonly sortImportsBy?: 'paths' | 'names';
@@ -202,3 +208,18 @@ export const GROUP_RULES_DEFAULT: Configuration['groupRules'] = [
  * - `'_'` is in front of `[a-zA-Z]`.
  */
 export const COMPARE_RULE_DEFAULT: CompareRule = ['_', 'aA'];
+
+export interface OverrideRule {
+  /**
+   * Use this override for for files matching this regular expressions.
+   *
+   * If it's _undefined_ or empty, the rule will be ignored.
+   */
+  pattern: string,
+  /**
+   * The configuration file name to use for matched files.
+   *
+   * If it's _undefined_ or empty, the rule will be ignored.
+   */
+  config: string,
+}
