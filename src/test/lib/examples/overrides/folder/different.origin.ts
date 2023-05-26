@@ -1,6 +1,6 @@
-import content from 'remote';
-
 import localContent from './local';
+
+import content from 'remote';
 
 // I'm different!
 

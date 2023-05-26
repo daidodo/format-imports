@@ -1,6 +1,6 @@
 {
   "overrides": [{
-      "pattern": "different",
+      "pattern": "folder/different",
       "config": "import-sorter-2.json"
   }]
 }
