@@ -297,13 +297,19 @@
     "override": {
       "type": "object",
       "properties": {
-        "pattern": { "type": "string", "description": "Use this override for for files matching this regular expressions." },
-        "config": { "type": "string", "description": "The configuration file name to use for matched files." }
+        "pattern": {
+          "type": "string",
+          "description": "Use this override for for files matching this regular expressions."
+        },
+        "config": {
+          "type": "string",
+          "description": "The configuration file name to use for matched files."
+        }
       }
-	},
+    },
     "overrides": {
       "type": "array",
       "items": { "$ref": "#/$def/override" }
-	}
+    }
   }
 }

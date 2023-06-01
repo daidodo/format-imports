@@ -9,6 +9,7 @@ import {
 } from './sorting';
 import { KeepUnusedRule } from './unused';
 import { WrappingRule } from './wrapping';
+import { OverrideRule } from './overrides';
 
 export { breakFlag, CompareRule, FlagSymbol, GroupRule, KeepUnusedRule, SortRules, WrappingRule };
 
@@ -208,18 +209,3 @@ export const GROUP_RULES_DEFAULT: Configuration['groupRules'] = [
  * - `'_'` is in front of `[a-zA-Z]`.
  */
 export const COMPARE_RULE_DEFAULT: CompareRule = ['_', 'aA'];
-
-export interface OverrideRule {
-  /**
-   * Use this override for for files matching this regular expressions.
-   *
-   * If it's _undefined_ or empty, the rule will be ignored.
-   */
-  pattern: string,
-  /**
-   * The configuration file name to use for matched files.
-   *
-   * If it's _undefined_ or empty, the rule will be ignored.
-   */
-  config: string,
-}
