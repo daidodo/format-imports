@@ -1,4 +1,4 @@
-import minimatch from 'minimatch';
+import { minimatch } from 'minimatch';
 
 import { endOfLine } from '@dozerg/end-of-line';
 
