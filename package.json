@@ -163,9 +163,9 @@
     "node-cache": "^5.1.2",
     "optionator": "^0.9.3",
     "prettier": "^2.8.8",
-    "segment-sort": "^1.0.2",
+    "segment-sort": "^1.0.3",
     "tmp": "^0.2.1",
-    "typescript": "^5.1.6",
+    "typescript": "^5.2.2",
     "utility-types": "^3.10.0",
     "validator": "^13.11.0"
   }
