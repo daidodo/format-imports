@@ -15,6 +15,7 @@
     "compile": "tsc",
     "compile:watch": "tsc --watch",
     "eslint": "eslint --ignore-path src/test/lib/examples/.eslintignore src/ *.ts",
+    "build": "npm run compile",
     "test": "npm run eslint && jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage src/lib src/test/lib",
@@ -24,7 +25,6 @@
     "cli-test": "jest src/test/cli",
     "cli-test:update": "jest -u src/test/cli",
     "prepublishOnly": "npm run clean && npm i && npm run compile",
-    "build": "npm run compile",
     "docs": "rm -rf docs && typedoc --plugin typedoc-plugin-markdown"
   },
   "repository": {
