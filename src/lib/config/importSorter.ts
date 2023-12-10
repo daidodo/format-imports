@@ -25,12 +25,12 @@ import { Configuration } from './types';
  * @param fileName - Source file name
  * @param config - Base config
  */
-export function loadImportSorterConfig<T extends Configuration = Configuration>(
+export async function loadImportSorterConfig<T extends Configuration = Configuration>(
   fileName: string,
   config?: T,
 ) {
   const cfg = config ?? ({} as T);
-  const pretConfig = loadPretConfig(fileName) as T;
+  const pretConfig = await loadPretConfig(fileName) as T;
   const cfgFileName = cfg.configurationFileName || 'import-sorter.json';
   const fConfig = fileConfig(cfgFileName, fileName) as T;
   const pkgConfig = packageConfig(fileName) as T;
