@@ -19,13 +19,11 @@ This package contains CLI and APIs to format **imports** and **exports** for **J
 
 It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](https://marketplace.visualstudio.com/items?itemName=dozerg.tsimportsorter), then extracted to standalone CLI and lib for more use cases (e.g. CI/CD) and IDEs (e.g. [IntelliJ](https://plugins.jetbrains.com/plugin/16195-js-ts-import-export-sorter)).
 
-## [3.2.x]
+## [4.0.x]
 
-### Added
+### Changes
 
-- Support formatting `<script>` in Vue.
-- Support [use server](https://nextjs.org/blog/next-13-4#server-actions-alpha)
-- Support URL as module identifier.
+- Change `resolveConfigForFile` to async function.
 
 # Table of contents <!-- omit in toc -->
 
@@ -204,7 +202,7 @@ import {
 
 const fileName = '/path/to/source/file.ts';
 
-const config = resolveConfigForFile(fileName)
+const config = await resolveConfigForFile(fileName)
 // Skip if file is excluded.
 if (isFileExcludedByConfig(fileName, config))
   return;
@@ -249,7 +247,7 @@ const extraConfig: MyConfig = loadExtraConfig();
 const baseConfig = mergeConfig(initialConfig, extraConfig)
 
 // Resolve extended config for source file
-const config = resolveConfigForFile('/path/to/file.ts', baseConfig);
+const config = await resolveConfigForFile('/path/to/file.ts', baseConfig);
 
 if (config.sayHello) {
   console.log('Hello!');
