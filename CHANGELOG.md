@@ -19,6 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -->
 
+## [4.0.0] - 2023-12-11
+
+### Changes
+
+- Change `resolveConfigForFile` to async function due to [Prettier API](https://prettier.io/docs/en/api#prettierresolveconfigfileurlorpath--options) update.
+
 ## [3.2.5] - 2023-05-19
 
 ### Added

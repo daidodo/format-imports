@@ -47,7 +47,7 @@ describe('lib/formatSource', () => {
   // Run all tests or specific test case(s)
   runTestSuite(examples);
   if (ENABLE_LOGS) log4js.getLogger().level = 'debug';
-  // runTestSuite(examples, 'vue/lang-default/new-lines/no-imports');
+  // runTestSuite(examples, 'prettier/singleQuote/false/default');
 });
 
 function getTestSuite(dir: string, name: string): TestSuite | undefined {
@@ -109,7 +109,7 @@ function runTestCase(
   it(name ?? 'default', async () => {
     const res = result || defResult;
     const source = fs.readFileSync(origin).toString();
-    const config = resolveConfigForFile(origin);
+    const config = await resolveConfigForFile(origin);
     const skipTsConfig = !tsConfigPath;
     const skipEslintConfig = !eslintConfigPath;
     const options = { skipTsConfig, tsConfigPath, skipEslintConfig, eslintConfigPath };

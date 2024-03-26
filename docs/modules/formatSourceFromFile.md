@@ -16,10 +16,6 @@ ESLint config will NOT be read because it's supported only by [formatSourceFromF
 `options` can be used to change _tsconfig.json_ loading behavior for testing
 purpose.
 
-**`See`**
-
-[formatSourceFromFile](../README.md#formatsourcefromfile)
-
 #### Parameters
 
 | Name | Type | Description |
@@ -35,6 +31,10 @@ purpose.
 
 The result text or `undefined` if nothing changes.
 
+**`See`**
+
+[formatSourceFromFile](../README.md#formatsourcefromfile)
+
 #### Defined in
 
-[format/main/index.ts:76](https://github.com/daidodo/format-imports/blob/36b9131/src/lib/format/main/index.ts#L76)
+[format/main/index.ts:76](https://github.com/daidodo/format-imports/blob/6727c8e/src/lib/format/main/index.ts#L76)

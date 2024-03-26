@@ -123,7 +123,7 @@ async function processDirectory(dirPath: string, options: Options) {
   for await (const { relativePath, resolvedPath: inputFile } of getFiles(dirPath, !recursive)) {
     if (!isSupported(relativePath)) continue;
     const filePath = path.join(dirPath, relativePath);
-    const config = resolveConfigForFile(inputFile, baseConfig);
+    const config = await resolveConfigForFile(inputFile, baseConfig);
     if (isFileExcludedByConfig(inputFile, config)) continue;
     const source = await fs.readFile(inputFile, { encoding: 'utf8' });
     const result = await formatSourceFromFile(source, inputFile, config);
@@ -179,7 +179,7 @@ async function processFile(
     return;
   }
   const inputFile = path.resolve(filePath);
-  const config = resolveConfigForFile(inputFile, baseConfig);
+  const config = await resolveConfigForFile(inputFile, baseConfig);
   if (isFileExcludedByConfig(inputFile, config)) {
     process.stdout.write(`'${filePath}' is excluded by config.\n`);
   } else {

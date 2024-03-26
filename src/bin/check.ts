@@ -51,7 +51,7 @@ async function processFile(baseConfig: Configuration, filePath: string, realPath
   if (!isSupported(filePath)) return;
   STATS.processed++;
   const resolvedPath = realPath ?? path.resolve(filePath);
-  const config = resolveConfigForFile(resolvedPath, baseConfig);
+  const config = await resolveConfigForFile(resolvedPath, baseConfig);
   if (isFileExcludedByConfig(resolvedPath, config)) {
     STATS.excluded++;
     return;
