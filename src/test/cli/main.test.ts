@@ -25,44 +25,11 @@ const TMP_PREFIX = 'format-imports';
 const RESULT_JSON = 'result.json';
 
 describe('CLI', () => {
-  describe('version', () => {
-    const PATTERN = /^v\d+\.\d+\.\d+\n$/;
-    test('--version', () => {
-      const { stdout, stderr, status } = run('--version');
-      expect(stderr).toBe('');
-      expect(status).toBe(0);
-      expect(stdout).toMatch(PATTERN);
-    });
-    test('-v', () => {
-      const { stdout, stderr, status } = run('-v');
-      expect(stderr).toBe('');
-      expect(status).toBe(0);
-      expect(stdout).toMatch(PATTERN);
-    });
-  });
-
-  describe('log', () => {
-    const PATTERN = /\[(DEBUG|INFO)\]/;
-    const env = { baseDir: __dirname };
-    test('--log', () => {
-      const { stdout, stderr, status } = run('-c ./main.test.ts --log', env);
-      expect(stderr).toBe('');
-      expect(status).toBe(0);
-      expect(stdout).toMatch(PATTERN);
-    });
-    test('-l', () => {
-      const { stdout, stderr, status } = run('-c ./main.test.ts -l', env);
-      expect(stderr).toBe('');
-      expect(status).toBe(0);
-      expect(stdout).toMatch(PATTERN);
-    });
-  });
-
   const examples = path.resolve(__dirname, 'examples');
   // Run all tests
   runTestSuite(examples);
   // Or, run specific test case(s)
-  // runTestSuite(examples, 'format/stdin/config/nonexist');
+  // runTestSuite(examples, 'log');
 });
 
 function runTestSuite(resolved: string, relative?: string | string[]): void {

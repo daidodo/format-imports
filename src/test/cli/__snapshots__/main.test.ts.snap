@@ -1608,3 +1608,31 @@ format-imports -c [options] FILE/DIR [FILE/DIR ...]
 ",
 }
 `;
+
+exports[`CLI log [-c ./1.ts --log] 1`] = `
+{
+  "status": 0,
+  "stderr": "",
+}
+`;
+
+exports[`CLI log [-c ./1.ts -l] 1`] = `
+{
+  "status": 0,
+  "stderr": "",
+}
+`;
+
+exports[`CLI version [--version] 1`] = `
+{
+  "status": 0,
+  "stderr": "",
+}
+`;
+
+exports[`CLI version [-v] 1`] = `
+{
+  "status": 0,
+  "stderr": "",
+}
+`;
