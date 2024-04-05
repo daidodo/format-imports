@@ -7,7 +7,7 @@
   "types": "dist/lib/index.d.ts",
   "private": false,
   "engines": {
-    "node": ">=14"
+    "node": ">=16"
   },
   "scripts": {
     "clean": "rm -rf dist",
