@@ -30,6 +30,7 @@ Please use the following links to:
     - [`__out/`](#__out)
     - [`skip.txt`](#skiptxt)
     - [`special.txt`](#specialtxt)
+    - [`result.json`](#resultjson)
   - [Integration Tests for library](#integration-tests-for-library)
     - [Configuration Files](#configuration-files)
     - [More Tips](#more-tips)
@@ -162,6 +163,27 @@ Object {
 ```
 
 Please note the `win32` tag in the 2nd snapshot.
+
+### `result.json`
+
+By default, `stderr` and `stdout` will be compared to the snapshots and need to be identical, respectively. But it may not work sometimes. For example, `stderr` messages are different for nonexist files in different NodeJS versions on Windows:
+
+- v18: `ENOENT: no such file or directory, open 'c/import-sorter.json`
+- v20: `ENOENT: no such file or directory, open 'C:\Users\RUNNER~1\AppData\Local\Temp\format-imports-4884-u3h6JqmIu2mH\c\import-sorter.json`
+
+To solve that, you can create a `result.json` and give regex pattern of the message:
+
+_result.json:_
+
+```json
+{
+  "stderr": "ENOENT: no such file or directory, open '.*import-sorter.json"
+}
+```
+
+The test will then check `stderr` against the regex pattern in _result.json_, and delete it from the snapshot.
+
+Only `stderr` and `stdout` are supported in _result.json_.
 
 ## Integration Tests for library
 
