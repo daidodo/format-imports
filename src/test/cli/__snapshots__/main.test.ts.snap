@@ -325,8 +325,6 @@ exports[`CLI check config force win32[--check -f --config c/import-sorter.json 1
 exports[`CLI check config nonexist [--check --config c/import-sorter.json a] 1`] = `
 {
   "status": 1,
-  "stderr": "ENOENT: no such file or directory, open 'c/import-sorter.json'
-",
   "stdout": "",
 }
 `;
@@ -538,8 +536,6 @@ exports[`CLI format directory config fileconfig [--config c/import-sorter.json a
 exports[`CLI format directory config nonexist [--config c/import-sorter.json a] 1`] = `
 {
   "status": 1,
-  "stderr": "ENOENT: no such file or directory, open 'c/import-sorter.json'
-",
   "stdout": "",
 }
 `;
@@ -592,8 +588,6 @@ exports[`CLI format directory no-recursive dry-run [-d --no-recursive a] 1`] = `
 exports[`CLI format directory nonexist [a] 1`] = `
 {
   "status": 1,
-  "stderr": "ENOENT: no such file or directory, stat 'a'
-",
   "stdout": "",
 }
 `;
@@ -768,8 +762,6 @@ exports[`CLI format file config fileconfig [--config a/import-sorter.json 1.ts] 
 exports[`CLI format file config nonexist [--config a/import-sorter.json 1.ts] 1`] = `
 {
   "status": 1,
-  "stderr": "ENOENT: no such file or directory, open 'a/import-sorter.json'
-",
   "stdout": "",
 }
 `;
@@ -803,8 +795,6 @@ export { A, B, C };
 exports[`CLI format file nonexist [1.ts] 1`] = `
 {
   "status": 1,
-  "stderr": "ENOENT: no such file or directory, stat '1.ts'
-",
   "stdout": "",
 }
 `;
@@ -1053,8 +1043,6 @@ exports[`CLI format files config fileconfig [--config c/import-sorter.json 1.ts 
 exports[`CLI format files config nonexist [--config c/import-sorter.json 1.ts a/2.ts] 1`] = `
 {
   "status": 1,
-  "stderr": "ENOENT: no such file or directory, open 'c/import-sorter.json'
-",
   "stdout": "",
 }
 `;
@@ -1080,8 +1068,6 @@ exports[`CLI format files dry-run [-d 1.ts a/2.ts] 1`] = `
 exports[`CLI format files nonexist [1.ts a/2.ts] 1`] = `
 {
   "status": 1,
-  "stderr": "ENOENT: no such file or directory, stat 'a/2.ts'
-",
   "stdout": "",
 }
 `;
@@ -1155,8 +1141,6 @@ export {
 exports[`CLI format stdin config nonexist [--config import-sorter.json] 1`] = `
 {
   "status": 1,
-  "stderr": "ENOENT: no such file or directory, open 'import-sorter.json'
-",
   "stdout": "",
 }
 `;
