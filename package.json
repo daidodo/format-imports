@@ -120,12 +120,12 @@
     "nodeProtocol": "always"
   },
   "devDependencies": {
-    "@tsconfig/recommended": "^1.0.5",
+    "@tsconfig/recommended": "^1.0.6",
     "@types/babel__core": "^7.20.5",
     "@types/eslint": "^8.56.7",
     "@types/fs-extra": "^11.0.4",
     "@types/jest": "^29.5.12",
-    "@types/node": "^20.12.4",
+    "@types/node": "^20.12.5",
     "@types/prettier": "^3.0.0",
     "@types/tmp": "^0.2.6",
     "@types/validator": "^13.11.9",
