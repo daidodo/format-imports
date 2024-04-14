@@ -1,6 +1,6 @@
 {
   "name": "format-imports",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "description": "JavaScript and TypeScript Import/Export Formatter.",
   "main": "dist/lib/index.js",
   "bin": "dist/bin/main.js",
@@ -152,7 +152,7 @@
     "@dozerg/merge-options": "^1.0.9",
     "@dozerg/no-new": "^0.0.6",
     "@dozerg/require-module": "^0.0.7",
-    "@vue/compiler-sfc": "^3.4.21",
+    "@vue/compiler-sfc": "3.3.11",
     "eslint": "^8.57.0",
     "fs-extra": "^11.2.0",
     "immutable": "^4.3.5",
