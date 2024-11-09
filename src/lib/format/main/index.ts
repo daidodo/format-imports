@@ -14,12 +14,12 @@ import { formatVueSource } from './vue';
 /**
  * A type representing file extensions supported.
  */
-export type Extension = 'js' | 'ts' | 'jsx' | 'tsx' | 'vue';
+export type Extension = 'js' | 'ts' | 'jsx' | 'tsx' | 'vue' | 'ets';
 
 /**
  * File extensions supported.
  */
-export const SUPPORTED_EXTENSIONS: Extension[] = ['js', 'ts', 'jsx', 'tsx', 'vue'];
+export const SUPPORTED_EXTENSIONS: Extension[] = ['js', 'ts', 'jsx', 'tsx', 'vue', 'ets'];
 
 /**
  * Format given source text from a file, asynchronously.
