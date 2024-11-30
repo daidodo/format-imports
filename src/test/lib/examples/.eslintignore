@@ -4,5 +4,3 @@
 **/examples/tsconfig/h/ts.result.ts
 **/examples/tsconfig/jsx-preserve/ts.origin.ts
 **/examples/tsconfig/jsx-preserve/ts.result.ts
-**/examples/delete/export/empty/import-eq-unhandled.origin.ts
-**/examples/delete/export/empty/import-eq-unhandled.result.ts

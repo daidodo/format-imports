@@ -1,66 +1,62 @@
-[**APIs Documentation**](../README.md)
-
-***
-
 # Interface: WrappingRule
 
 ## Properties
 
-### ignoreComments?
+### ignoreComments
 
-> `readonly` `optional` **ignoreComments**: `boolean`
+• `Optional` `Readonly` **ignoreComments**: `boolean`
 
 Whether to ignore trailing comments when counting line length. Default to _false_.
 
 #### Defined in
 
-[config/types/wrapping.ts:22](https://github.com/daidodo/format-imports/blob/e188bc4272dba9eddc624b65cf812895c79fd423/src/lib/config/types/wrapping.ts#L22)
+[config/types/wrapping.ts:22](https://github.com/daidodo/format-imports/blob/73b0b619e8d080d0660375caa1ee29d8b585d2b3/src/lib/config/types/wrapping.ts#L22)
 
-***
+___
 
-### maxBindingNamesPerLine?
+### maxBindingNamesPerLine
 
-> `readonly` `optional` **maxBindingNamesPerLine**: `number`
+• `Optional` `Readonly` **maxBindingNamesPerLine**: `number`
 
 Max binding names per line before wrapping for imports. 0 for no limit. Default to _1_.
 
 #### Defined in
 
-[config/types/wrapping.ts:5](https://github.com/daidodo/format-imports/blob/e188bc4272dba9eddc624b65cf812895c79fd423/src/lib/config/types/wrapping.ts#L5)
+[config/types/wrapping.ts:5](https://github.com/daidodo/format-imports/blob/73b0b619e8d080d0660375caa1ee29d8b585d2b3/src/lib/config/types/wrapping.ts#L5)
 
-***
+___
 
-### maxDefaultAndBindingNamesPerLine?
+### maxDefaultAndBindingNamesPerLine
 
-> `readonly` `optional` **maxDefaultAndBindingNamesPerLine**: `number`
+• `Optional` `Readonly` **maxDefaultAndBindingNamesPerLine**: `number`
 
 Max default and binding names per line before wrapping for imports. 0 for no limit. Default
 to _2_.
 
 #### Defined in
 
-[config/types/wrapping.ts:10](https://github.com/daidodo/format-imports/blob/e188bc4272dba9eddc624b65cf812895c79fd423/src/lib/config/types/wrapping.ts#L10)
+[config/types/wrapping.ts:10](https://github.com/daidodo/format-imports/blob/73b0b619e8d080d0660375caa1ee29d8b585d2b3/src/lib/config/types/wrapping.ts#L10)
 
-***
+___
 
-### maxExportNamesPerLine?
+### maxExportNamesPerLine
 
-> `readonly` `optional` **maxExportNamesPerLine**: `number`
+• `Optional` `Readonly` **maxExportNamesPerLine**: `number`
 
 Max binding names per line before wrapping for exports. 0 for no limit. Default to _0_.
 
 #### Defined in
 
-[config/types/wrapping.ts:14](https://github.com/daidodo/format-imports/blob/e188bc4272dba9eddc624b65cf812895c79fd423/src/lib/config/types/wrapping.ts#L14)
+[config/types/wrapping.ts:14](https://github.com/daidodo/format-imports/blob/73b0b619e8d080d0660375caa1ee29d8b585d2b3/src/lib/config/types/wrapping.ts#L14)
 
-***
+___
 
-### maxNamesPerWrappedLine?
+### maxNamesPerWrappedLine
 
-> `readonly` `optional` **maxNamesPerWrappedLine**: `number`
+• `Optional` `Readonly` **maxNamesPerWrappedLine**: `number`
 
 Max names on wrapped lines for imports/exports. 0 for no limit. Default to _1_.
 
 #### Defined in
 
-[config/types/wrapping.ts:18](https://github.com/daidodo/format-imports/blob/e188bc4272dba9eddc624b65cf812895c79fd423/src/lib/config/types/wrapping.ts#L18)
+[config/types/wrapping.ts:18](https://github.com/daidodo/format-imports/blob/73b0b619e8d080d0660375caa1ee29d8b585d2b3/src/lib/config/types/wrapping.ts#L18)

@@ -16,6 +16,7 @@
   "exclude": ["src/test", "src/**/*.test.ts"],
   "typedocOptions": {
     "entryPoints": ["src/lib/index.ts"],
+    "hideInPageTOC": true,
     "hideBreadcrumbs": true,
     "readme": "none",
     "name": "APIs Documentation",
