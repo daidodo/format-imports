@@ -1,10 +1,10 @@
-import { type Identifier } from 'typescript';
+import { ModuleExportName } from 'typescript';
 
 import type { NameBinding } from '../types';
 
 export function getNameBinding(specifier: {
-  propertyName?: Identifier;
-  name: Identifier;
+  propertyName?: ModuleExportName;
+  name: ModuleExportName;
   isTypeOnly?: boolean;
 }): NameBinding {
   const { propertyName, isTypeOnly } = specifier;

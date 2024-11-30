@@ -1,10 +1,14 @@
+[**APIs Documentation**](../README.md)
+
+***
+
 # Interface: GroupRule
 
 ## Properties
 
-### builtin
+### builtin?
 
-• `Optional` **builtin**: `boolean`
+> `optional` **builtin**: `boolean`
 
 Whether to accept NodeJS builtin modules:
 
@@ -23,13 +27,13 @@ Whether to accept NodeJS builtin modules:
 
 #### Defined in
 
-[config/types/grouping.ts:72](https://github.com/daidodo/format-imports/blob/73b0b619e8d080d0660375caa1ee29d8b585d2b3/src/lib/config/types/grouping.ts#L72)
+[config/types/grouping.ts:72](https://github.com/daidodo/format-imports/blob/e188bc4272dba9eddc624b65cf812895c79fd423/src/lib/config/types/grouping.ts#L72)
 
-___
+***
 
-### flags
+### flags?
 
-• `Optional` **flags**: [`FlagSymbol`](../README.md#flagsymbol) \| [`FlagSymbol`](../README.md#flagsymbol)[]
+> `optional` **flags**: [`FlagSymbol`](../type-aliases/FlagSymbol.md) \| [`FlagSymbol`](../type-aliases/FlagSymbol.md)[]
 
 Types of imports this group supports.
 
@@ -37,13 +41,13 @@ If _undefined_, infer the flags from its parent and sub groups.
 
 #### Defined in
 
-[config/types/grouping.ts:31](https://github.com/daidodo/format-imports/blob/73b0b619e8d080d0660375caa1ee29d8b585d2b3/src/lib/config/types/grouping.ts#L31)
+[config/types/grouping.ts:31](https://github.com/daidodo/format-imports/blob/e188bc4272dba9eddc624b65cf812895c79fd423/src/lib/config/types/grouping.ts#L31)
 
-___
+***
 
-### importType
+### importType?
 
-• `Optional` **importType**: `boolean`
+> `optional` **importType**: `boolean`
 
 Whether to accept `import` or `import type`:
 
@@ -55,13 +59,13 @@ Default to _undefined_.
 
 #### Defined in
 
-[config/types/grouping.ts:54](https://github.com/daidodo/format-imports/blob/73b0b619e8d080d0660375caa1ee29d8b585d2b3/src/lib/config/types/grouping.ts#L54)
+[config/types/grouping.ts:54](https://github.com/daidodo/format-imports/blob/e188bc4272dba9eddc624b65cf812895c79fd423/src/lib/config/types/grouping.ts#L54)
 
-___
+***
 
-### regex
+### regex?
 
-• `Optional` **regex**: `string`
+> `optional` **regex**: `string`
 
 Import path pattern.
 
@@ -74,13 +78,13 @@ i.e. any paths don't match any other groups will fall into this group.
 
 #### Defined in
 
-[config/types/grouping.ts:43](https://github.com/daidodo/format-imports/blob/73b0b619e8d080d0660375caa1ee29d8b585d2b3/src/lib/config/types/grouping.ts#L43)
+[config/types/grouping.ts:43](https://github.com/daidodo/format-imports/blob/e188bc4272dba9eddc624b65cf812895c79fd423/src/lib/config/types/grouping.ts#L43)
 
-___
+***
 
-### sort
+### sort?
 
-• `Optional` **sort**: ``"none"`` \| [`SortRules`](SortRules.md)
+> `optional` **sort**: `"none"` \| [`SortRules`](SortRules.md)
 
 Sorting rules for this group.
 
@@ -92,13 +96,13 @@ _none_, then don't sort either/both of them.
 
 #### Defined in
 
-[config/types/grouping.ts:104](https://github.com/daidodo/format-imports/blob/73b0b619e8d080d0660375caa1ee29d8b585d2b3/src/lib/config/types/grouping.ts#L104)
+[config/types/grouping.ts:104](https://github.com/daidodo/format-imports/blob/e188bc4272dba9eddc624b65cf812895c79fd423/src/lib/config/types/grouping.ts#L104)
 
-___
+***
 
-### sortImportsBy
+### sortImportsBy?
 
-• `Optional` **sortImportsBy**: ``"paths"`` \| ``"names"``
+> `optional` **sortImportsBy**: `"paths"` \| `"names"`
 
 Sort import statements by paths or first names.
 
@@ -120,13 +124,13 @@ import B from 'a';
 
 #### Defined in
 
-[config/types/grouping.ts:93](https://github.com/daidodo/format-imports/blob/73b0b619e8d080d0660375caa1ee29d8b585d2b3/src/lib/config/types/grouping.ts#L93)
+[config/types/grouping.ts:93](https://github.com/daidodo/format-imports/blob/e188bc4272dba9eddc624b65cf812895c79fd423/src/lib/config/types/grouping.ts#L93)
 
-___
+***
 
-### subGroups
+### subGroups?
 
-• `Optional` **subGroups**: (`string` \| [`GroupRule`](GroupRule.md) \| `string`[])[]
+> `optional` **subGroups**: (`string` \| [`GroupRule`](GroupRule.md) \| `string`[])[]
 
 Sub-groups and rules. Imports will be sorted as the same order as sub groups defined.
 - `string` items will be expanded to `{ regex: elem }`.
@@ -134,4 +138,4 @@ Sub-groups and rules. Imports will be sorted as the same order as sub groups def
 
 #### Defined in
 
-[config/types/grouping.ts:111](https://github.com/daidodo/format-imports/blob/73b0b619e8d080d0660375caa1ee29d8b585d2b3/src/lib/config/types/grouping.ts#L111)
+[config/types/grouping.ts:111](https://github.com/daidodo/format-imports/blob/e188bc4272dba9eddc624b65cf812895c79fd423/src/lib/config/types/grouping.ts#L111)
