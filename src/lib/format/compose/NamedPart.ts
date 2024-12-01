@@ -23,7 +23,7 @@ class NamedPart implements ComposePart {
   }
 
   compose(level: number, config: ComposeConfig): ComposeResult {
-    assertTrue(this.maxWords >= 1);
+    assertTrue(this.maxWords >= 1, 'this.maxWords is empty', this);
     const { bracket, sComma } = config;
     if (0 < this.names.length && this.names.length <= this.maxWords) {
       const n = bracket(`${this.names.join(', ')}${sComma}`);
