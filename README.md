@@ -28,6 +28,7 @@ It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](htt
 ### Added
 
 - Support [Import Attributes](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-3.html#import-attributes).
+- Support [ArkTS](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/introduction-to-arkts-V5) (.ets files).
 
 # Table of contents <!-- omit in toc -->
 

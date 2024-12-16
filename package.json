@@ -1,6 +1,6 @@
 {
   "name": "format-imports",
-  "version": "4.0.6",
+  "version": "4.0.7",
   "description": "JavaScript and TypeScript Import/Export Formatter.",
   "main": "dist/lib/index.js",
   "bin": "dist/bin/main.js",
@@ -125,7 +125,7 @@
     "@types/eslint": "^8.56.12",
     "@types/fs-extra": "^11.0.4",
     "@types/jest": "^29.5.14",
-    "@types/node": "^22.10.1",
+    "@types/node": "^22.10.2",
     "@types/tmp": "^0.2.6",
     "@types/validator": "^13.12.2",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
@@ -140,9 +140,9 @@
     "ts-jest": "^29.2.5",
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
-    "typedoc": "^0.27.2",
-    "typedoc-plugin-markdown": "^4.3.0",
-    "webpack": "^5.96.1",
+    "typedoc": "^0.27.5",
+    "typedoc-plugin-markdown": "^4.3.2",
+    "webpack": "^5.97.1",
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
@@ -161,7 +161,7 @@
     "minimatch": "^10.0.1",
     "node-cache": "^5.1.2",
     "optionator": "^0.9.4",
-    "prettier": "^3.4.1",
+    "prettier": "^3.4.2",
     "segment-sort": "^1.0.7",
     "tmp": "^0.2.3",
     "typescript": "^5.7.2",
