@@ -66,7 +66,7 @@ function getTestSuite(dir: string, name: string): TestSuite | undefined {
   entries
     .filter(e => e.isFile())
     .forEach(({ name }) => {
-      const r = /^(.+\.)?(origin|result)\.([jt]sx?|vue)$/.exec(name);
+      const r = /^(.+\.)?(origin|result)\.([jt]sx?|vue|ets)$/.exec(name);
       if (!r) return;
       const [, n, t] = r;
       const p = path + sep + name;
