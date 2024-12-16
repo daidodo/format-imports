@@ -44,7 +44,7 @@ export async function enhanceWithEslint(
 
 async function loadESLintConfig(fileName: string, configFile?: string) {
   const log = logger('format-imports.loadESLintConfig');
-  log.debug('Loading ESLint config for fileName:', fileName, 'from', configFile ?? 'default');
+  log.debug('Loading ESLint config for', fileName, 'from', configFile ?? 'default');
   try {
     const { ESLint } = requireModule('eslint', fileName, eslint);
     if (!ESLint) {
