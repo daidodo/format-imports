@@ -17,4 +17,4 @@ the ones different.
 
 ## Defined in
 
-[config/merge.ts:21](https://github.com/daidodo/format-imports/blob/396a5ae1c6a0ea65fb94ddc38f9df2bc3a9229ed/src/lib/config/merge.ts#L21)
+[config/merge.ts:21](https://github.com/daidodo/format-imports/blob/ff017abf6278875690a1b32bf81664f2bd289753/src/lib/config/merge.ts#L21)

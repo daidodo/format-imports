@@ -52,4 +52,4 @@ Promise of the result text or `undefined` if nothing changes.
 
 ## Defined in
 
-[format/main/index.ts:42](https://github.com/daidodo/format-imports/blob/396a5ae1c6a0ea65fb94ddc38f9df2bc3a9229ed/src/lib/format/main/index.ts#L42)
+[format/main/index.ts:42](https://github.com/daidodo/format-imports/blob/ff017abf6278875690a1b32bf81664f2bd289753/src/lib/format/main/index.ts#L42)

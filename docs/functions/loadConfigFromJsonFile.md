@@ -22,4 +22,4 @@ Will throw an error if file is unreadable or content is not a valid JSON object.
 
 ## Defined in
 
-[config/importSorter.ts:102](https://github.com/daidodo/format-imports/blob/396a5ae1c6a0ea65fb94ddc38f9df2bc3a9229ed/src/lib/config/importSorter.ts#L102)
+[config/importSorter.ts:99](https://github.com/daidodo/format-imports/blob/ff017abf6278875690a1b32bf81664f2bd289753/src/lib/config/importSorter.ts#L99)

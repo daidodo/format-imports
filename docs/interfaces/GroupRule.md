@@ -27,7 +27,7 @@ Whether to accept NodeJS builtin modules:
 
 #### Defined in
 
-[config/types/grouping.ts:72](https://github.com/daidodo/format-imports/blob/396a5ae1c6a0ea65fb94ddc38f9df2bc3a9229ed/src/lib/config/types/grouping.ts#L72)
+[config/types/grouping.ts:72](https://github.com/daidodo/format-imports/blob/ff017abf6278875690a1b32bf81664f2bd289753/src/lib/config/types/grouping.ts#L72)
 
 ***
 
@@ -41,7 +41,7 @@ If _undefined_, infer the flags from its parent and sub groups.
 
 #### Defined in
 
-[config/types/grouping.ts:31](https://github.com/daidodo/format-imports/blob/396a5ae1c6a0ea65fb94ddc38f9df2bc3a9229ed/src/lib/config/types/grouping.ts#L31)
+[config/types/grouping.ts:31](https://github.com/daidodo/format-imports/blob/ff017abf6278875690a1b32bf81664f2bd289753/src/lib/config/types/grouping.ts#L31)
 
 ***
 
@@ -59,7 +59,7 @@ Default to _undefined_.
 
 #### Defined in
 
-[config/types/grouping.ts:54](https://github.com/daidodo/format-imports/blob/396a5ae1c6a0ea65fb94ddc38f9df2bc3a9229ed/src/lib/config/types/grouping.ts#L54)
+[config/types/grouping.ts:54](https://github.com/daidodo/format-imports/blob/ff017abf6278875690a1b32bf81664f2bd289753/src/lib/config/types/grouping.ts#L54)
 
 ***
 
@@ -78,7 +78,7 @@ i.e. any paths don't match any other groups will fall into this group.
 
 #### Defined in
 
-[config/types/grouping.ts:43](https://github.com/daidodo/format-imports/blob/396a5ae1c6a0ea65fb94ddc38f9df2bc3a9229ed/src/lib/config/types/grouping.ts#L43)
+[config/types/grouping.ts:43](https://github.com/daidodo/format-imports/blob/ff017abf6278875690a1b32bf81664f2bd289753/src/lib/config/types/grouping.ts#L43)
 
 ***
 
@@ -96,7 +96,7 @@ _none_, then don't sort either/both of them.
 
 #### Defined in
 
-[config/types/grouping.ts:104](https://github.com/daidodo/format-imports/blob/396a5ae1c6a0ea65fb94ddc38f9df2bc3a9229ed/src/lib/config/types/grouping.ts#L104)
+[config/types/grouping.ts:104](https://github.com/daidodo/format-imports/blob/ff017abf6278875690a1b32bf81664f2bd289753/src/lib/config/types/grouping.ts#L104)
 
 ***
 
@@ -124,7 +124,7 @@ import B from 'a';
 
 #### Defined in
 
-[config/types/grouping.ts:93](https://github.com/daidodo/format-imports/blob/396a5ae1c6a0ea65fb94ddc38f9df2bc3a9229ed/src/lib/config/types/grouping.ts#L93)
+[config/types/grouping.ts:93](https://github.com/daidodo/format-imports/blob/ff017abf6278875690a1b32bf81664f2bd289753/src/lib/config/types/grouping.ts#L93)
 
 ***
 
@@ -138,4 +138,4 @@ Sub-groups and rules. Imports will be sorted as the same order as sub groups def
 
 #### Defined in
 
-[config/types/grouping.ts:111](https://github.com/daidodo/format-imports/blob/396a5ae1c6a0ea65fb94ddc38f9df2bc3a9229ed/src/lib/config/types/grouping.ts#L111)
+[config/types/grouping.ts:111](https://github.com/daidodo/format-imports/blob/ff017abf6278875690a1b32bf81664f2bd289753/src/lib/config/types/grouping.ts#L111)

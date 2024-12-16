@@ -4,7 +4,7 @@
 
 # Type Alias: KeepUnusedRule
 
-> **KeepUnusedRule**: `string` \| \{`names`: `string`[];`path`: `string`; \}
+> **KeepUnusedRule**: `string` \| \{ `names`: `string`[]; `path`: `string`; \}
 
 This is for keeping unused names.
 
@@ -14,7 +14,7 @@ This is for keeping unused names.
 
 `string`
 
-\{`names`: `string`[];`path`: `string`; \}
+\{ `names`: `string`[]; `path`: `string`; \}
 
 ### names?
 
@@ -34,4 +34,4 @@ If it's _undefined_ or empty, the rule will be ignored.
 
 ## Defined in
 
-[config/types/unused.ts:6](https://github.com/daidodo/format-imports/blob/396a5ae1c6a0ea65fb94ddc38f9df2bc3a9229ed/src/lib/config/types/unused.ts#L6)
+[config/types/unused.ts:6](https://github.com/daidodo/format-imports/blob/ff017abf6278875690a1b32bf81664f2bd289753/src/lib/config/types/unused.ts#L6)

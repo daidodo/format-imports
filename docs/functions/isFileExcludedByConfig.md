@@ -26,4 +26,4 @@ The file name will be normalized to use `/` as path separator before matching.
 
 ## Defined in
 
-[config/index.ts:39](https://github.com/daidodo/format-imports/blob/396a5ae1c6a0ea65fb94ddc38f9df2bc3a9229ed/src/lib/config/index.ts#L39)
+[config/index.ts:39](https://github.com/daidodo/format-imports/blob/ff017abf6278875690a1b32bf81664f2bd289753/src/lib/config/index.ts#L39)

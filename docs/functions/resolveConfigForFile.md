@@ -14,7 +14,7 @@ The following sources will be considered if found (in precedence from high to lo
 - `import-sorter.json` (File name is configurable from the base config)
 - [Prettier configuration](https://github.com/prettier/prettier-vscode#configuration)
 - `.editorconfig`
-- The base config provided as parameter
+- The base config provided as parameters
 
 ## Type Parameters
 
@@ -44,4 +44,4 @@ T - A type extended from Configuration
 
 ## Defined in
 
-[config/importSorter.ts:28](https://github.com/daidodo/format-imports/blob/396a5ae1c6a0ea65fb94ddc38f9df2bc3a9229ed/src/lib/config/importSorter.ts#L28)
+[config/importSorter.ts:28](https://github.com/daidodo/format-imports/blob/ff017abf6278875690a1b32bf81664f2bd289753/src/lib/config/importSorter.ts#L28)
