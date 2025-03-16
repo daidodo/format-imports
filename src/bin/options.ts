@@ -2,6 +2,7 @@
 
 import {
   CLI_NAME,
+  SUPPORTED_EXTENSIONS,
   VERSION,
 } from '../lib';
 
@@ -65,7 +66,7 @@ const { parseArgv, generateHelp } = optionator({
       option: 'extension',
       alias: 'e',
       type: 'String',
-      enum: ['ts', 'tsx', 'js', 'jsx', 'vue'],
+      enum: SUPPORTED_EXTENSIONS,
       default: 'ts',
       description:
         'File extension assumed when reading from STDIN and output file extension is unknown.',

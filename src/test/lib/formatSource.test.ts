@@ -47,7 +47,7 @@ describe('lib/formatSource', () => {
   // Run all tests or specific test case(s)
   runTestSuite(examples);
   if (ENABLE_LOGS) log4js.getLogger().level = 'debug';
-  // runTestSuite(examples, 'prettier/singleQuote/false/default');
+  // runTestSuite(examples, 'assert');
 });
 
 function getTestSuite(dir: string, name: string): TestSuite | undefined {
@@ -66,7 +66,7 @@ function getTestSuite(dir: string, name: string): TestSuite | undefined {
   entries
     .filter(e => e.isFile())
     .forEach(({ name }) => {
-      const r = /^(.+\.)?(origin|result)\.([jt]sx?|vue)$/.exec(name);
+      const r = /^(.+\.)?(origin|result)\.([jt]sx?|vue|ets)$/.exec(name);
       if (!r) return;
       const [, n, t] = r;
       const p = path + sep + name;

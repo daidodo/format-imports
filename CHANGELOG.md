@@ -19,6 +19,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -->
 
+## [4.0.7] - 2024-12-16
+
+### Added
+
+- Support [ArkTS](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/introduction-to-arkts-V5) (.ets files).
+
+## [4.0.4] - 2024-04-14
+
+### Added
+
+- Support [Import Attributes](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-3.html#import-attributes).
+
 ## [4.0.0] - 2023-12-11
 
 ### Changes

@@ -1,7 +1,7 @@
 import { Map } from 'immutable';
 import isBuiltinModule from 'is-builtin-module';
 import {
-  type AssertClause,
+  type ImportAttributes,
   type ImportClause,
   type ImportDeclaration,
   type ImportEqualsDeclaration,
@@ -12,9 +12,10 @@ import {
 
 import { assertNonNull } from '@dozerg/condition';
 
+import { logger } from '../../common';
 import { type FlagSymbol } from '../../config';
 import {
-  AssertPart,
+  AttributesPart,
   composeParts,
   NamedPart,
   SemiPart,
@@ -34,6 +35,12 @@ import {
 import Statement, { type StatementArgs } from './Statement';
 import { type NameUsage } from './unused';
 
+// Import attributes
+interface Attributes {
+  token: 'with' | 'assert';
+  entries: Map<string, string>;
+}
+
 export default class ImportNode extends Statement {
   private readonly node_: ImportDeclaration | ImportEqualsDeclaration;
 
@@ -42,15 +49,15 @@ export default class ImportNode extends Statement {
   readonly isTypeOnly: boolean;
   private defaultName_?: string;
   private binding_?: Binding;
-  private readonly assertEntries?: Map<string, string>;
+  private readonly attributes?: Attributes;
 
   static fromDecl(node: ImportDeclaration, args: StatementArgs) {
-    const { importClause, moduleSpecifier, assertClause } = node;
+    const { importClause, moduleSpecifier, attributes: attrs } = node;
     if (!moduleSpecifier || moduleSpecifier.kind !== SyntaxKind.StringLiteral) return undefined;
     const moduleIdentifier = (moduleSpecifier as StringLiteral).text;
     if (!moduleIdentifier.trim()) return undefined;
     const { defaultName, binding, isScript, isTypeOnly } = getDefaultAndBinding(importClause);
-    const assertEntries = getAssertEntries(assertClause);
+    const attributes = getImportAttributes(attrs);
     return new ImportNode(
       node,
       moduleIdentifier,
@@ -59,7 +66,7 @@ export default class ImportNode extends Statement {
       binding,
       isScript,
       isTypeOnly,
-      assertEntries,
+      attributes,
     );
   }
 
@@ -82,7 +89,7 @@ export default class ImportNode extends Statement {
     binding?: Binding,
     isScript = false,
     isTypeOnly = false,
-    assertEntries?: Map<string, string>,
+    attributes?: Attributes,
   ) {
     super(args);
     this.node_ = node;
@@ -91,7 +98,7 @@ export default class ImportNode extends Statement {
     this.binding_ = binding;
     this.isScript = isScript;
     this.isTypeOnly = isTypeOnly;
-    this.assertEntries = assertEntries;
+    this.attributes = attributes;
   }
 
   get defaultName() {
@@ -170,7 +177,7 @@ export default class ImportNode extends Statement {
       this.isScript !== node.isScript ||
       isTypeOnly !== node.isTypeOnly ||
       !this.canMergeComments(node) ||
-      0 !== compareAssertEntries(this.assertEntries, node.assertEntries)
+      0 !== compareAttributes(this.attributes, node.attributes)
     )
       return false;
     this.removeBindingDefault(node.defaultName_);
@@ -309,9 +316,10 @@ export default class ImportNode extends Statement {
    *    import A, { default as B, C, D } from 'E';
    * ```
    *
-   * With assert clause
+   * Import attributes
    * ```
    *    import A from 'a' assert { type: 'json' };
+   *    import A from 'a' with { type: 'json' };
    * ```
    */
   private composeDecl(extraLength: number, config: ComposeConfig) {
@@ -328,7 +336,7 @@ export default class ImportNode extends Statement {
         [
           StringPart(`${verb} ${this.defaultName_}`, true),
           StringPart(from, noWrap),
-          AssertPart(this.assertEntries, noWrap),
+          AttributesPart(this.attributes?.token, this.attributes?.entries, noWrap),
           SemiPart(extraLength),
         ],
         config,
@@ -336,6 +344,7 @@ export default class ImportNode extends Statement {
     } else if (this.binding_.type === 'namespace') {
       // import * as A from 'a' assert { x: 'y' }, or
       // import A, * as B from 'a' assert { x: 'y' }
+      // Same for 'with'.
       const alias = `* as ${this.binding_.alias}`;
       return composeParts(
         [
@@ -343,7 +352,7 @@ export default class ImportNode extends Statement {
             ? [StringPart(`${verb} ${this.defaultName_},`, true), StringPart(alias, noWrap)]
             : [StringPart(`${verb} ${alias}`, true)]),
           StringPart(from, noWrap),
-          AssertPart(this.assertEntries, noWrap),
+          AttributesPart(this.attributes?.token, this.attributes?.entries, noWrap),
           SemiPart(extraLength),
         ],
         config,
@@ -351,13 +360,14 @@ export default class ImportNode extends Statement {
     }
     // import { A, B } from 'a' assert { x: 'y' }, or
     // import A, { B, C } from 'a' assert { x: 'y' }
+    // Same for 'with'.
     const { withDefault, withoutDefault } = wrap;
     const maxWords = this.defaultName_ ? withDefault - 1 : withoutDefault;
     return composeParts(
       [
         StringPart(this.defaultName_ ? `${verb} ${this.defaultName_},` : verb, true),
         NamedPart(this.binding_.names, from, maxWords, !this.defaultName_ && noWrap),
-        AssertPart(this.assertEntries, noWrap),
+        AttributesPart(this.attributes?.token, this.attributes?.entries, noWrap),
         SemiPart(extraLength),
       ],
       config,
@@ -390,25 +400,51 @@ function getDefaultAndBinding(importClause: ImportClause | undefined) {
   return { defaultName, binding, isScript: false, isTypeOnly };
 }
 
-function getAssertEntries(assertClause: AssertClause | undefined) {
+function getImportAttributes(assertClause: ImportAttributes | undefined) {
   if (!assertClause) return undefined;
-  const { kind, elements } = assertClause;
-  if (kind !== SyntaxKind.AssertClause) return undefined;
+  const { kind, elements, token: tk } = assertClause;
+  if (kind !== SyntaxKind.ImportAttributes) return undefined;
+  const token = getAttributeToken(tk);
+  if (!token) return undefined;
   const entries = Map(
     elements.map(({ name, value }) => [name.text, (value as StringLiteral).text]),
   );
-  return entries.isEmpty() ? undefined : entries;
+  if (entries.isEmpty()) return undefined;
+  return { token, entries };
 }
 
-function compareAssertEntries(
-  assert1: Map<string, string> | undefined,
-  assert2: Map<string, string> | undefined,
+function getAttributeToken(token: SyntaxKind) {
+  const log = logger('format-imports.ImportNode.getAttributeToken');
+  switch (token) {
+    case SyntaxKind.WithKeyword:
+      return 'with' as const;
+    case SyntaxKind.AssertKeyword:
+      return 'assert' as const;
+    default:
+      log.error('Unsupported token:', token);
+  }
+  return undefined;
+}
+
+function compareAttributes(attr1: Attributes | undefined, attr2: Attributes | undefined) {
+  if (attr1 === attr2) return 0;
+  else if (attr1 === undefined) return -1;
+  else if (attr2 === undefined) return 1;
+  const { token: tk1, entries: entries1 } = attr1;
+  const { token: tk2, entries: entries2 } = attr2;
+  if (tk1 != tk2) return tk1.localeCompare(tk2);
+  return compareAttrEntries(entries1, entries2);
+}
+
+function compareAttrEntries(
+  entries1: Map<string, string> | undefined,
+  entries2: Map<string, string> | undefined,
 ) {
-  if (assert1 === assert2) return 0;
-  else if (assert1 === undefined) return -1;
-  else if (assert2 === undefined) return 1;
-  const it1 = assert1.sort().entries();
-  const it2 = assert2.sort().entries();
+  if (entries1 === entries2) return 0;
+  else if (entries1 === undefined) return -1;
+  else if (entries2 === undefined) return 1;
+  const it1 = entries1.sort().entries();
+  const it2 = entries2.sort().entries();
   let v1 = it1.next();
   let v2 = it2.next();
   for (; !v1.done && !v2.done; v1 = it1.next(), v2 = it2.next()) {

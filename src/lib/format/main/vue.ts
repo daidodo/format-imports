@@ -1,6 +1,9 @@
 import { parse as parseVue } from '@vue/compiler-sfc';
 
-import { mergeConfig } from '../../index';
+import {
+  mergeConfig,
+  SUPPORTED_EXTENSIONS,
+} from '../../index';
 import {
   ComposeConfig,
   EnhancedConfig,
@@ -28,9 +31,8 @@ export async function formatVueSource(text: string, fileName: string, allConfig:
 }
 
 function checkLang(lang: string | undefined) {
-  const SUPPORTED_LANG = ['js', 'ts', 'jsx', 'tsx'];
   if (!lang) return { supported: true, ext: '.js' };
-  return { supported: SUPPORTED_LANG.includes(lang), ext: '.' + lang };
+  return { supported: SUPPORTED_EXTENSIONS.some( e => e === lang), ext: '.' + lang };
 }
 
 function wrapScript(head: string, script: string, tail: string, cc?: ComposeConfig) {

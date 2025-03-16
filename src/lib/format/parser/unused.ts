@@ -34,8 +34,10 @@ export function getUnusedIds(
   const unusedNames = new Set<string>();
   const unusedNodes = Array<ImportNode>();
   const options = prepareOptions(tsCompilerOptions);
-  const host = mockHost(fileName, sourceFile, options);
-  const program = ts.createProgram([fileName], options, host);
+  // Cheat TS compiler to treat .ets as .ts file.
+  const fname = fileName.endsWith('.ets') ? fileName + '.ts' : fileName;
+  const host = mockHost(fname, sourceFile, options);
+  const program = ts.createProgram([fname], options, host);
   try {
     // https://github.com/microsoft/TypeScript/wiki/API-Breaking-Changes#program-interface-changes
     program

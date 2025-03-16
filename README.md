@@ -25,6 +25,11 @@ It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](htt
 
 - Change `resolveConfigForFile` to async function.
 
+### Added
+
+- Support [Import Attributes](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-3.html#import-attributes).
+- Support [ArkTS](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/introduction-to-arkts-V5) (.ets files).
+
 # Table of contents <!-- omit in toc -->
 
 - [Features](#features)
@@ -51,13 +56,13 @@ It's originally developed for a VSCode Plugin [JS/TS Imports/Exports Sorter](htt
 
 # Features
 
-- Group and sort imports by custom rules, including sort by paths or names.
-- Remove duplicated and unused names with configurable exceptions.
+- Group and sort imports by configurable rules, including sort by paths or names.
+- Remove duplicated and unused names with exceptions.
 - Ignore files or declarations by config or inline comments.
 - Respect [ESLint](https://eslint.org) and [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import) rules.
 - Respect configs from [Prettier](https://prettier.io) and [EditorConfig](https://editorconfig.org).
 - Preserve `'use strict/client/server'`, `///` directives, shebang (`#!`) and comments.
-- Support [Type-Only imports/exports](https://devblogs.microsoft.com/typescript/announcing-typescript-3-8/#type-only-imports-exports), [Type Modifier on names](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#type-on-import-names), [Import Assertions](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#import-assertions) and [satisfies](https://devblogs.microsoft.com/typescript/announcing-typescript-4-9/#satisfies) operator.
+- Support [Type-Only imports/exports](https://devblogs.microsoft.com/typescript/announcing-typescript-3-8/#type-only-imports-exports), [Type Modifier on names](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#type-on-import-names), [Import Attributes](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-3.html#import-attributes) and [satisfies](https://devblogs.microsoft.com/typescript/announcing-typescript-4-9/#satisfies) operator.
 - Support NodeJS builtin modules.
 - Cross-platform consistency: Windows, macOS and Linux (Ubuntu).
 - Monorepo friendly.

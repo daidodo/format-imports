@@ -18,7 +18,7 @@ import { Configuration } from './types';
  * - `import-sorter.json` (File name is configurable from the base config)
  * - [Prettier configuration](https://github.com/prettier/prettier-vscode#configuration)
  * - `.editorconfig`
- * - The base config provided as parameter
+ * - The base config provided as parameters
  *
  * @typeparam T - A type extended from Configuration
  *
@@ -30,7 +30,7 @@ export async function loadImportSorterConfig<T extends Configuration = Configura
   config?: T,
 ) {
   const cfg = config ?? ({} as T);
-  const pretConfig = await loadPretConfig(fileName) as T;
+  const pretConfig = (await loadPretConfig(fileName)) as T;
   const pkgConfig = packageConfig(fileName) as T;
   const c = enhanceEol(cfg, () => endOfLineForFile(fileName));
   return loadConfigRecursive(fileName, c, pretConfig, pkgConfig);
@@ -64,7 +64,7 @@ function loadConfigRecursive<T extends Configuration = Configuration>(fileName: 
 
 function fileConfig(fileName: string, path?: string) {
   const log = logger('format-imports.fileConfig');
-  log.debug('Loading JSON config from', fileName);
+  log.debug('Loading', fileName, 'config for', path ?? 'CWD');
   const files = findUp.sync(fileName, { type: 'file', cwd: path });
   return readConfigTilRoot(files, file => {
     const config = loadConfigFromJsonFile(file);
@@ -78,9 +78,8 @@ function packageConfig(fileName: string) {
   log.debug('Loading package.json config for fileName:', fileName);
   const files = findUp.sync('package.json', { cwd: fileName });
   return readConfigTilRoot(files, file => {
-    log.debug('Found package.json in', file);
     const { importSorter: config } = jsonParseNoThrow(fs.readFileSync(file, 'utf8'));
-    log.debug('Found package.json', file, 'and config:', config);
+    log.debug('Found', file, 'and config:', config);
     if (!config) return {};
     assertIsObject(config, `Bad "importSorter" config in "${file}"`);
     return config as Configuration;
@@ -109,8 +108,6 @@ function readConfigTilRoot(fileNames: string[], readConfig: (fileName: string) =
 }
 
 export function enhanceEol<T extends Configuration>(config: T, detectEol: () => string) {
-  const log = logger('format-imports.enhanceEol');
-  log.debug('Determining EOL');
   if (config.eol) return config;
   const nl = detectEol();
   const eol: Configuration['eol'] =

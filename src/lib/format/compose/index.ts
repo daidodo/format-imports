@@ -5,14 +5,14 @@ import {
 
 import { type ComposeConfig } from '../config';
 import { type NodeComment } from '../types';
-import AssertPart from './AssertPart';
+import AttributesPart from './AttributesPart';
 import ComposeResult from './ComposeResult';
 import NamedPart from './NamedPart';
 import SemiPart from './SemiPart';
 import StringPart from './StringPart';
 import { type ComposePart } from './types';
 
-export { AssertPart, NamedPart, SemiPart, StringPart };
+export { AttributesPart, NamedPart, SemiPart, StringPart };
 
 export function composeParts(parts: (ComposePart | undefined)[], config: ComposeConfig) {
   const ps = parts.filter(isNonNull);

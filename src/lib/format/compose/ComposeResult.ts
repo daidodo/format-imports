@@ -37,7 +37,7 @@ export default class ComposeResult {
   }
 
   private mergeLines(other: ComposeLine[]) {
-    assertTrue(other.length > 0);
+    assertTrue(other.length > 0, 'other.length is 0', other);
     if (this.lines.length < 1) return { lines: other, line: other[0], only: other.length < 2 };
     const last = this.lines[this.lines.length - 1];
     const [next, ...rest] = other;

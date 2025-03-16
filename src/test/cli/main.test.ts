@@ -22,46 +22,14 @@ const STDIN = 'stdin.dat';
 const IN_DIR = '__in';
 const OUT_DIR = '__out';
 const TMP_PREFIX = 'format-imports';
+const RESULT_JSON = 'result.json';
 
 describe('CLI', () => {
-  describe('version', () => {
-    const PATTERN = /^v\d+\.\d+\.\d+\n$/;
-    test('--version', () => {
-      const { stdout, stderr, status } = run('--version');
-      expect(stderr).toBe('');
-      expect(status).toBe(0);
-      expect(stdout).toMatch(PATTERN);
-    });
-    test('-v', () => {
-      const { stdout, stderr, status } = run('-v');
-      expect(stderr).toBe('');
-      expect(status).toBe(0);
-      expect(stdout).toMatch(PATTERN);
-    });
-  });
-
-  describe('log', () => {
-    const PATTERN = /\[(DEBUG|INFO)\]/;
-    const env = { baseDir: __dirname };
-    test('--log', () => {
-      const { stdout, stderr, status } = run('-c ./main.test.ts --log', env);
-      expect(stderr).toBe('');
-      expect(status).toBe(0);
-      expect(stdout).toMatch(PATTERN);
-    });
-    test('-l', () => {
-      const { stdout, stderr, status } = run('-c ./main.test.ts -l', env);
-      expect(stderr).toBe('');
-      expect(status).toBe(0);
-      expect(stdout).toMatch(PATTERN);
-    });
-  });
-
   const examples = path.resolve(__dirname, 'examples');
   // Run all tests
   runTestSuite(examples);
   // Or, run specific test case(s)
-  // runTestSuite(examples, 'format/stdin');
+  // runTestSuite(examples, 'log');
 });
 
 function runTestSuite(resolved: string, relative?: string | string[]): void {
@@ -116,13 +84,14 @@ function runTestCase(resolved: string) {
 
 function runCmd(options: string, resolved: string) {
   const stdin = getStdin(resolved);
+  const resultJson = getResultJson(resolved);
   // create a tmp directory as the base directory to sandbox the child process.
   const tmpDir1 = tmp.dirSync({ prefix: TMP_PREFIX, unsafeCleanup: true });
   const baseDir = tmpDir1.name;
   // copy files needed to the child base directory.
   const { inDir, outDir } = getDirs(resolved);
   if (inDir) fs.copySync(inDir, baseDir);
-  runAndCheck(options, { stdin, baseDir });
+  runAndCheck(options, { stdin, baseDir, resultJson });
   // setup the expected base directory
   const tmpDir2 = tmp.dirSync({ prefix: TMP_PREFIX, unsafeCleanup: true });
   const baseDirExpected = tmpDir2.name;
@@ -137,12 +106,31 @@ function runCmd(options: string, resolved: string) {
 }
 
 // check execution results
-function runAndCheck(options: string, env?: { stdin?: string; baseDir: string }) {
-  const { stdout, stderr, status } = run(options, env);
-  expect({ stderr, status, stdout }).toMatchSnapshot();
+function runAndCheck(
+  options: string,
+  env?: { stdin?: string; baseDir: string; resultJson?: string },
+) {
+  const actual = run(options, env);
+  const result = env?.resultJson ? JSON.parse(fs.readFileSync(env.resultJson, 'utf-8')) : {};
+  if (result.stderr) {
+    expect(actual.stderr).toMatch(new RegExp(result.stderr));
+    delete actual.stderr;
+  }
+  if (result.stdout) {
+    expect(actual.stdout).toMatch(new RegExp(result.stdout));
+    delete actual.stdout;
+  }
+  expect(actual).toMatchSnapshot();
 }
 
-function run(options: string, env?: { stdin?: string; baseDir: string }) {
+function run(
+  options: string,
+  env?: { stdin?: string; baseDir: string },
+): {
+  stdout?: string;
+  stderr?: string;
+  status?: number | null;
+} {
   const useTsNode = process.env.USE_TS_NODE === '1' || process.env.USE_TS_NODE === 'true';
   // setup args
   const script = path.resolve(useTsNode ? 'src/bin/main.ts' : 'dist/bin/main.js');
@@ -170,8 +158,11 @@ function getSpecial(dir: string) {
 }
 
 function getStdin(dir: string) {
-  const out = path.resolve(dir, STDIN);
-  return fs.existsSync(out) && fs.statSync(out).isFile() ? out : undefined;
+  return checkFile(dir, STDIN);
+}
+
+function getResultJson(dir: string) {
+  return checkFile(dir, RESULT_JSON);
 }
 
 function getDirs(dir: string) {
@@ -183,6 +174,11 @@ function getDirs(dir: string) {
 function checkDir(dir: string, name: string) {
   const r = path.resolve(dir, name);
   return fs.existsSync(r) && fs.statSync(r).isDirectory() ? r : undefined;
+}
+
+function checkFile(dir: string, name: string) {
+  const out = path.resolve(dir, name);
+  return fs.existsSync(out) && fs.statSync(out).isFile() ? out : undefined;
 }
 
 function readFile(dir: string, fn: string) {
