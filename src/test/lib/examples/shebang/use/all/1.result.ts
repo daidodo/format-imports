@@ -2,6 +2,7 @@
 'use strict'
 'use client'
 'use server'
+'use cache'
 import 'b';
 
 import A from 'a';

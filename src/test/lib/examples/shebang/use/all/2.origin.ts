@@ -3,6 +3,7 @@
 'use client'
 'use strict'
 'use server'
+'use cache'
 
 import A from 'a'
 import 'b'
