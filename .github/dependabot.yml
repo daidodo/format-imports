@@ -9,3 +9,7 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
+    ignore:
+      # Ignore webpack because it causes vscode package failure
+      - dependency-name: "webpack"  
+      - dependency-name: "webpack-cli"
