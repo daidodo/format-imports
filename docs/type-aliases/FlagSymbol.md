@@ -4,7 +4,9 @@
 
 # Type Alias: FlagSymbol
 
-> **FlagSymbol**: `"scripts"` \| `"multiple"` \| `"single"` \| `"namespace"` \| `"named"` \| `"all"`
+> **FlagSymbol** = `"scripts"` \| `"multiple"` \| `"single"` \| `"namespace"` \| `"named"` \| `"all"`
+
+Defined in: [config/types/grouping.ts:23](https://github.com/daidodo/format-imports/blob/fa507828ea2705f4ecb83df3b3b0422b1a8a80a7/src/lib/config/types/grouping.ts#L23)
 
 Different types of imports:
 - _scripts_: Script imports, e.g. `import 'some_scripts'`.
@@ -24,7 +26,3 @@ Different types of imports:
 ```
 - _named_: All _multiple_, _single_ and _namespace_ combined.
 - _all_: All _scripts_ and _named_ combined.
-
-## Defined in
-
-[config/types/grouping.ts:23](https://github.com/daidodo/format-imports/blob/ff017abf6278875690a1b32bf81664f2bd289753/src/lib/config/types/grouping.ts#L23)

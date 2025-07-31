@@ -6,6 +6,8 @@
 
 > **mergeConfig**\<`T`\>(...`configs`): `T`
 
+Defined in: [config/merge.ts:50](https://github.com/daidodo/format-imports/blob/fa507828ea2705f4ecb83df3b3b0422b1a8a80a7/src/lib/config/merge.ts#L50)
+
 Merge multiple configs together. The latter takes precedence if values have conflicts.
 
 This function is preferred to `{...config1, ...config2}` because some keys need to be
@@ -22,7 +24,9 @@ const config = mergeConfig(config1, config2);  // { maxLineLength: 100, tabSize:
 
 ## Type Parameters
 
-• **T** *extends* [`Configuration`](../interfaces/Configuration.md) = [`Configuration`](../interfaces/Configuration.md)
+### T
+
+`T` *extends* [`Configuration`](../interfaces/Configuration.md) = [`Configuration`](../interfaces/Configuration.md)
 
 ## Parameters
 
@@ -35,7 +39,3 @@ An array of config objects
 ## Returns
 
 `T`
-
-## Defined in
-
-[config/merge.ts:50](https://github.com/daidodo/format-imports/blob/ff017abf6278875690a1b32bf81664f2bd289753/src/lib/config/merge.ts#L50)

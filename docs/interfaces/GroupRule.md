@@ -4,11 +4,15 @@
 
 # Interface: GroupRule
 
+Defined in: [config/types/grouping.ts:25](https://github.com/daidodo/format-imports/blob/fa507828ea2705f4ecb83df3b3b0422b1a8a80a7/src/lib/config/types/grouping.ts#L25)
+
 ## Properties
 
 ### builtin?
 
 > `optional` **builtin**: `boolean`
+
+Defined in: [config/types/grouping.ts:72](https://github.com/daidodo/format-imports/blob/fa507828ea2705f4ecb83df3b3b0422b1a8a80a7/src/lib/config/types/grouping.ts#L72)
 
 Whether to accept NodeJS builtin modules:
 
@@ -25,29 +29,25 @@ Whether to accept NodeJS builtin modules:
 ```
 - If it's _undefined_, the group accepts both.
 
-#### Defined in
-
-[config/types/grouping.ts:72](https://github.com/daidodo/format-imports/blob/ff017abf6278875690a1b32bf81664f2bd289753/src/lib/config/types/grouping.ts#L72)
-
 ***
 
 ### flags?
 
 > `optional` **flags**: [`FlagSymbol`](../type-aliases/FlagSymbol.md) \| [`FlagSymbol`](../type-aliases/FlagSymbol.md)[]
 
+Defined in: [config/types/grouping.ts:31](https://github.com/daidodo/format-imports/blob/fa507828ea2705f4ecb83df3b3b0422b1a8a80a7/src/lib/config/types/grouping.ts#L31)
+
 Types of imports this group supports.
 
 If _undefined_, infer the flags from its parent and sub groups.
-
-#### Defined in
-
-[config/types/grouping.ts:31](https://github.com/daidodo/format-imports/blob/ff017abf6278875690a1b32bf81664f2bd289753/src/lib/config/types/grouping.ts#L31)
 
 ***
 
 ### importType?
 
 > `optional` **importType**: `boolean`
+
+Defined in: [config/types/grouping.ts:54](https://github.com/daidodo/format-imports/blob/fa507828ea2705f4ecb83df3b3b0422b1a8a80a7/src/lib/config/types/grouping.ts#L54)
 
 Whether to accept `import` or `import type`:
 
@@ -57,15 +57,13 @@ Whether to accept `import` or `import type`:
 
 Default to _undefined_.
 
-#### Defined in
-
-[config/types/grouping.ts:54](https://github.com/daidodo/format-imports/blob/ff017abf6278875690a1b32bf81664f2bd289753/src/lib/config/types/grouping.ts#L54)
-
 ***
 
 ### regex?
 
 > `optional` **regex**: `string`
+
+Defined in: [config/types/grouping.ts:43](https://github.com/daidodo/format-imports/blob/fa507828ea2705f4ecb83df3b3b0422b1a8a80a7/src/lib/config/types/grouping.ts#L43)
 
 Import path pattern.
 
@@ -76,15 +74,13 @@ If it's _undefined_, only imports matching one of [subGroups](#subGroups) fall i
 If both [regex](#regex) and [subGroups](#subGroups) are _undefined_, then this is a _fall-back_ group,
 i.e. any paths don't match any other groups will fall into this group.
 
-#### Defined in
-
-[config/types/grouping.ts:43](https://github.com/daidodo/format-imports/blob/ff017abf6278875690a1b32bf81664f2bd289753/src/lib/config/types/grouping.ts#L43)
-
 ***
 
 ### sort?
 
 > `optional` **sort**: `"none"` \| [`SortRules`](SortRules.md)
+
+Defined in: [config/types/grouping.ts:104](https://github.com/daidodo/format-imports/blob/fa507828ea2705f4ecb83df3b3b0422b1a8a80a7/src/lib/config/types/grouping.ts#L104)
 
 Sorting rules for this group.
 
@@ -94,15 +90,13 @@ _undefined_, then inherit either/both from the parent.
 If it's _none_, or either/both [paths](sortrules.md#paths) or [names](sortrules.md#names) is
 _none_, then don't sort either/both of them.
 
-#### Defined in
-
-[config/types/grouping.ts:104](https://github.com/daidodo/format-imports/blob/ff017abf6278875690a1b32bf81664f2bd289753/src/lib/config/types/grouping.ts#L104)
-
 ***
 
 ### sortImportsBy?
 
 > `optional` **sortImportsBy**: `"paths"` \| `"names"`
+
+Defined in: [config/types/grouping.ts:93](https://github.com/daidodo/format-imports/blob/fa507828ea2705f4ecb83df3b3b0422b1a8a80a7/src/lib/config/types/grouping.ts#L93)
 
 Sort import statements by paths or first names.
 
@@ -122,20 +116,14 @@ import A from 'b';
 import B from 'a';
 ```
 
-#### Defined in
-
-[config/types/grouping.ts:93](https://github.com/daidodo/format-imports/blob/ff017abf6278875690a1b32bf81664f2bd289753/src/lib/config/types/grouping.ts#L93)
-
 ***
 
 ### subGroups?
 
-> `optional` **subGroups**: (`string` \| [`GroupRule`](GroupRule.md) \| `string`[])[]
+> `optional` **subGroups**: (`string` \| `GroupRule` \| `string`[])[]
+
+Defined in: [config/types/grouping.ts:111](https://github.com/daidodo/format-imports/blob/fa507828ea2705f4ecb83df3b3b0422b1a8a80a7/src/lib/config/types/grouping.ts#L111)
 
 Sub-groups and rules. Imports will be sorted as the same order as sub groups defined.
 - `string` items will be expanded to `{ regex: elem }`.
 - `string[]` items will be expanded to `{ subGroups: elem }`.
-
-#### Defined in
-
-[config/types/grouping.ts:111](https://github.com/daidodo/format-imports/blob/ff017abf6278875690a1b32bf81664f2bd289753/src/lib/config/types/grouping.ts#L111)
