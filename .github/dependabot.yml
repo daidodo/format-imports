@@ -5,11 +5,7 @@
 
 version: 2
 updates:
-  - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  - package-ecosystem: 'npm' # See documentation for possible values
+    directory: '/' # Location of package manifests
     schedule:
-      interval: "weekly"
-    ignore:
-      # Ignore webpack because it causes vscode package failure
-      - dependency-name: "webpack"  
-      - dependency-name: "webpack-cli"
+      interval: 'weekly'
