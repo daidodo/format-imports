@@ -56,3 +56,6 @@ jobs:
 
       - name: Test
         run: pnpm test
+
+      - name: Docs
+        run: pnpm docs
