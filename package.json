@@ -152,7 +152,7 @@
     "@dozerg/merge-options": "^1.0.12",
     "@dozerg/no-new": "^0.0.9",
     "@dozerg/require-module": "^0.0.10",
-    "@vue/compiler-sfc": "3.3.11",
+    "@vue/compiler-sfc": "3.5.18",
     "eslint": "^8.57.1",
     "fs-extra": "^11.3.0",
     "immutable": "^5.1.3",
