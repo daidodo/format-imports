@@ -19,6 +19,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -->
 
+## [4.0.8] - 2025-08-01
+
+### Added
+
+- Support [use cache](https://nextjs.org/docs/app/api-reference/directives/use-cache).
+
+
 ## [4.0.7] - 2024-12-16
 
 ### Added
