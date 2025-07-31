@@ -58,4 +58,4 @@ jobs:
         run: pnpm test
 
       - name: Docs
-        run: pnpm docs
+        run: npm run docs
