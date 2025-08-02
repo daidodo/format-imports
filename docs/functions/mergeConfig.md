@@ -6,7 +6,7 @@
 
 > **mergeConfig**\<`T`\>(...`configs`): `T`
 
-Defined in: [config/merge.ts:50](https://github.com/daidodo/format-imports/blob/fa507828ea2705f4ecb83df3b3b0422b1a8a80a7/src/lib/config/merge.ts#L50)
+Defined in: [config/merge.ts:50](https://github.com/daidodo/format-imports/blob/6fa466521c4048be8236686fd87f433f44d2b81e/src/lib/config/merge.ts#L50)
 
 Merge multiple configs together. The latter takes precedence if values have conflicts.
 

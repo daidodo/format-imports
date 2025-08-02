@@ -4,7 +4,7 @@
 
 # Interface: SortRules
 
-Defined in: [config/types/sorting.ts:10](https://github.com/daidodo/format-imports/blob/fa507828ea2705f4ecb83df3b3b0422b1a8a80a7/src/lib/config/types/sorting.ts#L10)
+Defined in: [config/types/sorting.ts:10](https://github.com/daidodo/format-imports/blob/6fa466521c4048be8236686fd87f433f44d2b81e/src/lib/config/types/sorting.ts#L10)
 
 ## Properties
 
@@ -12,7 +12,7 @@ Defined in: [config/types/sorting.ts:10](https://github.com/daidodo/format-impor
 
 > `optional` **names**: [`CompareRule`](../type-aliases/CompareRule.md)
 
-Defined in: [config/types/sorting.ts:21](https://github.com/daidodo/format-imports/blob/fa507828ea2705f4ecb83df3b3b0422b1a8a80a7/src/lib/config/types/sorting.ts#L21)
+Defined in: [config/types/sorting.ts:21](https://github.com/daidodo/format-imports/blob/6fa466521c4048be8236686fd87f433f44d2b81e/src/lib/config/types/sorting.ts#L21)
 
 Sorting rule for imported/exported names. Default to
 [COMPARE_RULE_DEFAULT](../README.md#COMPARE_RULE_DEFAULT).
@@ -23,7 +23,7 @@ Sorting rule for imported/exported names. Default to
 
 > `optional` **paths**: [`CompareRule`](../type-aliases/CompareRule.md)
 
-Defined in: [config/types/sorting.ts:15](https://github.com/daidodo/format-imports/blob/fa507828ea2705f4ecb83df3b3b0422b1a8a80a7/src/lib/config/types/sorting.ts#L15)
+Defined in: [config/types/sorting.ts:15](https://github.com/daidodo/format-imports/blob/6fa466521c4048be8236686fd87f433f44d2b81e/src/lib/config/types/sorting.ts#L15)
 
 Sorting rule for import paths. Default to
 [COMPARE_RULE_DEFAULT](../README.md#COMPARE_RULE_DEFAULT).

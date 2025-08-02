@@ -6,7 +6,7 @@
 
 > **KeepUnusedRule** = `string` \| \{ `names?`: `string`[]; `path`: `string`; \}
 
-Defined in: [config/types/unused.ts:6](https://github.com/daidodo/format-imports/blob/fa507828ea2705f4ecb83df3b3b0422b1a8a80a7/src/lib/config/types/unused.ts#L6)
+Defined in: [config/types/unused.ts:6](https://github.com/daidodo/format-imports/blob/6fa466521c4048be8236686fd87f433f44d2b81e/src/lib/config/types/unused.ts#L6)
 
 This is for keeping unused names.
 

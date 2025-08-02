@@ -6,7 +6,7 @@
 
 > **resolveConfigForSource**\<`T`\>(`text`, `config?`): `T`
 
-Defined in: [config/index.ts:27](https://github.com/daidodo/format-imports/blob/fa507828ea2705f4ecb83df3b3b0422b1a8a80a7/src/lib/config/index.ts#L27)
+Defined in: [config/index.ts:27](https://github.com/daidodo/format-imports/blob/6fa466521c4048be8236686fd87f433f44d2b81e/src/lib/config/index.ts#L27)
 
 Resolve config for given source text.
 

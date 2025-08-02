@@ -6,7 +6,7 @@
 
 > `const` **DEFAULT\_MERGER**: `Merger`\<[`Configuration`](../interfaces/Configuration.md)\>
 
-Defined in: [config/merge.ts:21](https://github.com/daidodo/format-imports/blob/fa507828ea2705f4ecb83df3b3b0422b1a8a80a7/src/lib/config/merge.ts#L21)
+Defined in: [config/merge.ts:21](https://github.com/daidodo/format-imports/blob/6fa466521c4048be8236686fd87f433f44d2b81e/src/lib/config/merge.ts#L21)
 
 Default merge rules for [mergeConfig](#mergeConfig), which are:
 

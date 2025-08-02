@@ -4,7 +4,7 @@
 
 # Interface: GroupRule
 
-Defined in: [config/types/grouping.ts:25](https://github.com/daidodo/format-imports/blob/fa507828ea2705f4ecb83df3b3b0422b1a8a80a7/src/lib/config/types/grouping.ts#L25)
+Defined in: [config/types/grouping.ts:25](https://github.com/daidodo/format-imports/blob/6fa466521c4048be8236686fd87f433f44d2b81e/src/lib/config/types/grouping.ts#L25)
 
 ## Properties
 
@@ -12,7 +12,7 @@ Defined in: [config/types/grouping.ts:25](https://github.com/daidodo/format-impo
 
 > `optional` **builtin**: `boolean`
 
-Defined in: [config/types/grouping.ts:72](https://github.com/daidodo/format-imports/blob/fa507828ea2705f4ecb83df3b3b0422b1a8a80a7/src/lib/config/types/grouping.ts#L72)
+Defined in: [config/types/grouping.ts:72](https://github.com/daidodo/format-imports/blob/6fa466521c4048be8236686fd87f433f44d2b81e/src/lib/config/types/grouping.ts#L72)
 
 Whether to accept NodeJS builtin modules:
 
@@ -35,7 +35,7 @@ Whether to accept NodeJS builtin modules:
 
 > `optional` **flags**: [`FlagSymbol`](../type-aliases/FlagSymbol.md) \| [`FlagSymbol`](../type-aliases/FlagSymbol.md)[]
 
-Defined in: [config/types/grouping.ts:31](https://github.com/daidodo/format-imports/blob/fa507828ea2705f4ecb83df3b3b0422b1a8a80a7/src/lib/config/types/grouping.ts#L31)
+Defined in: [config/types/grouping.ts:31](https://github.com/daidodo/format-imports/blob/6fa466521c4048be8236686fd87f433f44d2b81e/src/lib/config/types/grouping.ts#L31)
 
 Types of imports this group supports.
 
@@ -47,7 +47,7 @@ If _undefined_, infer the flags from its parent and sub groups.
 
 > `optional` **importType**: `boolean`
 
-Defined in: [config/types/grouping.ts:54](https://github.com/daidodo/format-imports/blob/fa507828ea2705f4ecb83df3b3b0422b1a8a80a7/src/lib/config/types/grouping.ts#L54)
+Defined in: [config/types/grouping.ts:54](https://github.com/daidodo/format-imports/blob/6fa466521c4048be8236686fd87f433f44d2b81e/src/lib/config/types/grouping.ts#L54)
 
 Whether to accept `import` or `import type`:
 
@@ -63,7 +63,7 @@ Default to _undefined_.
 
 > `optional` **regex**: `string`
 
-Defined in: [config/types/grouping.ts:43](https://github.com/daidodo/format-imports/blob/fa507828ea2705f4ecb83df3b3b0422b1a8a80a7/src/lib/config/types/grouping.ts#L43)
+Defined in: [config/types/grouping.ts:43](https://github.com/daidodo/format-imports/blob/6fa466521c4048be8236686fd87f433f44d2b81e/src/lib/config/types/grouping.ts#L43)
 
 Import path pattern.
 
@@ -80,7 +80,7 @@ i.e. any paths don't match any other groups will fall into this group.
 
 > `optional` **sort**: `"none"` \| [`SortRules`](SortRules.md)
 
-Defined in: [config/types/grouping.ts:104](https://github.com/daidodo/format-imports/blob/fa507828ea2705f4ecb83df3b3b0422b1a8a80a7/src/lib/config/types/grouping.ts#L104)
+Defined in: [config/types/grouping.ts:104](https://github.com/daidodo/format-imports/blob/6fa466521c4048be8236686fd87f433f44d2b81e/src/lib/config/types/grouping.ts#L104)
 
 Sorting rules for this group.
 
@@ -96,7 +96,7 @@ _none_, then don't sort either/both of them.
 
 > `optional` **sortImportsBy**: `"paths"` \| `"names"`
 
-Defined in: [config/types/grouping.ts:93](https://github.com/daidodo/format-imports/blob/fa507828ea2705f4ecb83df3b3b0422b1a8a80a7/src/lib/config/types/grouping.ts#L93)
+Defined in: [config/types/grouping.ts:93](https://github.com/daidodo/format-imports/blob/6fa466521c4048be8236686fd87f433f44d2b81e/src/lib/config/types/grouping.ts#L93)
 
 Sort import statements by paths or first names.
 
@@ -122,7 +122,7 @@ import B from 'a';
 
 > `optional` **subGroups**: (`string` \| `GroupRule` \| `string`[])[]
 
-Defined in: [config/types/grouping.ts:111](https://github.com/daidodo/format-imports/blob/fa507828ea2705f4ecb83df3b3b0422b1a8a80a7/src/lib/config/types/grouping.ts#L111)
+Defined in: [config/types/grouping.ts:111](https://github.com/daidodo/format-imports/blob/6fa466521c4048be8236686fd87f433f44d2b81e/src/lib/config/types/grouping.ts#L111)
 
 Sub-groups and rules. Imports will be sorted as the same order as sub groups defined.
 - `string` items will be expanded to `{ regex: elem }`.
