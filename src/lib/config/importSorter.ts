@@ -31,11 +31,35 @@ export async function loadImportSorterConfig<T extends Configuration = Configura
 ) {
   const cfg = config ?? ({} as T);
   const pretConfig = (await loadPretConfig(fileName)) as T;
-  const cfgFileName = cfg.configurationFileName || 'import-sorter.json';
-  const fConfig = fileConfig(cfgFileName, fileName) as T;
   const pkgConfig = packageConfig(fileName) as T;
   const c = enhanceEol(cfg, () => endOfLineForFile(fileName));
-  return mergeConfig(c, pretConfig, fConfig, pkgConfig);
+  return loadConfigRecursive(fileName, c, pretConfig, pkgConfig);
+}
+
+function loadConfigRecursive<T extends Configuration = Configuration>(fileName: string, config: T, pretConfig: T, pkgConfig: T) {
+  const normalized = fileName.replace(/\\/g, '/');
+  const cfgFileName = config.configurationFileName || 'import-sorter.json';
+  const fConfig = fileConfig(cfgFileName, fileName) as T;
+  let c = mergeConfig(config, pretConfig, fConfig, pkgConfig);
+  const seenNames: string[] = [cfgFileName];
+  let found = true;
+  while(c.overrides && c.overrides.length && found) {
+    found = false;
+    for(const {pattern: p, config: newCfgName} of c.overrides.reverse()) {
+      if(!p || !newCfgName) continue;
+      const r = new RegExp(p);
+      if (r.test(fileName) || r.test(normalized)) {
+        if(seenNames.includes(newCfgName)) break;
+        const fConfig = fileConfig(newCfgName, fileName);
+        Object.assign(c, { overrides: undefined });
+        c = mergeConfig(c, fConfig, pkgConfig) as T;
+        seenNames.push(newCfgName)
+        found = true;
+        break;
+      }
+    }
+  }
+  return c;
 }
 
 function fileConfig(fileName: string, path?: string) {

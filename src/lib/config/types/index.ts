@@ -9,6 +9,7 @@ import {
 } from './sorting';
 import { KeepUnusedRule } from './unused';
 import { WrappingRule } from './wrapping';
+import { OverrideRule } from './overrides';
 
 export { breakFlag, CompareRule, FlagSymbol, GroupRule, KeepUnusedRule, SortRules, WrappingRule };
 
@@ -33,6 +34,12 @@ export interface Configuration {
    * Disable formatting for files matching glob patterns. Default to _[]_.
    */
   readonly excludeGlob?: string[];
+  /**
+   * Use different configurations for files matching regular expressions. Default to _[]_.
+   *
+   * If multiple overrides could match a file, the last valid one will be used.
+   */
+  readonly overrides?: OverrideRule[];
   /**
    * Sort import declarations by paths or first names. Default to _paths_.
    */

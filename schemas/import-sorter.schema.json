@@ -27,6 +27,11 @@
       "uniqueItems": true,
       "description": "Disable formatting for files matching glob patterns."
     },
+    "overrides": {
+      "$ref": "#/$def/overrides",
+      "default": [],
+      "description": "Use different configurations for files matching regular expressions."
+    },
     "sortImportsBy": {
       "$ref": "#/$def/sortImportsBy"
     },
@@ -288,6 +293,23 @@
           }
         }
       ]
+    },
+    "override": {
+      "type": "object",
+      "properties": {
+        "pattern": {
+          "type": "string",
+          "description": "Use this override for for files matching this regular expressions."
+        },
+        "config": {
+          "type": "string",
+          "description": "The configuration file name to use for matched files."
+        }
+      }
+    },
+    "overrides": {
+      "type": "array",
+      "items": { "$ref": "#/$def/override" }
     }
   }
 }
