@@ -41,6 +41,7 @@ function loadConfigRecursive<T extends Configuration = Configuration>(config: T,
   const cfgFileName = config.configurationFileName || 'import-sorter.json';
   const fConfig = fileConfig(cfgFileName, fileName) as T;
   let c = mergeConfig(config, pretConfig, fConfig, pkgConfig);
+  pkgConfig.overrides && (pkgConfig.overrides.length = 0);
   const seenNames: string[] = [cfgFileName];
   loop0: while(c.overrides?.length) {
     for(const {pattern: p, config: newCfgName} of c.overrides) {
