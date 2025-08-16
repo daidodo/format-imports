@@ -11,7 +11,8 @@ import { type Configuration } from './types';
 /**
  * Default merge rules for [mergeConfig](#mergeConfig), which are:
  *
- * - {@link exclude}, {@link excludeGlob}, {@link overrides} and {@link keepUnused} arrays will be concatenated instead of replaced;
+ * - {@link exclude}, {@link excludeGlob} and {@link keepUnused} arrays will be concatenated instead of replaced;
+ * - {@link overrides} array will be concatenated in reverse order instead of replaced;
  * - {@link sortRules} object will be merged instead of replaced;
  * - All other fields will be replaced and the latter config takes precedence.
  *
@@ -21,7 +22,7 @@ import { type Configuration } from './types';
 export const DEFAULT_MERGER: Merger<Configuration> = {
   exclude: concatArray(),
   excludeGlob: concatArray(),
-  overrides: concatArray(),
+  overrides: customize((a, b) => [...b, ...a]),
   keepUnused: concatArray(),
   sortRules: customize((a, b) => {
     const aa = a === 'none' ? { paths: 'none' as const, names: 'none' as const } : a;

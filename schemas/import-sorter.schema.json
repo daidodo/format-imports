@@ -299,11 +299,11 @@
       "properties": {
         "pattern": {
           "type": "string",
-          "description": "Use this override for for files matching this regular expressions."
+          "description": "Use the override for files matching this regular expressions."
         },
         "config": {
           "type": "string",
-          "description": "The configuration file name to use for matched files."
+          "description": "Configuration file name to use for matched files."
         }
       }
     },

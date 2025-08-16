@@ -11,7 +11,7 @@ import { KeepUnusedRule } from './unused';
 import { WrappingRule } from './wrapping';
 import { OverrideRule } from './overrides';
 
-export { breakFlag, CompareRule, FlagSymbol, GroupRule, KeepUnusedRule, SortRules, WrappingRule };
+export { breakFlag, CompareRule, FlagSymbol, GroupRule, KeepUnusedRule, OverrideRule, SortRules, WrappingRule };
 
 export interface Configuration {
   /**
@@ -37,7 +37,7 @@ export interface Configuration {
   /**
    * Use different configurations for files matching regular expressions. Default to _[]_.
    *
-   * If multiple overrides could match a file, the last valid one will be used.
+   * If multiple overrides could match a file, the fisrt valid one will be used.
    */
   readonly overrides?: OverrideRule[];
   /**
