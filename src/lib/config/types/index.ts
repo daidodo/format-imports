@@ -35,9 +35,12 @@ export interface Configuration {
    */
   readonly excludeGlob?: string[];
   /**
-   * Use different configurations for files matching regular expressions. Default to _[]_.
+   * Array of different configurations used for files matching regular expressions. Default to _[]_.
    *
-   * If multiple overrides could match a file, the fisrt valid one will be used.
+   * If multiple overrides patterns match a file, the first one will be used.
+   *
+   * It the chain of priority of all configuration sources, the override will supercede the current config file,
+   * but still be overriden by any rules loaded from ESLint.
    */
   readonly overrides?: OverrideRule[];
   /**
