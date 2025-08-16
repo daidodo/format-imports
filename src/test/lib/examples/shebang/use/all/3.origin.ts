@@ -4,6 +4,7 @@
 'use strict'
 'use client'
 'use server'
+'use cache'
 
 
 import A from 'a'

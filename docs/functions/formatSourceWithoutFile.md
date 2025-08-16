@@ -4,7 +4,9 @@
 
 # Function: formatSourceWithoutFile()
 
-> **formatSourceWithoutFile**(`text`, `extension`, `config`, `options`?): `Promise`\<`undefined` \| `string`\>
+> **formatSourceWithoutFile**(`text`, `extension`, `config`, `options?`): `Promise`\<`undefined` \| `string`\>
+
+Defined in: [format/main/index.ts:107](https://github.com/daidodo/format-imports/blob/6fa466521c4048be8236686fd87f433f44d2b81e/src/lib/format/main/index.ts#L107)
 
 Format given source text without knowing the source file, asynchronously.
 
@@ -48,8 +50,4 @@ Promise of the result text or `undefined` if nothing changes.
 
 ## See
 
-[formatSourceWithoutFile.sync](formatSourceWithoutFile.md#sync)
-
-## Defined in
-
-[format/main/index.ts:107](https://github.com/daidodo/format-imports/blob/ff017abf6278875690a1b32bf81664f2bd289753/src/lib/format/main/index.ts#L107)
+[formatSourceWithoutFile.sync](#sync)

@@ -4,7 +4,9 @@
 
 # Function: formatSourceFromFile()
 
-> **formatSourceFromFile**(`text`, `fileName`, `config`, `options`?): `Promise`\<`undefined` \| `string`\>
+> **formatSourceFromFile**(`text`, `fileName`, `config`, `options?`): `Promise`\<`undefined` \| `string`\>
+
+Defined in: [format/main/index.ts:42](https://github.com/daidodo/format-imports/blob/6fa466521c4048be8236686fd87f433f44d2b81e/src/lib/format/main/index.ts#L42)
 
 Format given source text from a file, asynchronously.
 
@@ -48,8 +50,4 @@ Promise of the result text or `undefined` if nothing changes.
 
 ## See
 
-[formatSourceFromFile.sync](formatSourceFromFile.md#sync)
-
-## Defined in
-
-[format/main/index.ts:42](https://github.com/daidodo/format-imports/blob/ff017abf6278875690a1b32bf81664f2bd289753/src/lib/format/main/index.ts#L42)
+[formatSourceFromFile.sync](#sync)
