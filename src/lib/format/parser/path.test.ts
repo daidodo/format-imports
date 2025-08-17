@@ -138,6 +138,18 @@ describe('path', () => {
       assert.deepStrictEqual(normalize('.a/b/../'), '.a/');
       assert.deepStrictEqual(normalize('.a/b/../.'), '.a');
       assert.deepStrictEqual(normalize('.a/b/.././'), '.a/');
+      assert.deepStrictEqual(normalize('./.a'), './.a');
+      assert.deepStrictEqual(normalize('./.a/'), './.a/');
+      assert.deepStrictEqual(normalize('./.a/b'), './.a/b');
+      assert.deepStrictEqual(normalize('./.a/b/'), './.a/b/');
+      assert.deepStrictEqual(normalize('./.a/b/.'), './.a/b');
+      assert.deepStrictEqual(normalize('./.a/b/./'), './.a/b/');
+      assert.deepStrictEqual(normalize('./.a/b/./..'), './.a');
+      assert.deepStrictEqual(normalize('./.a/b/./../'), './.a/');
+      assert.deepStrictEqual(normalize('./.a/b/..'), './.a');
+      assert.deepStrictEqual(normalize('./.a/b/../'), './.a/');
+      assert.deepStrictEqual(normalize('./.a/b/../.'), './.a');
+      assert.deepStrictEqual(normalize('./.a/b/.././'), './.a/');
       assert.deepStrictEqual(normalize('.'), './');
       assert.deepStrictEqual(normalize('./'), './');
       assert.deepStrictEqual(normalize('./a'), './a');
