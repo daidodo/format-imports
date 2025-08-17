@@ -31,15 +31,15 @@ export function normalizePath(path: string, options?: Configuration) {
 export function normalize(str: string) {
   if (!str) return '';
   const r = path.normalize(str.replace(/\\/g, '/')).replace(/\\/g, '/');
-  return !str.startsWith('.')
+  return str === '.' || str === '..'
+    ? str + '/'
+    : !str.startsWith('./') && !str.startsWith('../')
     ? r
-    : !r.startsWith('.')
-    ? './' + r
-    : r === '.'
-    ? './'
-    : r.endsWith('..')
+    : r === '.' || r === '..'
     ? r + '/'
-    : r;
+    : r.startsWith('./') || r.startsWith('../')
+    ? r
+    : './' + r;
 }
 
 const PATTERNS = ['index', 'index.js', 'index.jsx', 'index.ts', 'index.tsx'];
