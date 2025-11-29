@@ -30,16 +30,18 @@ export function normalizePath(path: string, options?: Configuration) {
 // Exported for testing purpose.
 export function normalize(str: string) {
   if (!str) return '';
-  const r = path.normalize(str.replace(/\\/g, '/')).replace(/\\/g, '/');
-  return !str.startsWith('.')
+  const replacedStr = str.replace(/\\/g, '/');
+  let r = path.normalize(replacedStr).replace(/\\/g, '/');
+  r = str === '.' || str === '..'
+    ? str + '/'
+    : !replacedStr.startsWith('./') && !replacedStr.startsWith('../')
     ? r
-    : !r.startsWith('.')
-    ? './' + r
-    : r === '.'
-    ? './'
-    : r.endsWith('..')
+    : r === '.' || r === '..'
     ? r + '/'
-    : r;
+    : r.startsWith('./') || r.startsWith('../')
+    ? r
+    : './' + r;
+  return r.endsWith('/..') ? r + '/' : r;
 }
 
 const PATTERNS = ['index', 'index.js', 'index.jsx', 'index.ts', 'index.tsx'];
