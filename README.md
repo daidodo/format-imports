@@ -289,11 +289,15 @@ The following configuration sources will be checked and merged when formatting a
 
 - [ESLint configuration](https://eslint.org/docs/user-guide/configuring).
 - `"importSorter"` section in `package.json`
+- [Overrides](docs/interfaces/OverrideRule.md) in the resulting configuration (including those from `package.json`)
 - `import-sorter.json` (File name is configurable)
 - [Prettier configuration](https://github.com/prettier/prettier-vscode#configuration)
 - `.editorconfig`
 
 It's ok if any or all of them are not found, in which case default values will be used in config.
+
+Whenever a file matches an override, the corresponding config file is added between the `package.json` and the previous overrides in this merge chain. This continues until no override matches or a loop is detected.
+The overrides themselves are looked for in and merged across parent directories like `package.json`.
 
 All config fields you can set in `import-sorter.json` or `package.json` under `"importSorter"` section can be found in [Configuration](docs/interfaces/Configuration.md).
 

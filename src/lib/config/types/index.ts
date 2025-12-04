@@ -9,8 +9,9 @@ import {
 } from './sorting';
 import { KeepUnusedRule } from './unused';
 import { WrappingRule } from './wrapping';
+import { OverrideRule } from './overrides';
 
-export { breakFlag, CompareRule, FlagSymbol, GroupRule, KeepUnusedRule, SortRules, WrappingRule };
+export { breakFlag, CompareRule, FlagSymbol, GroupRule, KeepUnusedRule, OverrideRule, SortRules, WrappingRule };
 
 export interface Configuration {
   /**
@@ -33,6 +34,15 @@ export interface Configuration {
    * Disable formatting for files matching glob patterns. Default to _[]_.
    */
   readonly excludeGlob?: string[];
+  /**
+   * Array of different configurations used for files matching regular expressions. Default to _[]_.
+   *
+   * If multiple overrides patterns match a file, the first one will be used.
+   *
+   * It the chain of priority of all configuration sources, the override will supercede the current config file,
+   * but still be overriden by any rules loaded from ESLint.
+   */
+  readonly overrides?: OverrideRule[];
   /**
    * Sort import declarations by paths or first names. Default to _paths_.
    */
